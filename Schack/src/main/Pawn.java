@@ -2,25 +2,28 @@ package main;
 
 public class Pawn extends Piece
 {
-    private boolean hasMoved;
-    private String direction;
 
-    public Pawn(int i, int j, String direction) {
-	@super();
-	this.hasMoved = false;
-	this.direction = direction;
+    public Pawn(int column, int row, Color color, Board board, PieceType piece) {
+	super(column, row, color, board, piece);
     }
 
-    public void move(int i, int j) {
+    public void move(int newColumn, int newRow) {
 	/* försöker komma fram till någon sätt att göra så att
 	båda lagens bönder kan röra sig med hjälp av samma beräkning */
 
-	int horizontal = this.getColumn() - i;
-	int lateral = this.getRow() - j;
+	int horizontal = this.getColumn() - newColumn;
+	int lateral = this.getRow() - newRow;
 
 	// många if-fall över tillåtna rörelser
-	if (horizontal == 0 && lateral == 1) {
-
+	if (this.getColor() == Color.WHITE) {
+		if (horizontal == 0 && lateral == 1) {
+			if (board.getPieceType(newColumn, newRow) == PieceType.EMPTY) {
+				this.row = newRow;
+			}
+		else if (horizontal == 1 && lateral == 1) {
+			    if (board.getPieceType(newColumn, newRow) == SVART PJÄS!!!)
+			}
+		}
 	}
 
 

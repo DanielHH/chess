@@ -2,20 +2,27 @@ package main;
 
 public class Piece
 {
-    private boolean alive;
-    private int i;
-    private int j;
+    protected boolean alive;
+    protected int column;
+    protected int row;
+    protected boolean hasMoved;
+    protected Color color;
+    protected Board board;
+    protected PieceType piece;
 
-    public Piece(final int i, final int j) {
-	this.j = j;
-	this.i = i;
+    public Piece(final int column, final int row, Color color, Board board, PieceType piece) {
+	this.row = row;
+	this.column = column;
 	this.alive = true;
+        this.hasMoved = false;
+        this.color = color;
+        this.board = board;
+        this.piece = piece;
     }
 
     public boolean isAlive() {
         return this.alive;
     }
-
 
     public void reanimatePiece() {
         this.alive = true;
@@ -26,17 +33,22 @@ public class Piece
     }
 
     public int getColumn() {
-        return i;
+        return column;
     }
-    public void setColumn(int i) {
-        this.i = i;
-    }
+
     public int getRow() {
-        return j;
-    }
-    public void setRow(int j) {
-        this.j = j;
+        return row;
     }
 
+    public Color getColor() {
+        return this.color;
+    }
 
+    public boolean hasMoved() {
+        return hasMoved;
+    }
+
+    public Board getBoard() {
+        return board;
+    }
 }
