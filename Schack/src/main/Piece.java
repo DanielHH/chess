@@ -2,7 +2,6 @@ package main;
 
 public class Piece
 {
-    protected boolean alive;
     protected int column;
     protected int row;
     protected boolean hasMoved;
@@ -13,23 +12,16 @@ public class Piece
     public Piece(final int column, final int row, Color color, Board board, PieceType piece) {
 	this.row = row;
 	this.column = column;
-	this.alive = true;
         this.hasMoved = false;
         this.color = color;
         this.board = board;
         this.piece = piece;
     }
 
-    public boolean isAlive() {
-        return alive;
-    }
-
-    public void reanimatePiece() {
-        alive = true;
-    }
-
     public void killPiece() {
-        alive = false;
+        // remove piece from board
+        piece = PieceType.EMPTY;
+        color = Color.GREEN;
     }
 
     public int getColumn() {
@@ -48,9 +40,86 @@ public class Piece
         return hasMoved;
     }
 
-    protected void moved() {hasMoved = false;}
+    protected void moved() {hasMoved = true;}
 
     public Board getBoard() {
         return board;
+    }
+
+    protected void movePiece(int nextColumn, int nextRow) {
+        column = nextColumn;
+        row = nextRow;
+        if (!this.hasMoved()) {
+            this.moved();
+        }
+    }
+
+    public boolean pieceInTheWay(int horizontal, int lateral) {
+        boolean canMove = true;
+        if (horizontal > 0 && lateral > 0) {
+            // bishop, move diagonal down right
+            for (int j = 0; j < lateral; j++) {
+                if (board.getPiece(this.getColumn() + j, this.getRow() + j).piece != PieceType.EMPTY) {
+                    canMove = false;
+                }
+            }
+        }
+        else if (horizontal > 0 && lateral < 0) {
+            // bishop, move diagonal up right
+            for (int j = 0; j < horizontal; j++) {
+                if (board.getPiece(this.getColumn() + j, this.getRow() - j).piece != PieceType.EMPTY) {
+                    canMove = false;
+                }
+            }
+        }
+        else if (horizontal < 0 && lateral > 0) {
+            // bishop, move diagonal down left
+            for (int j = 0; j < lateral; j++) {
+                if (board.getPiece(this.getColumn() - j, this.getRow() + j).piece != PieceType.EMPTY) {
+                    canMove = false;
+                }
+            }
+        }
+        else if (horizontal < 0 && lateral < 0) {
+            // bishop, move diagonal up left
+            for (int j = 0; j < lateral; j--) {
+                if (board.getPiece(this.getColumn() + j, this.getRow() + j).piece != PieceType.EMPTY) {
+                    canMove = false;
+                }
+            }
+        }
+        else if (lateral > 0) {
+            // down
+            for (int j = 0; j < lateral; j++) {
+                if (board.getPiece(this.getColumn(), this.getRow() + j).piece != PieceType.EMPTY) {
+                    canMove = false;
+                }
+            }
+        }
+        else if (lateral < 0) {
+            // up
+            for (int j = 0; j < lateral; j--) {
+                if (board.getPiece(this.getColumn(), this.getRow() + j).piece != PieceType.EMPTY) {
+                    canMove = false;
+                }
+            }
+        }
+        else if (horizontal > 0) {
+            // right
+            for (int i = 0; i < horizontal; i++) {
+                if (board.getPiece(this.getColumn() + i, this.getRow()).piece != PieceType.EMPTY) {
+                    canMove = false;
+                }
+            }
+        }
+        else if (horizontal < 0) {
+            // left
+            for (int i = 0; i < horizontal; i--) {
+                if (board.getPiece(this.getColumn() + i, this.getRow()).piece != PieceType.EMPTY) {
+                    canMove = false;
+                }
+            }
+        }
+        return canMove;
     }
 }

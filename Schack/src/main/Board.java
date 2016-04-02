@@ -19,7 +19,7 @@ public class Board
 
 	for (int column = 0; column < WIDTH; column++) {
 	    for (int row = 0; row < HEIGHT; row++) {
-		board[column][row] = new Empty(column, row, Color.WHITE, this, PieceType.EMPTY);
+		board[column][row] = new Empty(column, row, Color.GREEN, this, PieceType.EMPTY);
 	    }
 	}
 
@@ -50,7 +50,7 @@ public class Board
 
     }
 
-    public Piece getPieceType(int column, int row) {
+    public Piece getPiece(int column, int row) {
 	return board[column][row];
     }
 

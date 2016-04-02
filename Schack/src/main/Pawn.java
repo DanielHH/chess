@@ -16,55 +16,50 @@ public class Pawn extends Piece
 
 	// många if-fall över tillåtna rörelser
 	if (this.getColor() == Color.WHITE) {
-	    	// !!!!!!!! ändfall när bonde ska uppgraderas behöver läggas till
-		if (horizontal == 0 && lateral == 1) {
-		    if (board.getPieceType(newColumn, newRow).piece == PieceType.EMPTY) {
-			this.row = newRow;
-			this.moved();
-		    }
+	    // !!!!!!!! ändfall när bonde ska uppgraderas behöver läggas till
+	    if (horizontal == 0 && lateral == 1) {
+		if (board.getPiece(newColumn, newRow).piece == PieceType.EMPTY) {
+		    this.movePiece(this.getColumn(), newRow);
 		}
-		// Kan man göra såhär? 1 and 1 eller 1 and -1 är vad vi vill ha.
-		else if (lateral == 1 && (horizontal == 1 || horizontal == -1)) {
-
-			    if (board.getPieceType(newColumn, newRow).color == Color.BLACK) {
-				this.row = newRow;
-				this.column = newColumn;
-				this.moved();
-			    }
-			    else {
-				// specialfall passant
-			    }
+	    }
+	    // Kan man göra såhär? 1 and 1 eller 1 and -1 är vad vi vill ha.
+	    else if (lateral == 1 && (horizontal == 1 || horizontal == -1)) {
+		if (board.getPiece(newColumn, newRow).color == Color.BLACK) {
+		    board.getPiece(newColumn, newRow).killPiece();
+		    this.movePiece(newColumn, newRow);
 		}
-		else if (horizontal == 0 && lateral == 2) {
-		    if (board.getPieceType(newColumn, newRow).piece == PieceType.EMPTY && !this.hasMoved()) {
-			this.row = newRow;
-			this.moved();
-		    }
+		else {
+		    // !!!!!!!! specialfall passant
 		}
+	    }
+	    else if (horizontal == 0 && lateral == 2) {
+		if (!this.pieceInTheWay(horizontal, lateral) && !this.hasMoved() &&
+		    board.getPiece(newColumn, newRow).piece == PieceType.EMPTY) {
+		    this.movePiece(this.getColumn(), newRow);
+		}
+	    }
 	}
 	else if (this.getColor() == Color.BLACK) {
 	    // !!!!!!!! ändfall när bonde ska uppgraderas behöver läggas till
 	    if (horizontal == 0 && lateral == -1) {
-	  		    if (board.getPieceType(newColumn, newRow).piece == PieceType.EMPTY) {
-	  			this.row = newRow;
-	  			this.moved();
+	  		    if (board.getPiece(newColumn, newRow).piece == PieceType.EMPTY) {
+				this.movePiece(this.getColumn(), newRow);
 	  		    }
 	  		}
 	    // Kan man göra såhär? 1 and 1 eller 1 and -1 är vad vi vill ha.
 	    else if (lateral == -1 && (horizontal == 1 || horizontal == -1)) {
-		if (board.getPieceType(newColumn, newRow).color == Color.WHITE) {
-		    this.row = newRow;
-		    this.column = newColumn;
-		    this.moved();
+		if (board.getPiece(newColumn, newRow).color == Color.WHITE) {
+		    board.getPiece(newColumn, newRow).killPiece();
+		    this.movePiece(newColumn, newRow);
 		}
 		else {
-		    // specialfall passant
+		    // !!!!!!!!!!! specialfall passant
 		}
 	  		}
 	    else if (horizontal == 0 && lateral == -2) {
-		if (board.getPieceType(newColumn, newRow).piece == PieceType.EMPTY && !this.hasMoved()) {
-		    this.row = newRow;
-		    this.moved();
+		if (!this.pieceInTheWay(horizontal, lateral) && !this.hasMoved() &&
+		    board.getPiece(newColumn, newRow).piece == PieceType.EMPTY) {
+		    this.movePiece(this.getColumn(), newRow);
 		}
 	    }
 	}
