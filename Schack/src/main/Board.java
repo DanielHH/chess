@@ -29,28 +29,28 @@ public class Board
 	for (int column = 0; column < WIDTH; column++) {
 	    board[column][6] = new Pawn(column, 6, Color.WHITE, this, PieceType.EMPTY);
 	}
-	board[0][0] = new Rook(column, 1, Color.BLACK, this, PieceType.EMPTY);
-	board[1][0] = new Knight(column, 1, Color.BLACK, this, PieceType.EMPTY);
-	board[2][0] = new Bishop(column, 1, Color.BLACK, this, PieceType.EMPTY);
-	board[3][0] = new King(column, 1, Color.BLACK, this, PieceType.EMPTY);
-	board[4][0] = new Queen(column, 1, Color.BLACK, this, PieceType.EMPTY);
-	board[5][0] = new Bishop(column, 1, Color.BLACK, this, PieceType.EMPTY);
-	board[6][0] = new Knight(column, 1, Color.BLACK, this, PieceType.EMPTY);
-	board[7][0] = new Rook(column, 1, Color.BLACK, this, PieceType.EMPTY);
+	board[0][1] = new Rook(0, 1, Color.BLACK, this, PieceType.EMPTY);
+	board[1][1] = new Knight(1, 1, Color.BLACK, this, PieceType.EMPTY);
+	board[2][1] = new Bishop(2, 1, Color.BLACK, this, PieceType.EMPTY);
+	board[3][1] = new King(3, 1, Color.BLACK, this, PieceType.EMPTY);
+	board[4][1] = new Queen(4, 1, Color.BLACK, this, PieceType.EMPTY);
+	board[5][1] = new Bishop(5, 1, Color.BLACK, this, PieceType.EMPTY);
+	board[6][1] = new Knight(6, 1, Color.BLACK, this, PieceType.EMPTY);
+	board[7][1] = new Rook(7, 1, Color.BLACK, this, PieceType.EMPTY);
 
-	board[0][7] = new Rook(column, 1, Color.WHITE, this, PieceType.EMPTY);
-	board[1][7] = new Knight(column, 1, Color.WHITE, this, PieceType.EMPTY);
-	board[2][7] = new Bishop(column, 1, Color.WHITE, this, PieceType.EMPTY);
-	board[3][7] = new King(column, 1, Color.WHITE, this, PieceType.EMPTY);
-	board[4][7] = new Queen(column, 1, Color.WHITE, this, PieceType.EMPTY);
-	board[5][7] = new Bishop(column, 1, Color.WHITE, this, PieceType.EMPTY);
-	board[6][7] = new Knight(column, 1, Color.WHITE, this, PieceType.EMPTY);
-	board[7][7] = new Rook(column, 1, Color.WHITE, this, PieceType.EMPTY);
+	board[0][6] = new Rook(0, 1, Color.WHITE, this, PieceType.EMPTY);
+	board[1][6] = new Knight(1, 1, Color.WHITE, this, PieceType.EMPTY);
+	board[2][6] = new Bishop(2, 1, Color.WHITE, this, PieceType.EMPTY);
+	board[3][6] = new King(3, 1, Color.WHITE, this, PieceType.EMPTY);
+	board[4][6] = new Queen(4, 1, Color.WHITE, this, PieceType.EMPTY);
+	board[5][6] = new Bishop(5, 1, Color.WHITE, this, PieceType.EMPTY);
+	board[6][6] = new Knight(6, 1, Color.WHITE, this, PieceType.EMPTY);
+	board[7][6] = new Rook(7, 1, Color.WHITE, this, PieceType.EMPTY);
 
 
     }
 
-    public PieceType getPieceType(int column, int row) {
+    public Piece getPieceType(int column, int row) {
 	return board[column][row];
     }
 

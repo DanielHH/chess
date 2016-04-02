@@ -1,7 +1,7 @@
 package main;
 
-public class King
-{
-
-    //metod som ger all rutor som är hotade för en pjäs
+public class King extends Piece {
+    public King(int column, int row, Color color, Board board, PieceType piece) {
+	super(column, row, color, board, piece);
+    }
 }

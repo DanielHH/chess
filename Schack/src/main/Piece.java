@@ -21,15 +21,15 @@ public class Piece
     }
 
     public boolean isAlive() {
-        return this.alive;
+        return alive;
     }
 
     public void reanimatePiece() {
-        this.alive = true;
+        alive = true;
     }
 
     public void killPiece() {
-        this.alive = false;
+        alive = false;
     }
 
     public int getColumn() {
@@ -41,12 +41,14 @@ public class Piece
     }
 
     public Color getColor() {
-        return this.color;
+        return color;
     }
 
     public boolean hasMoved() {
         return hasMoved;
     }
+
+    protected void moved() {hasMoved = false;}
 
     public Board getBoard() {
         return board;
