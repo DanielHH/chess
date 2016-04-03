@@ -12,7 +12,7 @@ public class Rook extends Piece {
 	if (!this.pieceInTheWay(newColumn, newRow)) {
 	    if ((Math.abs(horizontal) > 0 && lateral == 0) || (Math.abs(lateral) > 0 && horizontal == 0)) {
 		if (board.getPiece(newColumn, newRow).team != team) {
-		    board.getPiece(newColumn, newRow).killPiece();
+		    board.killPiece(newColumn, newRow);
 		    this.movePiece(newColumn, newRow);
 		}
 	    }

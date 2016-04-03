@@ -11,7 +11,7 @@ public class Bishop extends Piece {
 
 	if (Math.abs(horizontal) == Math.abs(lateral) && horizontal != 0 && !this.pieceInTheWay(newColumn, newRow)) {
 	    if (board.getPiece(newColumn, newRow).team != team) {
-		board.getPiece(newColumn, newRow).killPiece();
+		board.killPiece(newColumn, newRow);
 		this.movePiece(newColumn, newRow);
 	    }
 	}

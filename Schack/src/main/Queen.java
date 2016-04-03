@@ -13,7 +13,7 @@ public class Queen extends Piece {
    	    if (((Math.abs(horizontal) > 0 && lateral == 0) || (Math.abs(lateral) > 0 && horizontal == 0)) ||
 	    	(Math.abs(horizontal) == Math.abs(lateral) && horizontal != 0 && !this.pieceInTheWay(newColumn, newRow))) {
    		if (board.getPiece(newColumn, newRow).team != team) {
-   		    board.getPiece(newColumn, newRow).killPiece();
+   		    board.killPiece(newColumn, newRow);
    		    this.movePiece(newColumn, newRow);
    		}
    	    }

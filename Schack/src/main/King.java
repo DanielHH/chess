@@ -14,7 +14,7 @@ public class King extends Piece
 
 	if (Math.abs(lateral) < 2 && Math.abs(horizontal) < 2 && !(lateral == 0 && horizontal == 0)) {
 	    if (board.getPiece(newColumn, newRow).team != team) {
-		board.getPiece(newColumn, newRow).killPiece();
+		board.killPiece(newColumn, newRow);
 		this.movePiece(newColumn, newRow);
 	    }
 	}

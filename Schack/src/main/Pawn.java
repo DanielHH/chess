@@ -18,14 +18,14 @@ public class Pawn extends Piece
 	if (this.getTeam() == Team.WHITE) {
 	    // !!!!!!!! ändfall när bonde ska uppgraderas behöver läggas till
 	    if (horizontal == 0 && lateral == 1) {
-		if (board.getPiece(newColumn, newRow).piece == PieceType.EMPTY) {
+		if (board.getPiece(newColumn, newRow) == null) {
 		    this.movePiece(this.getColumn(), newRow);
 		}
 	    }
 	    // Kan man göra såhär? 1 and 1 eller 1 and -1 är vad vi vill ha.
 	    else if (lateral == 1 && (horizontal == 1 || horizontal == -1)) {
 		if (board.getPiece(newColumn, newRow).team == Team.BLACK) {
-		    board.getPiece(newColumn, newRow).killPiece();
+		    board.killPiece(newColumn, newRow);
 		    this.movePiece(newColumn, newRow);
 		}
 		else {
@@ -34,7 +34,7 @@ public class Pawn extends Piece
 	    }
 	    else if (horizontal == 0 && lateral == 2) {
 		if (!this.pieceInTheWay(horizontal, lateral) && !this.hasMoved() &&
-		    board.getPiece(newColumn, newRow).piece == PieceType.EMPTY) {
+		    board.getPiece(newColumn, newRow) == null) {
 		    this.movePiece(this.getColumn(), newRow);
 		}
 	    }
@@ -42,14 +42,14 @@ public class Pawn extends Piece
 	else if (this.getTeam() == Team.BLACK) {
 	    // !!!!!!!! ändfall när bonde ska uppgraderas behöver läggas till
 	    if (horizontal == 0 && lateral == -1) {
-	  		    if (board.getPiece(newColumn, newRow).piece == PieceType.EMPTY) {
+	  		    if (board.getPiece(newColumn, newRow) == null) {
 				this.movePiece(this.getColumn(), newRow);
 	  		    }
 	  		}
 	    // Kan man göra såhär? 1 and 1 eller 1 and -1 är vad vi vill ha.
 	    else if (lateral == -1 && (horizontal == 1 || horizontal == -1)) {
 		if (board.getPiece(newColumn, newRow).team == Team.WHITE) {
-		    board.getPiece(newColumn, newRow).killPiece();
+		    board.killPiece(newColumn, newRow);
 		    this.movePiece(newColumn, newRow);
 		}
 		else {
@@ -58,7 +58,7 @@ public class Pawn extends Piece
 	  		}
 	    else if (horizontal == 0 && lateral == -2) {
 		if (!this.pieceInTheWay(horizontal, lateral) && !this.hasMoved() &&
-		    board.getPiece(newColumn, newRow).piece == PieceType.EMPTY) {
+		    board.getPiece(newColumn, newRow) == null) {
 		    this.movePiece(this.getColumn(), newRow);
 		}
 	    }

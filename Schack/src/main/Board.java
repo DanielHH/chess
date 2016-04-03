@@ -18,40 +18,38 @@ public class Board
 	this.board = new Piece[WIDTH][HEIGHT];
 
 	for (int column = 0; column < WIDTH; column++) {
-	    for (int row = 0; row < HEIGHT; row++) {
-		board[column][row] = new Empty(column, row, Team.GREEN, this, PieceType.EMPTY);
-	    }
-	}
-
-	for (int column = 0; column < WIDTH; column++) {
 	    board[column][1] =  new Pawn(column, 1, Team.BLACK, this, PieceType.PAWN);
 	}
 	for (int column = 0; column < WIDTH; column++) {
 	    board[column][6] = new Pawn(column, 6, Team.WHITE, this, PieceType.PAWN);
 	}
-	board[0][1] = new Rook(0, 1, Team.BLACK, this, PieceType.ROOK);
-	board[1][1] = new Knight(1, 1, Team.BLACK, this, PieceType.KNIGHT);
-	board[2][1] = new Bishop(2, 1, Team.BLACK, this, PieceType.BISHOP);
-	board[3][1] = new King(3, 1, Team.BLACK, this, PieceType.KING);
-	board[4][1] = new Queen(4, 1, Team.BLACK, this, PieceType.QUEEN);
-	board[5][1] = new Bishop(5, 1, Team.BLACK, this, PieceType.BISHOP);
-	board[6][1] = new Knight(6, 1, Team.BLACK, this, PieceType.KNIGHT);
-	board[7][1] = new Rook(7, 1, Team.BLACK, this, PieceType.ROOK);
+	board[0][0] = new Rook(0, 0, Team.BLACK, this, PieceType.ROOK);
+	board[1][0] = new Knight(1, 0, Team.BLACK, this, PieceType.KNIGHT);
+	board[2][0] = new Bishop(2, 0, Team.BLACK, this, PieceType.BISHOP);
+	board[3][0] = new King(3, 0, Team.BLACK, this, PieceType.KING);
+	board[4][0] = new Queen(4, 0, Team.BLACK, this, PieceType.QUEEN);
+	board[5][0] = new Bishop(5, 0, Team.BLACK, this, PieceType.BISHOP);
+	board[6][0] = new Knight(6, 0, Team.BLACK, this, PieceType.KNIGHT);
+	board[7][0] = new Rook(7, 0, Team.BLACK, this, PieceType.ROOK);
 
-	board[0][6] = new Rook(0, 1, Team.WHITE, this, PieceType.ROOK);
-	board[1][6] = new Knight(1, 1, Team.WHITE, this, PieceType.KNIGHT);
-	board[2][6] = new Bishop(2, 1, Team.WHITE, this, PieceType.BISHOP);
-	board[3][6] = new King(3, 1, Team.WHITE, this, PieceType.KING);
-	board[4][6] = new Queen(4, 1, Team.WHITE, this, PieceType.QUEEN);
-	board[5][6] = new Bishop(5, 1, Team.WHITE, this, PieceType.BISHOP);
-	board[6][6] = new Knight(6, 1, Team.WHITE, this, PieceType.KNIGHT);
-	board[7][6] = new Rook(7, 1, Team.WHITE, this, PieceType.ROOK);
+	board[0][7] = new Rook(0, 7, Team.WHITE, this, PieceType.ROOK);
+	board[1][7] = new Knight(1, 7, Team.WHITE, this, PieceType.KNIGHT);
+	board[2][7] = new Bishop(2, 7, Team.WHITE, this, PieceType.BISHOP);
+	board[3][7] = new King(3, 7, Team.WHITE, this, PieceType.KING);
+	board[4][7] = new Queen(4, 7, Team.WHITE, this, PieceType.QUEEN);
+	board[5][7] = new Bishop(5, 7, Team.WHITE, this, PieceType.BISHOP);
+	board[6][7] = new Knight(6, 7, Team.WHITE, this, PieceType.KNIGHT);
+	board[7][7] = new Rook(7, 7, Team.WHITE, this, PieceType.ROOK);
 
 
     }
 
     public Piece getPiece(int column, int row) {
 	return board[column][row];
+    }
+
+    public void killPiece(int column, int row) {
+	board[column][row] = null;
     }
 
 

@@ -18,11 +18,7 @@ public class Piece
         this.piece = piece;
     }
 
-    public void killPiece() {
-        // remove piece from board
-        piece = PieceType.EMPTY;
-        team = Team.GREEN;
-    }
+
 
     public int getColumn() {
         return column;
@@ -59,7 +55,7 @@ public class Piece
         if (horizontal > 0 && lateral > 0) {
             // bishop, move diagonal down right
             for (int j = 0; j < lateral; j++) {
-                if (board.getPiece(this.getColumn() + j, this.getRow() + j).piece != PieceType.EMPTY) {
+                if (board.getPiece(this.getColumn() + j, this.getRow() + j) != null) {
                     canMove = false;
                 }
             }
@@ -67,7 +63,7 @@ public class Piece
         else if (horizontal > 0 && lateral < 0) {
             // bishop, move diagonal up right
             for (int j = 0; j < horizontal; j++) {
-                if (board.getPiece(this.getColumn() + j, this.getRow() - j).piece != PieceType.EMPTY) {
+                if (board.getPiece(this.getColumn() + j, this.getRow() - j) != null) {
                     canMove = false;
                 }
             }
@@ -75,7 +71,7 @@ public class Piece
         else if (horizontal < 0 && lateral > 0) {
             // bishop, move diagonal down left
             for (int j = 0; j < lateral; j++) {
-                if (board.getPiece(this.getColumn() - j, this.getRow() + j).piece != PieceType.EMPTY) {
+                if (board.getPiece(this.getColumn() - j, this.getRow() + j) != null) {
                     canMove = false;
                 }
             }
@@ -83,7 +79,7 @@ public class Piece
         else if (horizontal < 0 && lateral < 0) {
             // bishop, move diagonal up left
             for (int j = 0; j < lateral; j--) {
-                if (board.getPiece(this.getColumn() + j, this.getRow() + j).piece != PieceType.EMPTY) {
+                if (board.getPiece(this.getColumn() + j, this.getRow() + j) != null) {
                     canMove = false;
                 }
             }
@@ -91,7 +87,7 @@ public class Piece
         else if (lateral > 0) {
             // down
             for (int j = 0; j < lateral; j++) {
-                if (board.getPiece(this.getColumn(), this.getRow() + j).piece != PieceType.EMPTY) {
+                if (board.getPiece(this.getColumn(), this.getRow() + j) != null) {
                     canMove = false;
                 }
             }
@@ -99,7 +95,7 @@ public class Piece
         else if (lateral < 0) {
             // up
             for (int j = 0; j < lateral; j--) {
-                if (board.getPiece(this.getColumn(), this.getRow() + j).piece != PieceType.EMPTY) {
+                if (board.getPiece(this.getColumn(), this.getRow() + j) != null) {
                     canMove = false;
                 }
             }
@@ -107,7 +103,7 @@ public class Piece
         else if (horizontal > 0) {
             // right
             for (int i = 0; i < horizontal; i++) {
-                if (board.getPiece(this.getColumn() + i, this.getRow()).piece != PieceType.EMPTY) {
+                if (board.getPiece(this.getColumn() + i, this.getRow()) != null) {
                     canMove = false;
                 }
             }
@@ -115,7 +111,7 @@ public class Piece
         else if (horizontal < 0) {
             // left
             for (int i = 0; i < horizontal; i--) {
-                if (board.getPiece(this.getColumn() + i, this.getRow()).piece != PieceType.EMPTY) {
+                if (board.getPiece(this.getColumn() + i, this.getRow()) != null) {
                     canMove = false;
                 }
             }

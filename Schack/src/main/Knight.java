@@ -11,7 +11,7 @@ public class Knight extends Piece {
 
 	if ((Math.abs(lateral) == 2 && Math.abs(horizontal) == 1) || (Math.abs(lateral) == 1 && Math.abs(horizontal) == 2)) {
 	    if (board.getPiece(newColumn, newRow).team != team) {
-		board.getPiece(newColumn, newRow).killPiece();
+		board.killPiece(newColumn, newRow);
 		this.movePiece(newColumn, newRow);
 	    }
 	}
