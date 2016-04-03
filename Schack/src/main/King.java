@@ -4,8 +4,8 @@ package main;
 // !!!!!! KOLLAR INTE OM KUNGEN ÄR HOTAD !!!!!!!!
 public class King extends Piece
 {
-    public King(int column, int row, Team team, Board board, PieceType piece) {
-	super(column, row, team, board, piece);
+    public King(int column, int row, Team team, Board board, PieceType piece, String imageLocation) {
+	super(column, row, team, board, piece, imageLocation);
     }
 
     public void move(int newColumn, int newRow) {

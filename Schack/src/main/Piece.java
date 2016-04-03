@@ -1,5 +1,7 @@
 package main;
 
+import javax.swing.*;
+
 public class Piece
 {
     protected int column;
@@ -9,13 +11,17 @@ public class Piece
     protected Board board;
     protected PieceType piece;
 
-    public Piece(final int column, final int row, Team team, Board board, PieceType piece) {
+    protected ImageIcon image;
+
+
+    public Piece(final int column, final int row, Team team, Board board, PieceType piece, String imageLocation) {
 	this.row = row;
 	this.column = column;
         this.hasMoved = false;
         this.team = team;
         this.board = board;
         this.piece = piece;
+        this.image = new ImageIcon(imageLocation);
     }
 
 

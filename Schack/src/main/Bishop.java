@@ -1,8 +1,8 @@
 package main;
 
 public class Bishop extends Piece {
-    public Bishop(int column, int row, Team team, Board board, PieceType piece) {
-	super(column, row, team, board, piece);
+    public Bishop(int column, int row, Team team, Board board, PieceType piece, String imageLocation) {
+	super(column, row, team, board, piece, imageLocation);
     }
 
     public void move(int newColumn, int newRow) {
