@@ -28,8 +28,12 @@ public class ChessComponent extends JComponent
 		int cornerY = y * SQUARE_SIZE;
 		g2d.fillRect(cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE);
 
+		Piece currentPiece = board.getPiece(x,y);
 		// kolla efter pjäs och rita upp
-
+		if ( currentPiece != null) {
+		    System.out.println(currentPiece.getImage());
+		    currentPiece.getImage().paintIcon(this, g, cornerX, cornerY);
+		}
 	    }
 	}
     }

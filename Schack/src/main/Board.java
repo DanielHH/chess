@@ -18,7 +18,7 @@ public class Board
 	this.board = new Piece[WIDTH][HEIGHT];
 
 	for (int column = 0; column < WIDTH; column++) {
-	    board[column][1] =  new Pawn(column, 1, Team.BLACK, this, PieceType.PAWN, "pieces/blackpawn.svg");
+	    board[column][1] =  new Pawn(column, 1, Team.BLACK, this, PieceType.PAWN, "pieces/blackpawn.png");
 	}
 	for (int column = 0; column < WIDTH; column++) {
 	    board[column][6] = new Pawn(column, 6, Team.WHITE, this, PieceType.PAWN, "pieces/whitepawn.svg");

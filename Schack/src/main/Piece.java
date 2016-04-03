@@ -1,6 +1,9 @@
 package main;
 
+import sun.applet.Main;
+
 import javax.swing.*;
+import java.net.URL;
 
 public class Piece
 {
@@ -21,10 +24,14 @@ public class Piece
         this.team = team;
         this.board = board;
         this.piece = piece;
-        this.image = new ImageIcon(imageLocation);
+        System.out.println(getClass().getResource(imageLocation));
+        URL url = Main.class.getResource(imageLocation);
+        this.image = new ImageIcon(url);
     }
 
-
+    public ImageIcon getImage() {
+        return image;
+    }
 
     public int getColumn() {
         return column;
