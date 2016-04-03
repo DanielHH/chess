@@ -3,8 +3,8 @@ package main;
 public class Pawn extends Piece
 {
 
-    public Pawn(int column, int row, Color color, Board board, PieceType piece) {
-	super(column, row, color, board, piece);
+    public Pawn(int column, int row, Team team, Board board, PieceType piece) {
+	super(column, row, team, board, piece);
     }
 
     public void move(int newColumn, int newRow) {
@@ -15,7 +15,7 @@ public class Pawn extends Piece
 	int lateral = this.getRow() - newRow;
 
 	// många if-fall över tillåtna rörelser
-	if (this.getColor() == Color.WHITE) {
+	if (this.getTeam() == Team.WHITE) {
 	    // !!!!!!!! ändfall när bonde ska uppgraderas behöver läggas till
 	    if (horizontal == 0 && lateral == 1) {
 		if (board.getPiece(newColumn, newRow).piece == PieceType.EMPTY) {
@@ -24,7 +24,7 @@ public class Pawn extends Piece
 	    }
 	    // Kan man göra såhär? 1 and 1 eller 1 and -1 är vad vi vill ha.
 	    else if (lateral == 1 && (horizontal == 1 || horizontal == -1)) {
-		if (board.getPiece(newColumn, newRow).color == Color.BLACK) {
+		if (board.getPiece(newColumn, newRow).team == Team.BLACK) {
 		    board.getPiece(newColumn, newRow).killPiece();
 		    this.movePiece(newColumn, newRow);
 		}
@@ -39,7 +39,7 @@ public class Pawn extends Piece
 		}
 	    }
 	}
-	else if (this.getColor() == Color.BLACK) {
+	else if (this.getTeam() == Team.BLACK) {
 	    // !!!!!!!! ändfall när bonde ska uppgraderas behöver läggas till
 	    if (horizontal == 0 && lateral == -1) {
 	  		    if (board.getPiece(newColumn, newRow).piece == PieceType.EMPTY) {
@@ -48,7 +48,7 @@ public class Pawn extends Piece
 	  		}
 	    // Kan man göra såhär? 1 and 1 eller 1 and -1 är vad vi vill ha.
 	    else if (lateral == -1 && (horizontal == 1 || horizontal == -1)) {
-		if (board.getPiece(newColumn, newRow).color == Color.WHITE) {
+		if (board.getPiece(newColumn, newRow).team == Team.WHITE) {
 		    board.getPiece(newColumn, newRow).killPiece();
 		    this.movePiece(newColumn, newRow);
 		}

@@ -5,15 +5,15 @@ public class Piece
     protected int column;
     protected int row;
     protected boolean hasMoved;
-    protected Color color;
+    protected Team team;
     protected Board board;
     protected PieceType piece;
 
-    public Piece(final int column, final int row, Color color, Board board, PieceType piece) {
+    public Piece(final int column, final int row, Team team, Board board, PieceType piece) {
 	this.row = row;
 	this.column = column;
         this.hasMoved = false;
-        this.color = color;
+        this.team = team;
         this.board = board;
         this.piece = piece;
     }
@@ -21,7 +21,7 @@ public class Piece
     public void killPiece() {
         // remove piece from board
         piece = PieceType.EMPTY;
-        color = Color.GREEN;
+        team = Team.GREEN;
     }
 
     public int getColumn() {
@@ -32,8 +32,8 @@ public class Piece
         return row;
     }
 
-    public Color getColor() {
-        return color;
+    public Team getTeam() {
+        return team;
     }
 
     public boolean hasMoved() {
