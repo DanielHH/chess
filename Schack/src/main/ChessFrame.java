@@ -24,7 +24,6 @@ public class ChessFrame extends JFrame {
       this.setVisible(true);
    }
 
-
    private void createMenus() {
       final JMenuBar menuBar = new JMenuBar();
       final JMenu options = new JMenu("Options");

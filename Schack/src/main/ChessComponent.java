@@ -24,11 +24,11 @@ public class ChessComponent extends JComponent
 		    color = Color.BLACK;
 		}
 		g2d.setColor(color);
-
 		int cornerX = x * SQUARE_SIZE ;
 		int cornerY = y * SQUARE_SIZE;
-
 		g2d.fillRect(cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE);
+
+		// kolla efter pjäs och rita upp
 
 	    }
 	}
