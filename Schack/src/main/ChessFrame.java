@@ -44,4 +44,15 @@ public class ChessFrame extends JFrame {
           }
       }
    }
+
+   private class PieceListener implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e) {
+          int answer = JOptionPane.showConfirmDialog(frame, "Do you really wanna quit, n00b?", "Quit?",
+                                                JOptionPane.YES_NO_OPTION);
+          if (answer == JOptionPane.YES_OPTION) {
+             System.exit(0);
+          }
+      }
+   }
 }
