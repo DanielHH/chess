@@ -2,8 +2,12 @@ package main;
 
 import sun.applet.Main;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.awt.image.BufferedImage;
 
 public class Piece
 {
@@ -14,22 +18,22 @@ public class Piece
     protected Board board;
     protected PieceType piece;
 
-    protected ImageIcon image;
+    protected BufferedImage image;
 
 
-    public Piece(final int column, final int row, Team team, Board board, PieceType piece, String imageLocation) {
+    public Piece(final int column, final int row, Team team, Board board, PieceType piece, String imageLocation)
+            throws IOException
+    {
 	this.row = row;
 	this.column = column;
         this.hasMoved = false;
         this.team = team;
         this.board = board;
         this.piece = piece;
-        System.out.println(getClass().getResource(imageLocation));
-        URL url = Main.class.getResource(imageLocation);
-        this.image = new ImageIcon(url);
+        this.image = ImageIO.read(getClass().getResource(imageLocation));
     }
 
-    public ImageIcon getImage() {
+    public BufferedImage getImage() {
         return image;
     }
 

@@ -1,11 +1,12 @@
 package main;
 
 import javax.swing.*;
+import java.io.IOException;
 
 public class Rook extends Piece {
 
 
-    public Rook(int column, int row, Team team, Board board, PieceType piece, String imageLocation) {
+    public Rook(int column, int row, Team team, Board board, PieceType piece, String imageLocation) throws IOException {
 	super(column, row, team, board, piece, imageLocation);
     }
 

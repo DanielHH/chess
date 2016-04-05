@@ -1,9 +1,11 @@
 package main;
 
+import java.io.IOException;
+
 public class Pawn extends Piece
 {
 
-    public Pawn(int column, int row, Team team, Board board, PieceType piece, String imageLocation) {
+    public Pawn(int column, int row, Team team, Board board, PieceType piece, String imageLocation) throws IOException {
 	super(column, row, team, board, piece, imageLocation);
     }
 

@@ -1,7 +1,9 @@
 package main;
 
+import java.io.IOException;
+
 public class Knight extends Piece {
-    public Knight(int column, int row, Team team, Board board, PieceType piece, String imageLocation) {
+    public Knight(int column, int row, Team team, Board board, PieceType piece, String imageLocation) throws IOException {
 	super(column, row, team, board, piece, imageLocation);
     }
 

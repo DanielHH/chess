@@ -31,8 +31,7 @@ public class ChessComponent extends JComponent
 		Piece currentPiece = board.getPiece(x,y);
 		// kolla efter pjäs och rita upp
 		if ( currentPiece != null) {
-		    System.out.println(currentPiece.getImage());
-		    currentPiece.getImage().paintIcon(this, g, cornerX, cornerY);
+		    g.drawImage(currentPiece.getImage(), cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE, null);
 		}
 	    }
 	}
