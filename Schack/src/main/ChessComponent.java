@@ -17,18 +17,14 @@ public class ChessComponent extends JComponent
 
 	addMouseListener(new MouseAdapter() {
      		public void mouseClicked(MouseEvent e) {
-       		System.out.println(e);
 		    int x=e.getX();
 		    int y=e.getY();
 		    int column = x / SQUARE_SIZE;
 		    int row = y / SQUARE_SIZE;
-		    System.out.println(column);
-		    System.out.println(row);
 		    if (currentPiece == null) {
 			currentPiece = board.getPiece(column, row);
 		    }
 		    else {
-			System.out.println("kjhkjhkjh");
 			currentPiece.move(column, row);
 			repaint();
 			currentPiece = null;

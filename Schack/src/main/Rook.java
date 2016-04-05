@@ -14,13 +14,15 @@ public class Rook extends Piece {
     public void move(int newColumn, int newRow) {
 	int horizontal = this.getColumn() - newColumn;
 	int lateral = this.getRow() - newRow;
-
-	if (!this.pieceInTheWay(newColumn, newRow)) {
+	if (!this.pieceInTheWay(horizontal, lateral)) {
 	    if ((Math.abs(horizontal) > 0 && lateral == 0) || (Math.abs(lateral) > 0 && horizontal == 0)) {
-		if (board.getPiece(newColumn, newRow).team != team) {
-		    board.killPiece(newColumn, newRow);
-		    this.movePiece(newColumn, newRow);
-		}
+		if (board.getPiece(newColumn, newRow) == null) {
+			this.movePiece(newColumn, newRow);
+  		}
+  		else if (board.getPiece(newColumn, newRow).team != team) {
+			board.killPiece(newColumn, newRow);
+			this.movePiece(newColumn, newRow);
+  }
 	    }
 	}
 	// !!!!!!! rockad behöver implementeras
