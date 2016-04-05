@@ -115,18 +115,20 @@ public class Piece
             }
         }
         else if (horizontal > 0) {
-            // right
-            for (int i = 0; i < horizontal; i++) {
-                if (board.getPiece(this.getColumn() + i, this.getRow()) != null) {
-                    canNotMove = false;
+            // left
+            System.out.println("left");
+            for (int i = 1; i < horizontal; i++) {
+                if (board.getPiece(this.getColumn() - i, this.getRow()) != null) {
+                    canNotMove = true;
                 }
             }
         }
         else if (horizontal < 0) {
-            // left
-            for (int i = 0; i < horizontal; i--) {
-                if (board.getPiece(this.getColumn() + i, this.getRow()) != null) {
-                    canNotMove = false;
+            // right
+            System.out.println("right");
+            for (int i = -1; i > horizontal; i--) {
+                if (board.getPiece(this.getColumn() - i, this.getRow()) != null) {
+                    canNotMove = true;
                 }
             }
         }
