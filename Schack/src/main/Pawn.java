@@ -9,6 +9,7 @@ public class Pawn extends Piece
 	super(column, row, team, board, piece, imageLocation);
     }
 
+    @Override
     public void move(int newColumn, int newRow) {
 	/* försöker komma fram till någon sätt att göra så att
 	båda lagens bönder kan röra sig med hjälp av samma beräkning */

@@ -55,6 +55,10 @@ public class Board
 	board[column][row] = null;
     }
 
+    public void actuallyMovesPiece(int oldColumn, int oldRow, int newColumn, int newRow) {
+	board[newColumn][newRow] = board[oldColumn][oldRow];
+	board[oldColumn][oldRow] = null;
+    }
 
     public static int getWIDTH() {
 	return WIDTH;

@@ -1,12 +1,7 @@
 package main;
 
-import sun.applet.Main;
-
 import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.awt.image.BufferedImage;
 
 public class Piece
@@ -59,9 +54,10 @@ public class Piece
         return board;
     }
 
-    protected void movePiece(int nextColumn, int nextRow) {
-        column = nextColumn;
-        row = nextRow;
+    protected void movePiece(int newColumn, int newRow) {
+        board.actuallyMovesPiece(column, row, newColumn, newRow);
+        column = newColumn;
+        row = newRow;
         if (!this.hasMoved()) {
             this.moved();
         }
@@ -134,5 +130,8 @@ public class Piece
             }
         }
         return canMove;
+    }
+
+    public void move(int column, int row) {
     }
 }

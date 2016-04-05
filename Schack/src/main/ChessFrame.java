@@ -7,13 +7,11 @@ import java.awt.event.ActionListener;
 
 
 public class ChessFrame extends JFrame {
-   private Board board;
    private ChessComponent chessComponent;
    private JFrame frame;
 
    public ChessFrame(Board board) {
       super("Schackspel");
-      this.board = board;
       this.setLayout(new BorderLayout());
       createMenus();
 
@@ -35,17 +33,6 @@ public class ChessFrame extends JFrame {
    }
 
    private class ExitListener implements ActionListener
-   {
-      public void actionPerformed(ActionEvent e) {
-          int answer = JOptionPane.showConfirmDialog(frame, "Do you really wanna quit, n00b?", "Quit?",
-                                                JOptionPane.YES_NO_OPTION);
-          if (answer == JOptionPane.YES_OPTION) {
-             System.exit(0);
-          }
-      }
-   }
-
-   private class PieceListener implements ActionListener
    {
       public void actionPerformed(ActionEvent e) {
           int answer = JOptionPane.showConfirmDialog(frame, "Do you really wanna quit, n00b?", "Quit?",

@@ -7,6 +7,7 @@ public class Queen extends Piece {
 	super(column, row, team, board, piece, imageLocation);
     }
 
+    @Override
     public void move(int newColumn, int newRow) {
    	int horizontal = this.getColumn() - newColumn;
    	int lateral = this.getRow() - newRow;
