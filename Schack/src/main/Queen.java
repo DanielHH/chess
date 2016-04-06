@@ -9,17 +9,18 @@ public class Queen extends Piece {
 
     @Override
     public void move(int newColumn, int newRow) {
-   	int horizontal = this.getColumn() - newColumn;
-   	int lateral = this.getRow() - newRow;
+		int horizontal = newColumn - this.getColumn();
+		int lateral =  newRow - this.getRow();
+		Movement movement = this.moveDirection(horizontal, lateral);
 
-   	if (!this.pieceInTheWay(newColumn, newRow)) {
-   	    if (((Math.abs(horizontal) > 0 && lateral == 0) || (Math.abs(lateral) > 0 && horizontal == 0)) ||
-	    	(Math.abs(horizontal) == Math.abs(lateral) && horizontal != 0 && !this.pieceInTheWay(newColumn, newRow))) {
-   		if (board.getPiece(newColumn, newRow).team != team) {
-   		    board.killPiece(newColumn, newRow);
-   		    this.movePiece(newColumn, newRow);
-   		}
-   	    }
-   	}
-    }
+		if (!this.pieceInTheWay(movement, newRow) && (((Math.abs(horizontal) > 0 && lateral == 0) ||
+				(Math.abs(lateral) > 0 && horizontal == 0)) ||
+				(Math.abs(horizontal) == Math.abs(lateral) && horizontal != 0 ))) {
+			if (board.getPiece(newColumn, newRow).team != team) {
+				board.killPiece(newColumn, newRow);
+				this.movePiece(newColumn, newRow);
+			}
+		}
+	}
 }
+

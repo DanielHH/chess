@@ -1,6 +1,6 @@
 package main;
 
-public enum Movements
+public enum Movement
 {
     UP, DOWN, RIGHT, LEFT, UPRIGHT, UPLEFT, DOWNRIGHT, DOWNLEFT
 }

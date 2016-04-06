@@ -73,32 +73,37 @@ public class Piece
         }
     }
 
-    public boolean pieceInTheWay(Movements movement, int steps) { // int horizontal, int lateral)
+    public boolean pieceInTheWay(Movement movement, int steps) { // int horizontal, int lateral)
         // !!!!!!!!!!!!! Ersätt med enums i stil med Up, right, down... samt steps - hur många steg som tas
         boolean canNotMove = false;
-        System.out.println(horizontal + " new horizontal?");
-        System.out.println(lateral + " new lateral?");
+        System.out.println(movement + " movement");
+        System.out.println(steps + " steps");
 
-        if (movement == Movements.UP || movement == Movements.DOWN) {
-            Boolean countUp = true; // count up
-            if (steps < 0) {
-                // count down
-                countUp = false;
-            }
-            for (int i = 0; i <  Math.abs(steps); i++) {
-                if (countUp) {
-                    if (board.getPiece(this.getColumn() - i, this.getRow() - i) != null) {
-                        canNotMove = true;
-                    }
+        if (movement == Movement.UP || movement == Movement.DOWN) {
+            for (int i = 1; i <  Math.abs(steps); i++) {
+                int x = i;
+                if (steps > 0) {
+                    x *= -1;
                 }
-                else {
-                    if (board.getPiece(this.getColumn() + i, this.getRow() + i) != null) {
-                        canNotMove = true;
-                    }
+                if (board.getPiece(this.getColumn(), this.getRow() + x) != null) {
+                    canNotMove = true;
+                }
+            }
+        }
+        else if (movement == Movement.RIGHT || movement == Movement.LEFT) {
+            for (int i = 1; i <  Math.abs(steps); i++) {
+                int x = i;
+                if (steps < 0) {
+                    x *= -1;
+                }
+                if (board.getPiece(this.getColumn() + x, this.getRow()) != null) {
+                    canNotMove = true;
                 }
             }
         }
 
+
+        /* !!!!!!!!!!!!!!! OLD CODE
         if (horizontal < 0 && lateral < 0) {
             System.out.println("down right");
             // bishop, move diagonal down right-
@@ -173,10 +178,40 @@ public class Piece
                 }
             }
         }
+        */
+
         System.out.println(canNotMove + " canNotmove");
         return canNotMove;
     }
 
-    public void move(int column, int row) {
+    public void move(int column, int row) {}
+
+    public Movement moveDirection(int horizontal, int lateral) {
+        Movement movement = null;
+        if (horizontal > 0 && lateral > 0) {
+            movement = Movement.UPRIGHT;
+        }
+        else if  (horizontal < 0 && lateral > 0){
+            movement = Movement.UPLEFT;
+        }
+        else if (horizontal < 0 && lateral < 0) {
+            movement = Movement.DOWNRIGHT;
+        }
+        else if (horizontal > 0 && lateral < 0) {
+            movement = Movement.DOWNLEFT;
+        }
+        else if (horizontal == 0 && lateral > 0) {
+            movement = Movement.UP;
+        }
+        else if (horizontal == 0 && lateral < 0) {
+            movement = Movement.DOWN;
+        }
+        else if (horizontal > 0 && lateral == 0) {
+            movement = Movement.RIGHT;
+        }
+        else if (horizontal < 0 && lateral == 0) {
+            movement = Movement.LEFT;
+        }
+        return movement;
     }
 }

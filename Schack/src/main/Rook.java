@@ -12,13 +12,18 @@ public class Rook extends Piece {
 
     @Override
     public void move(int newColumn, int newRow) {
-	int horizontal = this.getColumn() - newColumn;
-	int lateral = this.getRow() - newRow;
-	if (!this.pieceInTheWay(horizontal, lateral)) {
-	    if ((Math.abs(horizontal) > 0 && lateral == 0) || (Math.abs(lateral) > 0 && horizontal == 0)) {
-		startMovement(newColumn, newRow);
-	    }
-	}
-	// !!!!!!! rockad behöver implementeras
+		int horizontal = newColumn - this.getColumn();
+		int lateral =  this.getRow() - newRow;
+		Movement movement = this.moveDirection(horizontal, lateral);
+		int steps = horizontal;
+		if (lateral != 0) {
+			steps = lateral;
+		}
+		if (!this.pieceInTheWay(movement, steps)) {
+	    	if ((Math.abs(horizontal) > 0 && lateral == 0) || (Math.abs(lateral) > 0 && horizontal == 0)) {
+			startMovement(newColumn, newRow);
+	    	}
+		}
+		// !!!!!!! rockad behöver implementeras
     }
 }
