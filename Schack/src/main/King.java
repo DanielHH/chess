@@ -12,14 +12,11 @@ public class King extends Piece
 
     @Override
     public void move(int newColumn, int newRow) {
-	int horizontal = this.getColumn() - newColumn;
-	int lateral = this.getRow() - newRow;
+		int horizontal = newColumn - this.getColumn();
+		int lateral =  this.getRow() - newRow;
 
-	if (Math.abs(lateral) < 2 && Math.abs(horizontal) < 2 && !(lateral == 0 && horizontal == 0)) {
-	    if (board.getPiece(newColumn, newRow).team != team) {
-		board.killPiece(newColumn, newRow);
-		this.movePiece(newColumn, newRow);
-	    }
-	}
+		if (Math.abs(lateral) < 2 && Math.abs(horizontal) < 2 && !(lateral == 0 && horizontal == 0)) {
+	    	this.startMovement(newColumn, newRow);
+		}
     }
 }

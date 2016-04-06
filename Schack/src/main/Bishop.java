@@ -9,10 +9,10 @@ public class Bishop extends Piece {
 
     public void move(int newColumn, int newRow) {
 		int horizontal = newColumn - this.getColumn();
-		int lateral =  newRow - this.getRow();
+		int lateral =  this.getRow() - newRow;
 		Movement movement = this.moveDirection(horizontal, lateral);
-	if (Math.abs(horizontal) == Math.abs(lateral) && horizontal != 0 && !this.pieceInTheWay(movement, lateral)) {
-	    startMovement(newColumn, newRow);
-	}
+		if (Math.abs(horizontal) == Math.abs(lateral) && horizontal != 0 && !this.pieceInTheWay(movement, lateral)) {
+	    	startMovement(newColumn, newRow);
+		}
     }
 }

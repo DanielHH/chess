@@ -45,21 +45,18 @@ public class Board
 	board[5][7] = new Bishop(5, 7, Team.WHITE, this, "fantasy/png-shad/wb.png");
 	board[6][7] = new Knight(6, 7, Team.WHITE, this, "fantasy/png-shad/wn.png");
 	board[7][7] = new Rook(7, 7, Team.WHITE, this, "fantasy/png-shad/wr.png");
-
-
-    }
+	}
 
     public Piece getPiece(int column, int row) {
 	return board[column][row];
     }
 
     public void killPiece(int column, int row) {
-	board[column][row] = null;
+		board[column][row] = null;
     }
 
     public void actuallyMovesPiece(int oldColumn, int oldRow, int newColumn, int newRow) {
 	board[newColumn][newRow] = board[oldColumn][oldRow];
 	board[oldColumn][oldRow] = null;
     }
-
 }
