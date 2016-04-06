@@ -10,7 +10,7 @@ public class ChessComponent extends JComponent
 {
     private Board board;
     public static final int SQUARE_SIZE = 120;
-    private Piece currentPiece;
+    private Piece clickedPiece;
 
     public ChessComponent(Board board) {
 	this.board = board;
@@ -21,13 +21,14 @@ public class ChessComponent extends JComponent
 		    int y=e.getY();
 		    int column = x / SQUARE_SIZE;
 		    int row = y / SQUARE_SIZE;
-		    if (currentPiece == null) {
-			currentPiece = board.getPiece(column, row);
+		    if (clickedPiece == null) {
+			clickedPiece = board.getPiece(column, row);
+			repaint();
 		    }
 		    else {
-			currentPiece.move(column, row);
+			clickedPiece.move(column, row);
+			clickedPiece = null;
 			repaint();
-			currentPiece = null;
 		    }
      		}
 	});
@@ -36,8 +37,8 @@ public class ChessComponent extends JComponent
     @Override protected void paintComponent(Graphics g) {
 	super.paintComponent(g);
 	final Graphics2D g2d = (Graphics2D) g;
-	for (int y = 0; y < board.getHEIGHT(); y++) {
-	    for (int x = 0; x < board.getWIDTH(); x++) {
+	for (int y = 0; y < Board.HEIGHT; y++) {
+	    for (int x = 0; x < Board.WIDTH; x++) {
 		Color color = Color.WHITE;
 		if (y % 2 == 0 && x % 2 == 1) {
 		    color = Color.BLACK;
@@ -54,14 +55,24 @@ public class ChessComponent extends JComponent
 		// kolla efter pjäs och rita upp
 		if ( currentPiece != null) {
 		    g.drawImage(currentPiece.getImage(), cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE, null);
+
 		}
+		if (clickedPiece == currentPiece && clickedPiece != null) {
+			g2d.setColor(Color.RED);
+		    	g2d.setStroke(new BasicStroke(2));
+			g2d.drawLine(cornerX, cornerY, cornerX + SQUARE_SIZE, cornerY);
+			g2d.drawLine(cornerX, cornerY, cornerX, cornerY + SQUARE_SIZE);
+
+			g2d.drawLine(cornerX, cornerY + SQUARE_SIZE -1, cornerX + SQUARE_SIZE-1, cornerY + SQUARE_SIZE-1);
+			g2d.drawLine(cornerX + SQUARE_SIZE-1, cornerY, cornerX + SQUARE_SIZE-1, cornerY + SQUARE_SIZE-1);
+  		}
 	    }
 	}
     }
 
     @Override public Dimension getPreferredSize(){
-    return new Dimension((board.getWIDTH())*SQUARE_SIZE,
-                      (board.getHEIGHT())*SQUARE_SIZE);
+    return new Dimension((Board.WIDTH)*SQUARE_SIZE,
+                      (Board.HEIGHT)*SQUARE_SIZE);
       }
 
 }

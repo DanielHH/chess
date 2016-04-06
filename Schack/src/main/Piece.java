@@ -63,25 +63,64 @@ public class Piece
         }
     }
 
-    public boolean pieceInTheWay(int horizontal, int lateral) {
+    protected void startMovement(int newColumn, int newRow) {
+        if (board.getPiece(newColumn, newRow) == null) {
+            this.movePiece(newColumn, newRow);
+        }
+        else if (board.getPiece(newColumn, newRow).team != team) {
+            board.killPiece(newColumn, newRow);
+            this.movePiece(newColumn, newRow);
+        }
+    }
+
+    public boolean pieceInTheWay(Movements movement, int steps) { // int horizontal, int lateral)
+        // !!!!!!!!!!!!! Ersätt med enums i stil med Up, right, down... samt steps - hur många steg som tas
         boolean canNotMove = false;
-        if (horizontal < 0 && lateral < 0) {
-            // bishop, move diagonal down right
-            for (int j = -1; j > lateral; j--) {
-                if (board.getPiece(this.getColumn() - j, this.getRow() - j) != null) {
-                    canNotMove = true;
+        System.out.println(horizontal + " new horizontal?");
+        System.out.println(lateral + " new lateral?");
+
+        if (movement == Movements.UP || movement == Movements.DOWN) {
+            Boolean countUp = true; // count up
+            if (steps < 0) {
+                // count down
+                countUp = false;
+            }
+            for (int i = 0; i <  Math.abs(steps); i++) {
+                if (countUp) {
+                    if (board.getPiece(this.getColumn() - i, this.getRow() - i) != null) {
+                        canNotMove = true;
+                    }
+                }
+                else {
+                    if (board.getPiece(this.getColumn() + i, this.getRow() + i) != null) {
+                        canNotMove = true;
+                    }
                 }
             }
         }
-        else if (horizontal > 0 && lateral < 0) {
-            // bishop, move diagonal up right
-            for (int j = 0; j < horizontal; j++) {
+
+        if (horizontal < 0 && lateral < 0) {
+            System.out.println("down right");
+            // bishop, move diagonal down right-
+            for (int j = -1; j > lateral; j--) {
+                System.out.println(j + " j");
                 if (board.getPiece(this.getColumn() - j, this.getRow() - j) != null) {
                     canNotMove = true;
                 }
             }
         }
         else if (horizontal < 0 && lateral > 0) {
+            System.out.println("up right");
+            // bishop, move diagonal up right
+            for (int j = -1; j > horizontal; j--) {
+                System.out.println(j + " j");
+                if (board.getPiece(this.getColumn() + j, this.getRow() + j) != null) {
+                    canNotMove = true;
+                }
+            }
+        }
+        else if (horizontal < 0 && lateral > 0) {
+            System.out.println("down left");
             // bishop, move diagonal down left
             for (int j = 0; j < lateral; j++) {
                 if (board.getPiece(this.getColumn() - j, this.getRow() - j) != null) {
@@ -90,6 +129,7 @@ public class Piece
             }
         }
         else if (horizontal < 0 && lateral < 0) {
+            System.out.println("up left");
             // bishop, move diagonal up left
             for (int j = 0; j < lateral; j--) {
                 if (board.getPiece(this.getColumn() - j, this.getRow() - j) != null) {
@@ -99,6 +139,7 @@ public class Piece
         }
         else if (lateral > 0) {                                                             //ok
             // up
+            System.out.println("up");
             for (int j = 1; j < lateral; j++) {
                 if (board.getPiece(this.getColumn(), this.getRow() - j) != null) {
                     canNotMove = true;
@@ -107,6 +148,7 @@ public class Piece
         }
         else if (lateral < 0) {                                                             //ok
             // down
+            System.out.println("down");
             for (int j = -1; j > lateral; j--) {
                 if (board.getPiece(this.getColumn(), this.getRow() - j) != null) {
                     canNotMove = true;
@@ -115,6 +157,7 @@ public class Piece
         }
         else if (horizontal > 0) {                                                          //ok
             // left
+            System.out.println("left");
             for (int i = 1; i < horizontal; i++) {
                 if (board.getPiece(this.getColumn() - i, this.getRow()) != null) {
                     canNotMove = true;
@@ -123,6 +166,7 @@ public class Piece
         }
         else if (horizontal < 0) {                                                         //ok
             // right
+            System.out.println("right");
             for (int i = -1; i > horizontal; i--) {
                 if (board.getPiece(this.getColumn() - i, this.getRow()) != null) {
                     canNotMove = true;

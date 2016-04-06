@@ -5,8 +5,8 @@ import java.io.IOException;
 public class Pawn extends Piece
 {
 
-    public Pawn(int column, int row, Team team, Board board, PieceType piece, String imageLocation) throws IOException {
-	super(column, row, team, board, piece, imageLocation);
+    public Pawn(int column, int row, Team team, Board board, String imageLocation) throws IOException {
+	super(column, row, team, board, PieceType.PAWN, imageLocation);
     }
 
     @Override
@@ -22,7 +22,7 @@ public class Pawn extends Piece
 	    // !!!!!!!! ändfall när bonde ska uppgraderas behöver läggas till
 	    if (horizontal == 0 && lateral == 1) {
 		if (board.getPiece(newColumn, newRow) == null) {
-		    this.movePiece(this.getColumn(), newRow);
+		    movePiece(getColumn(), newRow);
 		}
 	    }
 	    // Kan man göra såhär? 1 and 1 eller 1 and -1 är vad vi vill ha.

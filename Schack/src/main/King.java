@@ -6,8 +6,8 @@ import java.io.IOException;
 // !!!!!! KOLLAR INTE OM KUNGEN ÄR HOTAD !!!!!!!!
 public class King extends Piece
 {
-    public King(int column, int row, Team team, Board board, PieceType piece, String imageLocation) throws IOException {
-	super(column, row, team, board, piece, imageLocation);
+    public King(int column, int row, Team team, Board board, String imageLocation) throws IOException {
+	super(column, row, team, board, PieceType.KING, imageLocation);
     }
 
     @Override

@@ -6,8 +6,8 @@ import java.io.IOException;
 public class Rook extends Piece {
 
 
-    public Rook(int column, int row, Team team, Board board, PieceType piece, String imageLocation) throws IOException {
-	super(column, row, team, board, piece, imageLocation);
+    public Rook(int column, int row, Team team, Board board, String imageLocation) throws IOException {
+	super(column, row, team, board, PieceType.ROOK, imageLocation);
     }
 
     @Override
@@ -16,13 +16,7 @@ public class Rook extends Piece {
 	int lateral = this.getRow() - newRow;
 	if (!this.pieceInTheWay(horizontal, lateral)) {
 	    if ((Math.abs(horizontal) > 0 && lateral == 0) || (Math.abs(lateral) > 0 && horizontal == 0)) {
-		if (board.getPiece(newColumn, newRow) == null) {
-			this.movePiece(newColumn, newRow);
-  		}
-  		else if (board.getPiece(newColumn, newRow).team != team) {
-			board.killPiece(newColumn, newRow);
-			this.movePiece(newColumn, newRow);
-  }
+		startMovement(newColumn, newRow);
 	    }
 	}
 	// !!!!!!! rockad behöver implementeras
