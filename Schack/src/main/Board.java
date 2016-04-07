@@ -66,12 +66,12 @@ public class Board
 
     public void killPiece(int column, int row) {
 	board[column][row] = null;
-	notifyListeners();
     }
 
     public void actuallyMovesPiece(int oldColumn, int oldRow, int newColumn, int newRow) {
 	board[newColumn][newRow] = board[oldColumn][oldRow];
 	board[oldColumn][oldRow] = null;
+		nextTurn();
 	notifyListeners();
     }
 

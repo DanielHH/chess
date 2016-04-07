@@ -1,114 +1,102 @@
 package main;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class ChessComponent extends JComponent implements BoardListener
-{
+public class ChessComponent extends JComponent implements BoardListener {
     private Board board;
     public static final int SQUARE_SIZE = 120;
     private Piece clickedPiece;
 
     public ChessComponent(Board board) {
-	this.board = board;
+        this.board = board;
 
-	addMouseListener(new MouseAdapter() {
-     		public void mouseClicked(MouseEvent e) {
-		    int x = e.getX();
-		    int y = e.getY();
-		    int column = x / SQUARE_SIZE;
-		    int row = y / SQUARE_SIZE;
+        addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                int x = e.getX();
+                int y = e.getY();
+                int column = x / SQUARE_SIZE;
+                int row = y / SQUARE_SIZE;
+                Piece newPiece = board.getPiece(column, row);
 
-		    if (clickedPiece == null) { // First click
-			clickedPiece = board.getPiece(column, row);
-			if (clickedPiece != null && clickedPiece.team == board.getTurnTeam()) { // is a piece and the same team as the current turn's team
-			    board.markPiece();
-			}
-		    }
-		    else { // a clicked piece exists
-			Piece newPiece = board.getPiece(column, row);
-			if (newPiece != null && clickedPiece.team == newPiece.team) { // same team; switch marked piece
-			    board.markPiece();
-			}
-
-			else {
-			    Boolean moved = clickedPiece.move(column, row);
-			    if (!moved) {
-				clickedPiece = null;
-				board.markPiece();
-			    }
-			    else {
-				if (clickedPiece != newPiece) {
-				    clickedPiece = null;
-				    board.markPiece();
-				}
-			    }
-			}
-
-		    }
-		    /*
-		    if (clickedPiece == null ||
-			(board.getPiece(column, row) != null && board.getPiece(column, row) != clickedPiece)) {
-			clickedPiece = board.getPiece(column, row);
-			board.markPiece();
-		    } else if (board.getPiece(column, row) != clickedPiece) {
-			clickedPiece.move(column, row);
-			clickedPiece = null;
-			repaint();
-		    } else {
-			clickedPiece = null;
-			board.markPiece();
-		    }
-		    */
-     		}
-	});
+                if (clickedPiece == null) { // First click
+                    if (newPiece != null && newPiece.team == board.getTurnTeam()) { // is a piece and the same team as the current turn's team
+                        clickedPiece = newPiece;
+                        board.markPiece();
+                    }
+                } else { // a clicked piece exists
+                    if (newPiece != null && newPiece != clickedPiece) {  // newPiece is a new piece
+                        if (clickedPiece.team == newPiece.team ) { // same team; switch marked piece
+                            clickedPiece = newPiece;
+                            board.markPiece();
+                        }
+                        else { // piece belong to the other team
+                            Boolean moved = clickedPiece.move(column, row);
+                            if (moved) { // remove mark
+                                clickedPiece = null;
+                                board.markPiece();
+                            }
+                        }
+                    } else { // no new piece
+                        Boolean moved = clickedPiece.move(column, row);
+                        if (moved) { // remove mark
+                            clickedPiece = null;
+                            board.markPiece();
+                        }
+                    }
+                }
+            }
+        });
     }
 
-    @Override protected void paintComponent(Graphics g) {
-	super.paintComponent(g);
-	final Graphics2D g2d = (Graphics2D) g;
-	for (int y = 0; y < Board.HEIGHT; y++) {
-	    for (int x = 0; x < Board.WIDTH; x++) {
-		Color color = Color.WHITE;
-		if (y % 2 == 0 && x % 2 == 1) {
-		    color = Color.BLACK;
-		}
-		else if (y % 2 == 1 && x %  2 == 0) {
-		    color = Color.BLACK;
-		}
-		g2d.setColor(color);
-		int cornerX = x * SQUARE_SIZE ;
-		int cornerY = y * SQUARE_SIZE;
-		g2d.fillRect(cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE);
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        final Graphics2D g2d = (Graphics2D) g;
+        for (int y = 0; y < Board.HEIGHT; y++) {
+            for (int x = 0; x < Board.WIDTH; x++) {
+                Color color = Color.WHITE;
+                if (y % 2 == 0 && x % 2 == 1) {
+                    color = Color.BLACK;
+                } else if (y % 2 == 1 && x % 2 == 0) {
+                    color = Color.BLACK;
+                }
+                g2d.setColor(color);
+                int cornerX = x * SQUARE_SIZE;
+                int cornerY = y * SQUARE_SIZE;
+                g2d.fillRect(cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE);
 
-		Piece currentPiece = board.getPiece(x,y);
-		// kolla efter pjäs och rita upp
-		if ( currentPiece != null) {
-		    g.drawImage(currentPiece.getImage(), cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE, null);
+                Piece currentPiece = board.getPiece(x, y);
+                // kolla efter pjäs och rita upp
+                if (currentPiece != null) {
+                    g.drawImage(currentPiece.getImage(), cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE, null);
 
-		}
-		if (clickedPiece == currentPiece && clickedPiece != null) {
-			g2d.setColor(Color.RED);
-		    	g2d.setStroke(new BasicStroke(2));
-			g2d.drawLine(cornerX, cornerY, cornerX + SQUARE_SIZE, cornerY);
-			g2d.drawLine(cornerX, cornerY, cornerX, cornerY + SQUARE_SIZE);
+                }
+                if (clickedPiece == currentPiece && clickedPiece != null) {
+                    g2d.setColor(Color.RED);
+                    g2d.setStroke(new BasicStroke(2));
+                    g2d.drawLine(cornerX, cornerY, cornerX + SQUARE_SIZE, cornerY);
+                    g2d.drawLine(cornerX, cornerY, cornerX, cornerY + SQUARE_SIZE);
 
-			g2d.drawLine(cornerX, cornerY + SQUARE_SIZE -1, cornerX + SQUARE_SIZE-1, cornerY + SQUARE_SIZE-1);
-			g2d.drawLine(cornerX + SQUARE_SIZE-1, cornerY, cornerX + SQUARE_SIZE-1, cornerY + SQUARE_SIZE-1);
-  		}
-	    }
-	}
+                    g2d.drawLine(cornerX, cornerY + SQUARE_SIZE - 1, cornerX + SQUARE_SIZE - 1, cornerY + SQUARE_SIZE - 1);
+                    g2d.drawLine(cornerX + SQUARE_SIZE - 1, cornerY, cornerX + SQUARE_SIZE - 1, cornerY + SQUARE_SIZE - 1);
+                }
+            }
+        }
     }
 
-    @Override public Dimension getPreferredSize(){
-    return new Dimension((Board.WIDTH)*SQUARE_SIZE,
-                      (Board.HEIGHT)*SQUARE_SIZE);
-      }
+    @Override
+    public Dimension getPreferredSize() {
+        return new Dimension((Board.WIDTH) * SQUARE_SIZE,
+                (Board.HEIGHT) * SQUARE_SIZE);
+    }
 
-    @Override public void boardChanged() {
-	System.out.println("repaint");
-	repaint();
+    @Override
+    public void boardChanged() {
+        System.out.println("repaint");
+        repaint();
     }
 }
