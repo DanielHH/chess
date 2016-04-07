@@ -125,7 +125,9 @@ public class Piece
         return canNotMove;
     }
 
-    public void move(int column, int row) {}
+    public Boolean move(int column, int row) {
+        return false;
+    }
 
     public Movement moveDirection(int horizontal, int lateral) {
         Movement movement = null;

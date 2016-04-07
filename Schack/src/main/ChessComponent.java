@@ -1,12 +1,11 @@
 package main;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class ChessComponent extends JComponent
+public class ChessComponent extends JComponent implements BoardListener
 {
     private Board board;
     public static final int SQUARE_SIZE = 120;
@@ -17,19 +16,52 @@ public class ChessComponent extends JComponent
 
 	addMouseListener(new MouseAdapter() {
      		public void mouseClicked(MouseEvent e) {
-		    int x=e.getX();
-		    int y=e.getY();
+		    int x = e.getX();
+		    int y = e.getY();
 		    int column = x / SQUARE_SIZE;
 		    int row = y / SQUARE_SIZE;
-		    if (clickedPiece == null) {
+
+		    if (clickedPiece == null) { // First click
 			clickedPiece = board.getPiece(column, row);
-			repaint();
+			if (clickedPiece != null && clickedPiece.team == board.getTurnTeam()) { // is a piece and the same team as the current turn's team
+			    board.markPiece();
+			}
 		    }
-		    else {
+		    else { // a clicked piece exists
+			Piece newPiece = board.getPiece(column, row);
+			if (newPiece != null && clickedPiece.team == newPiece.team) { // same team; switch marked piece
+			    board.markPiece();
+			}
+
+			else {
+			    Boolean moved = clickedPiece.move(column, row);
+			    if (!moved) {
+				clickedPiece = null;
+				board.markPiece();
+			    }
+			    else {
+				if (clickedPiece != newPiece) {
+				    clickedPiece = null;
+				    board.markPiece();
+				}
+			    }
+			}
+
+		    }
+		    /*
+		    if (clickedPiece == null ||
+			(board.getPiece(column, row) != null && board.getPiece(column, row) != clickedPiece)) {
+			clickedPiece = board.getPiece(column, row);
+			board.markPiece();
+		    } else if (board.getPiece(column, row) != clickedPiece) {
 			clickedPiece.move(column, row);
 			clickedPiece = null;
 			repaint();
+		    } else {
+			clickedPiece = null;
+			board.markPiece();
 		    }
+		    */
      		}
 	});
     }
@@ -75,4 +107,8 @@ public class ChessComponent extends JComponent
                       (Board.HEIGHT)*SQUARE_SIZE);
       }
 
+    @Override public void boardChanged() {
+	System.out.println("repaint");
+	repaint();
+    }
 }

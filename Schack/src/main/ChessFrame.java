@@ -16,6 +16,7 @@ public class ChessFrame extends JFrame {
       createMenus();
 
       chessComponent= new ChessComponent(board);
+      board.addBoardListener(chessComponent);
       this.add(chessComponent);
       this.pack();
       this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

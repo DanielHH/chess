@@ -8,12 +8,15 @@ public class Knight extends Piece {
     }
 
     @Override
-    public void move(int newColumn, int newRow) {
+    public Boolean move(int newColumn, int newRow) {
+	Boolean moved = false;
 	int horizontal = this.getColumn() - newColumn;
 	int lateral = this.getRow() - newRow;
 
 	if ((Math.abs(lateral) == 2 && Math.abs(horizontal) == 1) || (Math.abs(lateral) == 1 && Math.abs(horizontal) == 2)) {
 	    startMovement(newColumn, newRow);
+	    moved = true;
 	}
+	return moved;
     }
 }

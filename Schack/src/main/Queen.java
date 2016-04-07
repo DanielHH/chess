@@ -8,7 +8,8 @@ public class Queen extends Piece {
     }
 
     @Override
-    public void move(int newColumn, int newRow) {
+    public Boolean move(int newColumn, int newRow) {
+	Boolean moved = false;
 		int horizontal = newColumn - this.getColumn();
 		int lateral =  this.getRow() - newRow;
 		Movement movement = this.moveDirection(horizontal, lateral);
@@ -20,7 +21,9 @@ public class Queen extends Piece {
 				(Math.abs(lateral) > 0 && horizontal == 0)) ||
 				(Math.abs(horizontal) == Math.abs(lateral) && horizontal != 0 ))) {
 			this.startMovement(newColumn, newRow);
+		    moved = true;
 		}
+	return moved;
 	}
 }
 

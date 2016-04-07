@@ -13,11 +13,24 @@ public class Board
 {
     public static final int WIDTH = 8;
     public static final int HEIGHT = 8;
+    private int turnCounter = 0;
     private Piece[][] board;
+    public BoardListener[] boardListenerList = new BoardListener[1];
 
+    public Team getTurnTeam() {
+	Team color = Team.WHITE;
+	if (turnCounter % 2 != 0) {
+	    color = Team.BLACK;
+	}
+	return color;
+    }
+
+    public void nextTurn() {
+	this.turnCounter += 1;
+    }
 
     public Board() throws IOException {
-	this.board = new Piece[WIDTH][HEIGHT];
+	board = new Piece[WIDTH][HEIGHT];
 
 	for (int column = 0; column < WIDTH; column++) {
 	    board[column][1] =  new Pawn(column, 1, Team.BLACK, this, "fantasy/png-shad/bp.png");
@@ -52,11 +65,27 @@ public class Board
     }
 
     public void killPiece(int column, int row) {
-		board[column][row] = null;
+	board[column][row] = null;
+	notifyListeners();
     }
 
     public void actuallyMovesPiece(int oldColumn, int oldRow, int newColumn, int newRow) {
 	board[newColumn][newRow] = board[oldColumn][oldRow];
 	board[oldColumn][oldRow] = null;
+	notifyListeners();
+    }
+
+    public void addBoardListener(BoardListener bl) {
+	this.boardListenerList[0] = bl;
+    }
+
+    private void notifyListeners() {
+	for (BoardListener bl: boardListenerList) {
+	    bl.boardChanged();
+	}
+    }
+
+    public void markPiece() {
+	notifyListeners();
     }
 }

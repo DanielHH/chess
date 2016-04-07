@@ -10,9 +10,10 @@ public class Pawn extends Piece
     }
 
     @Override
-    public void move(int newColumn, int newRow) {
+    public Boolean move(int newColumn, int newRow) {
 		/* försöker komma fram till någon sätt att göra så att
 		båda lagens bönder kan röra sig med hjälp av samma beräkning */
+		Boolean moved = false;
 		int horizontal = newColumn - this.getColumn();
 		int lateral =  this.getRow() - newRow;
 
@@ -21,23 +22,28 @@ public class Pawn extends Piece
 	    	// !!!!!!!! ändfall när bonde ska uppgraderas behöver läggas till
 	    	if (horizontal == 0 && lateral == 1) {
 				if (board.getPiece(newColumn, newRow) == null) {
-					movePiece(getColumn(), newRow);
+				    movePiece(getColumn(), newRow);
+				    moved = true;
 				}
 	    	}
 	    	// Kan man göra såhär? 1 and 1 eller 1 and -1 är vad vi vill ha.
 	    	else if (lateral == 1 && (horizontal == 1 || horizontal == -1)) {
-				if (board.getPiece(newColumn, newRow).team == Team.BLACK) {
-		    		board.killPiece(newColumn, newRow);
-		    		this.movePiece(newColumn, newRow);
-				}
-				else {
-		    	// !!!!!!!! specialfall passant
-				}
+		    if (board.getPiece(newColumn, newRow) != null) {
+			if (board.getPiece(newColumn, newRow).team == Team.BLACK) {
+			    board.killPiece(newColumn, newRow);
+			    movePiece(newColumn, newRow);
+			    moved = true;
+			}
+		    }
+		    else {
+			// !!!!!!!! specialfall passant
+		    }
 	    	}
 	    	else if (horizontal == 0 && lateral == 2) {
 				if (!this.pieceInTheWay(Movement.UP, lateral) && !this.hasMoved() &&
 		    		board.getPiece(newColumn, newRow) == null) {
-		    		this.movePiece(this.getColumn(), newRow);
+		    		movePiece(this.getColumn(), newRow);
+				    moved = true;
 				}
 	    	}
 		}
@@ -46,13 +52,17 @@ public class Pawn extends Piece
 	    	if (horizontal == 0 && lateral == -1) {
 	  		    if (board.getPiece(newColumn, newRow) == null) {
 					this.movePiece(this.getColumn(), newRow);
+				moved = true;
 	  		    }
 	  		}
 	    	// Kan man göra såhär? 1 and 1 eller 1 and -1 är vad vi vill ha.
 	    	else if (lateral == -1 && (horizontal == 1 || horizontal == -1)) {
-				if (board.getPiece(newColumn, newRow).team == Team.WHITE) {
-		    		board.killPiece(newColumn, newRow);
-		    		this.movePiece(newColumn, newRow);
+		    		if (board.getPiece(newColumn, newRow) != null) {
+				    if (board.getPiece(newColumn, newRow).team == Team.WHITE) {
+					board.killPiece(newColumn, newRow);
+					this.movePiece(newColumn, newRow);
+					moved = true;
+				    }
 				}
 				else {
 		   			 // !!!!!!!!!!! specialfall passant
@@ -62,9 +72,12 @@ public class Pawn extends Piece
 				if (!this.pieceInTheWay(Movement.DOWN, lateral) && !this.hasMoved() &&
 		    		board.getPiece(newColumn, newRow) == null) {
 		    		this.movePiece(this.getColumn(), newRow);
+				    moved = true;
 				}
 	    	}
+
 		}
+	return moved;
     }
 }
 
