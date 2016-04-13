@@ -11,15 +11,29 @@ public class King extends Piece
     }
 
     @Override
-    public Boolean move(int newColumn, int newRow) {
+    public Boolean canMove(int newColumn, int newRow) {
 	Boolean moved = false;
 		int horizontal = newColumn - this.getColumn();
 		int lateral =  this.getRow() - newRow;
 
 		if (Math.abs(lateral) < 2 && Math.abs(horizontal) < 2 && !(lateral == 0 && horizontal == 0)) {
-	    		this.startMovement(newColumn, newRow);
 		    moved = true;
 		}
 	return moved;
+    }
+
+    public boolean isThreatened(int newColumn, int newRow) {
+	boolean threatened = false;
+	for (int i = 0; i < ; i++) {
+	    for (int j = 0; j < ; j++) {
+		Piece tempPiece = board.getPiece(i, j);
+		if (tempPiece != null) {
+		    if (tempPiece.team != this.team) {
+			tempPiece.canMove(newColumn, newRow);
+		    }
+		}
+	    }
+
+	}
     }
 }

@@ -3,7 +3,7 @@ package main;
 import java.awt.*;
 import java.io.IOException;
 
-public class BoardTest
+public final class BoardTest
 {
     public static void main(String[] args) throws IOException {
         Board testBoard = new Board();

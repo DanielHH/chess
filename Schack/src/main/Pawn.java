@@ -10,7 +10,7 @@ public class Pawn extends Piece
     }
 
     @Override
-    public Boolean move(int newColumn, int newRow) {
+    public boolean canMove(int newColumn, int newRow) {
 		/* försöker komma fram till någon sätt att göra så att
 		båda lagens bönder kan röra sig med hjälp av samma beräkning */
 		Boolean moved = false;
@@ -22,7 +22,6 @@ public class Pawn extends Piece
 	    	// !!!!!!!! ändfall när bonde ska uppgraderas behöver läggas till
 	    	if (horizontal == 0 && lateral == 1) {
 				if (board.getPiece(newColumn, newRow) == null) {
-				    movePiece(getColumn(), newRow);
 				    moved = true;
 				}
 	    	}
@@ -31,7 +30,6 @@ public class Pawn extends Piece
 		    if (board.getPiece(newColumn, newRow) != null) {
 			if (board.getPiece(newColumn, newRow).team == Team.BLACK) {
 			    board.killPiece(newColumn, newRow);
-			    movePiece(newColumn, newRow);
 			    moved = true;
 			}
 		    }
@@ -42,7 +40,6 @@ public class Pawn extends Piece
 	    	else if (horizontal == 0 && lateral == 2) {
 				if (!this.pieceInTheWay(Movement.UP, lateral) && !this.hasMoved() &&
 		    		board.getPiece(newColumn, newRow) == null) {
-		    		movePiece(this.getColumn(), newRow);
 				    moved = true;
 				}
 	    	}
@@ -51,7 +48,6 @@ public class Pawn extends Piece
 	    	// !!!!!!!! ändfall när bonde ska uppgraderas behöver läggas till
 	    	if (horizontal == 0 && lateral == -1) {
 	  		    if (board.getPiece(newColumn, newRow) == null) {
-					this.movePiece(this.getColumn(), newRow);
 				moved = true;
 	  		    }
 	  		}
@@ -60,7 +56,6 @@ public class Pawn extends Piece
 		    		if (board.getPiece(newColumn, newRow) != null) {
 				    if (board.getPiece(newColumn, newRow).team == Team.WHITE) {
 					board.killPiece(newColumn, newRow);
-					this.movePiece(newColumn, newRow);
 					moved = true;
 				    }
 				}
@@ -71,7 +66,6 @@ public class Pawn extends Piece
 	    	else if (horizontal == 0 && lateral == -2) {
 				if (!this.pieceInTheWay(Movement.DOWN, lateral) && !this.hasMoved() &&
 		    		board.getPiece(newColumn, newRow) == null) {
-		    		this.movePiece(this.getColumn(), newRow);
 				    moved = true;
 				}
 	    	}

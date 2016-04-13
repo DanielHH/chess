@@ -4,7 +4,7 @@ import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
 
-public class Piece
+public abstract class Piece
 {
     protected int column;
     protected int row;
@@ -63,7 +63,7 @@ public class Piece
         }
     }
 
-    protected void startMovement(int newColumn, int newRow) {
+    protected void move(int newColumn, int newRow) {
         if (board.getPiece(newColumn, newRow) == null) {
             this.movePiece(newColumn, newRow);
         }
@@ -125,7 +125,12 @@ public class Piece
         return canNotMove;
     }
 
-    public Boolean move(int column, int row) {
+    public boolean canHit(int column, int row) {
+        // för pawn
+        return true;
+    }
+
+    public boolean canMove(int column, int row) {
         return false;
     }
 

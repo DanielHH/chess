@@ -10,7 +10,7 @@ public class Rook extends Piece {
     }
 
     @Override
-    public Boolean move(int newColumn, int newRow) {
+    public Boolean canMove(int newColumn, int newRow) {
 	Boolean moved = false;
 		int horizontal = newColumn - this.getColumn();
 		int lateral =  this.getRow() - newRow;
@@ -21,7 +21,6 @@ public class Rook extends Piece {
 		}
 		if (!this.pieceInTheWay(movement, steps)) {
 	    	if ((Math.abs(horizontal) > 0 && lateral == 0) || (Math.abs(lateral) > 0 && horizontal == 0)) {
-			startMovement(newColumn, newRow);
 		    moved = true;
 	    	}
 		}

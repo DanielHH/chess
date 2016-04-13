@@ -34,17 +34,17 @@ public class ChessComponent extends JComponent implements BoardListener {
                             board.markPiece();
                         }
                         else { // piece belong to the other team
-                            Boolean moved = clickedPiece.move(column, row);
+                            Boolean moved = clickedPiece.canMove(column, row);
                             if (moved) { // remove mark
+                                clickedPiece.move(column, row);
                                 clickedPiece = null;
-                                board.markPiece();
                             }
                         }
                     } else { // no new piece
-                        Boolean moved = clickedPiece.move(column, row);
+                        Boolean moved = clickedPiece.canMove(column, row);
                         if (moved) { // remove mark
+                            clickedPiece.move(column, row);
                             clickedPiece = null;
-                            board.markPiece();
                         }
                     }
                 }
@@ -59,9 +59,7 @@ public class ChessComponent extends JComponent implements BoardListener {
         for (int y = 0; y < Board.HEIGHT; y++) {
             for (int x = 0; x < Board.WIDTH; x++) {
                 Color color = Color.WHITE;
-                if (y % 2 == 0 && x % 2 == 1) {
-                    color = Color.BLACK;
-                } else if (y % 2 == 1 && x % 2 == 0) {
+                if (y % 2 == 0 && x % 2 == 1 || y % 2 == 1 && x % 2 == 0) {
                     color = Color.BLACK;
                 }
                 g2d.setColor(color);
