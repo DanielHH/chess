@@ -61,6 +61,9 @@ public class Board
 	}
 
     public Piece getPiece(int column, int row) {
+	System.out.println(column + " column");
+	System.out.println(row + " row");
+
 	return board[column][row];
     }
 
@@ -87,5 +90,34 @@ public class Board
 
     public void markPiece() {
 	notifyListeners();
+    }
+
+    public boolean onBoard(int column, int row) {
+	boolean on = false;
+	if (column >= 0 && column < Board.WIDTH) {
+	    if (row >= 0 && row <= Board.HEIGHT) {
+		on = true;
+	    }
+	}
+	return on;
+    }
+
+    public int getTurnCounter() {
+	return turnCounter;
+    }
+
+    public King getKing(Team team) {
+	King king = null;
+	for (int i = 0; i < Board.WIDTH; i++) {
+	    for (int j = 0; j < Board.HEIGHT; j++) {
+		Piece tempPiece = getPiece(i, j);
+		if (tempPiece != null) {
+		    if (tempPiece.team == team && tempPiece.piece == PieceType.KING) {
+			king = (King)tempPiece;
+		    }
+		}
+	    }
+	}
+	return king;
     }
 }

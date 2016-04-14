@@ -7,8 +7,8 @@ public class Bishop extends Piece {
 	super(column, row, team, board, PieceType.BISHOP, imageLocation);
     }
 
-    public Boolean canMove(int newColumn, int newRow) {
-	Boolean moved = false;
+    public boolean canMove(int newColumn, int newRow) {
+	boolean moved = false;
 	int horizontal = newColumn - this.getColumn();
 	int lateral =  this.getRow() - newRow;
 	Movement movement = this.moveDirection(horizontal, lateral);

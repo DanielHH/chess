@@ -2,6 +2,10 @@ package main;
 
 
 import java.io.IOException;
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 // !!!!!! KOLLAR INTE OM KUNGEN ÄR HOTAD !!!!!!!!
 public class King extends Piece
@@ -11,8 +15,8 @@ public class King extends Piece
     }
 
     @Override
-    public Boolean canMove(int newColumn, int newRow) {
-	Boolean moved = false;
+    public boolean canMove(int newColumn, int newRow) {
+	boolean moved = false;
 		int horizontal = newColumn - this.getColumn();
 		int lateral =  this.getRow() - newRow;
 
@@ -24,16 +28,71 @@ public class King extends Piece
 
     public boolean isThreatened(int newColumn, int newRow) {
 	boolean threatened = false;
-	for (int i = 0; i < ; i++) {
-	    for (int j = 0; j < ; j++) {
+	for (int i = 0; i < Board.WIDTH; i++) {
+	    for (int j = 0; j < Board.HEIGHT; j++) {
 		Piece tempPiece = board.getPiece(i, j);
 		if (tempPiece != null) {
 		    if (tempPiece.team != this.team) {
-			tempPiece.canMove(newColumn, newRow);
+			if (tempPiece.piece == PieceType.PAWN) {
+			    if (((Pawn)tempPiece).canHit(newColumn, newRow)) {
+				threatened = true;
+			    }
+			}
+			else if (tempPiece.canMove(newColumn, newRow)) {
+			    threatened = true;
+			}
 		    }
 		}
 	    }
-
 	}
+	return threatened;
+    }
+
+
+    /*
+    	int columnSize = 3;
+	int rowSize = 3;
+	List<String> myList = new ArrayList<String>();
+	boolean[][] walkList = new boolean[columnSize][rowSize];
+	for (int i = -1; i < columnSize-1; i++) {
+	    for (int j = -1; j < rowSize-1; j++) {
+		if (board.onBoard(column+i, row+j)) { // place exist on the board
+		    if  (canMove(column + i, row + j)) { // piece can move there
+			walkList[i][j] = isThreatened(column, row);
+
+		    }
+		}
+	    }
+	}
+	return walkList;
+     */
+
+    private List<Map.Entry<Integer,Integer>> unthreatenedPlaces() {
+	List<Map.Entry<Integer,Integer>> legalMovesList = this.legalMoves();
+	List<Map.Entry<Integer,Integer>> unthreatenedPlacesList = new ArrayList<>();
+	if (!legalMovesList.isEmpty()) {
+	    for (Map.Entry<Integer,Integer> pair: legalMovesList) {
+		if (!isThreatened(pair.getKey(), pair.getValue())) {
+		    unthreatenedPlacesList.add(pair);
+		}
+	    }
+	}
+	if (!isThreatened(column, row)) {
+	    Map.Entry<Integer, Integer> pair = new AbstractMap.SimpleEntry<>(column, row);
+	    unthreatenedPlacesList.add(pair);
+	}
+	return unthreatenedPlacesList;
+    }
+
+    public boolean isCheck() {
+	return isThreatened(column, row);
+    }
+
+    public boolean isCheckMate() {
+	boolean checkMate = false;
+	if (unthreatenedPlaces().isEmpty()) { // king cant move
+	    // need to check if teammate can save the king
+	}
+	return checkMate;
     }
 }

@@ -13,7 +13,7 @@ public class Pawn extends Piece
     public boolean canMove(int newColumn, int newRow) {
 		/* försöker komma fram till någon sätt att göra så att
 		båda lagens bönder kan röra sig med hjälp av samma beräkning */
-		Boolean moved = false;
+		boolean moved = false;
 		int horizontal = newColumn - this.getColumn();
 		int lateral =  this.getRow() - newRow;
 
@@ -71,7 +71,14 @@ public class Pawn extends Piece
 	    	}
 
 		}
-	return moved;
+		return moved;
+    }
+
+   // @Override
+    public boolean canHit(int column, int row) {
+        // för pawn
+        return false;
+
     }
 }
 

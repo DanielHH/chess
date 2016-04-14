@@ -3,6 +3,10 @@ package main;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public abstract class Piece
 {
@@ -103,6 +107,11 @@ public abstract class Piece
                 if (steps > 0) {
                     x *= -1;
                 }
+                System.out.println(piece);
+                System.out.println(this.getColumn());
+                System.out.println(this.getRow());
+                System.out.println(x + " x");
+                System.out.println(steps + " steps");
                 if (board.getPiece(this.getColumn() - x, this.getRow() + x) != null) {
                     canNotMove = true;
                 }
@@ -123,11 +132,6 @@ public abstract class Piece
             canNotMove = true;
         }
         return canNotMove;
-    }
-
-    public boolean canHit(int column, int row) {
-        // för pawn
-        return true;
     }
 
     public boolean canMove(int column, int row) {
@@ -161,5 +165,18 @@ public abstract class Piece
             movement = Movement.LEFT;
         }
         return movement;
+    }
+
+    public List<Map.Entry<Integer,Integer>> legalMoves() {
+        List<Map.Entry<Integer,Integer>> legalMovesList = new ArrayList<>();
+        for (int i = 0; i < Board.WIDTH; i++) {
+            for (int j = 0; j < Board.HEIGHT; j++) {
+                if (canMove(i, j)) { // piece can move there
+                    Map.Entry<Integer, Integer> pair = new AbstractMap.SimpleEntry<>(i, j);
+                    legalMovesList.add(pair);
+                }
+            }
+        }
+        return legalMovesList;
     }
 }
