@@ -10,10 +10,12 @@ public class Bishop extends Piece {
     public boolean canMove(int newColumn, int newRow) {
 	boolean moved = false;
 	int horizontal = newColumn - this.getColumn();
-	int lateral =  this.getRow() - newRow;
+	int lateral = newRow - this.getRow();
 	Movement movement = this.moveDirection(horizontal, lateral);
-	if (Math.abs(horizontal) == Math.abs(lateral) && horizontal != 0 && !this.pieceInTheWay(movement, lateral)) {
+	if (Math.abs(horizontal) == Math.abs(lateral) && horizontal != 0) {
+	    if (!this.pieceInTheWay(movement, lateral)) {
 	    moved = true;
+	    }
 	}
 	return moved;
     }

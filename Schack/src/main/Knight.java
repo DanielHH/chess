@@ -10,8 +10,8 @@ public class Knight extends Piece {
     @Override
     public boolean canMove(int newColumn, int newRow) {
 	boolean moved = false;
-	int horizontal = this.getColumn() - newColumn;
-	int lateral = this.getRow() - newRow;
+	int horizontal = newColumn - this.getColumn();
+	int lateral = newRow - this.getRow();
 
 	if ((Math.abs(lateral) == 2 && Math.abs(horizontal) == 1) || (Math.abs(lateral) == 1 && Math.abs(horizontal) == 2)) {
 	    moved = true;

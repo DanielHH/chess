@@ -94,22 +94,6 @@ public class ChessComponent extends JComponent implements BoardListener {
 
     @Override
     public void boardChanged() {
-        King king;
-        if (board.getTurnCounter() % 2 == 0) { // white's turn
-            king = board.getKing(Team.WHITE);
-        }
-        else { // black's turn
-            king = board.getKing(Team.BLACK);
-        }
-        if (king.isCheckMate()) {
-            // gameover
-            System.out.println("checkmate");
-        }
-        else if (king.isCheck()) {
-            // show the user
-            System.out.println("check");
-        }
-
         System.out.println("repaint");
         repaint();
 

@@ -13,15 +13,15 @@ public class Rook extends Piece {
     public boolean canMove(int newColumn, int newRow) {
 	boolean moved = false;
 		int horizontal = newColumn - this.getColumn();
-		int lateral =  this.getRow() - newRow;
+		int lateral =  newRow - this.getRow();
 		Movement movement = this.moveDirection(horizontal, lateral);
 		int steps = horizontal;
 		if (lateral != 0) {
 			steps = lateral;
 		}
-		if (!this.pieceInTheWay(movement, steps)) {
 	    	if ((Math.abs(horizontal) > 0 && lateral == 0) || (Math.abs(lateral) > 0 && horizontal == 0)) {
-		    moved = true;
+		    if (!this.pieceInTheWay(movement, steps)) {
+		    	moved = true;
 	    	}
 		}
 	return moved;

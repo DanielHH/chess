@@ -61,9 +61,6 @@ public class Board
 	}
 
     public Piece getPiece(int column, int row) {
-	System.out.println(column + " column");
-	System.out.println(row + " row");
-
 	return board[column][row];
     }
 
@@ -74,7 +71,8 @@ public class Board
     public void actuallyMovesPiece(int oldColumn, int oldRow, int newColumn, int newRow) {
 	board[newColumn][newRow] = board[oldColumn][oldRow];
 	board[oldColumn][oldRow] = null;
-		nextTurn();
+	checksForCheck();
+	nextTurn();
 	notifyListeners();
     }
 
@@ -119,5 +117,23 @@ public class Board
 	    }
 	}
 	return king;
+    }
+
+    public void checksForCheck() {
+    King king;
+    if (getTurnCounter() % 2 == 0) { // white's turn
+        king = getKing(Team.WHITE);
+    }
+    else { // black's turn
+        king = getKing(Team.BLACK);
+    }
+    if (king.isCheckMate()) {
+        // gameover
+        System.out.println("checkmate");
+    }
+    else if (king.isCheck()) {
+	// show the user
+	System.out.println("check");
+    }
     }
 }

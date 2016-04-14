@@ -11,17 +11,17 @@ public class Queen extends Piece {
     public boolean canMove(int newColumn, int newRow) {
 	boolean moved = false;
 		int horizontal = newColumn - this.getColumn();
-		int lateral =  this.getRow() - newRow;
+		int lateral =  newRow - this.getRow();
 		Movement movement = this.moveDirection(horizontal, lateral);
 		int steps = horizontal;
 		if (lateral != 0) {
 			steps = lateral;
 		}
 
-		if (!this.pieceInTheWay(movement, steps)) { // no piece in the way
-	    		if ((((Math.abs(horizontal) > 0 && lateral == 0) ||
-			      (Math.abs(lateral) > 0 && horizontal == 0)) ||
-				(Math.abs(horizontal) == Math.abs(lateral) && horizontal != 0 ))) {
+		if ((((Math.abs(horizontal) > 0 && lateral == 0) ||
+		      (Math.abs(lateral) > 0 && horizontal == 0)) ||
+		     (Math.abs(horizontal) == Math.abs(lateral) && horizontal != 0 ))) {
+		    if (!this.pieceInTheWay(movement, steps)) { // no piece in the way
 		    		moved = true;
 		}}
 	return moved;

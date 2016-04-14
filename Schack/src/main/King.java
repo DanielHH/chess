@@ -18,7 +18,7 @@ public class King extends Piece
     public boolean canMove(int newColumn, int newRow) {
 	boolean moved = false;
 		int horizontal = newColumn - this.getColumn();
-		int lateral =  this.getRow() - newRow;
+		int lateral =  newRow - this.getRow();
 
 		if (Math.abs(lateral) < 2 && Math.abs(horizontal) < 2 && !(lateral == 0 && horizontal == 0)) {
 		    moved = true;

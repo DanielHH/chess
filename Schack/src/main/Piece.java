@@ -58,31 +58,26 @@ public abstract class Piece
         return board;
     }
 
-    protected void movePiece(int newColumn, int newRow) {
+    protected void move(int newColumn, int newRow) {
+        if (board.getPiece(newColumn, newRow) != null) {
+            if (board.getPiece(newColumn, newRow).team != team) {
+                board.killPiece(newColumn, newRow);
+            }
+        }
         board.actuallyMovesPiece(column, row, newColumn, newRow);
         column = newColumn;
         row = newRow;
         if (!this.hasMoved()) {
             this.moved();
         }
-    }
-
-    protected void move(int newColumn, int newRow) {
-        if (board.getPiece(newColumn, newRow) == null) {
-            this.movePiece(newColumn, newRow);
         }
-        else if (board.getPiece(newColumn, newRow).team != team) {
-            board.killPiece(newColumn, newRow);
-            this.movePiece(newColumn, newRow);
-        }
-    }
 
     public boolean pieceInTheWay(Movement movement, int steps) {
         boolean canNotMove = false;
         if (movement == Movement.UP || movement == Movement.DOWN) {
             for (int i = 1; i <  Math.abs(steps); i++) {
                 int x = i;
-                if (steps > 0) {
+                if (steps < 0) {
                     x *= -1;
                 }
                 if (board.getPiece(this.getColumn(), this.getRow() + x) != null) {
@@ -104,14 +99,9 @@ public abstract class Piece
         else if (movement == Movement.UPRIGHT || movement == Movement.DOWNLEFT) {
             for (int i = 1; i <  Math.abs(steps); i++) {
                 int x = i;
-                if (steps > 0) {
+                if (steps < 0) {
                     x *= -1;
                 }
-                System.out.println(piece);
-                System.out.println(this.getColumn());
-                System.out.println(this.getRow());
-                System.out.println(x + " x");
-                System.out.println(steps + " steps");
                 if (board.getPiece(this.getColumn() - x, this.getRow() + x) != null) {
                     canNotMove = true;
                 }
@@ -120,7 +110,7 @@ public abstract class Piece
         else if (movement == Movement.UPLEFT || movement == Movement.DOWNRIGHT) {
             for (int i = 1; i <  Math.abs(steps); i++) {
                 int x = i;
-                if (steps > 0) {
+                if (steps < 0) {
                     x *= -1;
                 }
                 if (board.getPiece(this.getColumn() + x, this.getRow() + x) != null) {
@@ -140,22 +130,22 @@ public abstract class Piece
 
     public Movement moveDirection(int horizontal, int lateral) {
         Movement movement = null;
-        if (horizontal > 0 && lateral > 0) {
+        if (horizontal > 0 && lateral < 0) {
             movement = Movement.UPRIGHT;
         }
-        else if  (horizontal < 0 && lateral > 0){
+        else if  (horizontal < 0 && lateral < 0){
             movement = Movement.UPLEFT;
         }
-        else if (horizontal > 0 && lateral < 0) {
+        else if (horizontal > 0 && lateral > 0) {
             movement = Movement.DOWNRIGHT;
         }
-        else if (horizontal < 0 && lateral < 0) {
+        else if (horizontal < 0 && lateral > 0) {
             movement = Movement.DOWNLEFT;
         }
-        else if (horizontal == 0 && lateral > 0) {
+        else if (horizontal == 0 && lateral < 0) {
             movement = Movement.UP;
         }
-        else if (horizontal == 0 && lateral < 0) {
+        else if (horizontal == 0 && lateral > 0) {
             movement = Movement.DOWN;
         }
         else if (horizontal > 0 && lateral == 0) {
