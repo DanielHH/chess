@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 public class ChessFrame extends JFrame {
    private ChessComponent chessComponent;
    private JFrame frame;
+   private Mode gameMode = Mode.PVP;
 
    public ChessFrame(Board board) {
       super("Schack");
@@ -39,7 +40,8 @@ public class ChessFrame extends JFrame {
       final JMenuItem aivai = new JMenuItem("AIvAI");
       final JMenuItem editor = new JMenuItem("Editor");
 
-      quit.addActionListener(new ExitListener());
+      start.addActionListener(new StartListener());
+      quit.addActionListener(new QuitListener());
       options.add(start);
       options.add(load);
       options.add(save);
@@ -47,6 +49,10 @@ public class ChessFrame extends JFrame {
       options.add(quit);
       menuBar.add(options);
 
+      pvp.addActionListener(new PvpListener());
+      pvai.addActionListener(new PvaiListener());
+      aivai.addActionListener(new AivaiListener());
+      editor.addActionListener(new EditorListener());
       mode.add(pvp);
       mode.add(pvai);
       mode.add(aivai);
@@ -55,8 +61,24 @@ public class ChessFrame extends JFrame {
       this.setJMenuBar(menuBar);
    }
 
-   private class ExitListener implements ActionListener
-   {
+   private class StartListener implements ActionListener {
+      public void actionPerformed(final ActionEvent e) {
+         if (gameMode == Mode.PVP) {
+
+         }
+         else if(gameMode == Mode.PVAI) {
+
+         }
+         else if (gameMode == Mode.AIVAI) {
+
+         }
+         else if(gameMode == Mode.EDITOR) {
+
+         }
+      }
+   }
+
+   private class QuitListener implements ActionListener {
       public void actionPerformed(ActionEvent e) {
           int answer = JOptionPane.showConfirmDialog(frame, "Are you sure?", "Quit?",
                                                 JOptionPane.YES_NO_OPTION);
@@ -65,4 +87,28 @@ public class ChessFrame extends JFrame {
           }
       }
    }
+
+   private class PvpListener implements ActionListener {
+      public void actionPerformed(final ActionEvent e) {
+         gameMode = Mode.PVP;
+      }
+   }
+
+   private class PvaiListener implements ActionListener {
+         public void actionPerformed(final ActionEvent e) {
+            gameMode = Mode.PVAI;
+         }
+      }
+
+   private class AivaiListener implements ActionListener {
+         public void actionPerformed(final ActionEvent e) {
+            gameMode = Mode.AIVAI;
+         }
+      }
+
+   private class EditorListener implements ActionListener {
+         public void actionPerformed(final ActionEvent e) {
+            gameMode = Mode.EDITOR;
+         }
+      }
 }
