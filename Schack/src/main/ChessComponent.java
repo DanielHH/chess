@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class ChessComponent extends JComponent implements BoardListener {
     private Board board;
@@ -20,36 +21,51 @@ public class ChessComponent extends JComponent implements BoardListener {
                 int y = e.getY();
                 int column = x / SQUARE_SIZE;
                 int row = y / SQUARE_SIZE;
-                Piece newPiece = board.getPiece(column, row);
-
-                if (clickedPiece == null) { // First click
-                    if (newPiece != null && newPiece.team == board.getTurnTeam()) { // is a piece and the same team as the current turn's team
-                        clickedPiece = newPiece;
-                        board.markPiece();
-                    }
-                } else { // a clicked piece exists
-                    if (newPiece != null && newPiece != clickedPiece) {  // newPiece is a new piece
-                        if (clickedPiece.team == newPiece.team ) { // same team; switch marked piece
-                            clickedPiece = newPiece;
-                            board.markPiece();
-                        }
-                        else { // piece belong to the other team
-                            Boolean moved = clickedPiece.canMove(column, row);
-                            if (moved) { // remove mark
-                                clickedPiece.move(column, row);
-                                clickedPiece = null;
-                            }
-                        }
-                    } else { // no new piece
-                        Boolean moved = clickedPiece.canMove(column, row);
-                        if (moved) { // remove mark
-                            clickedPiece.move(column, row);
-                            clickedPiece = null;
-                        }
-                    }
+                try {
+                    tryMove(column, row);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
                 }
             }
         });
+    }
+
+    public void tryMove(int column, int row) throws InterruptedException {
+        Piece newPiece = board.getPiece(column, row);
+        if (clickedPiece == null) { // First click
+            if (newPiece != null && newPiece.team == board.getTurnTeam()) { // is a piece and the same team as the current turn's team
+                clickedPiece = newPiece;
+                board.markPiece();
+            }
+        } else { // a clicked piece exists
+            if (newPiece != null && newPiece != clickedPiece) {  // newPiece is a new piece
+                if (clickedPiece.team == newPiece.team ) { // same team; switch marked piece
+                    clickedPiece = newPiece;
+                    board.markPiece();
+                }
+                else { // piece belong to the other team
+                    boolean moved = clickedPiece.canMove(column, row);
+                    if (moved) { // remove mark
+                        try {
+                            clickedPiece.move(column, row);
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }
+                        clickedPiece = null;
+                    }
+                }
+            } else { // no new piece
+                boolean moved = clickedPiece.canMove(column, row);
+                if (moved) { // remove mark
+                    try {
+                        clickedPiece.move(column, row);
+                    } catch (InterruptedException e1) {
+                        e1.printStackTrace();
+                    }
+                    clickedPiece = null;
+                }
+            }
+        }
     }
 
     @Override
@@ -93,9 +109,24 @@ public class ChessComponent extends JComponent implements BoardListener {
     }
 
     @Override
-    public void boardChanged() {
+    public void boardChanged() throws InterruptedException {
         System.out.println("repaint");
+        System.out.println(board.getTurnCounter());
+        if (board.getTurnCounter() % 2 == 1) {
+            AIWalk();
+        }
         repaint();
+    }
 
+    public void AIWalk() throws InterruptedException {
+        // walks to a random place with a randomly choosen piece
+        int turn = board.getTurnCounter();
+        Random rand = new Random();
+        while (turn == board.getTurnCounter()) {
+            int x = rand.nextInt(Board.WIDTH);
+            int y = rand.nextInt(Board.HEIGHT);
+	    tryMove(x, y);
+            Thread.sleep(5);
+        }
     }
 }

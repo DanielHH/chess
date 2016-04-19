@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 
 public class ChessFrame extends JFrame {
-   private ChessComponent chessComponent;
+   public ChessComponent chessComponent;
    private JFrame frame;
 
    public ChessFrame(Board board) {

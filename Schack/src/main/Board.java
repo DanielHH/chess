@@ -68,7 +68,7 @@ public class Board
 	board[column][row] = null;
     }
 
-    public void actuallyMovesPiece(int oldColumn, int oldRow, int newColumn, int newRow) {
+    public void actuallyMovesPiece(int oldColumn, int oldRow, int newColumn, int newRow) throws InterruptedException {
 	board[newColumn][newRow] = board[oldColumn][oldRow];
 	board[oldColumn][oldRow] = null;
 	checksForCheck();
@@ -80,13 +80,13 @@ public class Board
 	this.boardListenerList[0] = bl;
     }
 
-    private void notifyListeners() {
+    private void notifyListeners() throws InterruptedException {
 	for (BoardListener bl: boardListenerList) {
 	    bl.boardChanged();
 	}
     }
 
-    public void markPiece() {
+    public void markPiece() throws InterruptedException {
 	notifyListeners();
     }
 

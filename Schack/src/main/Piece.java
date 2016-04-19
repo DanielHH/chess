@@ -58,7 +58,7 @@ public abstract class Piece
         return board;
     }
 
-    protected void move(int newColumn, int newRow) {
+    protected void move(int newColumn, int newRow) throws InterruptedException {
         if (board.getPiece(newColumn, newRow) != null) {
             if (board.getPiece(newColumn, newRow).team != team) {
                 board.killPiece(newColumn, newRow);
