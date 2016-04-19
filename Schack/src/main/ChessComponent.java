@@ -8,8 +8,10 @@ import java.awt.*;
 
 public class ChessComponent extends JComponent implements BoardListener {
     private Board board;
-    public static final int SQUARE_SIZE = 120;
+    public static final int SQUARE_SIZE = 100;
     private Piece clickedPiece;
+    private PlayerType player1 = PlayerType.PLAYER;
+    private PlayerType player2 = PlayerType.PLAYER;
 
     public ChessComponent(Board board) {
         this.board = board;
@@ -97,5 +99,10 @@ public class ChessComponent extends JComponent implements BoardListener {
         System.out.println("repaint");
         repaint();
 
+    }
+
+    public void setPlayers(PlayerType player1, PlayerType player2) {
+        this.player1 = player1;
+        this.player2 = player2;
     }
 }

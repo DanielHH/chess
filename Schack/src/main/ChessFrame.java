@@ -64,16 +64,16 @@ public class ChessFrame extends JFrame {
    private class StartListener implements ActionListener {
       public void actionPerformed(final ActionEvent e) {
          if (gameMode == Mode.PVP) {
-
+            chessComponent.setPlayers(PlayerType.PLAYER, PlayerType.PLAYER);
          }
          else if(gameMode == Mode.PVAI) {
-
+            chessComponent.setPlayers(PlayerType.PLAYER, PlayerType.AI);
          }
          else if (gameMode == Mode.AIVAI) {
-
+            chessComponent.setPlayers(PlayerType.AI, PlayerType.AI);
          }
          else if(gameMode == Mode.EDITOR) {
-
+            chessComponent.setPlayers(PlayerType.EDITOR, PlayerType.EDITOR);
          }
       }
    }
