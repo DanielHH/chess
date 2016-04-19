@@ -71,7 +71,7 @@ public class Board
     public void actuallyMovesPiece(int oldColumn, int oldRow, int newColumn, int newRow) throws InterruptedException {
 	board[newColumn][newRow] = board[oldColumn][oldRow];
 	board[oldColumn][oldRow] = null;
-	checksForCheck();
+	//checksForCheck();
 	nextTurn();
 	notifyListeners();
     }

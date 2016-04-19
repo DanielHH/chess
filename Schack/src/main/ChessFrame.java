@@ -10,8 +10,9 @@ public class ChessFrame extends JFrame {
    public ChessComponent chessComponent;
    private JFrame frame;
    private Mode gameMode = Mode.PVP;
+   private Board board;
 
-   public ChessFrame(Board board) {
+   public ChessFrame(Board board) throws InterruptedException {
       super("Schack");
       this.setLayout(new BorderLayout());
       createMenus();
@@ -22,7 +23,10 @@ public class ChessFrame extends JFrame {
       this.pack();
       this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
       this.setVisible(true);
+      this.board = board;
+      gameLoop();
    }
+
 
    private void createMenus() {
       final JMenuBar menuBar = new JMenuBar();
@@ -71,6 +75,7 @@ public class ChessFrame extends JFrame {
          }
          else if (gameMode == Mode.AIVAI) {
             chessComponent.setPlayers(PlayerType.AI, PlayerType.AI);
+
          }
          else if(gameMode == Mode.EDITOR) {
             chessComponent.setPlayers(PlayerType.EDITOR, PlayerType.EDITOR);
@@ -111,4 +116,22 @@ public class ChessFrame extends JFrame {
             gameMode = Mode.EDITOR;
          }
       }
+
+   private void gameLoop() throws InterruptedException {
+      System.out.println("kjhkjlh");
+      while (true) {
+         if (board.getTurnTeam() == Team.WHITE) {
+            if (chessComponent.player1 == PlayerType.AI) {
+               System.out.println("AI");
+               chessComponent.AIWalk();
+            }
+         }
+         else {
+            if (chessComponent.player2 == PlayerType.AI) {
+               System.out.println("AI");
+                           chessComponent.AIWalk();
+                        }
+         }
+      }
+   }
 }

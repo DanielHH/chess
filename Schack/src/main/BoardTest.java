@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public final class BoardTest
 {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         Board testBoard = new Board();
         ChessFrame chessFrame = new ChessFrame(testBoard);
         /*

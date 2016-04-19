@@ -11,8 +11,8 @@ public class ChessComponent extends JComponent implements BoardListener {
     private Board board;
     public static final int SQUARE_SIZE = 100;
     private Piece clickedPiece;
-    private PlayerType player1 = PlayerType.PLAYER;
-    private PlayerType player2 = PlayerType.PLAYER;
+    public PlayerType player1 = PlayerType.PLAYER;
+    public PlayerType player2 = PlayerType.PLAYER;
 
     public ChessComponent(Board board) {
         this.board = board;
@@ -112,11 +112,6 @@ public class ChessComponent extends JComponent implements BoardListener {
 
     @Override
     public void boardChanged() throws InterruptedException {
-        System.out.println("repaint");
-        System.out.println(board.getTurnCounter());
-        if (board.getTurnCounter() % 2 == 1) {
-            AIWalk();
-        }
         repaint();
     }
 
