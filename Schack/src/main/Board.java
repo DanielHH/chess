@@ -29,36 +29,42 @@ public class Board
 	this.turnCounter += 1;
     }
 
-    public Board() throws IOException {
-	board = new Piece[WIDTH][HEIGHT];
+    public Board() throws IOException, InterruptedException {
+	setStartPositions();
+    }
 
-	for (int column = 0; column < WIDTH; column++) {
-	    board[column][1] =  new Pawn(column, 1, Team.BLACK, this, "fantasy/png-shad/bp.png");
-	}
+    public void setStartPositions() throws IOException, InterruptedException {
+    	turnCounter = 0;
+    	board = new Piece[WIDTH][HEIGHT];
 
-	for (int column = 0; column < WIDTH; column++) {
-	    board[column][6] = new Pawn(column, 6, Team.WHITE, this, "fantasy/png-shad/wp.png");
-	}
+    	for (int column = 0; column < WIDTH; column++) {
+    	    board[column][1] = new Pawn(column, 1, Team.BLACK, this, "fantasy/png-shad/bp.png");
+    	}
 
-	// !!!!!!!!!!!!!!!1 Rensa bilder från konstruktorn ?????
-	board[0][0] = new Rook(0, 0, Team.BLACK, this, "fantasy/png-shad/br.png");
-	board[1][0] = new Knight(1, 0, Team.BLACK, this, "fantasy/png-shad/bn.png");
-	board[2][0] = new Bishop(2, 0, Team.BLACK, this, "fantasy/png-shad/bb.png");
-	board[3][0] = new King(3, 0, Team.BLACK, this,  "fantasy/png-shad/bk.png");
-	board[4][0] = new Queen(4, 0, Team.BLACK, this,  "fantasy/png-shad/bq.png");
-	board[5][0] = new Bishop(5, 0, Team.BLACK, this,  "fantasy/png-shad/bb.png");
-	board[6][0] = new Knight(6, 0, Team.BLACK, this,  "fantasy/png-shad/bn.png");
-	board[7][0] = new Rook(7, 0, Team.BLACK, this,  "fantasy/png-shad/br.png");
+       	    for (int column = 0; column < WIDTH; column++) {
+       		board[column][6] = new Pawn(column, 6, Team.WHITE, this, "fantasy/png-shad/wp.png");
+       	    }
 
-	board[0][7] = new Rook(0, 7, Team.WHITE, this, "fantasy/png-shad/wr.png");
-	board[1][7] = new Knight(1, 7, Team.WHITE, this, "fantasy/png-shad/wn.png");
-	board[2][7] = new Bishop(2, 7, Team.WHITE, this, "fantasy/png-shad/wb.png");
-	board[3][7] = new King(3, 7, Team.WHITE, this, "fantasy/png-shad/wk.png");
-	board[4][7] = new Queen(4, 7, Team.WHITE, this, "fantasy/png-shad/wq.png");
-	board[5][7] = new Bishop(5, 7, Team.WHITE, this, "fantasy/png-shad/wb.png");
-	board[6][7] = new Knight(6, 7, Team.WHITE, this, "fantasy/png-shad/wn.png");
-	board[7][7] = new Rook(7, 7, Team.WHITE, this, "fantasy/png-shad/wr.png");
-	}
+       	    // !!!!!!!!!!!!!!!1 Rensa bilder från konstruktorn ?????
+       	    board[0][0] = new Rook(0, 0, Team.BLACK, this, "fantasy/png-shad/br.png");
+       	    board[1][0] = new Knight(1, 0, Team.BLACK, this, "fantasy/png-shad/bn.png");
+       	    board[2][0] = new Bishop(2, 0, Team.BLACK, this, "fantasy/png-shad/bb.png");
+       	    board[3][0] = new King(3, 0, Team.BLACK, this, "fantasy/png-shad/bk.png");
+       	    board[4][0] = new Queen(4, 0, Team.BLACK, this, "fantasy/png-shad/bq.png");
+       	    board[5][0] = new Bishop(5, 0, Team.BLACK, this, "fantasy/png-shad/bb.png");
+       	    board[6][0] = new Knight(6, 0, Team.BLACK, this, "fantasy/png-shad/bn.png");
+       	    board[7][0] = new Rook(7, 0, Team.BLACK, this, "fantasy/png-shad/br.png");
+
+       	    board[0][7] = new Rook(0, 7, Team.WHITE, this, "fantasy/png-shad/wr.png");
+       	    board[1][7] = new Knight(1, 7, Team.WHITE, this, "fantasy/png-shad/wn.png");
+       	    board[2][7] = new Bishop(2, 7, Team.WHITE, this, "fantasy/png-shad/wb.png");
+       	    board[3][7] = new King(3, 7, Team.WHITE, this, "fantasy/png-shad/wk.png");
+       	    board[4][7] = new Queen(4, 7, Team.WHITE, this, "fantasy/png-shad/wq.png");
+       	    board[5][7] = new Bishop(5, 7, Team.WHITE, this, "fantasy/png-shad/wb.png");
+       	    board[6][7] = new Knight(6, 7, Team.WHITE, this, "fantasy/png-shad/wn.png");
+       	    board[7][7] = new Rook(7, 7, Team.WHITE, this, "fantasy/png-shad/wr.png");
+        }
+
 
     public Piece getPiece(int column, int row) {
 	return board[column][row];

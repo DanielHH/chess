@@ -8,6 +8,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class ChessFrame extends JFrame {
@@ -28,7 +32,7 @@ public class ChessFrame extends JFrame {
       this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
       this.setVisible(true);
       this.board = board;
-      gameLoop();
+      timerApplet();
    }
 
 
@@ -60,7 +64,7 @@ public class ChessFrame extends JFrame {
       start.setAccelerator(
                KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
 
-      reset.addActionListener(new ResetListener());
+      reset.addActionListener(new ResetListener(pvp));
       reset.setMnemonic(KeyEvent.VK_R);
       reset.setAccelerator(
                      KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_MASK));
@@ -123,9 +127,25 @@ public class ChessFrame extends JFrame {
    }
 
    private class ResetListener implements ActionListener {
-      public void actionPerformed(final ActionEvent e) {
-
+      JRadioButtonMenuItem pvp;
+      public ResetListener(JRadioButtonMenuItem pvp) {
+         this.pvp = pvp;
       }
+
+      public void actionPerformed(final ActionEvent e) {
+         try { // reset the board to starting state and the player mode to PVP
+	    gameMode = Mode.PVP;
+	    chessComponent.setPlayers(PlayerType.PLAYER, PlayerType.PLAYER);
+	    board.setStartPositions();
+            pvp.setSelected(true);
+	    repaint();
+
+         } catch (IOException e1) {
+	    e1.printStackTrace();
+    } catch (InterruptedException e1) {
+	e1.printStackTrace();
+    }
+}
    }
    private class QuitListener implements ActionListener {
       public void actionPerformed(ActionEvent e) {
@@ -161,21 +181,35 @@ public class ChessFrame extends JFrame {
          }
       }
 
-   private void gameLoop() throws InterruptedException {
-      System.out.println("kjhkjlh");
-      while (true) {
-         if (board.getTurnTeam() == Team.WHITE) {
-            if (chessComponent.player1 == PlayerType.AI) {
-               System.out.println("AI");
-               chessComponent.AIWalk();
-            }
-         }
-         else {
-            if (chessComponent.player2 == PlayerType.AI) {
-               System.out.println("AI");
-                           chessComponent.AIWalk();
-                        }
-         }
-      }
+   public void timerApplet() {
+     Timer time = new Timer();
+     time.schedule(task, new Date(), 1000);
    }
+
+  final TimerTask task = new TimerTask() {public void run() {
+      try {
+   gameAI();
+      } catch (InterruptedException e) {
+   e.printStackTrace();
+      }
+  }};
+
+     //Schedule a task to runrepeatedly ,starting now,
+     // 500ms fromexecution n ends to execution n+1 begins
+
+  private void gameAI() throws InterruptedException {
+        if (board.getTurnTeam() == Team.WHITE) {
+           if (chessComponent.player1 == PlayerType.AI) {
+              chessComponent.AIWalk();
+           }
+        }
+        else {
+           if (chessComponent.player2 == PlayerType.AI) {
+	chessComponent.AIWalk();
+    }
+        }
+  }
 }
+
+
+
