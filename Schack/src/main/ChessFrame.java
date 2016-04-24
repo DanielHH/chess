@@ -1,5 +1,9 @@
 package main;
 
+import java.awt.event.InputEvent;
+
+import java.awt.event.KeyEvent;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -32,20 +36,40 @@ public class ChessFrame extends JFrame {
       final JMenuBar menuBar = new JMenuBar();
 
       final JMenu options = new JMenu("Options");
-      final JMenuItem start = new JMenuItem("Start game", 'S');
+      final JMenuItem start = new JMenuItem("Start game");
       final JMenuItem load = new JMenuItem("Load game", 'L');
       final JMenuItem save = new JMenuItem("Save", 'S');
       final JMenuItem reset = new JMenuItem("Reset", 'R');
-      final JMenuItem quit = new JMenuItem("Quit", 'Q');
+      final JMenuItem quit = new JMenuItem("Quit");
 
       final JMenu mode = new JMenu("Mode");
-      final JMenuItem pvp = new JMenuItem("PvP");
-      final JMenuItem pvai = new JMenuItem("PvAI");
-      final JMenuItem aivai = new JMenuItem("AIvAI");
-      final JMenuItem editor = new JMenuItem("Editor");
+      final JRadioButtonMenuItem pvp = new JRadioButtonMenuItem("PvP");
+      final JRadioButtonMenuItem pvai = new JRadioButtonMenuItem("PvAI");
+      final JRadioButtonMenuItem aivai = new JRadioButtonMenuItem("AIvAI");
+      final JRadioButtonMenuItem editor = new JRadioButtonMenuItem("Editor");
+      final ButtonGroup whichMode = new ButtonGroup();
+      whichMode.add(pvp);
+      whichMode.add(pvai);
+      whichMode.add(aivai);
+      whichMode.add(editor);
+
+
 
       start.addActionListener(new StartListener());
+      start.setMnemonic(KeyEvent.VK_S);
+      start.setAccelerator(
+               KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
+
+      reset.addActionListener(new ResetListener());
+      reset.setMnemonic(KeyEvent.VK_R);
+      reset.setAccelerator(
+                     KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_MASK));
+
       quit.addActionListener(new QuitListener());
+      quit.setMnemonic(KeyEvent.VK_Q);
+      quit.setAccelerator(
+         KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
+
       options.add(start);
       options.add(load);
       options.add(save);
@@ -54,9 +78,23 @@ public class ChessFrame extends JFrame {
       menuBar.add(options);
 
       pvp.addActionListener(new PvpListener());
+      pvp.setSelected(true);
+      pvp.setMnemonic(KeyEvent.VK_P);
+      pvp.setAccelerator(
+               KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_MASK));
+
       pvai.addActionListener(new PvaiListener());
+      pvai.setMnemonic(KeyEvent.VK_V);
+      pvai.setAccelerator(
+               KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.CTRL_MASK));
+
       aivai.addActionListener(new AivaiListener());
+      aivai.setMnemonic(KeyEvent.VK_A);
+      aivai.setAccelerator(
+               KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_MASK));
+
       editor.addActionListener(new EditorListener());
+
       mode.add(pvp);
       mode.add(pvai);
       mode.add(aivai);
@@ -64,6 +102,7 @@ public class ChessFrame extends JFrame {
       menuBar.add(mode);
       this.setJMenuBar(menuBar);
    }
+
 
    private class StartListener implements ActionListener {
       public void actionPerformed(final ActionEvent e) {
@@ -83,6 +122,11 @@ public class ChessFrame extends JFrame {
       }
    }
 
+   private class ResetListener implements ActionListener {
+      public void actionPerformed(final ActionEvent e) {
+
+      }
+   }
    private class QuitListener implements ActionListener {
       public void actionPerformed(ActionEvent e) {
           int answer = JOptionPane.showConfirmDialog(frame, "Are you sure?", "Quit?",
