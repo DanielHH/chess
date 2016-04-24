@@ -205,7 +205,7 @@ public class ChessFrame extends JFrame {
         }
         else {
            if (chessComponent.player2 == PlayerType.AI) {
-	chessComponent.AIWalk();
+	    chessComponent.AIWalk();
     }
         }
   }
