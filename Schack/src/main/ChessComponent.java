@@ -33,6 +33,7 @@ public class ChessComponent extends JComponent implements BoardListener {
     }
 
     public void tryMove(int column, int row) throws InterruptedException {
+        // only allow clicks from current player
         Piece newPiece = board.getPiece(column, row);
         if (clickedPiece == null) { // First click
             if (newPiece != null && newPiece.team == board.getTurnTeam()) { // is a piece and the same team as the current turn's team
