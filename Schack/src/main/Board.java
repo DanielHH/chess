@@ -8,8 +8,9 @@ Schackbrädet är rutat i två färger.
 
 
 import java.io.IOException;
+import java.io.Serializable;
 
-public class Board
+public class Board implements Serializable
 {
     public static final int WIDTH = 8;
     public static final int HEIGHT = 8;
@@ -38,31 +39,30 @@ public class Board
     	board = new Piece[WIDTH][HEIGHT];
 
     	for (int column = 0; column < WIDTH; column++) {
-    	    board[column][1] = new Pawn(column, 1, Team.BLACK, this, "fantasy/png-shad/bp.png");
+    	    board[column][1] = new Pawn(column, 1, Team.BLACK, this);
     	}
 
        	    for (int column = 0; column < WIDTH; column++) {
-       		board[column][6] = new Pawn(column, 6, Team.WHITE, this, "fantasy/png-shad/wp.png");
+       		board[column][6] = new Pawn(column, 6, Team.WHITE, this);
        	    }
 
-       	    // !!!!!!!!!!!!!!!1 Rensa bilder från konstruktorn ?????
-       	    board[0][0] = new Rook(0, 0, Team.BLACK, this, "fantasy/png-shad/br.png");
-       	    board[1][0] = new Knight(1, 0, Team.BLACK, this, "fantasy/png-shad/bn.png");
-       	    board[2][0] = new Bishop(2, 0, Team.BLACK, this, "fantasy/png-shad/bb.png");
-       	    board[3][0] = new King(3, 0, Team.BLACK, this, "fantasy/png-shad/bk.png");
-       	    board[4][0] = new Queen(4, 0, Team.BLACK, this, "fantasy/png-shad/bq.png");
-       	    board[5][0] = new Bishop(5, 0, Team.BLACK, this, "fantasy/png-shad/bb.png");
-       	    board[6][0] = new Knight(6, 0, Team.BLACK, this, "fantasy/png-shad/bn.png");
-       	    board[7][0] = new Rook(7, 0, Team.BLACK, this, "fantasy/png-shad/br.png");
+       	    board[0][0] = new Rook(0, 0, Team.BLACK, this);
+       	    board[1][0] = new Knight(1, 0, Team.BLACK, this);
+       	    board[2][0] = new Bishop(2, 0, Team.BLACK, this);
+       	    board[3][0] = new King(3, 0, Team.BLACK, this);
+       	    board[4][0] = new Queen(4, 0, Team.BLACK, this);
+       	    board[5][0] = new Bishop(5, 0, Team.BLACK, this);
+       	    board[6][0] = new Knight(6, 0, Team.BLACK, this);
+       	    board[7][0] = new Rook(7, 0, Team.BLACK, this);
 
-       	    board[0][7] = new Rook(0, 7, Team.WHITE, this, "fantasy/png-shad/wr.png");
-       	    board[1][7] = new Knight(1, 7, Team.WHITE, this, "fantasy/png-shad/wn.png");
-       	    board[2][7] = new Bishop(2, 7, Team.WHITE, this, "fantasy/png-shad/wb.png");
-       	    board[3][7] = new King(3, 7, Team.WHITE, this, "fantasy/png-shad/wk.png");
-       	    board[4][7] = new Queen(4, 7, Team.WHITE, this, "fantasy/png-shad/wq.png");
-       	    board[5][7] = new Bishop(5, 7, Team.WHITE, this, "fantasy/png-shad/wb.png");
-       	    board[6][7] = new Knight(6, 7, Team.WHITE, this, "fantasy/png-shad/wn.png");
-       	    board[7][7] = new Rook(7, 7, Team.WHITE, this, "fantasy/png-shad/wr.png");
+       	    board[0][7] = new Rook(0, 7, Team.WHITE, this);
+       	    board[1][7] = new Knight(1, 7, Team.WHITE, this);
+       	    board[2][7] = new Bishop(2, 7, Team.WHITE, this);
+       	    board[3][7] = new King(3, 7, Team.WHITE, this);
+       	    board[4][7] = new Queen(4, 7, Team.WHITE, this);
+       	    board[5][7] = new Bishop(5, 7, Team.WHITE, this);
+       	    board[6][7] = new Knight(6, 7, Team.WHITE, this);
+       	    board[7][7] = new Rook(7, 7, Team.WHITE, this);
         }
 
 
@@ -123,6 +123,42 @@ public class Board
 	    }
 	}
 	return king;
+    }
+
+    public void setLoadedBoard(Board loadedBoard) {
+	turnCounter = loadedBoard.turnCounter;
+
+	// replace all pieces in the current
+	// board with those in the loaded board
+	for (int i = 0; i < WIDTH; i++) {
+	    for (int j = 0; j < HEIGHT; j++) {
+		Piece tempPiece = loadedBoard.board[i][j];
+		if (tempPiece != null) { // there is a piece
+		    if (tempPiece.piece == PieceType.PAWN) {
+			board[i][j] = new Pawn(i, j, tempPiece.team, this);
+		    }
+		    else if (tempPiece.piece == PieceType.BISHOP) {
+			board[i][j] = new Bishop(i, j, tempPiece.team, this);
+		    }
+		    else if (tempPiece.piece == PieceType.KING) {
+			board[i][j] = new King(i, j, tempPiece.team, this);
+		    }
+		    else if (tempPiece.piece == PieceType.QUEEN) {
+			board[i][j] = new Queen(i, j, tempPiece.team, this);
+		    }
+		    else if (tempPiece.piece == PieceType.ROOK) {
+			board[i][j] = new Rook(i, j, tempPiece.team, this);
+		    }
+		    else if (tempPiece.piece == PieceType.KNIGHT) {
+			board[i][j] = new Knight(i, j, tempPiece.team, this);
+		    }
+		    board[i][j].hasMoved = tempPiece.hasMoved;
+		}
+		else { // no piece
+		    board[i][j] = null;
+		}
+	    }
+	}
     }
 
     public void checksForCheck() {

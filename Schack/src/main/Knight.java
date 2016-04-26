@@ -1,10 +1,12 @@
 package main;
 
-import java.io.IOException;
-
 public class Knight extends Piece {
-    public Knight(int column, int row, Team team, Board board, String imageLocation) throws IOException {
-	super(column, row, team, board, PieceType.KNIGHT, imageLocation);
+
+    final static String blImageLocation = "fantasy/png-shad/bn.png";
+    final static String whImageLocation = "fantasy/png-shad/wn.png";
+
+    public Knight(int column, int row, Team team, Board board) {
+	super(column, row, team, board, PieceType.KNIGHT, blImageLocation, whImageLocation);
     }
 
     @Override

@@ -1,10 +1,12 @@
 package main;
 
-import java.io.IOException;
-
 public class Queen extends Piece {
-    public Queen(int column, int row, Team team, Board board, String imageLocation) throws IOException {
-	super(column, row, team, board, PieceType.QUEEN, imageLocation);
+
+    final static String blImageLocation = "fantasy/png-shad/bq.png";
+    final static String whImageLocation = "fantasy/png-shad/wq.png";
+
+    public Queen(int column, int row, Team team, Board board) {
+	super(column, row, team, board, PieceType.QUEEN, blImageLocation, whImageLocation);
     }
 
     @Override

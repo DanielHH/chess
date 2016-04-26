@@ -1,12 +1,11 @@
 package main;
 
-import java.io.IOException;
+public class Pawn extends Piece {
+    final static String blImageLocation = "fantasy/png-shad/bp.png";
+    final static String whImageLocation = "fantasy/png-shad/wp.png";
 
-public class Pawn extends Piece
-{
-
-    public Pawn(int column, int row, Team team, Board board, String imageLocation) throws IOException {
-	super(column, row, team, board, PieceType.PAWN, imageLocation);
+    public Pawn(int column, int row, Team team, Board board) {
+	super(column, row, team, board, PieceType.PAWN, blImageLocation, whImageLocation);
     }
 
     @Override

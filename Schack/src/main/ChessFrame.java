@@ -20,7 +20,7 @@ public class ChessFrame extends JFrame {
    private Mode gameMode = Mode.PVP;
    private Board board;
 
-   public ChessFrame(Board board) throws InterruptedException {
+   public ChessFrame(Board board) {
       super("Schack");
       this.setLayout(new BorderLayout());
       createMenus();
@@ -73,6 +73,16 @@ public class ChessFrame extends JFrame {
       quit.setMnemonic(KeyEvent.VK_Q);
       quit.setAccelerator(
          KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
+
+      load.addActionListener(new LoadListener());
+      load.setMnemonic(KeyEvent.VK_L);
+      load.setAccelerator(
+               KeyStroke.getKeyStroke(KeyEvent.VK_L, InputEvent.CTRL_MASK));
+
+      save.addActionListener(new SaveListener());
+      save.setMnemonic(KeyEvent.VK_S);
+      save.setAccelerator(
+               KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.ALT_MASK));
 
       options.add(start);
       options.add(load);
@@ -157,6 +167,23 @@ public class ChessFrame extends JFrame {
       }
    }
 
+   private class LoadListener implements ActionListener {
+      public void actionPerformed(ActionEvent e) {
+         Board loadedBoard = SaveAndLoad.load();
+         if (loadedBoard != null) {
+            board.setLoadedBoard(loadedBoard);
+            repaint();
+         }
+      }
+   }
+
+
+   private class SaveListener implements ActionListener {
+      public void actionPerformed(final ActionEvent e) {
+               SaveAndLoad.save(board);
+            }
+   }
+
    private class PvpListener implements ActionListener {
       public void actionPerformed(final ActionEvent e) {
          gameMode = Mode.PVP;
@@ -188,9 +215,9 @@ public class ChessFrame extends JFrame {
 
   final TimerTask task = new TimerTask() {public void run() {
       try {
-   gameAI();
+         gameAI();
       } catch (InterruptedException e) {
-   e.printStackTrace();
+         e.printStackTrace();
       }
   }};
 

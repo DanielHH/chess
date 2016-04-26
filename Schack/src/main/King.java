@@ -1,17 +1,18 @@
 package main;
 
-
-import java.io.IOException;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 // !!!!!! KOLLAR INTE OM KUNGEN ÄR HOTAD !!!!!!!!
-public class King extends Piece
-{
-    public King(int column, int row, Team team, Board board, String imageLocation) throws IOException {
-	super(column, row, team, board, PieceType.KING, imageLocation);
+public class King extends Piece {
+
+    final static String blImageLocation = "fantasy/png-shad/bk.png";
+    final static String whImageLocation = "fantasy/png-shad/wk.png";
+
+    public King(int column, int row, Team team, Board board) {
+	super(column, row, team, board, PieceType.KING, blImageLocation, whImageLocation);
     }
 
     @Override

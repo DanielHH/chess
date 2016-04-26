@@ -1,10 +1,12 @@
 package main;
 
-import java.io.IOException;
-
 public class Bishop extends Piece {
-    public Bishop(int column, int row, Team team, Board board, String imageLocation) throws IOException {
-	super(column, row, team, board, PieceType.BISHOP, imageLocation);
+
+    final static String blImageLocation = "fantasy/png-shad/bb.png";
+    final static String whImageLocation = "fantasy/png-shad/wb.png";
+
+    public Bishop(int column, int row, Team team, Board board) {
+	super(column, row, team, board, PieceType.BISHOP, blImageLocation, whImageLocation);
     }
 
     public boolean canMove(int newColumn, int newRow) {

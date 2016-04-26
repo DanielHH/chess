@@ -1,12 +1,12 @@
 package main;
 
-import java.io.IOException;
-
 public class Rook extends Piece {
 
+    final static String blImageLocation = "fantasy/png-shad/br.png";
+    final static String whImageLocation = "fantasy/png-shad/wr.png";
 
-    public Rook(int column, int row, Team team, Board board, String imageLocation) throws IOException {
-	super(column, row, team, board, PieceType.ROOK, imageLocation);
+    public Rook(int column, int row, Team team, Board board) {
+	super(column, row, team, board, PieceType.ROOK, blImageLocation, whImageLocation);
     }
 
     @Override
