@@ -44,7 +44,6 @@ public class ChessFrame extends JFrame {
       final JMenuBar menuBar = new JMenuBar();
 
       final JMenu options = new JMenu("Options");
-      final JMenuItem start = new JMenuItem("Start game");
       final JMenuItem load = new JMenuItem("Load game");
       final JMenuItem save = new JMenuItem("Save");
       final JMenuItem reset = new JMenuItem("Reset");
@@ -63,10 +62,6 @@ public class ChessFrame extends JFrame {
 
 
 
-      	start.addActionListener(new StartListener());
-      	start.setMnemonic(KeyEvent.VK_S);
-      	start.setAccelerator(
-               	KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
 
       reset.addActionListener(new ResetListener(pvp));
       reset.setMnemonic(KeyEvent.VK_R);
@@ -78,7 +73,6 @@ public class ChessFrame extends JFrame {
       quit.setAccelerator(
          KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
 
-      options.add(start);
       options.add(load);
       options.add(save);
       options.add(reset);
@@ -113,23 +107,6 @@ public class ChessFrame extends JFrame {
       menuBar.add(mode);
       this.setJMenuBar(menuBar);
    }
-
-
-   private class StartListener implements ActionListener {
-      public void actionPerformed(final ActionEvent e) {
-         if (chessComponent.getGameMode() == Mode.PVP) {
-            chessComponent.setPlayers(PlayerType.PLAYER, PlayerType.PLAYER);
-         }
-         else if(chessComponent.getGameMode() == Mode.PVAI) {
-            chessComponent.setPlayers(PlayerType.PLAYER, PlayerType.AI);
-         }
-         else if (chessComponent.getGameMode() == Mode.AIVAI) {
-            chessComponent.setPlayers(PlayerType.AI, PlayerType.AI);
-
-         }
-      }
-   }
-
 
 
    private class ResetListener implements ActionListener {
@@ -173,18 +150,21 @@ public class ChessFrame extends JFrame {
    private class PvpListener implements ActionListener {
       public void actionPerformed(final ActionEvent e) {
          chessComponent.setGameMode(Mode.PVP);
+	  chessComponent.setPlayers(PlayerType.PLAYER, PlayerType.PLAYER);
       }
    }
 
    private class PvaiListener implements ActionListener {
          public void actionPerformed(final ActionEvent e) {
 	     chessComponent.setGameMode(Mode.PVAI);
+	     chessComponent.setPlayers(PlayerType.PLAYER, PlayerType.AI);
          }
       }
 
    private class AivaiListener implements ActionListener {
          public void actionPerformed(final ActionEvent e) {
 	     chessComponent.setGameMode(Mode.AIVAI);
+	     chessComponent.setPlayers(PlayerType.AI, PlayerType.AI);
          }
       }
 
