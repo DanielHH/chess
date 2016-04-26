@@ -5,5 +5,5 @@ package main;
  */
 public enum PlayerType
 {
-    PLAYER, AI, EDITOR
+    PLAYER, AI,
 }

@@ -13,6 +13,15 @@ public class ChessComponent extends JComponent implements BoardListener {
     private Piece clickedPiece;
     public PlayerType player1 = PlayerType.PLAYER;
     public PlayerType player2 = PlayerType.PLAYER;
+    private Mode gameMode = Mode.PVP;
+
+    public Mode getGameMode() {
+        return gameMode;
+    }
+
+    public void setGameMode(final Mode gameMode) {
+        this.gameMode = gameMode;
+    }
 
     public ChessComponent(Board board) {
         this.board = board;
@@ -37,19 +46,30 @@ public class ChessComponent extends JComponent implements BoardListener {
     }
 
     public void tryMove(int column, int row) throws InterruptedException {
-        Piece newPiece = board.getPiece(column, row);
-        if (clickedPiece == null) { // First click
-            if (newPiece != null && newPiece.team == board.getTurnTeam()) { // is a piece and the same team as the current turn's team
-                clickedPiece = newPiece;
-                board.markPiece();
-            }
-        } else { // a clicked piece exists
-            if (newPiece != null && newPiece != clickedPiece) {  // newPiece is a new piece
-                if (clickedPiece.team == newPiece.team ) { // same team; switch marked piece
+        if (gameMode != Mode.PAUSE) {
+            Piece newPiece = board.getPiece(column, row);
+            if (clickedPiece == null) { // First click
+                if (newPiece != null && newPiece.team == board.getTurnTeam()) { // is a piece and the same team as the current turn's team
                     clickedPiece = newPiece;
                     board.markPiece();
                 }
-                else { // piece belong to the other team
+            } else { // a clicked piece exists
+                if (newPiece != null && newPiece != clickedPiece) {  // newPiece is a new piece
+                    if (clickedPiece.team == newPiece.team) { // same team; switch marked piece
+                        clickedPiece = newPiece;
+                        board.markPiece();
+                    } else { // piece belong to the other team
+                        boolean moved = clickedPiece.canMove(column, row);
+                        if (moved) { // remove mark
+                            try {
+                                clickedPiece.move(column, row);
+                            } catch (InterruptedException e1) {
+                                e1.printStackTrace();
+                            }
+                            clickedPiece = null;
+                        }
+                    }
+                } else { // no new piece
                     boolean moved = clickedPiece.canMove(column, row);
                     if (moved) { // remove mark
                         try {
@@ -59,16 +79,6 @@ public class ChessComponent extends JComponent implements BoardListener {
                         }
                         clickedPiece = null;
                     }
-                }
-            } else { // no new piece
-                boolean moved = clickedPiece.canMove(column, row);
-                if (moved) { // remove mark
-                    try {
-                        clickedPiece.move(column, row);
-                    } catch (InterruptedException e1) {
-                        e1.printStackTrace();
-                    }
-                    clickedPiece = null;
                 }
             }
         }

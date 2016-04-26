@@ -2,5 +2,5 @@ package main;
 
 public enum Mode
 {
-    PVP, PVAI, AIVAI, EDITOR
+    PVP, PVAI, AIVAI, PAUSE
 }

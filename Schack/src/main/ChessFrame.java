@@ -18,7 +18,6 @@ import java.util.TimerTask;
 public class ChessFrame extends JFrame {
    	public ChessComponent chessComponent;
    	private JFrame frame;
-   	private Mode gameMode = Mode.PVP;
    	private Board board;
     	private Timer timer;
     	private TimerTask runsGameAI;
@@ -46,28 +45,28 @@ public class ChessFrame extends JFrame {
 
       final JMenu options = new JMenu("Options");
       final JMenuItem start = new JMenuItem("Start game");
-      final JMenuItem load = new JMenuItem("Load game", 'L');
-      final JMenuItem save = new JMenuItem("Save", 'S');
-      final JMenuItem reset = new JMenuItem("Reset", 'R');
+      final JMenuItem load = new JMenuItem("Load game");
+      final JMenuItem save = new JMenuItem("Save");
+      final JMenuItem reset = new JMenuItem("Reset");
       final JMenuItem quit = new JMenuItem("Quit");
 
       final JMenu mode = new JMenu("Mode");
       final JRadioButtonMenuItem pvp = new JRadioButtonMenuItem("PvP");
       final JRadioButtonMenuItem pvai = new JRadioButtonMenuItem("PvAI");
       final JRadioButtonMenuItem aivai = new JRadioButtonMenuItem("AIvAI");
-      final JRadioButtonMenuItem editor = new JRadioButtonMenuItem("Editor");
+       final JRadioButtonMenuItem pause = new JRadioButtonMenuItem("Pause");
       final ButtonGroup whichMode = new ButtonGroup();
       whichMode.add(pvp);
       whichMode.add(pvai);
       whichMode.add(aivai);
-      whichMode.add(editor);
+      whichMode.add(pause);
 
 
 
-      start.addActionListener(new StartListener());
-      start.setMnemonic(KeyEvent.VK_S);
-      start.setAccelerator(
-               KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
+      	start.addActionListener(new StartListener());
+      	start.setMnemonic(KeyEvent.VK_S);
+      	start.setAccelerator(
+               	KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
 
       reset.addActionListener(new ResetListener(pvp));
       reset.setMnemonic(KeyEvent.VK_R);
@@ -102,12 +101,15 @@ public class ChessFrame extends JFrame {
       aivai.setAccelerator(
                KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_MASK));
 
-      editor.addActionListener(new EditorListener());
+       pause.addActionListener(new PauseListener());
+      	pause.setMnemonic(KeyEvent.VK_P);
+      	pause.setAccelerator(
+		KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.ALT_MASK));
 
       mode.add(pvp);
       mode.add(pvai);
       mode.add(aivai);
-      mode.add(editor);
+       mode.add(pause);
       menuBar.add(mode);
       this.setJMenuBar(menuBar);
    }
@@ -115,21 +117,20 @@ public class ChessFrame extends JFrame {
 
    private class StartListener implements ActionListener {
       public void actionPerformed(final ActionEvent e) {
-         if (gameMode == Mode.PVP) {
+         if (chessComponent.getGameMode() == Mode.PVP) {
             chessComponent.setPlayers(PlayerType.PLAYER, PlayerType.PLAYER);
          }
-         else if(gameMode == Mode.PVAI) {
+         else if(chessComponent.getGameMode() == Mode.PVAI) {
             chessComponent.setPlayers(PlayerType.PLAYER, PlayerType.AI);
          }
-         else if (gameMode == Mode.AIVAI) {
+         else if (chessComponent.getGameMode() == Mode.AIVAI) {
             chessComponent.setPlayers(PlayerType.AI, PlayerType.AI);
 
          }
-         else if(gameMode == Mode.EDITOR) {
-            chessComponent.setPlayers(PlayerType.EDITOR, PlayerType.EDITOR);
-         }
       }
    }
+
+
 
    private class ResetListener implements ActionListener {
       JRadioButtonMenuItem pvp;
@@ -140,11 +141,13 @@ public class ChessFrame extends JFrame {
       public void actionPerformed(final ActionEvent e) {
          try { // reset the board to starting state and the player mode to PVP
 	     pauseTimer();
-	    gameMode = Mode.PVP;
-	    chessComponent.setPlayers(PlayerType.PLAYER, PlayerType.PLAYER);
-	    board.setStartPositions();
-            pvp.setSelected(true);
-	    repaint();
+	     chessComponent.setGameMode(Mode.PVP);;
+	     chessComponent.setPlayers(PlayerType.PLAYER, PlayerType.PLAYER);
+	     board.setStartPositions();
+	     pvp.setSelected(true);
+	     board.defendKing = false;
+	     repaint();
+	     resumeTimer();
 
 
          }
@@ -154,7 +157,7 @@ public class ChessFrame extends JFrame {
 	 catch (InterruptedException e1) {
 		e1.printStackTrace();
     	}
-	  resumeTimer();
+
       }
    }
    private class QuitListener implements ActionListener {
@@ -169,28 +172,27 @@ public class ChessFrame extends JFrame {
 
    private class PvpListener implements ActionListener {
       public void actionPerformed(final ActionEvent e) {
-         gameMode = Mode.PVP;
+         chessComponent.setGameMode(Mode.PVP);
       }
    }
 
    private class PvaiListener implements ActionListener {
          public void actionPerformed(final ActionEvent e) {
-            gameMode = Mode.PVAI;
+	     chessComponent.setGameMode(Mode.PVAI);
          }
       }
 
    private class AivaiListener implements ActionListener {
          public void actionPerformed(final ActionEvent e) {
-            gameMode = Mode.AIVAI;
+	     chessComponent.setGameMode(Mode.AIVAI);
          }
       }
 
-   private class EditorListener implements ActionListener {
-         public void actionPerformed(final ActionEvent e) {
-            gameMode = Mode.EDITOR;
-         }
-      }
-
+    private class PauseListener implements ActionListener {
+	public void actionPerformed(final ActionEvent e) {
+	    chessComponent.setGameMode(Mode.PAUSE);
+	}
+    }
 
 
     public void pauseTimer() {

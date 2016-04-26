@@ -76,15 +76,16 @@ public class Board
     }
 
     public void actuallyMovesPiece(int oldColumn, int oldRow, int newColumn, int newRow) throws InterruptedException {
-	board[newColumn][newRow] = board[oldColumn][oldRow];
-	board[oldColumn][oldRow] = null;
-	//if (defendKing == true) {
-	//    System.out.println("HEll you can't move like this!");
-	//}
-	//else {
+
+	if (defendKing == true) {
+	    System.out.println("HEll you can't move like this!");
+	}
+	else {
+	    board[newColumn][newRow] = board[oldColumn][oldRow];
+	    board[oldColumn][oldRow] = null;
 	    nextTurn();
 	    notifyListeners();
-	//}
+	}
     }
 
     public void addBoardListener(BoardListener bl) {
@@ -149,11 +150,8 @@ public class Board
     	}
     	else if (king.isCheck()) {
 		// show the user
-		//defendKing = true;
+		defendKing = true;
     	}
     }
 
-    public void defendKingMode() {
-
-    }
 }
