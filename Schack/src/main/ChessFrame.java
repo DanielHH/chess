@@ -21,7 +21,7 @@ public class ChessFrame extends JFrame {
    	private Board board;
     	private Timer timer;
     	private TimerTask runsGameAI;
-    	private TimerTask runsChecksForCheck;
+    	//private TimerTask runsChecksForCheck;
 
    public ChessFrame(Board board) throws InterruptedException {
       super("Schack");
@@ -122,7 +122,6 @@ public class ChessFrame extends JFrame {
 	     chessComponent.setPlayers(PlayerType.PLAYER, PlayerType.PLAYER);
 	     board.setStartPositions();
 	     pvp.setSelected(true);
-	     board.defendKing = false;
 	     repaint();
 	     resumeTimer();
 
@@ -183,7 +182,7 @@ public class ChessFrame extends JFrame {
         timer = new Timer();
 	createNewTimerTasks();
         timer.schedule(runsGameAI, new Date(), 1000 );
-        timer.schedule(runsChecksForCheck, new Date(), 500);
+        //timer.schedule(runsChecksForCheck, new Date(), 500);
     }
 
     private void createNewTimerTasks() {
@@ -196,12 +195,12 @@ public class ChessFrame extends JFrame {
 		}
 	    }
 	};
-
+/*
 	runsChecksForCheck = new TimerTask() {
 	    public void run() {
 		board.checksForCheck();
 	    }
-	};
+	};*/
     }
 
      //Schedule a task to run repeatedly, starting now,

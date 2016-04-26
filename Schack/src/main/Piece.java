@@ -65,6 +65,7 @@ public abstract class Piece
             }
         }
         board.actuallyMovesPiece(column, row, newColumn, newRow);
+        System.out.println("jghkjfjhgdfdfhf");
         column = newColumn;
         row = newRow;
         if (!this.hasMoved()) {

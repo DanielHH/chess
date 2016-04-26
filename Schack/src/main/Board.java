@@ -36,6 +36,7 @@ public class Board
 
     public void setStartPositions() throws IOException, InterruptedException {
     	turnCounter = 0;
+	defendKing = false;
     	board = new Piece[WIDTH][HEIGHT];
 
     	for (int column = 0; column < WIDTH; column++) {
@@ -77,10 +78,27 @@ public class Board
 
     public void actuallyMovesPiece(int oldColumn, int oldRow, int newColumn, int newRow) throws InterruptedException {
 
+	checksForCheck();
 	if (defendKing == true) {
-	    System.out.println("HEll you can't move like this!");
+	    System.out.println("first line defend");
+	    board[newColumn][newRow] = board[oldColumn][oldRow];
+	    board[oldColumn][oldRow] = null;
+	    checksForCheck();
+	    if (defendKing == false) {
+		System.out.println("king is safe!!");
+		notifyListeners();
+		nextTurn();
+
+	    }
+	    else {
+		board[oldColumn][oldRow] = board[newColumn][newRow];
+		board[newColumn][newRow] = null;
+		System.out.println("still in check, maddafakka");
+	    }
+
 	}
 	else {
+	    System.out.println("Totally safe");
 	    board[newColumn][newRow] = board[oldColumn][oldRow];
 	    board[oldColumn][oldRow] = null;
 	    nextTurn();
@@ -135,6 +153,7 @@ public class Board
 
     public void checksForCheck() {
     	King king;
+	defendKing = false;
 
 
     	if (getTurnCounter() % 2 == 0) { // white's turn
