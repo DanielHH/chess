@@ -1,9 +1,9 @@
 package main;
 
-/*
-Det finns en array som motsvarar ett schackbräde.
-Schackbrädet kan ritas ut grafiskt.
-Schackbrädet är rutat i två färger.
+/**
+* Det finns en array som motsvarar ett schackbräde.
+* Schackbrädet kan ritas ut grafiskt.
+* Schackbrädet är rutat i två färger.
 */
 
 
@@ -16,6 +16,7 @@ public class Board
     private int turnCounter = 0;
     private Piece[][] board;
     public BoardListener[] boardListenerList = new BoardListener[1];
+    public boolean defendKing = false;
 
     public Team getTurnTeam() {
 	Team color = Team.WHITE;
@@ -77,9 +78,13 @@ public class Board
     public void actuallyMovesPiece(int oldColumn, int oldRow, int newColumn, int newRow) throws InterruptedException {
 	board[newColumn][newRow] = board[oldColumn][oldRow];
 	board[oldColumn][oldRow] = null;
-	//checksForCheck();
-	nextTurn();
-	notifyListeners();
+	//if (defendKing == true) {
+	//    System.out.println("HEll you can't move like this!");
+	//}
+	//else {
+	    nextTurn();
+	    notifyListeners();
+	//}
     }
 
     public void addBoardListener(BoardListener bl) {
@@ -125,21 +130,30 @@ public class Board
 	return king;
     }
 
+
+
     public void checksForCheck() {
-    King king;
-    if (getTurnCounter() % 2 == 0) { // white's turn
-        king = getKing(Team.WHITE);
+    	King king;
+
+
+    	if (getTurnCounter() % 2 == 0) { // white's turn
+        	king = getKing(Team.WHITE);
+    	}
+    	else { // black's turn
+        	king = getKing(Team.BLACK);
+    	}
+
+    	if (king.isCheckMate()) {
+        	// gameover
+        	System.out.println("checkmate");
+    	}
+    	else if (king.isCheck()) {
+		// show the user
+		//defendKing = true;
+    	}
     }
-    else { // black's turn
-        king = getKing(Team.BLACK);
-    }
-    if (king.isCheckMate()) {
-        // gameover
-        System.out.println("checkmate");
-    }
-    else if (king.isCheck()) {
-	// show the user
-	System.out.println("check");
-    }
+
+    public void defendKingMode() {
+
     }
 }

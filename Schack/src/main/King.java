@@ -90,8 +90,11 @@ public class King extends Piece
 
     public boolean isCheckMate() {
 	boolean checkMate = false;
-	if (unthreatenedPlaces().isEmpty()) { // king cant move
-	    // need to check if teammate can save the king
+
+	if (isCheck() == true) {
+	    if (unthreatenedPlaces().isEmpty()) { // king cant move
+		// need to check if teammate can save the king
+	    }
 	}
 	return checkMate;
     }
