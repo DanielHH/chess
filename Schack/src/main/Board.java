@@ -87,8 +87,18 @@ public class Board
 	    board[newColumn][newRow] = tempPiece;
 	    board[oldColumn][oldRow] = null;
 	    nextTurn();
-	    notifyListeners();
+		notifyListeners();
 	}
+	/*
+
+	PLACEMENT?!?!?!?!!??!?!?!?
+
+	if (getKing(getTurnTeam()).isCheckMate()) {
+	// gameover
+	System.out.println("checkmate");
+}
+	else { // continue
+	*/
 
 
     public void addBoardListener(BoardListener bl) {
@@ -132,6 +142,7 @@ public class Board
 	    }
 	}
 	return king;
+
     }
 	public void pawnUpgrade(Pawn pawn) {
 		String imal = "fantasy/png-shad/bq.png";
@@ -148,22 +159,11 @@ public class Board
     public void checksForCheck() {
     	King king;
 		defendKing = false;
+		king = getKing(getTurnTeam());
 
-
-    	if (getTurnCounter() % 2 == 0) { // white's turn
-        	king = getKing(Team.WHITE);
-    	}
-    	else { // black's turn
-        	king = getKing(Team.BLACK);
-    	}
-
-    	if (king.isCheckMate()) {
-        	// gameover
-        	System.out.println("checkmate");
-    	}
-    	else if (king.isCheck()) {
+    	if (king.isCheck()) {
 		// show the user
-		defendKing = true;
+			defendKing = true;
     	}
     }
 

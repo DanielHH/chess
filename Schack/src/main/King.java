@@ -88,14 +88,28 @@ public class King extends Piece
 	return isThreatened(column, row);
     }
 
-    public boolean isCheckMate() {
-	boolean checkMate = false;
+	public boolean isCheckMate() {
+		boolean checkMate = true;
+		// check if the king can save itself or if
+		// a teammate can save the king
+		for (int i = 0; i < Board.WIDTH; i++) {
+			for (int j = 0; j < Board.HEIGHT; j++) {
+				Piece tempPiece = board.getPiece(i, j);
+				if (tempPiece != null) {
+					if (tempPiece.team == team) { // same team
+						List<Map.Entry<Integer,Integer>> legalmoves = tempPiece.legalMoves();
+						// need to check if there is a legal move that is also safe,
+						// if not then it's checkmate
+						for (Map.Entry<Integer, Integer> move: legalmoves) {
+							if (tempPiece.safeMove(move.getKey(), move.getValue())) {
+								checkMate = false;
+							}
+						}
 
-	if (isCheck() == true) {
-	    if (unthreatenedPlaces().isEmpty()) { // king cant move
-		// need to check if teammate can save the king
-	    }
+					}
+				}
+			}
+		}
+		return checkMate;
 	}
-	return checkMate;
-    }
 }
