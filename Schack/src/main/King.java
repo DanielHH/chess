@@ -39,7 +39,6 @@ public class King extends Piece
 			    }
 			}
 			else if (tempPiece.canMove(newColumn, newRow)) {
-			    System.out.println(tempPiece.piece);
 			    threatened = true;
 			}
 		    }

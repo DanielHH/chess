@@ -16,15 +16,14 @@ public abstract class Piece
     protected Team team;
     protected Board board;
     protected PieceType piece;
-
     protected BufferedImage image;
 
 
-    public Piece(final int column, final int row, Team team, Board board, PieceType piece, String imageLocation)
+    protected Piece(final int column, final int row, Team team, Board board, PieceType piece, String imageLocation)
             throws IOException
     {
-	this.row = row;
-	this.column = column;
+	    this.row = row;
+	    this.column = column;
         this.hasMoved = false;
         this.team = team;
         this.board = board;
@@ -58,20 +57,76 @@ public abstract class Piece
         return board;
     }
 
-    protected void move(int newColumn, int newRow) throws InterruptedException {
-        if (board.getPiece(newColumn, newRow) != null) {
-            if (board.getPiece(newColumn, newRow).team != team) {
-                board.killPiece(newColumn, newRow);
+    public boolean safeMove(int newColumn, int newRow) {
+        boolean safe = false;
+        board.checksForCheck();
+        if (board.defendKing) { // currently in check
+            System.out.println("first line defend");
+            board.board[newColumn][newRow] = board.board[column][row];
+            board.board[column][row] = null;
+            board.checksForCheck();
+            board.board[column][row] = board.board[newColumn][newRow];
+            board.board[newColumn][newRow] = null;
+            if (!board.defendKing && piece != PieceType.KING) { // move saved the king
+                System.out.println("king is safe!!");
+                safe = true;
+            }
+            else {
+                if (piece == PieceType.KING && !((King) this).isThreatened(newColumn, newRow)) { // the king tries to dogde
+                    board.board[newColumn][newRow] = board.board[column][row];
+                    board.board[column][row] = null;
+                    if(((King) this).isThreatened(newColumn, newRow)) { // king tried to run in the opposite direction
+                        System.out.println("Can't run that way!");
+                    }
+                    else { // dogde is succesfull
+                        safe = true;
+                        System.out.println("King dogde!");
+                    }
+                    board.board[column][row] = board.board[newColumn][newRow];
+                    board.board[newColumn][newRow] = null;
+                }
+                else {
+                    System.out.println("still in check, maddafakka");
+                }
             }
         }
-        board.actuallyMovesPiece(column, row, newColumn, newRow);
-        System.out.println("jghkjfjhgdfdfhf");
-        column = newColumn;
-        row = newRow;
-        if (!this.hasMoved()) {
-            this.moved();
+        else { // not currently in check
+            board.board[newColumn][newRow] = board.board[column][row];
+            board.board[column][row] = null;
+            board.checksForCheck();
+            board.board[column][row] = board.board[newColumn][newRow];
+            board.board[newColumn][newRow] = null;
+            if (!board.defendKing) {
+                if (piece == PieceType.KING && ((King) this).isThreatened(newColumn, newRow)) { // the king moves into check
+                    System.out.println("Suicidal !?");
+                }
+                else { // safe move
+                    System.out.println("Totally safe");
+                    safe = true;
+                }
+            }
+            else { // move puts the king in check
+                System.out.println("Trying to kill your king?!");
+            }
         }
+        return safe;
+    }
+
+    protected void move(int newColumn, int newRow) throws InterruptedException {
+            if (board.getPiece(newColumn, newRow) != null) {
+
+                if (board.getPiece(newColumn, newRow).team != team) {
+                    board.killPiece(newColumn, newRow);
+                }
+            }
+            board.actuallyMovesPiece(column, row, newColumn, newRow);
+            column = newColumn;
+            row = newRow;
+            if (!this.hasMoved()) {
+                this.moved();
+            }
         }
+
 
     public boolean pieceInTheWay(Movement movement, int steps) {
         boolean canNotMove = false;
@@ -125,9 +180,7 @@ public abstract class Piece
         return canNotMove;
     }
 
-    public boolean canMove(int column, int row) {
-        return false;
-    }
+    public abstract boolean canMove(int column, int row);
 
     public Movement moveDirection(int horizontal, int lateral) {
         Movement movement = null;

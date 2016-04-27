@@ -60,7 +60,23 @@ public class ChessComponent extends JComponent implements BoardListener {
                         board.markPiece();
                     } else { // piece belong to the other team
                         boolean moved = clickedPiece.canMove(column, row);
-                        if (moved) { // remove mark
+                        if (moved) { // can move
+                            boolean safe = clickedPiece.safeMove(column, row);
+                            if (safe) { // remove mark & move
+                                try {
+                                    clickedPiece.move(column, row);
+                                } catch (InterruptedException e1) {
+                                    e1.printStackTrace();
+                                }
+                                clickedPiece = null;
+                            }
+                        }
+                    }
+                } else { // no new piece
+                    boolean moved = clickedPiece.canMove(column, row);
+                    if (moved) { // can move
+                        boolean safe = clickedPiece.safeMove(column, row);
+                        if (safe) { // remove mark & move
                             try {
                                 clickedPiece.move(column, row);
                             } catch (InterruptedException e1) {
@@ -68,16 +84,6 @@ public class ChessComponent extends JComponent implements BoardListener {
                             }
                             clickedPiece = null;
                         }
-                    }
-                } else { // no new piece
-                    boolean moved = clickedPiece.canMove(column, row);
-                    if (moved) { // remove mark
-                        try {
-                            clickedPiece.move(column, row);
-                        } catch (InterruptedException e1) {
-                            e1.printStackTrace();
-                        }
-                        clickedPiece = null;
                     }
                 }
             }

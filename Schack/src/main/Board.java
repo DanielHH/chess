@@ -14,7 +14,7 @@ public class Board
     public static final int WIDTH = 8;
     public static final int HEIGHT = 8;
     private int turnCounter = 0;
-    private Piece[][] board;
+    protected Piece[][] board;
     public BoardListener[] boardListenerList = new BoardListener[1];
     public boolean defendKing = false;
 
@@ -77,34 +77,19 @@ public class Board
     }
 
     public void actuallyMovesPiece(int oldColumn, int oldRow, int newColumn, int newRow) throws InterruptedException {
+		Piece tempPiece = board[oldColumn][oldRow];
+		if (tempPiece.piece == PieceType.PAWN) {
+			if (tempPiece.column == 7 || tempPiece.column == 0) {
+				pawnUpgrade((Pawn) tempPiece);
+			}
 
-	checksForCheck();
-	if (defendKing == true) {
-	    System.out.println("first line defend");
-	    board[newColumn][newRow] = board[oldColumn][oldRow];
-	    board[oldColumn][oldRow] = null;
-	    checksForCheck();
-	    if (defendKing == false) {
-		System.out.println("king is safe!!");
-		notifyListeners();
-		nextTurn();
-
-	    }
-	    else {
-		board[oldColumn][oldRow] = board[newColumn][newRow];
-		board[newColumn][newRow] = null;
-		System.out.println("still in check, maddafakka");
-	    }
-
-	}
-	else {
-	    System.out.println("Totally safe");
-	    board[newColumn][newRow] = board[oldColumn][oldRow];
+		}
+	    board[newColumn][newRow] = tempPiece;
 	    board[oldColumn][oldRow] = null;
 	    nextTurn();
 	    notifyListeners();
 	}
-    }
+
 
     public void addBoardListener(BoardListener bl) {
 	this.boardListenerList[0] = bl;
@@ -148,12 +133,21 @@ public class Board
 	}
 	return king;
     }
-
-
+	public void pawnUpgrade(Pawn pawn) {
+		String imal = "fantasy/png-shad/bq.png";
+		if( pawn.team == Team.WHITE) {
+			imal = "fantasy/png-shad/wq.png";
+		}
+		try {
+			board[pawn.column][pawn.row] = new Queen(pawn.column, pawn.row, pawn.team, this, imal);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
     public void checksForCheck() {
     	King king;
-	defendKing = false;
+		defendKing = false;
 
 
     	if (getTurnCounter() % 2 == 0) { // white's turn
