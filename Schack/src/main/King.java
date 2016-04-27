@@ -17,11 +17,18 @@ public class King extends Piece
     @Override
     public boolean canMove(int newColumn, int newRow) {
 	boolean moved = false;
-		int horizontal = newColumn - this.getColumn();
-		int lateral =  newRow - this.getRow();
+	int horizontal = newColumn - this.getColumn();
+	int lateral =  newRow - this.getRow();
+	Movement movement = this.moveDirection(horizontal, lateral);
+	int steps = horizontal;
+	if (lateral != 0) {
+		steps = lateral;
+	}
 
 		if (Math.abs(lateral) < 2 && Math.abs(horizontal) < 2 && !(lateral == 0 && horizontal == 0)) {
-		    moved = true;
+		    if (!this.pieceInTheWay(movement, steps)) { // no piece in the way
+		    		    		moved = true;
+		    		}
 		}
 	return moved;
     }
@@ -88,28 +95,27 @@ public class King extends Piece
 	return isThreatened(column, row);
     }
 
-	public boolean isCheckMate() {
-		boolean checkMate = true;
-		// check if the king can save itself or if
-		// a teammate can save the king
-		for (int i = 0; i < Board.WIDTH; i++) {
-			for (int j = 0; j < Board.HEIGHT; j++) {
-				Piece tempPiece = board.getPiece(i, j);
-				if (tempPiece != null) {
-					if (tempPiece.team == team) { // same team
-						List<Map.Entry<Integer,Integer>> legalmoves = tempPiece.legalMoves();
-						// need to check if there is a legal move that is also safe,
-						// if not then it's checkmate
-						for (Map.Entry<Integer, Integer> move: legalmoves) {
-							if (tempPiece.safeMove(move.getKey(), move.getValue())) {
-								checkMate = false;
-							}
-						}
-
-					}
-				}
+    public boolean isCheckMate() {
+	boolean checkMate = true;
+	// check if the king can save itself or if
+	// a teammate can save the king
+	for (int i = 0; i < Board.WIDTH; i++) {
+	    for (int j = 0; j < Board.HEIGHT; j++) {
+		Piece tempPiece = board.getPiece(i, j);
+		if (tempPiece != null) {
+		    if (tempPiece.team == team) { // same team
+			List<Map.Entry<Integer,Integer>> legalmoves = tempPiece.legalMoves();
+			// need to check if there is a legal move that is also safe,
+			// if not then it's checkmate
+			for (Map.Entry<Integer, Integer> move: legalmoves) {
+			    if (tempPiece.safeMove(move.getKey(), move.getValue())) {
+				checkMate = false;
+			    }
 			}
+		    }
 		}
-		return checkMate;
+	    }
 	}
+	return checkMate;
+    }
 }

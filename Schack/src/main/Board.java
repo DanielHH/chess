@@ -28,6 +28,10 @@ public class Board
 
     public void nextTurn() {
 	this.turnCounter += 1;
+	if (getKing(getTurnTeam()).isCheckMate()) {
+		// gameover
+		System.out.println("checkmate");
+	}
     }
 
     public Board() throws IOException, InterruptedException {
@@ -93,11 +97,7 @@ public class Board
 
 	PLACEMENT?!?!?!?!!??!?!?!?
 
-	if (getKing(getTurnTeam()).isCheckMate()) {
-	// gameover
-	System.out.println("checkmate");
-}
-	else { // continue
+
 	*/
 
 

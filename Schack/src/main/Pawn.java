@@ -14,57 +14,47 @@ public class Pawn extends Piece
 		boolean moved = false;
 		int horizontal = newColumn - this.getColumn();
 		int lateral =  newRow - this.getRow();
-
-		// många if-fall över tillåtna rörelser
-		if (this.getTeam() == Team.WHITE) {
-	    	if (horizontal == 0 && lateral == -1) {
+			// många if-fall över tillåtna rörelser
+			if (this.getTeam() == Team.WHITE) {
+			    if (horizontal == 0 && lateral == -1) {
 				if (board.getPiece(newColumn, newRow) == null) {
 				    moved = true;
 				}
-	    	}
-	    	else if (lateral == -1 && (horizontal == 1 || horizontal == -1)) {
-		    if (board.getPiece(newColumn, newRow) != null) {
-			if (board.getPiece(newColumn, newRow).team == Team.BLACK) {
-			    board.killPiece(newColumn, newRow);
-			    moved = true;
-			}
-		    }
-		    else {
-				// !!!!!!!! specialfall passant
-		    }
-	    	}
-	    	else if (horizontal == 0 && lateral == -2) {
-				if (!this.pieceInTheWay(Movement.UP, lateral) && !this.hasMoved() &&
-		    		board.getPiece(newColumn, newRow) == null) {
-				    moved = true;
-				}
-	    	}
-		}
-		else if (this.getTeam() == Team.BLACK) {
-	    	if (horizontal == 0 && lateral == 1) {
-	  		    if (board.getPiece(newColumn, newRow) == null) {
-				moved = true;
-	  		    }
-	  		}
-	    	else if (lateral == 1 && (horizontal == 1 || horizontal == -1)) {
-		    		if (board.getPiece(newColumn, newRow) != null) {
-				    if (board.getPiece(newColumn, newRow).team == Team.WHITE) {
-					board.killPiece(newColumn, newRow);
+			    } else if (lateral == -1 && (horizontal == 1 || horizontal == -1)) {
+				if (board.getPiece(newColumn, newRow) != null) {
+				    if (board.getPiece(newColumn, newRow).team == Team.BLACK) {
 					moved = true;
 				    }
+				} else {
+				    // !!!!!!!! specialfall passant
 				}
-				else {
-		   			 // !!!!!!!!!!! specialfall passant
-				}
-	  		}
-	    	else if (horizontal == 0 && lateral == 2) {
-				if (!this.pieceInTheWay(Movement.DOWN, lateral) && !this.hasMoved() &&
-		    		board.getPiece(newColumn, newRow) == null) {
+			    } else if (horizontal == 0 && lateral == -2) {
+				if (!this.pieceInTheWay(Movement.UP, lateral) && !this.hasMoved() &&
+				    board.getPiece(newColumn, newRow) == null) {
 				    moved = true;
 				}
-	    	}
+			    }
+			} else if (this.getTeam() == Team.BLACK) {
+			    if (horizontal == 0 && lateral == 1) {
+				if (board.getPiece(newColumn, newRow) == null) {
+				    moved = true;
+				}
+			    } else if (lateral == 1 && (horizontal == 1 || horizontal == -1)) {
+				if (board.getPiece(newColumn, newRow) != null) {
+				    if (board.getPiece(newColumn, newRow).team == Team.WHITE) {
+					moved = true;
+				    }
+				} else {
+				    // !!!!!!!!!!! specialfall passant
+				}
+			    } else if (horizontal == 0 && lateral == 2) {
+				if (!this.pieceInTheWay(Movement.DOWN, lateral) && !this.hasMoved() &&
+				    board.getPiece(newColumn, newRow) == null) {
+				    moved = true;
+				}
+			    }
 
-		}
+			}
 		return moved;
     }
 

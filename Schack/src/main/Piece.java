@@ -59,14 +59,16 @@ public abstract class Piece
 
     public boolean safeMove(int newColumn, int newRow) {
         boolean safe = false;
+        Piece tempPiece = board.board[newColumn][newRow];
         board.checksForCheck();
         if (board.defendKing) { // currently in check
-            System.out.println("first line defend");
+            System.out.println("Defend the King!!");
             board.board[newColumn][newRow] = board.board[column][row];
             board.board[column][row] = null;
             board.checksForCheck();
             board.board[column][row] = board.board[newColumn][newRow];
             board.board[newColumn][newRow] = null;
+            board.board[newColumn][newRow] = tempPiece;
             if (!board.defendKing && piece != PieceType.KING) { // move saved the king
                 System.out.println("king is safe!!");
                 safe = true;
@@ -78,15 +80,16 @@ public abstract class Piece
                     if(((King) this).isThreatened(newColumn, newRow)) { // king tried to run in the opposite direction
                         System.out.println("Can't run that way!");
                     }
-                    else { // dogde is succesfull
+                    else { // dodge is successful
                         safe = true;
-                        System.out.println("King dogde!");
+                        System.out.println("King dodge!");
                     }
                     board.board[column][row] = board.board[newColumn][newRow];
                     board.board[newColumn][newRow] = null;
+                    board.board[newColumn][newRow] = tempPiece;
                 }
                 else {
-                    System.out.println("still in check, maddafakka");
+                    System.out.println("King isn't safe yet!");
                 }
             }
         }
@@ -96,12 +99,13 @@ public abstract class Piece
             board.checksForCheck();
             board.board[column][row] = board.board[newColumn][newRow];
             board.board[newColumn][newRow] = null;
+            board.board[newColumn][newRow] = tempPiece;
             if (!board.defendKing) {
                 if (piece == PieceType.KING && ((King) this).isThreatened(newColumn, newRow)) { // the king moves into check
                     System.out.println("Suicidal !?");
                 }
                 else { // safe move
-                    System.out.println("Totally safe");
+                    System.out.println("Totally safe "+this+"column: " + newColumn + "row: "+newRow);
                     safe = true;
                 }
             }
@@ -131,46 +135,70 @@ public abstract class Piece
     public boolean pieceInTheWay(Movement movement, int steps) {
         boolean canNotMove = false;
         if (movement == Movement.UP || movement == Movement.DOWN) {
-            for (int i = 1; i <  Math.abs(steps); i++) {
+            for (int i = 1; i <=  Math.abs(steps); i++) {
                 int x = i;
                 if (steps < 0) {
                     x *= -1;
                 }
-                if (board.getPiece(this.getColumn(), this.getRow() + x) != null) {
-                    canNotMove = true;
+                Piece tempPiece = board.getPiece(column, row + x);
+                if (tempPiece != null) {
+                    if (tempPiece.team == team) {
+                        return true;
+                    }
+                    else {
+                       return false;
+                    }
                 }
             }
         }
         else if (movement == Movement.RIGHT || movement == Movement.LEFT) {
-            for (int i = 1; i <  Math.abs(steps); i++) {
+            for (int i = 1; i <=  Math.abs(steps); i++) {
                 int x = i;
                 if (steps < 0) {
                     x *= -1;
                 }
-                if (board.getPiece(this.getColumn() + x, this.getRow()) != null) {
-                    canNotMove = true;
+                Piece tempPiece = board.getPiece(column + x, row);
+                if (tempPiece != null) {
+                    if (tempPiece.team == team) {
+                        return true;
+                    }
+                    else {
+                       return false;
+                    }
                 }
             }
         }
         else if (movement == Movement.UPRIGHT || movement == Movement.DOWNLEFT) {
-            for (int i = 1; i <  Math.abs(steps); i++) {
+            for (int i = 1; i <=  Math.abs(steps); i++) {
                 int x = i;
                 if (steps < 0) {
                     x *= -1;
                 }
-                if (board.getPiece(this.getColumn() - x, this.getRow() + x) != null) {
-                    canNotMove = true;
+                Piece tempPiece = board.getPiece(column - x, row + x);
+                if (tempPiece != null) {
+                    if (tempPiece.team == team) {
+                        return true;
+                    }
+                    else {
+                       return false;
+                    }
                 }
             }
         }
         else if (movement == Movement.UPLEFT || movement == Movement.DOWNRIGHT) {
-            for (int i = 1; i <  Math.abs(steps); i++) {
+            for (int i = 1; i <=  Math.abs(steps); i++) {
                 int x = i;
                 if (steps < 0) {
                     x *= -1;
                 }
-                if (board.getPiece(this.getColumn() + x, this.getRow() + x) != null) {
-                    canNotMove = true;
+                Piece tempPiece = board.getPiece(column + x, row + x);
+                if (tempPiece != null) {
+                    if (tempPiece.team == team) {
+                        return true;
+                    }
+                    else {
+                       return false;
+                    }
                 }
             }
         }

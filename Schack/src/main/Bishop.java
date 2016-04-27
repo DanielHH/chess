@@ -11,11 +11,23 @@ public class Bishop extends Piece {
     public boolean canMove(int newColumn, int newRow) {
 	boolean moved = false;
 	int horizontal = newColumn - this.getColumn();
-	int lateral = newRow - this.getRow();
+	int lateral =  newRow - this.getRow();
 	Movement movement = this.moveDirection(horizontal, lateral);
+	int steps = horizontal;
+	if (lateral != 0) {
+		steps = lateral;
+	}
 	if (Math.abs(horizontal) == Math.abs(lateral) && horizontal != 0) {
-	    if (!this.pieceInTheWay(movement, lateral)) {
-	    moved = true;
+	    if (!this.pieceInTheWay(movement, steps)) {
+		Piece tempPiece = board.getPiece(newColumn, newRow);
+		if (tempPiece != null) {
+		    if (tempPiece.team != team) {
+			moved = true;
+		    }
+		}
+		else {
+		    moved = true;
+		}
 	    }
 	}
 	return moved;
