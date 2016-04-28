@@ -1,4 +1,4 @@
-package main;
+package enums;
 
 /**
  * Each mode represents a type of gamemode

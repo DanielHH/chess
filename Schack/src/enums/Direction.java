@@ -1,4 +1,4 @@
-package main;
+package enums;
 
 /**
  * Each movement represents a direction in which a piece can be moved.

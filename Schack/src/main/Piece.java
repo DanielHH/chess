@@ -1,5 +1,9 @@
 package main;
 
+import enums.Direction;
+import enums.PieceType;
+import enums.Team;
+
 import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
@@ -42,11 +46,11 @@ public abstract class Piece implements Serializable
         setImage();
     }
 
-    public BufferedImage getImage() {
+    protected BufferedImage getImage() {
         return image;
     }
 
-    public void setImage() {
+    protected void setImage() {
 	String imageLocation;
 	if (this.team == Team.WHITE) {
 	    imageLocation = whImageLocation;
@@ -61,29 +65,25 @@ public abstract class Piece implements Serializable
         }
     }
 
-    public int getColumn() {
+    protected int getColumn() {
         return column;
     }
 
-    public int getRow() {
+    protected int getRow() {
         return row;
     }
 
-    public Team getTeam() {
+    protected Team getTeam() {
         return team;
     }
 
-    public boolean hasMoved() {
+    protected boolean hasMoved() {
         return hasMoved;
     }
 
-    protected void moved() {hasMoved = true;}
+    private void moved() {hasMoved = true;}
 
-    public Board getBoard() {
-        return board;
-    }
-
-    public boolean isThreatened(int newColumn, int newRow) {
+    protected boolean isThreatened(int newColumn, int newRow) {
 	boolean threatened = false;
 	for (int i = 0; i < Board.WIDTH; i++) {
 	    for (int j = 0; j < Board.HEIGHT; j++) {
@@ -106,7 +106,7 @@ public abstract class Piece implements Serializable
 	return threatened;
     }
 
-    public boolean safeMove(int newColumn, int newRow) {
+    protected boolean safeMove(int newColumn, int newRow) {
         boolean safe = false;
         Piece tempPiece = board.board[newColumn][newRow];
         board.checksForCheck();
@@ -123,10 +123,10 @@ public abstract class Piece implements Serializable
                 safe = true;
             }
             else {
-                if (piece == PieceType.KING && !((King) this).isThreatened(newColumn, newRow)) { // the king tries to dogde
+                if (piece == PieceType.KING && !this.isThreatened(newColumn, newRow)) { // the king tries to dogde
                     board.board[newColumn][newRow] = board.board[column][row];
                     board.board[column][row] = null;
-                    if(((King) this).isThreatened(newColumn, newRow)) { // king tried to run in the opposite direction
+                    if(this.isThreatened(newColumn, newRow)) { // king tried to run in the opposite direction
                         System.out.println("Can't run that way!");
                     }
                     else { // dodge is successful
@@ -150,7 +150,7 @@ public abstract class Piece implements Serializable
             board.board[newColumn][newRow] = null;
             board.board[newColumn][newRow] = tempPiece;
             if (!board.defendKing) { //
-                if (piece == PieceType.KING && ((King) this).isThreatened(newColumn, newRow)) { // the king moves into check
+                if (piece == PieceType.KING && this.isThreatened(newColumn, newRow)) { // the king moves into check
                     System.out.println("Suicidal !?");
                 }
                 else {
@@ -159,7 +159,6 @@ public abstract class Piece implements Serializable
                         System.out.println("It's not worth it, King!!");
                     }
                         else { // safe move
-                        System.out.println("Totally safe " + this + "column: " + newColumn + "row: " + newRow);
                         safe = true;
                     }
                     board.board[newColumn][newRow] = tempPiece;
@@ -172,7 +171,6 @@ public abstract class Piece implements Serializable
         return safe;
     }
 
-    // Gör denna abstrakt
     protected void move(int newColumn, int newRow) {
             if (board.getPiece(newColumn, newRow) != null) {
 
@@ -188,7 +186,7 @@ public abstract class Piece implements Serializable
             }
         }
 
-    public boolean pieceInTheWay(Direction direction, int steps) {
+    protected boolean pieceInTheWay(Direction direction, int steps) {
         /*
             small but significant difference in code. Falseflag as duplicated
             Also not overly complex as it cant be made smaller if should be able ot handle all the directions.
@@ -244,7 +242,7 @@ public abstract class Piece implements Serializable
         }
         return canNotMove;
     }
-    public boolean evaluatePieceInTheWay(Direction direction, int steps, int newColumn, int newRow) {
+    protected boolean evaluatePieceInTheWay(Direction direction, int steps, int newColumn, int newRow) {
         boolean moved = false;
         if (!this.pieceInTheWay(direction, steps)) { // no piece in the way
             Piece tempPiece = board.getPiece(newColumn, newRow);
@@ -259,9 +257,9 @@ public abstract class Piece implements Serializable
         return moved;
     }
 
-    public abstract boolean canMove(int newColumn, int newRow);
+    protected abstract boolean canMove(int newColumn, int newRow);
 
-    public Direction moveDirection(int horizontal, int lateral) {
+    protected Direction moveDirection(int horizontal, int lateral) {
         Direction direction = null;
         if (horizontal > 0 && lateral < 0) {
             direction = Direction.UPRIGHT;
@@ -290,7 +288,7 @@ public abstract class Piece implements Serializable
         return direction;
     }
 
-    public List<Entry<Integer,Integer>> legalMoves() {
+    protected List<Entry<Integer,Integer>> legalMoves() {
         List<Entry<Integer,Integer>> legalMovesList = new ArrayList<>();
         for (int i = 0; i < Board.WIDTH; i++) {
             for (int j = 0; j < Board.HEIGHT; j++) {
@@ -301,5 +299,13 @@ public abstract class Piece implements Serializable
             }
         }
         return legalMovesList;
+    }
+
+    protected int calculateSteps(int horizontal, int lateral) {
+        int steps = horizontal;
+       	if (lateral != 0) {
+       	    steps = lateral;
+       	}
+       return steps;
     }
 }

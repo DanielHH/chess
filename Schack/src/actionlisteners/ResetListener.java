@@ -1,8 +1,8 @@
 package actionlisteners;
 
 import main.ChessFrame;
-import main.Mode;
-import main.PlayerType;
+import enums.Mode;
+import enums.PlayerType;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -13,9 +13,9 @@ import java.awt.event.ActionListener;
  */
 public final class ResetListener implements ActionListener
 {
-    	private ChessFrame chessFrame;
+    private ChessFrame chessFrame;
+    private JRadioButtonMenuItem internalPvp;
 
-      private JRadioButtonMenuItem internalPvp;
       public ResetListener(JRadioButtonMenuItem pvp, ChessFrame frame) {
          internalPvp = pvp;
 	  chessFrame = frame;

@@ -1,5 +1,8 @@
 package main;
 
+import enums.PlayerType;
+import enums.Team;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Date;
@@ -27,7 +30,7 @@ public class ChessFrame extends JFrame {
     	private TimerTask runsGameAI = null;
     	//private TimerTask runsChecksForCheck;
 
-   public ChessFrame(Board board) {
+   protected ChessFrame(Board board) {
       super("Schack");
        this.board = board;
        chessComponent= new ChessComponent(board);
@@ -40,7 +43,7 @@ public class ChessFrame extends JFrame {
       this.pack();
       this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
       this.setVisible(true);
-      resumeTimer();
+       resumeTimer();
    }
 
     public void pauseTimer() {
@@ -52,22 +55,18 @@ public class ChessFrame extends JFrame {
 	createNewTimerTasks();
 	//Schedule a task to run repeatedly, starting now,
  	// 1000ms fromexecution n ends to execution n+1 begins
-        timer.schedule(runsGameAI, new Date(), 1000);
+        timer.schedule(runsGameAI, new Date(), 100);
     }
 
     private void createNewTimerTasks() {
 	runsGameAI = new TimerTask() {
 	    public void run() {
-		try {
 		    gameAI();
-		} catch (InterruptedException e) {
-		    e.printStackTrace();
-		}
 	    }
 	};
     }
 
-    private void gameAI() throws InterruptedException {
+    private void gameAI() {
 	if (board.getTurnTeam() == Team.WHITE) {
 	    if (chessComponent.player1 == PlayerType.AI) {
 		chessComponent.walkAI();

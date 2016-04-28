@@ -1,5 +1,8 @@
 package main;
 
+import enums.PieceType;
+import enums.Team;
+
 import java.io.Serializable;
 
 /**
@@ -14,23 +17,30 @@ public class Board implements Serializable
     /**
      * Width of board.
      */
-    public static final int WIDTH = 8;
+    protected static final int WIDTH = 8;
     /**
      * Height of board.
      */
-    public static final int HEIGHT = 8;
+    protected static final int HEIGHT = 8;
+
     private int turnCounter = 0;
     protected Piece[][] board = null;
+
     /**
      * Contains boardlisteners
      */
-    public BoardListener[] boardListenerList = new BoardListener[1];
+    private BoardListener[] boardListenerList = new BoardListener[1];
+
     /**
      * Describes whether king is under check (true) or not (false).
      */
-    public boolean defendKing = false;
+    protected boolean defendKing = false;
 
-    public Team getTurnTeam() {
+    protected Board() {
+	setStartPositions();
+    }
+
+    protected Team getTurnTeam() {
 	Team color = Team.WHITE;
 	if (turnCounter % 2 != 0) {
 	    color = Team.BLACK;
@@ -38,13 +48,9 @@ public class Board implements Serializable
 	return color;
     }
 
-    public void nextTurn() {
+    private void nextTurn() {
 	turnCounter += 1;
 
-    }
-
-    public Board() {
-	setStartPositions();
     }
 
     public void setTurnCounterToZero() {
@@ -86,15 +92,15 @@ public class Board implements Serializable
     }
 
 
-    public Piece getPiece(int column, int row) {
+    protected Piece getPiece(int column, int row) {
 	return board[column][row];
     }
 
-    public void killPiece(int column, int row) {
+    protected void killPiece(int column, int row) {
 	board[column][row] = null;
     }
 
-    public void actuallyMovesPiece(int oldColumn, int oldRow, int newColumn, int newRow) {
+    protected void actuallyMovesPiece(int oldColumn, int oldRow, int newColumn, int newRow) {
 	Piece tempPiece = board[oldColumn][oldRow];
 	board[newColumn][newRow] = tempPiece;
 	board[oldColumn][oldRow] = null;
@@ -111,7 +117,7 @@ public class Board implements Serializable
 	}
     }
 
-    public void addBoardListener(BoardListener bl) {
+    protected void addBoardListener(BoardListener bl) {
 	this.boardListenerList[0] = bl;
     }
 
@@ -121,18 +127,18 @@ public class Board implements Serializable
 	}
     }
 
-    public void markPiece() {
+    protected void markPiece() {
 	notifyListeners();
     }
 
-    public int getTurnCounter() {
+    protected int getTurnCounter() {
 	return turnCounter;
     }
 
-    public King getKing(Team team) {
+    private King getKing(Team team) {
 	King king = null;
 	if (Team.WHITE == team) {
-		king = whiteKing;
+	    king = whiteKing;
 	} else if (Team.BLACK == team) {
 	    king = blackKing;
 	}
@@ -169,11 +175,11 @@ public class Board implements Serializable
 	}
     }
 
-    public void pawnUpgrade(int column, int row, Team team) {
+    private void pawnUpgrade(int column, int row, Team team) {
 	board[column][row] = new Queen(column, row, team, this);
     }
 
-    public void checksForCheck() {
+    protected void checksForCheck() {
 	King king;
 	defendKing = false;
 	king = getKing(getTurnTeam());

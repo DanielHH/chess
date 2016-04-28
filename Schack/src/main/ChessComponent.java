@@ -1,5 +1,9 @@
 package main;
 
+import enums.Mode;
+import enums.PlayerType;
+import enums.Team;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -18,31 +22,19 @@ public class ChessComponent extends JComponent implements BoardListener {
     /**
      * Size of the squares on the screen
      */
-    public static final int SQUARE_SIZE = 100;
+    private static final int SQUARE_SIZE = 100;
     private Piece clickedPiece = null;
     /**
      * Playertype of white player.
      */
-    public PlayerType player1 = PlayerType.PLAYER;
+    protected PlayerType player1 = PlayerType.PLAYER;
     /**
      * Playertype of black player.
      */
-    public PlayerType player2 = PlayerType.PLAYER;
+    protected PlayerType player2 = PlayerType.PLAYER;
     private Mode gameMode = Mode.PVP;
 
-    public void setClickedPieceNull() {
-        clickedPiece = null;
-    }
-
-    public Mode getGameMode() {
-        return gameMode;
-    }
-
-    public void setGameMode(final Mode gameMode) {
-        this.gameMode = gameMode;
-    }
-
-    public ChessComponent(Board board) {
+    protected ChessComponent(Board board) {
         this.board = board;
 
         addMouseListener(new MouseAdapter() {
@@ -60,7 +52,15 @@ public class ChessComponent extends JComponent implements BoardListener {
         });
     }
 
-    public void tryMove(int column, int row) {
+    public void setClickedPieceNull() {
+        clickedPiece = null;
+    }
+
+    public void setGameMode(final Mode gameMode) {
+        this.gameMode = gameMode;
+    }
+
+    private void tryMove(int column, int row) {
         if (gameMode != Mode.PAUSE) {
             Piece newPiece = board.getPiece(column, row);
             if (clickedPiece == null) { // First click
@@ -74,16 +74,16 @@ public class ChessComponent extends JComponent implements BoardListener {
                         clickedPiece = newPiece;
                         board.markPiece();
                     } else { // piece belong to the other team
-                        tryMoveAndSafeMove(column, row);
+                        tryMoveAndRemoveMark(column, row);
                     }
                 } else { // no new piece
-                    tryMoveAndSafeMove(column, row);
+                    tryMoveAndRemoveMark(column, row);
                 }
             }
         }
     }
 
-    private void tryMoveAndSafeMove(int column, int row) {
+    private void tryMoveAndRemoveMark(int column, int row) {
         boolean move = clickedPiece.canMove(column, row);
         if (move) { // can move
             boolean safe = clickedPiece.safeMove(column, row);
@@ -138,7 +138,7 @@ public class ChessComponent extends JComponent implements BoardListener {
             repaint();
     }
 
-    public void walkAI() throws InterruptedException {
+    protected void walkAI() {
         // walks to a random place with a randomly choosen piece
         int turn = board.getTurnCounter();
         Random rand = new Random();

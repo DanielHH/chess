@@ -27,11 +27,11 @@ public class Menus extends JFrame {
 
     private ChessFrame chessFrame;
 
-    public Menus (ChessFrame frame) {
+    protected Menus (ChessFrame frame) {
 	chessFrame = frame;
     }
 
-    public void createMenus() {
+    protected void createMenus() {
 	whichMode.add(pvp);
 	whichMode.add(pvai);
 	whichMode.add(aivai);
@@ -67,7 +67,6 @@ public class Menus extends JFrame {
 	load.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, InputEvent.CTRL_MASK));
 
 	save.addActionListener(new SaveListener(chessFrame.board));
-	System.out.println(chessFrame.board + " in menus");
 	save.setMnemonic(KeyEvent.VK_S);
 	save.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.ALT_MASK));
 

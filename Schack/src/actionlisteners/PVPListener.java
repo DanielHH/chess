@@ -1,8 +1,8 @@
 package actionlisteners;
 
 import main.ChessFrame;
-import main.Mode;
-import main.PlayerType;
+import enums.Mode;
+import enums.PlayerType;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -1,7 +1,7 @@
 package actionlisteners;
 
 import main.ChessFrame;
-import main.Mode;
+import enums.Mode;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

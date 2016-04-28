@@ -1,4 +1,4 @@
-package main;
+package enums;
 
 /**
  * Representations of the two different teams in chess

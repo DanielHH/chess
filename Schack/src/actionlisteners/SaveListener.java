@@ -16,7 +16,6 @@ public class SaveListener implements ActionListener
 
     public SaveListener(Board board) {
 	this.board = board;
-	System.out.println(board + " in savelistener");
     }
 
     public void actionPerformed(final ActionEvent e) {

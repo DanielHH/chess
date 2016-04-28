@@ -1,6 +1,10 @@
 package main;
 
 
+import enums.Direction;
+import enums.PieceType;
+import enums.Team;
+
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,52 +15,26 @@ import java.util.Map.Entry;
  */
 public class King extends Piece
 {
-    final static String BLACK_IMAGE_LOCATION = "fantasy/png-shad/bk.png";
-    final static String WHITE_IMAGE_LOCATION = "fantasy/png-shad/wk.png";
+    private final static String BLACK_IMAGE_LOCATION = "fantasy/png-shad/bk.png";
+    private final static String WHITE_IMAGE_LOCATION = "fantasy/png-shad/wk.png";
 
-    public King(int column, int row, Team team, Board board) {
+    protected King(int column, int row, Team team, Board board) {
 	super(column, row, team, board, PieceType.KING, BLACK_IMAGE_LOCATION, WHITE_IMAGE_LOCATION);
     }
 
-    @Override public boolean canMove(int newColumn, int newRow) {
+    @Override protected boolean canMove(int newColumn, int newRow) {
 	boolean moved = false;
 
 	int horizontal = newColumn - this.getColumn();
 	int lateral = newRow - this.getRow();
 
 	Direction direction = this.moveDirection(horizontal, lateral);
-	int steps = horizontal;
-	if (lateral != 0) {
-	    steps = lateral;
-	}
+	int steps = calculateSteps(horizontal, lateral);
 
 	if (Math.abs(lateral) < 2 && Math.abs(horizontal) < 2 && !(lateral == 0 && horizontal == 0)) {
 	    moved = evaluatePieceInTheWay(direction, steps, newColumn, newRow);
 	}
 	return moved;
-    }
-
-    public boolean isThreatened(int newColumn, int newRow) {
-	boolean threatened = false;
-	for (int i = 0; i < Board.WIDTH; i++) {
-	    for (int j = 0; j < Board.HEIGHT; j++) {
-		Piece tempPiece = board.getPiece(i, j);
-		if (tempPiece != null) {
-		    if (tempPiece.team != this.team) {
-			if (tempPiece.piece == PieceType.PAWN) {
-			    if (((Pawn) tempPiece).canHit(newColumn, newRow)) {
-				threatened = true;
-			    }
-			} else {
-			    if (tempPiece.canMove(newColumn, newRow)) {
-				threatened = true;
-			    }
-			}
-		    }
-		}
-	    }
-	}
-	return threatened;
     }
 
     private List<Entry<Integer, Integer>> unthreatenedPlaces() {
@@ -76,11 +54,11 @@ public class King extends Piece
 	return unthreatenedPlacesList;
     }
 
-    public boolean isCheck() {
+    protected boolean isCheck() {
 	return isThreatened(column, row);
     }
 
-    public boolean isCheckMate() {
+    protected boolean isCheckMate() {
 	boolean checkMate = false;
 	// check if the king can save itself or if
 	// a teammate can save the king
@@ -88,22 +66,27 @@ public class King extends Piece
 	    checkMate = true;
 	    for (int i = 0; i < Board.WIDTH; i++) {
 		for (int j = 0; j < Board.HEIGHT; j++) {
-		    Piece tempPiece = board.getPiece(i, j);
-		    if (tempPiece != null) {
-			if (tempPiece.team == team) { // same team
-			    List<Entry<Integer, Integer>> legalmoves = tempPiece.legalMoves();
-			    // need to check if there is a legal move that is also safe,
-			    // if not then it's checkmate
-			    for (Entry<Integer, Integer> move : legalmoves) {
-				if (tempPiece.safeMove(move.getKey(), move.getValue())) {
-				    checkMate = false;
-				}
-			    }
-			}
-		    }
+			checkMate = pieceWithSafeLegalMove(i, j);
 		}
 	    }
 	}
 	return checkMate;
+    }
+
+    private boolean pieceWithSafeLegalMove(int column, int row) {
+	// check's if there is a legal move that is also safe for piece on column, row.
+	boolean anySafeLegalMove = false;
+	Piece tempPiece = board.getPiece(column, row);
+	if (tempPiece != null) {
+	    if (tempPiece.team == team) { // same team
+		List<Entry<Integer, Integer>> legalmoves = tempPiece.legalMoves();
+		for (Entry<Integer, Integer> move : legalmoves) {
+		    if (tempPiece.safeMove(move.getKey(), move.getValue())) {
+			anySafeLegalMove = false;
+		    }
+		}
+	    }
+	}
+	return anySafeLegalMove;
     }
 }

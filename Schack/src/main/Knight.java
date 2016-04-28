@@ -1,18 +1,21 @@
 package main;
 
+import enums.PieceType;
+import enums.Team;
+
 /**
  * Contains the allowed type of movements for the Knight piece.
  */
 public class Knight extends Piece {
-    final static String BLACK_IMAGE_LOCATION = "fantasy/png-shad/bn.png";
-    final static String WHITE_IMAGE_LOCATION = "fantasy/png-shad/wn.png";
+    private final static String BLACK_IMAGE_LOCATION = "fantasy/png-shad/bn.png";
+    private final static String WHITE_IMAGE_LOCATION = "fantasy/png-shad/wn.png";
 
-    public Knight(int column, int row, Team team, Board board) {
+    protected Knight(int column, int row, Team team, Board board) {
 	super(column, row, team, board, PieceType.KNIGHT, BLACK_IMAGE_LOCATION, WHITE_IMAGE_LOCATION);
     }
 
     @Override
-    public boolean canMove(int newColumn, int newRow) {
+    protected boolean canMove(int newColumn, int newRow) {
 	boolean moved = false;
 
 	int horizontal = newColumn - this.getColumn();

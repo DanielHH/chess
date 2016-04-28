@@ -1,4 +1,4 @@
-package main;
+package enums;
 
 /**
  * Each type represent a type of piece

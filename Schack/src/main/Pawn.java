@@ -1,19 +1,23 @@
 package main;
 
 
+import enums.Direction;
+import enums.PieceType;
+import enums.Team;
+
 /**
  * Contains the allowed type of movements for the Pawn piece.
  */
 public class Pawn extends Piece
 {
-    final static String BLACK_IMAGE_LOCATION = "fantasy/png-shad/bp.png";
-    final static String WHITE_IMAGE_LOCATION = "fantasy/png-shad/wp.png";
+    private final static String BLACK_IMAGE_LOCATION = "fantasy/png-shad/bp.png";
+    private final static String WHITE_IMAGE_LOCATION = "fantasy/png-shad/wp.png";
 
-    public Pawn(int column, int row, Team team, Board board) {
+    protected Pawn(int column, int row, Team team, Board board) {
 	super(column, row, team, board, PieceType.PAWN, BLACK_IMAGE_LOCATION, WHITE_IMAGE_LOCATION);
     }
 
-    @Override public boolean canMove(int newColumn, int newRow) { // Unfortunately this has to stay complex
+    @Override protected boolean canMove(int newColumn, int newRow) { // Unfortunately this has to stay complex
 	boolean canMove = false;
 
 	int horizontal = newColumn - this.getColumn();
@@ -69,8 +73,7 @@ public class Pawn extends Piece
 	return canMove;
     }
 
-    // @Override
-    public boolean canHit(int newColumn, int newRow) {
+    protected boolean canHit(int newColumn, int newRow) {
 	// checks if pawn can hit a position
 	boolean canHitIt = false;
 	int horizontal = newColumn - this.getColumn();
