@@ -19,6 +19,7 @@ public class LoadListener implements ActionListener
        public void actionPerformed(ActionEvent e) {
           Board loadedBoard = SaveAndLoad.load();
           if (loadedBoard != null) {
+              System.out.println("board found");
               chessFrame.board.setLoadedBoard(loadedBoard);
               chessFrame.chessComponent.setClickedPieceNull();
               chessFrame.repaint();

@@ -29,17 +29,17 @@ public class ChessFrame extends JFrame {
 
    public ChessFrame(Board board) {
       super("Schack");
+       this.board = board;
+       chessComponent= new ChessComponent(board);
+       board.addBoardListener(chessComponent);
       this.setLayout(new BorderLayout());
       Menus menu = new Menus(this);
        menu.createMenus();
-
-      chessComponent= new ChessComponent(board);
-      board.addBoardListener(chessComponent);
+       
       this.add(chessComponent);
       this.pack();
       this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
       this.setVisible(true);
-      this.board = board;
       resumeTimer();
    }
 

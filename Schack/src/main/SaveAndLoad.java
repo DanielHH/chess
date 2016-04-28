@@ -21,6 +21,7 @@ public final class SaveAndLoad
     private SaveAndLoad() {}
 
     public static void save(Board board) {
+	System.out.println(board);
 	Component modalToComponent = null;
 	JFileChooser fileChooser = new JFileChooser();
 	if (fileChooser.showSaveDialog(modalToComponent) == JFileChooser.APPROVE_OPTION) {
