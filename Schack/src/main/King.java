@@ -27,7 +27,15 @@ public class King extends Piece
 
 		if (Math.abs(lateral) < 2 && Math.abs(horizontal) < 2 && !(lateral == 0 && horizontal == 0)) {
 		    if (!this.pieceInTheWay(movement, steps)) { // no piece in the way
-		    		    		moved = true;
+				Piece tempPiece = board.getPiece(newColumn, newRow);
+				if (tempPiece != null) {
+					if (tempPiece.team != team) {
+						moved = true;
+					}
+				}
+				else {
+					moved = true;
+				}
 		    		}
 		}
 	return moved;
@@ -96,26 +104,31 @@ public class King extends Piece
     }
 
     public boolean isCheckMate() {
-	boolean checkMate = true;
-	// check if the king can save itself or if
-	// a teammate can save the king
-	for (int i = 0; i < Board.WIDTH; i++) {
-	    for (int j = 0; j < Board.HEIGHT; j++) {
-		Piece tempPiece = board.getPiece(i, j);
-		if (tempPiece != null) {
-		    if (tempPiece.team == team) { // same team
-			List<Map.Entry<Integer,Integer>> legalmoves = tempPiece.legalMoves();
-			// need to check if there is a legal move that is also safe,
-			// if not then it's checkmate
-			for (Map.Entry<Integer, Integer> move: legalmoves) {
-			    if (tempPiece.safeMove(move.getKey(), move.getValue())) {
-				checkMate = false;
-			    }
+		boolean checkMate = false;
+		// check if the king can save itself or if
+		// a teammate can save the king
+		if (isCheck()) {
+			System.out.println("threatened");
+			checkMate = true;
+			for (int i = 0; i < Board.WIDTH; i++) {
+				for (int j = 0; j < Board.HEIGHT; j++) {
+					Piece tempPiece = board.getPiece(i, j);
+					if (tempPiece != null) {
+						if (tempPiece.team == team) { // same team
+							List<Map.Entry<Integer, Integer>> legalmoves = tempPiece.legalMoves();
+							// need to check if there is a legal move that is also safe,
+							// if not then it's checkmate
+							for (Map.Entry<Integer, Integer> move : legalmoves) {
+								if (tempPiece.safeMove(move.getKey(), move.getValue())) {
+									System.out.println(tempPiece + " newColumn: " + move.getKey() + " newRow " + move.getValue());
+									checkMate = false;
+								}
+							}
+						}
+					}
+				}
 			}
-		    }
 		}
-	    }
-	}
 	return checkMate;
     }
 }

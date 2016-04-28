@@ -28,6 +28,7 @@ public class Board
 
     public void nextTurn() {
 	this.turnCounter += 1;
+		System.out.println(getKing(getTurnTeam()).team);
 	if (getKing(getTurnTeam()).isCheckMate()) {
 		// gameover
 		System.out.println("checkmate");
@@ -82,24 +83,16 @@ public class Board
 
     public void actuallyMovesPiece(int oldColumn, int oldRow, int newColumn, int newRow) throws InterruptedException {
 		Piece tempPiece = board[oldColumn][oldRow];
-		if (tempPiece.piece == PieceType.PAWN) {
-			if (tempPiece.column == 7 || tempPiece.column == 0) {
-				pawnUpgrade((Pawn) tempPiece);
-			}
-
-		}
 	    board[newColumn][newRow] = tempPiece;
 	    board[oldColumn][oldRow] = null;
+		if (tempPiece.piece == PieceType.PAWN) {
+			if (newRow == 7 || newRow == 0) {
+				pawnUpgrade(newColumn, newRow, tempPiece.team);
+			}
+		}
 	    nextTurn();
 		notifyListeners();
 	}
-	/*
-
-	PLACEMENT?!?!?!?!!??!?!?!?
-
-
-	*/
-
 
     public void addBoardListener(BoardListener bl) {
 	this.boardListenerList[0] = bl;
@@ -144,13 +137,13 @@ public class Board
 	return king;
 
     }
-	public void pawnUpgrade(Pawn pawn) {
+	public void pawnUpgrade(int column, int row, Team team) {
 		String imal = "fantasy/png-shad/bq.png";
-		if( pawn.team == Team.WHITE) {
+		if( team == Team.WHITE) {
 			imal = "fantasy/png-shad/wq.png";
 		}
 		try {
-			board[pawn.column][pawn.row] = new Queen(pawn.column, pawn.row, pawn.team, this, imal);
+			board[column][row] = new Queen(column, row, team, this, imal);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

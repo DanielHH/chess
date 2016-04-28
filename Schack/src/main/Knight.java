@@ -14,7 +14,15 @@ public class Knight extends Piece {
 	int lateral = newRow - this.getRow();
 
 	if ((Math.abs(lateral) == 2 && Math.abs(horizontal) == 1) || (Math.abs(lateral) == 1 && Math.abs(horizontal) == 2)) {
-	    moved = true;
+		Piece tempPiece = board.getPiece(newColumn, newRow);
+		if (tempPiece != null) {
+			if (tempPiece.team != team) {
+				moved = true;
+			}
+		}
+		else {
+			moved = true;
+		}
 	}
 	return moved;
     }

@@ -21,8 +21,16 @@ public class Queen extends Piece {
 		if ((((Math.abs(horizontal) > 0 && lateral == 0) ||
 		      (Math.abs(lateral) > 0 && horizontal == 0)) ||
 		     (Math.abs(horizontal) == Math.abs(lateral) && horizontal != 0 ))) {
-		    if (!this.pieceInTheWay(movement, steps)) { // no piece in the way
-		    		moved = true;
+			if (!this.pieceInTheWay(movement, steps)) { // no piece in the way
+				Piece tempPiece = board.getPiece(newColumn, newRow);
+				if (tempPiece != null) {
+					if (tempPiece.team != team) {
+						moved = true;
+					}
+				}
+				else {
+					moved = true;
+				}
 		}}
 	return moved;
 	}

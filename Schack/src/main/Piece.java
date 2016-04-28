@@ -105,7 +105,7 @@ public abstract class Piece
                     System.out.println("Suicidal !?");
                 }
                 else { // safe move
-                    System.out.println("Totally safe "+this+"column: " + newColumn + "row: "+newRow);
+                    //System.out.println("Totally safe "+this+"column: " + newColumn + "row: "+newRow);
                     safe = true;
                 }
             }
@@ -135,70 +135,50 @@ public abstract class Piece
     public boolean pieceInTheWay(Movement movement, int steps) {
         boolean canNotMove = false;
         if (movement == Movement.UP || movement == Movement.DOWN) {
-            for (int i = 1; i <=  Math.abs(steps); i++) {
+            for (int i = 1; i <  Math.abs(steps); i++) {
                 int x = i;
                 if (steps < 0) {
                     x *= -1;
                 }
                 Piece tempPiece = board.getPiece(column, row + x);
                 if (tempPiece != null) {
-                    if (tempPiece.team == team) {
-                        return true;
-                    }
-                    else {
-                       return false;
-                    }
+                    canNotMove = true;
                 }
             }
         }
         else if (movement == Movement.RIGHT || movement == Movement.LEFT) {
-            for (int i = 1; i <=  Math.abs(steps); i++) {
+            for (int i = 1; i <  Math.abs(steps); i++) {
                 int x = i;
                 if (steps < 0) {
                     x *= -1;
                 }
                 Piece tempPiece = board.getPiece(column + x, row);
                 if (tempPiece != null) {
-                    if (tempPiece.team == team) {
-                        return true;
-                    }
-                    else {
-                       return false;
-                    }
+                    canNotMove = true;
                 }
             }
         }
         else if (movement == Movement.UPRIGHT || movement == Movement.DOWNLEFT) {
-            for (int i = 1; i <=  Math.abs(steps); i++) {
+            for (int i = 1; i <  Math.abs(steps); i++) {
                 int x = i;
                 if (steps < 0) {
                     x *= -1;
                 }
                 Piece tempPiece = board.getPiece(column - x, row + x);
                 if (tempPiece != null) {
-                    if (tempPiece.team == team) {
-                        return true;
-                    }
-                    else {
-                       return false;
-                    }
+                    canNotMove = true;
                 }
             }
         }
         else if (movement == Movement.UPLEFT || movement == Movement.DOWNRIGHT) {
-            for (int i = 1; i <=  Math.abs(steps); i++) {
+            for (int i = 1; i <  Math.abs(steps); i++) {
                 int x = i;
                 if (steps < 0) {
                     x *= -1;
                 }
                 Piece tempPiece = board.getPiece(column + x, row + x);
                 if (tempPiece != null) {
-                    if (tempPiece.team == team) {
-                        return true;
-                    }
-                    else {
-                       return false;
-                    }
+                    canNotMove = true;
                 }
             }
         }
