@@ -1,5 +1,8 @@
 package main;
 
+/**
+* Contains the allowed type of movements for the Rook piece.
+ */
 public class Rook extends Piece {
 
     final static String blImageLocation = "fantasy/png-shad/br.png";

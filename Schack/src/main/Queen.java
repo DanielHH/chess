@@ -2,6 +2,9 @@ package main;
 
 import java.io.IOException;
 
+/**
+* Contains the allowed type of movements for the Queen piece.
+ */
 public class Queen extends Piece {
     final static String blImageLocation = "fantasy/png-shad/bq.png";
     final static String whImageLocation = "fantasy/png-shad/wq.png";

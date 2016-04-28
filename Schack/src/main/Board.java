@@ -1,21 +1,29 @@
 package main;
 
-/**
-* Det finns en array som motsvarar ett schackbräde.
-* Schackbrädet kan ritas ut grafiskt.
-* Schackbrädet är rutat i två färger.
-*/
-
-
 import java.io.IOException;
 import java.io.Serializable;
 
+/**
+ * Calculates and keeps track on what is on the board.
+ */
 public class Board implements Serializable{
+    /**
+     * Width of board.
+     */
     public static final int WIDTH = 8;
+    /**
+     * Height of board.
+     */
     public static final int HEIGHT = 8;
     private int turnCounter = 0;
     protected Piece[][] board;
+    /**
+     * Contains boardlisteners
+     */
     public BoardListener[] boardListenerList = new BoardListener[1];
+    /**
+     * Describes whether king is under check (true) or not (false).
+     */
     public boolean defendKing = false;
 
     public Team getTurnTeam() {

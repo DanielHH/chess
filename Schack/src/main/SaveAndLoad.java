@@ -10,6 +10,9 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+/**
+ * Contains methods for saving and loading a board.
+ */
 public final class SaveAndLoad
 {
     private SaveAndLoad() {}

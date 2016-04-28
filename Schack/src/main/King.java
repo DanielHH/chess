@@ -7,7 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-// !!!!!! KOLLAR INTE OM KUNGEN ÄR HOTAD !!!!!!!!
+/**
+* Contains the allowed type of movements for the King piece
+ * and checks if the King is under threat or in check.
+ */
 public class King extends Piece
 {
     final static String blImageLocation = "fantasy/png-shad/bk.png";

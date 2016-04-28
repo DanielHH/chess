@@ -13,8 +13,14 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
+/**
+ * JFrame object that contains:
+ * a menubar, a ChessComponent and a TimerTask.
+ */
 public class ChessFrame extends JFrame {
+    /**
+     * Instantiates a ChessComponent.
+     */
    	public ChessComponent chessComponent;
    	private JFrame frame;
    	private Board board;

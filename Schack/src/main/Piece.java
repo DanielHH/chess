@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+
+/**
+ * An abstract class containing mutual characteristics
+ * and behaviours of the different pieces.
+ */
 public abstract class Piece implements Serializable
 {
     protected int column;
@@ -135,6 +140,7 @@ public abstract class Piece implements Serializable
         return safe;
     }
 
+    // Gör denna abstrakt
     protected void move(int newColumn, int newRow) throws InterruptedException {
             if (board.getPiece(newColumn, newRow) != null) {
 

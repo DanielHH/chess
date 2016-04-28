@@ -2,7 +2,9 @@ package main;
 
 import java.io.IOException;
 
-
+/**
+* Contains the allowed type of movements for the Bishop piece.
+ */
 public class Bishop extends Piece {
 
 

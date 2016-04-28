@@ -2,6 +2,9 @@ package main;
 
 import java.io.IOException;
 
+/**
+ * Contains the allowed type of movements for the Knight piece.
+ */
 public class Knight extends Piece {
     final static String blImageLocation = "fantasy/png-shad/bn.png";
     final static String whImageLocation = "fantasy/png-shad/wn.png";
