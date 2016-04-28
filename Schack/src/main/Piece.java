@@ -158,9 +158,14 @@ public abstract class Piece implements Serializable
             }
         }
 
-    public boolean pieceInTheWay(Movement movement, int steps) {
+    public boolean pieceInTheWay(Direction direction, int steps) {
+        /*
+            small but significant difference in code. Falseflag as duplicated
+            Also not overly complex as it cant be made smaller if should be able ot handle all the directions.
+         */
+
         boolean canNotMove = false;
-        if (movement == Movement.UP || movement == Movement.DOWN) {
+        if (direction == Direction.UP || direction == Direction.DOWN) {
             for (int i = 1; i <  Math.abs(steps); i++) {
                 int x = i;
                 if (steps < 0) {
@@ -171,7 +176,7 @@ public abstract class Piece implements Serializable
                 }
             }
         }
-        else if (movement == Movement.RIGHT || movement == Movement.LEFT) {
+        else if (direction == Direction.RIGHT || direction == Direction.LEFT) {
             for (int i = 1; i <  Math.abs(steps); i++) {
                 int x = i;
                 if (steps < 0) {
@@ -182,7 +187,7 @@ public abstract class Piece implements Serializable
                 }
             }
         }
-        else if (movement == Movement.UPRIGHT || movement == Movement.DOWNLEFT) {
+        else if (direction == Direction.UPRIGHT || direction == Direction.DOWNLEFT) {
             for (int i = 1; i <  Math.abs(steps); i++) {
                 int x = i;
                 if (steps < 0) {
@@ -193,7 +198,7 @@ public abstract class Piece implements Serializable
                 }
             }
         }
-        else if (movement == Movement.UPLEFT || movement == Movement.DOWNRIGHT) {
+        else if (direction == Direction.UPLEFT || direction == Direction.DOWNRIGHT) {
             for (int i = 1; i <  Math.abs(steps); i++) {
                 int x = i;
                 if (steps < 0) {
@@ -209,9 +214,9 @@ public abstract class Piece implements Serializable
         }
         return canNotMove;
     }
-    public boolean evaluatePieceInTheWay(Movement movement, int steps, int newColumn, int newRow) {
+    public boolean evaluatePieceInTheWay(Direction direction, int steps, int newColumn, int newRow) {
         boolean moved = false;
-        if (!this.pieceInTheWay(movement, steps)) { // no piece in the way
+        if (!this.pieceInTheWay(direction, steps)) { // no piece in the way
             Piece tempPiece = board.getPiece(newColumn, newRow);
             if (tempPiece != null) {
                 if (tempPiece.team != team) {
@@ -226,33 +231,33 @@ public abstract class Piece implements Serializable
 
     public abstract boolean canMove(int newColumn, int newRow);
 
-    public Movement moveDirection(int horizontal, int lateral) {
-        Movement movement = null;
+    public Direction moveDirection(int horizontal, int lateral) {
+        Direction direction = null;
         if (horizontal > 0 && lateral < 0) {
-            movement = Movement.UPRIGHT;
+            direction = Direction.UPRIGHT;
         }
         else if  (horizontal < 0 && lateral < 0){
-            movement = Movement.UPLEFT;
+            direction = Direction.UPLEFT;
         }
         else if (horizontal > 0 && lateral > 0) {
-            movement = Movement.DOWNRIGHT;
+            direction = Direction.DOWNRIGHT;
         }
         else if (horizontal < 0 && lateral > 0) {
-            movement = Movement.DOWNLEFT;
+            direction = Direction.DOWNLEFT;
         }
         else if (horizontal == 0 && lateral < 0) {
-            movement = Movement.UP;
+            direction = Direction.UP;
         }
         else if (horizontal == 0 && lateral > 0) {
-            movement = Movement.DOWN;
+            direction = Direction.DOWN;
         }
         else if (horizontal > 0 && lateral == 0) {
-            movement = Movement.RIGHT;
+            direction = Direction.RIGHT;
         }
         else if (horizontal < 0 && lateral == 0) {
-            movement = Movement.LEFT;
+            direction = Direction.LEFT;
         }
-        return movement;
+        return direction;
     }
 
     public List<Entry<Integer,Integer>> legalMoves() {

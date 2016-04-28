@@ -17,13 +17,13 @@ public class Bishop extends Piece {
 	boolean moved = false;
 	int horizontal = newColumn - this.getColumn();
 	int lateral =  newRow - this.getRow();
-	Movement movement = this.moveDirection(horizontal, lateral);
+	Direction direction = this.moveDirection(horizontal, lateral);
 	int steps = horizontal;
 	if (lateral != 0) {
 		steps = lateral;
 	}
 	if (Math.abs(horizontal) == Math.abs(lateral) && horizontal != 0) {
-	    moved = evaluatePieceInTheWay(movement, steps, newColumn, newRow);
+	    moved = evaluatePieceInTheWay(direction, steps, newColumn, newRow);
 	}
 	return moved;
     }

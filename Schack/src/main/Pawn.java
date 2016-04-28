@@ -38,7 +38,7 @@ public class Pawn extends Piece
 		}
 	    }
 	} else if (horizontal == 0 && lateral == 2) {
-	    if (!this.pieceInTheWay(Movement.DOWN, lateral) && !this.hasMoved() &&
+	    if (!this.pieceInTheWay(Direction.DOWN, lateral) && !this.hasMoved() &&
 		board.getPiece(newColumn, newRow) == null) {
 		canMove = true;
 	    }
@@ -59,7 +59,7 @@ public class Pawn extends Piece
 		}
 	    }
 	} else if (horizontal == 0 && lateral == -2) {
-	    if (!this.pieceInTheWay(Movement.UP, lateral) && !this.hasMoved() &&
+	    if (!this.pieceInTheWay(Direction.UP, lateral) && !this.hasMoved() &&
 		board.getPiece(newColumn, newRow) == null) {
 		canMove = true;
 	    }
