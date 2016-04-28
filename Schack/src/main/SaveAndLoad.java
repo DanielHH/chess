@@ -6,8 +6,11 @@ import javax.swing.*;
 import java.io.File;
 import java.awt.Component;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 
 /**
@@ -23,16 +26,15 @@ public final class SaveAndLoad
 	if (fileChooser.showSaveDialog(modalToComponent) == JFileChooser.APPROVE_OPTION) {
 	    String saveName = fileChooser.getSelectedFile().getPath();
 
-	    FileOutputStream fos;
-	    ObjectOutputStream out;
 	    try {
-		fos = new FileOutputStream(saveName);
-		out = new ObjectOutputStream(fos);
+		FileOutputStream fos = new FileOutputStream(saveName);
+		ObjectOutput out = new ObjectOutputStream(fos);
 		out.writeObject(board);
 		out.close();
-	    }
-	    catch (Exception ex) {
-		ex.printStackTrace();
+	    } catch (FileNotFoundException e) {
+		e.printStackTrace();
+	    } catch (IOException e) {
+		e.printStackTrace();
 	    }
 	}
     }
@@ -44,15 +46,16 @@ public final class SaveAndLoad
 	if (fileChooser.showOpenDialog(modalToComponent) == JFileChooser.APPROVE_OPTION) {
 	    // load from file
 	    File file = fileChooser.getSelectedFile();
-	    FileInputStream fis;
-	    ObjectInputStream in;
 	    try {
-		fis = new FileInputStream(file.getPath());
-		in = new ObjectInputStream(fis);
+		FileInputStream fis = new FileInputStream(file.getPath());
+		ObjectInputStream in = new ObjectInputStream(fis);
 		board = (Board) in.readObject();
 		in.close();
-	    }
-	    catch (Exception ex) {
+	    } catch (FileNotFoundException e) {
+		e.printStackTrace();
+	    } catch (IOException e) {
+		e.printStackTrace();
+	    } catch (Exception ex) {
 		ex.printStackTrace();
 	    }
 	}

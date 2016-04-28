@@ -1,6 +1,5 @@
 package main;
 
-import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -16,7 +15,7 @@ public class Board implements Serializable{
      */
     public static final int HEIGHT = 8;
     private int turnCounter = 0;
-    protected Piece[][] board;
+    protected Piece[][] board = null;
     /**
      * Contains boardlisteners
      */
@@ -40,7 +39,7 @@ public class Board implements Serializable{
 
     }
 
-    public Board() throws IOException, InterruptedException {
+    public Board() {
 	setStartPositions();
     }
 
@@ -48,7 +47,7 @@ public class Board implements Serializable{
 	turnCounter = 0;
     }
 
-    public void setStartPositions() throws IOException, InterruptedException {
+    public void setStartPositions() {
 	setTurnCounterToZero();
 	defendKing = false;
     	board = new Piece[WIDTH][HEIGHT];
@@ -89,7 +88,7 @@ public class Board implements Serializable{
 	board[column][row] = null;
     }
 
-    public void actuallyMovesPiece(int oldColumn, int oldRow, int newColumn, int newRow) throws InterruptedException {
+    public void actuallyMovesPiece(int oldColumn, int oldRow, int newColumn, int newRow) {
 	Piece tempPiece = board[oldColumn][oldRow];
 	board[newColumn][newRow] = tempPiece;
 	board[oldColumn][oldRow] = null;
@@ -110,13 +109,13 @@ public class Board implements Serializable{
 	this.boardListenerList[0] = bl;
     }
 
-    private void notifyListeners() throws InterruptedException {
+    private void notifyListeners() {
 	for (BoardListener bl: boardListenerList) {
 	    bl.boardChanged();
 	}
     }
 
-    public void markPiece() throws InterruptedException {
+    public void markPiece() {
 	notifyListeners();
     }
 

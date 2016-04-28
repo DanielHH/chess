@@ -1,7 +1,5 @@
 package main;
 
-import java.io.IOException;
-
 /**
  * Contains the allowed type of movements for the Knight piece.
  */

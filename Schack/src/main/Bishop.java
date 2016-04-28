@@ -1,7 +1,5 @@
 package main;
 
-import java.io.IOException;
-
 /**
 * Contains the allowed type of movements for the Bishop piece.
  */
@@ -25,17 +23,7 @@ public class Bishop extends Piece {
 		steps = lateral;
 	}
 	if (Math.abs(horizontal) == Math.abs(lateral) && horizontal != 0) {
-	    if (!this.pieceInTheWay(movement, steps)) {
-		Piece tempPiece = board.getPiece(newColumn, newRow);
-		if (tempPiece != null) {
-		    if (tempPiece.team != team) {
-			moved = true;
-		    }
-		}
-		else {
-		    moved = true;
-		}
-	    }
+	    moved = evaluatePieceInTheWay(movement, steps, newColumn, newRow);
 	}
 	return moved;
     }

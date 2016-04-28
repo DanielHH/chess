@@ -1,11 +1,10 @@
 package main;
 
 
-import java.io.IOException;
-import java.util.AbstractMap;
+import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.Map.Entry;
 
 /**
 * Contains the allowed type of movements for the King piece
@@ -32,17 +31,7 @@ public class King extends Piece
 	}
 
 		if (Math.abs(lateral) < 2 && Math.abs(horizontal) < 2 && !(lateral == 0 && horizontal == 0)) {
-		    if (!this.pieceInTheWay(movement, steps)) { // no piece in the way
-				Piece tempPiece = board.getPiece(newColumn, newRow);
-				if (tempPiece != null) {
-					if (tempPiece.team != team) {
-						moved = true;
-					}
-				}
-				else {
-					moved = true;
-				}
-		    		}
+		    moved = evaluatePieceInTheWay(movement, steps, newColumn, newRow);
 		}
 	return moved;
     }
@@ -93,18 +82,18 @@ public class King extends Piece
 	return walkList;
      */
 
-    private List<Map.Entry<Integer,Integer>> unthreatenedPlaces() {
-	List<Map.Entry<Integer,Integer>> legalMovesList = this.legalMoves();
-	List<Map.Entry<Integer,Integer>> unthreatenedPlacesList = new ArrayList<>();
+    private List<Entry<Integer,Integer>> unthreatenedPlaces() {
+	List<Entry<Integer,Integer>> legalMovesList = this.legalMoves();
+	List<Entry<Integer,Integer>> unthreatenedPlacesList = new ArrayList<>();
 	if (!legalMovesList.isEmpty()) {
-	    for (Map.Entry<Integer,Integer> pair: legalMovesList) {
+	    for (Entry<Integer,Integer> pair: legalMovesList) {
 		if (!isThreatened(pair.getKey(), pair.getValue())) {
 		    unthreatenedPlacesList.add(pair);
 		}
 	    }
 	}
 	if (!isThreatened(column, row)) {
-	    Map.Entry<Integer, Integer> pair = new AbstractMap.SimpleEntry<>(column, row);
+	    Entry<Integer, Integer> pair = new SimpleEntry<>(column, row);
 	    unthreatenedPlacesList.add(pair);
 	}
 	return unthreatenedPlacesList;
@@ -127,10 +116,10 @@ public class King extends Piece
 					Piece tempPiece = board.getPiece(i, j);
 					if (tempPiece != null) {
 						if (tempPiece.team == team) { // same team
-							List<Map.Entry<Integer, Integer>> legalmoves = tempPiece.legalMoves();
+							List<Entry<Integer, Integer>> legalmoves = tempPiece.legalMoves();
 							// need to check if there is a legal move that is also safe,
 							// if not then it's checkmate
-							for (Map.Entry<Integer, Integer> move : legalmoves) {
+							for (Entry<Integer, Integer> move : legalmoves) {
 								if (tempPiece.safeMove(move.getKey(), move.getValue())) {
 									System.out.println(tempPiece + " newColumn: " + move.getKey() + " newRow " + move.getValue());
 									checkMate = false;

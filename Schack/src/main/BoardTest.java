@@ -1,8 +1,5 @@
 package main;
 
-import java.awt.*;
-import java.io.IOException;
-
 /**
  * The main class for the chess program,
  * creates a Board and a ChessFrame.
@@ -10,9 +7,11 @@ import java.io.IOException;
  */
 public final class BoardTest
 {
-    public static void main(String[] args) throws IOException, InterruptedException {
+    private BoardTest() {}
+
+    public static void main(String[] args) {
         Board testBoard = new Board();
-        ChessFrame chessFrame = new ChessFrame(testBoard);
+        new ChessFrame(testBoard);
         /*
         System.out.println(testBoard.getPiece(3,3));
         System.out.println(testBoard.getPiece(3,0));

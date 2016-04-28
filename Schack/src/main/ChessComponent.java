@@ -18,7 +18,7 @@ public class ChessComponent extends JComponent implements BoardListener {
      * Size of the squares on the screen
      */
     public static final int SQUARE_SIZE = 100;
-    private Piece clickedPiece;
+    private Piece clickedPiece = null;
     /**
      * Playertype of white player.
      */
@@ -53,17 +53,13 @@ public class ChessComponent extends JComponent implements BoardListener {
                     int y = e.getY();
                     int column = x / SQUARE_SIZE;
                     int row = y / SQUARE_SIZE;
-                    try {
                         tryMove(column, row);
-                    } catch (InterruptedException e1) {
-                        e1.printStackTrace();
-                    }
                 }
             }
         });
     }
 
-    public void tryMove(int column, int row) throws InterruptedException {
+    public void tryMove(int column, int row) {
         if (gameMode != Mode.PAUSE) {
             System.out.println(board.getTurnCounter());
             Piece newPiece = board.getPiece(column, row);
@@ -78,37 +74,25 @@ public class ChessComponent extends JComponent implements BoardListener {
                         clickedPiece = newPiece;
                         board.markPiece();
                     } else { // piece belong to the other team
-                        boolean moved = clickedPiece.canMove(column, row);
-                        if (moved) { // can move
-                            boolean safe = clickedPiece.safeMove(column, row);
-                            if (safe) { // remove mark & move
-                                try {
-                                    clickedPiece.move(column, row);
-                                } catch (InterruptedException e1) {
-                                    e1.printStackTrace();
-                                }
-                                clickedPiece = null;
-                            }
-                        }
+                        tryMoveAndSafeMove(column, row);
                     }
                 } else { // no new piece
-                    boolean moved = clickedPiece.canMove(column, row);
-                    if (moved) { // can move
-                        boolean safe = clickedPiece.safeMove(column, row);
-                        if (safe) { // remove mark & move
-                            try {
-                                clickedPiece.move(column, row);
-                            } catch (InterruptedException e1) {
-                                e1.printStackTrace();
-                            }
-                            clickedPiece = null;
-                        }
-                    }
+                    tryMoveAndSafeMove(column, row);
                 }
             }
         }
     }
 
+    private void tryMoveAndSafeMove(int column, int row) {
+        boolean move = clickedPiece.canMove(column, row);
+        if (move) { // can move
+            boolean safe = clickedPiece.safeMove(column, row);
+            if (safe) { // remove mark & move
+                clickedPiece.move(column, row);
+                clickedPiece = null;
+            }
+        }
+    }
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -150,7 +134,7 @@ public class ChessComponent extends JComponent implements BoardListener {
     }
 
     @Override
-    public void boardChanged() throws InterruptedException {
+    public void boardChanged() {
         repaint();
     }
 

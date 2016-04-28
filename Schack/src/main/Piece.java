@@ -4,10 +4,10 @@ import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
-import java.util.AbstractMap;
+import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.Map.Entry;
 
 
 /**
@@ -25,13 +25,14 @@ public abstract class Piece implements Serializable
     protected String blImageLocation;
     protected String whImageLocation;
 
-    protected transient BufferedImage image;
+    protected transient BufferedImage image = null;
 
-    public Piece(final int column, final int row, Team team, Board board, PieceType piece, String blImageLocation, String whImageLocation)
+    protected Piece(final int column, final int row, Team team, Board board, PieceType piece, String blImageLocation,
+                    String whImageLocation)
     {
         this.row = row;
 	this.column = column;
-        this.hasMoved = false;
+        hasMoved = false;
         this.team = team;
         this.board = board;
         this.piece = piece;
@@ -141,7 +142,7 @@ public abstract class Piece implements Serializable
     }
 
     // Gör denna abstrakt
-    protected void move(int newColumn, int newRow) throws InterruptedException {
+    protected void move(int newColumn, int newRow) {
             if (board.getPiece(newColumn, newRow) != null) {
 
                 if (board.getPiece(newColumn, newRow).team != team) {
@@ -164,7 +165,7 @@ public abstract class Piece implements Serializable
                 if (steps < 0) {
                     x *= -1;
                 }
-                if (board.getPiece(this.getColumn(), this.getRow() + x) != null) {
+                if (board.getPiece(column, row + x) != null) {
                     canNotMove = true;
                 }
             }
@@ -175,7 +176,7 @@ public abstract class Piece implements Serializable
                 if (steps < 0) {
                     x *= -1;
                 }
-                if (board.getPiece(this.getColumn() + x, this.getRow()) != null) {
+                if (board.getPiece(column + x, row) != null) {
                     canNotMove = true;
                 }
             }
@@ -186,7 +187,7 @@ public abstract class Piece implements Serializable
                 if (steps < 0) {
                     x *= -1;
                 }
-                if (board.getPiece(this.getColumn() - x, this.getRow() + x) != null) {
+                if (board.getPiece(column - x, row + x) != null) {
                     canNotMove = true;
                 }
             }
@@ -197,7 +198,7 @@ public abstract class Piece implements Serializable
                 if (steps < 0) {
                     x *= -1;
                 }
-                if (board.getPiece(this.getColumn() + x, this.getRow() + x) != null) {
+                if (board.getPiece(column + x, row + x) != null) {
                     canNotMove = true;
                 }
             }
@@ -207,8 +208,22 @@ public abstract class Piece implements Serializable
         }
         return canNotMove;
     }
+    public boolean evaluatePieceInTheWay(Movement movement, int steps, int newColumn, int newRow) {
+        boolean moved = false;
+        if (!this.pieceInTheWay(movement, steps)) { // no piece in the way
+            Piece tempPiece = board.getPiece(newColumn, newRow);
+            if (tempPiece != null) {
+                if (tempPiece.team != team) {
+                    moved = true;
+                }
+            } else {
+                moved = true;
+            }
+        }
+        return moved;
+    }
 
-    public abstract boolean canMove(int column, int row);
+    public abstract boolean canMove(int newColumn, int newRow);
 
     public Movement moveDirection(int horizontal, int lateral) {
         Movement movement = null;
@@ -239,12 +254,12 @@ public abstract class Piece implements Serializable
         return movement;
     }
 
-    public List<Map.Entry<Integer,Integer>> legalMoves() {
-        List<Map.Entry<Integer,Integer>> legalMovesList = new ArrayList<>();
+    public List<Entry<Integer,Integer>> legalMoves() {
+        List<Entry<Integer,Integer>> legalMovesList = new ArrayList<>();
         for (int i = 0; i < Board.WIDTH; i++) {
             for (int j = 0; j < Board.HEIGHT; j++) {
                 if (canMove(i, j)) { // piece can move there
-                    Map.Entry<Integer, Integer> pair = new AbstractMap.SimpleEntry<>(i, j);
+                    Entry<Integer, Integer> pair = new SimpleEntry<>(i, j);
                     legalMovesList.add(pair);
                 }
             }
