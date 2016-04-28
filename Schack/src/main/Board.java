@@ -5,7 +5,12 @@ import java.io.Serializable;
 /**
  * Calculates and keeps track on what is on the board.
  */
-public class Board implements Serializable{
+public class Board implements Serializable
+{
+
+    private King whiteKing = null;
+    private King blackKing = null;
+
     /**
      * Width of board.
      */
@@ -35,7 +40,7 @@ public class Board implements Serializable{
 
     public void nextTurn() {
 	turnCounter += 1;
-		System.out.println(getKing(getTurnTeam()).team);
+	System.out.println(getKing(getTurnTeam()).team);
 
     }
 
@@ -50,34 +55,36 @@ public class Board implements Serializable{
     public void setStartPositions() {
 	setTurnCounterToZero();
 	defendKing = false;
-    	board = new Piece[WIDTH][HEIGHT];
+	board = new Piece[WIDTH][HEIGHT];
 
-    	for (int column = 0; column < WIDTH; column++) {
+	for (int column = 0; column < WIDTH; column++) {
 	    board[column][1] = new Pawn(column, 1, Team.BLACK, this);
 	}
 
-   	    for (int column = 0; column < WIDTH; column++) {
-   		board[column][6] = new Pawn(column, 6, Team.WHITE, this);
-   	    }
+	for (int column = 0; column < WIDTH; column++) {
+	    board[column][6] = new Pawn(column, 6, Team.WHITE, this);
+	}
 
-   	    board[0][0] = new Rook(0, 0, Team.BLACK, this);
-   	    board[1][0] = new Knight(1, 0, Team.BLACK, this);
-   	    board[2][0] = new Bishop(2, 0, Team.BLACK, this);
-   	    board[3][0] = new King(3, 0, Team.BLACK, this);
-   	    board[4][0] = new Queen(4, 0, Team.BLACK, this);
-   	    board[5][0] = new Bishop(5, 0, Team.BLACK, this);
-   	    board[6][0] = new Knight(6, 0, Team.BLACK, this);
-   	    board[7][0] = new Rook(7, 0, Team.BLACK, this);
+	board[0][0] = new Rook(0, 0, Team.BLACK, this);
+	board[1][0] = new Knight(1, 0, Team.BLACK, this);
+	board[2][0] = new Bishop(2, 0, Team.BLACK, this);
+	blackKing = new King(3, 0, Team.BLACK, this);
+	board[3][0] = blackKing;
+	board[4][0] = new Queen(4, 0, Team.BLACK, this);
+	board[5][0] = new Bishop(5, 0, Team.BLACK, this);
+	board[6][0] = new Knight(6, 0, Team.BLACK, this);
+	board[7][0] = new Rook(7, 0, Team.BLACK, this);
 
-   	    board[0][7] = new Rook(0, 7, Team.WHITE, this);
-   	    board[1][7] = new Knight(1, 7, Team.WHITE, this);
-   	    board[2][7] = new Bishop(2, 7, Team.WHITE, this);
-   	    board[3][7] = new King(3, 7, Team.WHITE, this);
-   	    board[4][7] = new Queen(4, 7, Team.WHITE, this);
-   	    board[5][7] = new Bishop(5, 7, Team.WHITE, this);
-   	    board[6][7] = new Knight(6, 7, Team.WHITE, this);
-   	    board[7][7] = new Rook(7, 7, Team.WHITE, this);
-        }
+	board[0][7] = new Rook(0, 7, Team.WHITE, this);
+	board[1][7] = new Knight(1, 7, Team.WHITE, this);
+	board[2][7] = new Bishop(2, 7, Team.WHITE, this);
+	whiteKing = new King(3, 7, Team.WHITE, this);
+	board[3][7] = whiteKing;
+	board[4][7] = new Queen(4, 7, Team.WHITE, this);
+	board[5][7] = new Bishop(5, 7, Team.WHITE, this);
+	board[6][7] = new Knight(6, 7, Team.WHITE, this);
+	board[7][7] = new Rook(7, 7, Team.WHITE, this);
+    }
 
 
     public Piece getPiece(int column, int row) {
@@ -110,7 +117,7 @@ public class Board implements Serializable{
     }
 
     private void notifyListeners() {
-	for (BoardListener bl: boardListenerList) {
+	for (BoardListener bl : boardListenerList) {
 	    bl.boardChanged();
 	}
     }
@@ -119,34 +126,18 @@ public class Board implements Serializable{
 	notifyListeners();
     }
 
-    public boolean onBoard(int column, int row) {
-	boolean on = false;
-	if (column >= 0 && column < Board.WIDTH) {
-	    if (row >= 0 && row <= Board.HEIGHT) {
-		on = true;
-	    }
-	}
-	return on;
-    }
-
     public int getTurnCounter() {
 	return turnCounter;
     }
 
     public King getKing(Team team) {
 	King king = null;
-	for (int i = 0; i < Board.WIDTH; i++) {
-	    for (int j = 0; j < Board.HEIGHT; j++) {
-		Piece tempPiece = getPiece(i, j);
-		if (tempPiece != null) {
-		    if (tempPiece.team == team && tempPiece.piece == PieceType.KING) {
-			king = (King)tempPiece;
-		    }
-		}
-	    }
+	if (Team.WHITE == team) {
+		king = whiteKing;
+	} else if (Team.BLACK == team) {
+	    king = blackKing;
 	}
 	return king;
-
     }
 
     public void setLoadedBoard(Board loadedBoard) {
@@ -160,43 +151,37 @@ public class Board implements Serializable{
 		if (tempPiece != null) { // there is a piece
 		    if (tempPiece.piece == PieceType.PAWN) {
 			board[i][j] = new Pawn(i, j, tempPiece.team, this);
-		    }
-		    else if (tempPiece.piece == PieceType.BISHOP) {
+		    } else if (tempPiece.piece == PieceType.BISHOP) {
 			board[i][j] = new Bishop(i, j, tempPiece.team, this);
-		    }
-		    else if (tempPiece.piece == PieceType.KING) {
+		    } else if (tempPiece.piece == PieceType.KING) {
 			board[i][j] = new King(i, j, tempPiece.team, this);
-		    }
-		    else if (tempPiece.piece == PieceType.QUEEN) {
+		    } else if (tempPiece.piece == PieceType.QUEEN) {
 			board[i][j] = new Queen(i, j, tempPiece.team, this);
-		    }
-		    else if (tempPiece.piece == PieceType.ROOK) {
+		    } else if (tempPiece.piece == PieceType.ROOK) {
 			board[i][j] = new Rook(i, j, tempPiece.team, this);
-		    }
-		    else if (tempPiece.piece == PieceType.KNIGHT) {
+		    } else if (tempPiece.piece == PieceType.KNIGHT) {
 			board[i][j] = new Knight(i, j, tempPiece.team, this);
 		    }
 		    board[i][j].hasMoved = tempPiece.hasMoved;
-		}
-		else { // no piece
+		} else { // no piece
 		    board[i][j] = null;
 		}
 	    }
 	}
     }
 
-	public void pawnUpgrade(int column, int row, Team team) {
-	    board[column][row] = new Queen(column, row, team, this);
-	}
+    public void pawnUpgrade(int column, int row, Team team) {
+	board[column][row] = new Queen(column, row, team, this);
+    }
 
     public void checksForCheck() {
-    	King king;
-		defendKing = false;
-		king = getKing(getTurnTeam());
-    	if (king.isCheck()) {
-		// show the user
-			defendKing = true;
-    	}
+	King king;
+	defendKing = false;
+	king = getKing(getTurnTeam());
+	if (king.isCheck()) {
+	    // show the user
+	    defendKing = true;
+	}
     }
 
 }

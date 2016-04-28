@@ -14,6 +14,7 @@ import java.util.Map.Entry;
  * An abstract class containing mutual characteristics
  * and behaviours of the different pieces.
  */
+
 public abstract class Piece implements Serializable
 {
     protected int column;
