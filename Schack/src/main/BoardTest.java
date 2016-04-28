@@ -11,7 +11,7 @@ public final class BoardTest
 
     public static void main(String[] args) {
         Board testBoard = new Board();
-        new ChessFrame(testBoard);
+        new ChessFrame(testBoard); // Result not relevant. Field is just used to start game.
         /*
         System.out.println(testBoard.getPiece(3,3));
         System.out.println(testBoard.getPiece(3,0));

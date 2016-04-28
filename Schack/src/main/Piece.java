@@ -83,6 +83,29 @@ public abstract class Piece implements Serializable
         return board;
     }
 
+    public boolean isThreatened(int newColumn, int newRow) {
+	boolean threatened = false;
+	for (int i = 0; i < Board.WIDTH; i++) {
+	    for (int j = 0; j < Board.HEIGHT; j++) {
+		Piece tempPiece = board.getPiece(i, j);
+		if (tempPiece != null) {
+		    if (tempPiece.team != this.team) {
+			if (tempPiece.piece == PieceType.PAWN) {
+			    if (((Pawn) tempPiece).canHit(newColumn, newRow)) {
+				threatened = true;
+			    }
+			} else {
+			    if (tempPiece.canMove(newColumn, newRow)) {
+				threatened = true;
+			    }
+			}
+		    }
+		}
+	    }
+	}
+	return threatened;
+    }
+
     public boolean safeMove(int newColumn, int newRow) {
         boolean safe = false;
         Piece tempPiece = board.board[newColumn][newRow];
@@ -126,13 +149,20 @@ public abstract class Piece implements Serializable
             board.board[column][row] = board.board[newColumn][newRow];
             board.board[newColumn][newRow] = null;
             board.board[newColumn][newRow] = tempPiece;
-            if (!board.defendKing) {
+            if (!board.defendKing) { //
                 if (piece == PieceType.KING && ((King) this).isThreatened(newColumn, newRow)) { // the king moves into check
                     System.out.println("Suicidal !?");
                 }
-                else { // safe move
-                    //System.out.println("Totally safe "+this+"column: " + newColumn + "row: "+newRow);
-                    safe = true;
+                else {
+                    board.board[newColumn][newRow] = null;
+                    if (piece == PieceType.KING && this.isThreatened(newColumn, newRow)){
+                        System.out.println("It's not worth it, King!!");
+                    }
+                        else { // safe move
+                        System.out.println("Totally safe " + this + "column: " + newColumn + "row: " + newRow);
+                        safe = true;
+                    }
+                    board.board[newColumn][newRow] = tempPiece;
                 }
             }
             else { // move puts the king in check

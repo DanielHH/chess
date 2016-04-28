@@ -6,17 +6,19 @@ package main;
  */
 public class Pawn extends Piece
 {
-    final static String blImageLocation = "fantasy/png-shad/bp.png";
-    final static String whImageLocation = "fantasy/png-shad/wp.png";
+    final static String BLACK_IMAGE_LOCATION = "fantasy/png-shad/bp.png";
+    final static String WHITE_IMAGE_LOCATION = "fantasy/png-shad/wp.png";
 
     public Pawn(int column, int row, Team team, Board board) {
-	super(column, row, team, board, PieceType.PAWN, blImageLocation, whImageLocation);
+	super(column, row, team, board, PieceType.PAWN, BLACK_IMAGE_LOCATION, WHITE_IMAGE_LOCATION);
     }
 
     @Override public boolean canMove(int newColumn, int newRow) { // Unfortunately this has to stay complex
 	boolean canMove = false;
+
 	int horizontal = newColumn - this.getColumn();
 	int lateral = newRow - this.getRow();
+
 	if (this.getTeam() == Team.WHITE) {
 	    canMove = canMoveWhitePawn(horizontal, lateral, newColumn, newRow);
 	} else if (this.getTeam() == Team.BLACK) {

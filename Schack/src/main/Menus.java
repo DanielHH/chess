@@ -6,7 +6,9 @@ import javax.swing.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
-
+/**
+ * Contains the menu and all of the menuoptions.
+ */
 public class Menus extends JFrame {
     private final JMenuBar menuBar = new JMenuBar();
 
@@ -23,7 +25,7 @@ public class Menus extends JFrame {
     private final JRadioButtonMenuItem pause = new JRadioButtonMenuItem("Pause");
     private final ButtonGroup whichMode = new ButtonGroup();
 
-    ChessFrame chessFrame;
+    private ChessFrame chessFrame;
 
     public Menus (ChessFrame frame) {
 	chessFrame = frame;

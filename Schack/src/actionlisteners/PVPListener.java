@@ -7,9 +7,12 @@ import main.PlayerType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * If mode PVP is chosen by player this class sets gamemode and Players to appropriate types.
+ */
 public class PVPListener implements ActionListener
 {
-    ChessFrame chessFrame;
+    private ChessFrame chessFrame;
     public PVPListener (ChessFrame frame){
         chessFrame = frame;
     }

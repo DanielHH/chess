@@ -7,6 +7,9 @@ import main.SaveAndLoad;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * If option Load is chosen by player this class loads a saved board with methods in ChessFrame.
+ */
 public class LoadListener implements ActionListener
 {
     private ChessFrame chessFrame;

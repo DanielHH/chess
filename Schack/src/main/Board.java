@@ -40,7 +40,6 @@ public class Board implements Serializable
 
     public void nextTurn() {
 	turnCounter += 1;
-	System.out.println(getKing(getTurnTeam()).team);
 
     }
 

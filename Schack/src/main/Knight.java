@@ -4,16 +4,17 @@ package main;
  * Contains the allowed type of movements for the Knight piece.
  */
 public class Knight extends Piece {
-    final static String blImageLocation = "fantasy/png-shad/bn.png";
-    final static String whImageLocation = "fantasy/png-shad/wn.png";
+    final static String BLACK_IMAGE_LOCATION = "fantasy/png-shad/bn.png";
+    final static String WHITE_IMAGE_LOCATION = "fantasy/png-shad/wn.png";
 
     public Knight(int column, int row, Team team, Board board) {
-	super(column, row, team, board, PieceType.KNIGHT, blImageLocation, whImageLocation);
+	super(column, row, team, board, PieceType.KNIGHT, BLACK_IMAGE_LOCATION, WHITE_IMAGE_LOCATION);
     }
 
     @Override
     public boolean canMove(int newColumn, int newRow) {
 	boolean moved = false;
+
 	int horizontal = newColumn - this.getColumn();
 	int lateral = newRow - this.getRow();
 

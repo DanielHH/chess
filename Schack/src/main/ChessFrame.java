@@ -15,7 +15,13 @@ public class ChessFrame extends JFrame {
      * Instantiates a ChessComponent.
      */
    	public ChessComponent chessComponent;
+    /**
+     * Instantiates a frame that contains the dialog frame.
+     */
    	public JFrame frame = null;
+    /**
+     * Instantiates a Board to be the the gameboard.
+     */
    	public Board board;
     	private Timer timer = null;
     	private TimerTask runsGameAI = null;
@@ -64,12 +70,12 @@ public class ChessFrame extends JFrame {
     private void gameAI() throws InterruptedException {
 	if (board.getTurnTeam() == Team.WHITE) {
 	    if (chessComponent.player1 == PlayerType.AI) {
-		chessComponent.AIWalk();
+		chessComponent.walkAI();
 	    }
 	}
 	else {
 	    if (chessComponent.player2 == PlayerType.AI) {
-		chessComponent.AIWalk();
+		chessComponent.walkAI();
 	    }
         }
     }

@@ -11,17 +11,19 @@ import java.util.Map.Entry;
  */
 public class King extends Piece
 {
-    final static String blImageLocation = "fantasy/png-shad/bk.png";
-    final static String whImageLocation = "fantasy/png-shad/wk.png";
+    final static String BLACK_IMAGE_LOCATION = "fantasy/png-shad/bk.png";
+    final static String WHITE_IMAGE_LOCATION = "fantasy/png-shad/wk.png";
 
     public King(int column, int row, Team team, Board board) {
-	super(column, row, team, board, PieceType.KING, blImageLocation, whImageLocation);
+	super(column, row, team, board, PieceType.KING, BLACK_IMAGE_LOCATION, WHITE_IMAGE_LOCATION);
     }
 
     @Override public boolean canMove(int newColumn, int newRow) {
 	boolean moved = false;
+
 	int horizontal = newColumn - this.getColumn();
 	int lateral = newRow - this.getRow();
+
 	Direction direction = this.moveDirection(horizontal, lateral);
 	int steps = horizontal;
 	if (lateral != 0) {
@@ -54,7 +56,6 @@ public class King extends Piece
 		}
 	    }
 	}
-	System.out.println(threatened);
 	return threatened;
     }
 
@@ -84,7 +85,6 @@ public class King extends Piece
 	// check if the king can save itself or if
 	// a teammate can save the king
 	if (unthreatenedPlaces() == null) {
-	    System.out.println("checkmate threatened");
 	    checkMate = true;
 	    for (int i = 0; i < Board.WIDTH; i++) {
 		for (int j = 0; j < Board.HEIGHT; j++) {
@@ -96,8 +96,6 @@ public class King extends Piece
 			    // if not then it's checkmate
 			    for (Entry<Integer, Integer> move : legalmoves) {
 				if (tempPiece.safeMove(move.getKey(), move.getValue())) {
-				    System.out.println(tempPiece + " newColumn: " + move.getKey() + " newRow " +
-						       move.getValue());
 				    checkMate = false;
 				}
 			    }

@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -61,7 +62,6 @@ public class ChessComponent extends JComponent implements BoardListener {
 
     public void tryMove(int column, int row) {
         if (gameMode != Mode.PAUSE) {
-            System.out.println(board.getTurnCounter());
             Piece newPiece = board.getPiece(column, row);
             if (clickedPiece == null) { // First click
                 if (newPiece != null && newPiece.team == board.getTurnTeam()) { // is a piece and the same team as the current turn's team
@@ -69,7 +69,7 @@ public class ChessComponent extends JComponent implements BoardListener {
                     board.markPiece();
                 }
             } else { // a clicked piece exists
-                if (newPiece != null && newPiece != clickedPiece) {  // newPiece is a new piece
+                if (newPiece != null && !Objects.equals(newPiece, clickedPiece)) {  // newPiece is a new piece
                     if (clickedPiece.team == newPiece.team) { // same team; switch marked piece
                         clickedPiece = newPiece;
                         board.markPiece();
@@ -100,7 +100,7 @@ public class ChessComponent extends JComponent implements BoardListener {
         for (int y = 0; y < Board.HEIGHT; y++) {
             for (int x = 0; x < Board.WIDTH; x++) {
                 Color color = Color.WHITE;
-                if (y % 2 == 0 && x % 2 == 1 || y % 2 == 1 && x % 2 == 0) {
+                if (y % 2 == 0 && x % 2 == 1 || y % 2 == 1 && x % 2 == 0) { // negative values will not occur
                     color = Color.BLACK;
                 }
                 g2d.setColor(color);
@@ -114,14 +114,14 @@ public class ChessComponent extends JComponent implements BoardListener {
                     g.drawImage(currentPiece.getImage(), cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE, null);
 
                 }
-                if (clickedPiece == currentPiece && clickedPiece != null) {
-                    g2d.setColor(Color.RED);
-                    g2d.setStroke(new BasicStroke(2));
-                    g2d.drawLine(cornerX, cornerY, cornerX + SQUARE_SIZE, cornerY);
-                    g2d.drawLine(cornerX, cornerY, cornerX, cornerY + SQUARE_SIZE);
+                if (Objects.equals(clickedPiece, currentPiece) && clickedPiece != null) {
+                        g2d.setColor(Color.RED);
+                        g2d.setStroke(new BasicStroke(2));
+                        g2d.drawLine(cornerX, cornerY, cornerX + SQUARE_SIZE, cornerY);
+                        g2d.drawLine(cornerX, cornerY, cornerX, cornerY + SQUARE_SIZE);
 
-                    g2d.drawLine(cornerX, cornerY + SQUARE_SIZE - 1, cornerX + SQUARE_SIZE - 1, cornerY + SQUARE_SIZE - 1);
-                    g2d.drawLine(cornerX + SQUARE_SIZE - 1, cornerY, cornerX + SQUARE_SIZE - 1, cornerY + SQUARE_SIZE - 1);
+                        g2d.drawLine(cornerX, cornerY + SQUARE_SIZE - 1, cornerX + SQUARE_SIZE - 1, cornerY + SQUARE_SIZE - 1);
+                        g2d.drawLine(cornerX + SQUARE_SIZE - 1, cornerY, cornerX + SQUARE_SIZE - 1, cornerY + SQUARE_SIZE - 1);
                 }
             }
         }
@@ -135,10 +135,10 @@ public class ChessComponent extends JComponent implements BoardListener {
 
     @Override
     public void boardChanged() {
-        repaint();
+            repaint();
     }
 
-    public void AIWalk() throws InterruptedException {
+    public void walkAI() throws InterruptedException {
         // walks to a random place with a randomly choosen piece
         int turn = board.getTurnCounter();
         Random rand = new Random();
@@ -146,7 +146,6 @@ public class ChessComponent extends JComponent implements BoardListener {
             int x = rand.nextInt(Board.WIDTH);
             int y = rand.nextInt(Board.HEIGHT);
 	    tryMove(x, y);
-            Thread.sleep(5);
         }
     }
 

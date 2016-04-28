@@ -6,9 +6,12 @@ import main.Mode;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * If option Pause is chosen by player this class pauses the game by calling methods in ChessFrame.
+ */
 public class PauseListener implements ActionListener
 {
-    ChessFrame chessFrame;
+    private ChessFrame chessFrame;
     public PauseListener (ChessFrame frame){
         chessFrame = frame;
     }

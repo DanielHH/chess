@@ -8,6 +8,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * If option Reset is chosen by player this class resets the game by calling methods in ChessFrame.
+ */
 public final class ResetListener implements ActionListener
 {
     	private ChessFrame chessFrame;
