@@ -3,12 +3,13 @@ package main;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public abstract class Piece
+public abstract class Piece implements Serializable
 {
     protected int column;
     protected int row;
@@ -16,23 +17,41 @@ public abstract class Piece
     protected Team team;
     protected Board board;
     protected PieceType piece;
-    protected BufferedImage image;
+    protected String blImageLocation;
+    protected String whImageLocation;
 
+    protected transient BufferedImage image;
 
-    protected Piece(final int column, final int row, Team team, Board board, PieceType piece, String imageLocation)
-            throws IOException
+    public Piece(final int column, final int row, Team team, Board board, PieceType piece, String blImageLocation, String whImageLocation)
     {
-	    this.row = row;
-	    this.column = column;
+        this.row = row;
+	this.column = column;
         this.hasMoved = false;
         this.team = team;
         this.board = board;
         this.piece = piece;
-        this.image = ImageIO.read(getClass().getResource(imageLocation));
+        this.whImageLocation = whImageLocation;
+        this.blImageLocation = blImageLocation;
+        setImage();
     }
 
     public BufferedImage getImage() {
         return image;
+    }
+
+    public void setImage() {
+	String imageLocation;
+	if (this.team == Team.WHITE) {
+	    imageLocation = whImageLocation;
+	}
+	else {
+	    imageLocation = blImageLocation;
+	}
+        try {
+            this.image = ImageIO.read(getClass().getResource(imageLocation));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public int getColumn() {
@@ -131,7 +150,6 @@ public abstract class Piece
             }
         }
 
-
     public boolean pieceInTheWay(Movement movement, int steps) {
         boolean canNotMove = false;
         if (movement == Movement.UP || movement == Movement.DOWN) {
@@ -140,8 +158,7 @@ public abstract class Piece
                 if (steps < 0) {
                     x *= -1;
                 }
-                Piece tempPiece = board.getPiece(column, row + x);
-                if (tempPiece != null) {
+                if (board.getPiece(this.getColumn(), this.getRow() + x) != null) {
                     canNotMove = true;
                 }
             }
@@ -152,8 +169,7 @@ public abstract class Piece
                 if (steps < 0) {
                     x *= -1;
                 }
-                Piece tempPiece = board.getPiece(column + x, row);
-                if (tempPiece != null) {
+                if (board.getPiece(this.getColumn() + x, this.getRow()) != null) {
                     canNotMove = true;
                 }
             }
@@ -164,8 +180,7 @@ public abstract class Piece
                 if (steps < 0) {
                     x *= -1;
                 }
-                Piece tempPiece = board.getPiece(column - x, row + x);
-                if (tempPiece != null) {
+                if (board.getPiece(this.getColumn() - x, this.getRow() + x) != null) {
                     canNotMove = true;
                 }
             }
@@ -176,8 +191,7 @@ public abstract class Piece
                 if (steps < 0) {
                     x *= -1;
                 }
-                Piece tempPiece = board.getPiece(column + x, row + x);
-                if (tempPiece != null) {
+                if (board.getPiece(this.getColumn() + x, this.getRow() + x) != null) {
                     canNotMove = true;
                 }
             }

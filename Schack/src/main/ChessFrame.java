@@ -9,7 +9,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.io.InterruptedIOException;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -73,6 +72,16 @@ public class ChessFrame extends JFrame {
       quit.setAccelerator(
          KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
 
+       load.addActionListener(new LoadListener());
+            load.setMnemonic(KeyEvent.VK_L);
+            load.setAccelerator(
+                     KeyStroke.getKeyStroke(KeyEvent.VK_L, InputEvent.CTRL_MASK));
+
+            save.addActionListener(new SaveListener());
+            save.setMnemonic(KeyEvent.VK_S);
+            save.setAccelerator(
+                     KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.ALT_MASK));
+
       options.add(load);
       options.add(save);
       options.add(reset);
@@ -122,7 +131,9 @@ public class ChessFrame extends JFrame {
 	     chessComponent.setPlayers(PlayerType.PLAYER, PlayerType.PLAYER);
 	     board.setStartPositions();
 	     pvp.setSelected(true);
+	     chessComponent.setClickedPieceNull();
 	     repaint();
+	     board.setTurnCounterToZero();
 	     resumeTimer();
 
 
@@ -145,6 +156,23 @@ public class ChessFrame extends JFrame {
           }
       }
    }
+
+    private class LoadListener implements ActionListener {
+       public void actionPerformed(ActionEvent e) {
+          Board loadedBoard = SaveAndLoad.load();
+          if (loadedBoard != null) {
+             board.setLoadedBoard(loadedBoard);
+	      chessComponent.setClickedPieceNull();
+             repaint();
+          }
+       }
+    }
+
+
+    private class SaveListener implements ActionListener {
+       public void actionPerformed(final ActionEvent e) {
+	   SaveAndLoad.save(board);
+       }}
 
    private class PvpListener implements ActionListener {
       public void actionPerformed(final ActionEvent e) {

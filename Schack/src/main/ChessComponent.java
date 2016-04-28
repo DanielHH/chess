@@ -15,6 +15,10 @@ public class ChessComponent extends JComponent implements BoardListener {
     public PlayerType player2 = PlayerType.PLAYER;
     private Mode gameMode = Mode.PVP;
 
+    public void setClickedPieceNull() {
+        clickedPiece = null;
+    }
+
     public Mode getGameMode() {
         return gameMode;
     }
@@ -47,6 +51,7 @@ public class ChessComponent extends JComponent implements BoardListener {
 
     public void tryMove(int column, int row) throws InterruptedException {
         if (gameMode != Mode.PAUSE) {
+            System.out.println(board.getTurnCounter());
             Piece newPiece = board.getPiece(column, row);
             if (clickedPiece == null) { // First click
                 if (newPiece != null && newPiece.team == board.getTurnTeam()) { // is a piece and the same team as the current turn's team

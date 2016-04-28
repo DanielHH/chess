@@ -3,8 +3,11 @@ package main;
 import java.io.IOException;
 
 public class Queen extends Piece {
-    public Queen(int column, int row, Team team, Board board, String imageLocation) throws IOException {
-	super(column, row, team, board, PieceType.QUEEN, imageLocation);
+    final static String blImageLocation = "fantasy/png-shad/bq.png";
+    final static String whImageLocation = "fantasy/png-shad/wq.png";
+
+    public Queen(int column, int row, Team team, Board board) {
+	super(column, row, team, board, PieceType.QUEEN, blImageLocation, whImageLocation);
     }
 
     @Override
@@ -21,6 +24,7 @@ public class Queen extends Piece {
 		if ((((Math.abs(horizontal) > 0 && lateral == 0) ||
 		      (Math.abs(lateral) > 0 && horizontal == 0)) ||
 		     (Math.abs(horizontal) == Math.abs(lateral) && horizontal != 0 ))) {
+		    	System.out.println(" queen check");
 			if (!this.pieceInTheWay(movement, steps)) { // no piece in the way
 				Piece tempPiece = board.getPiece(newColumn, newRow);
 				if (tempPiece != null) {

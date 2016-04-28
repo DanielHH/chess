@@ -10,8 +10,11 @@ import java.util.Map;
 // !!!!!! KOLLAR INTE OM KUNGEN ÄR HOTAD !!!!!!!!
 public class King extends Piece
 {
-    public King(int column, int row, Team team, Board board, String imageLocation) throws IOException {
-	super(column, row, team, board, PieceType.KING, imageLocation);
+    final static String blImageLocation = "fantasy/png-shad/bk.png";
+    final static String whImageLocation = "fantasy/png-shad/wk.png";
+
+    public King(int column, int row, Team team, Board board) {
+	super(column, row, team, board, PieceType.KING, blImageLocation, whImageLocation);
     }
 
     @Override
@@ -53,13 +56,18 @@ public class King extends Piece
 				threatened = true;
 			    }
 			}
-			else if (tempPiece.canMove(newColumn, newRow)) {
-			    threatened = true;
+			else {
+			    System.out.println(tempPiece + "  first");
+			    if (tempPiece.canMove(newColumn, newRow)) {
+				System.out.println(tempPiece + "  second");
+				threatened = true;
+			    }
 			}
 		    }
 		}
 	    }
 	}
+	System.out.println(threatened);
 	return threatened;
     }
 
@@ -107,6 +115,7 @@ public class King extends Piece
 		boolean checkMate = false;
 		// check if the king can save itself or if
 		// a teammate can save the king
+	System.out.println("chweckmate " + isCheck());
 		if (isCheck()) {
 			System.out.println("threatened");
 			checkMate = true;
