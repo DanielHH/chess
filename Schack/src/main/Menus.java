@@ -32,6 +32,7 @@ public class Menus extends JFrame {
     }
 
     protected void createMenus() {
+	// begins the creation of the menu
 	whichMode.add(pvp);
 	whichMode.add(pvai);
 	whichMode.add(aivai);
@@ -54,6 +55,7 @@ public class Menus extends JFrame {
     }
 
     private void setListeners() {
+	// sets all the listeners for the menu
 	reset.addActionListener(new ResetListener(pvp, chessFrame));
 	reset.setMnemonic(KeyEvent.VK_R);
 	reset.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_MASK));

@@ -17,6 +17,7 @@ public class Bishop extends Piece {
     }
 
     protected boolean canMove(int newColumn, int newRow) {
+	// returns a boolean for if the move is possible for this piece
 	boolean moved = false;
 
 	int horizontal = newColumn - this.getColumn();

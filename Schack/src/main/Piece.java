@@ -112,12 +112,7 @@ public abstract class Piece implements Serializable
         board.checksForCheck();
         if (board.defendKing) { // currently in check
             System.out.println("Defend the King!!");
-            board.board[newColumn][newRow] = board.board[column][row];
-            board.board[column][row] = null;
-            board.checksForCheck();
-            board.board[column][row] = board.board[newColumn][newRow];
-            board.board[newColumn][newRow] = null;
-            board.board[newColumn][newRow] = tempPiece;
+            testCheckMove(newColumn, newRow, tempPiece);
             if (!board.defendKing && piece != PieceType.KING) { // move saved the king
                 System.out.println("king is safe!!");
                 safe = true;
@@ -143,12 +138,7 @@ public abstract class Piece implements Serializable
             }
         }
         else { // not currently in check
-            board.board[newColumn][newRow] = board.board[column][row];
-            board.board[column][row] = null;
-            board.checksForCheck();
-            board.board[column][row] = board.board[newColumn][newRow];
-            board.board[newColumn][newRow] = null;
-            board.board[newColumn][newRow] = tempPiece;
+            testCheckMove(newColumn, newRow, tempPiece);
             if (!board.defendKing) { //
                 if (piece == PieceType.KING && this.isThreatened(newColumn, newRow)) { // the king moves into check
                     System.out.println("Suicidal !?");
@@ -171,7 +161,24 @@ public abstract class Piece implements Serializable
         return safe;
     }
 
+    private void testCheckMove(int newColumn, int newRow, Piece tempPiece) {
+        /*
+        moves a piece to a new place and sets the old place to
+        null. Then then runs check for checks and undos the move change.
+        */
+        board.board[newColumn][newRow] = board.board[column][row];
+        board.board[column][row] = null;
+        board.checksForCheck();
+        board.board[column][row] = board.board[newColumn][newRow];
+        board.board[newColumn][newRow] = null;
+        board.board[newColumn][newRow] = tempPiece;
+    }
+
     protected void move(int newColumn, int newRow) {
+        /*
+        Begins the movement of a piece on the board to
+        a new place and kills the enemy in that place.
+         */
             if (board.getPiece(newColumn, newRow) != null) {
 
                 if (board.getPiece(newColumn, newRow).team != team) {
@@ -188,10 +195,12 @@ public abstract class Piece implements Serializable
 
     protected boolean pieceInTheWay(Direction direction, int steps) {
         /*
+            Checks if there is a piece in the way in a specified
+            direction and number of steps away from current position.
+
             small but significant difference in code. Falseflag as duplicated
             Also not overly complex as it cant be made smaller if should be able ot handle all the directions.
          */
-
         boolean canNotMove = false;
         if (direction == Direction.UP || direction == Direction.DOWN) {
             for (int i = 1; i <  Math.abs(steps); i++) {
@@ -242,24 +251,27 @@ public abstract class Piece implements Serializable
         }
         return canNotMove;
     }
+
     protected boolean evaluatePieceInTheWay(Direction direction, int steps, int newColumn, int newRow) {
-        boolean moved = false;
+        // evaluates the pieceInTheWay method and returns a boolean for if the move can be done.
+        boolean canMove = false;
         if (!this.pieceInTheWay(direction, steps)) { // no piece in the way
             Piece tempPiece = board.getPiece(newColumn, newRow);
             if (tempPiece != null) {
                 if (tempPiece.team != team) {
-                    moved = true;
+                    canMove = true;
                 }
             } else {
-                moved = true;
+                canMove = true;
             }
         }
-        return moved;
+        return canMove;
     }
 
     protected abstract boolean canMove(int newColumn, int newRow);
 
     protected Direction moveDirection(int horizontal, int lateral) {
+        // calculates and returns a direction for a horizontal and lateral displacement
         Direction direction = null;
         if (horizontal > 0 && lateral < 0) {
             direction = Direction.UPRIGHT;
@@ -289,6 +301,7 @@ public abstract class Piece implements Serializable
     }
 
     protected List<Entry<Integer,Integer>> legalMoves() {
+        // returns a list of positions of legal moves for the piece
         List<Entry<Integer,Integer>> legalMovesList = new ArrayList<>();
         for (int i = 0; i < Board.WIDTH; i++) {
             for (int j = 0; j < Board.HEIGHT; j++) {
@@ -302,6 +315,8 @@ public abstract class Piece implements Serializable
     }
 
     protected int calculateSteps(int horizontal, int lateral) {
+        /* returns the number of steps that a piece should check in
+         pieceInTheWay from its position in a certain direction */
         int steps = horizontal;
        	if (lateral != 0) {
        	    steps = lateral;

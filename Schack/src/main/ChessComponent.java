@@ -84,6 +84,10 @@ public class ChessComponent extends JComponent implements BoardListener {
     }
 
     private void tryMoveAndRemoveMark(int column, int row) {
+        /*
+        tries to move if it can and if it's safe.
+        If so removes the mark from the piece and moves.
+         */
         boolean move = clickedPiece.canMove(column, row);
         if (move) { // can move
             boolean safe = clickedPiece.safeMove(column, row);
@@ -139,7 +143,7 @@ public class ChessComponent extends JComponent implements BoardListener {
     }
 
     protected void walkAI() {
-        // walks to a random place with a randomly choosen piece
+        // tries to walk to a random place with a randomly choosen piece
         int turn = board.getTurnCounter();
         Random rand = new Random();
         while (turn == board.getTurnCounter()) {

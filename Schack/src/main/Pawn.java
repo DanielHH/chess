@@ -18,6 +18,7 @@ public class Pawn extends Piece
     }
 
     @Override protected boolean canMove(int newColumn, int newRow) { // Unfortunately this has to stay complex
+	// returns a boolean for if the move is possible for this piece
 	boolean canMove = false;
 
 	int horizontal = newColumn - this.getColumn();

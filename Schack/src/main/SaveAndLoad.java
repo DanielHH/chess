@@ -20,7 +20,7 @@ public final class SaveAndLoad
     private SaveAndLoad() {}
 
     public static void save(Board board) {
-	System.out.println(board);
+	// used to save the current board to a file
 	Component modalToComponent = null;
 	JFileChooser fileChooser = new JFileChooser();
 	if (fileChooser.showSaveDialog(modalToComponent) == JFileChooser.APPROVE_OPTION) {
@@ -46,8 +46,8 @@ public final class SaveAndLoad
 	}
     }
 
-
     public static Board load() {
+	// used to load a board from a file
 	Board board = null;
 	Component modalToComponent = null;
 	JFileChooser fileChooser = new JFileChooser();

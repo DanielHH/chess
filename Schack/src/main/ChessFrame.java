@@ -55,7 +55,7 @@ public class ChessFrame extends JFrame {
 	createNewTimerTasks();
 	//Schedule a task to run repeatedly, starting now,
  	// 1000ms fromexecution n ends to execution n+1 begins
-        timer.schedule(runsGameAI, new Date(), 100);
+        timer.schedule(runsGameAI, new Date(), 1);
     }
 
     private void createNewTimerTasks() {
@@ -67,6 +67,7 @@ public class ChessFrame extends JFrame {
     }
 
     private void gameAI() {
+	// runs the game AI, only tries to walk if it's the AI's turn
 	if (board.getTurnTeam() == Team.WHITE) {
 	    if (chessComponent.player1 == PlayerType.AI) {
 		chessComponent.walkAI();

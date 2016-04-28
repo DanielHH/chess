@@ -41,6 +41,7 @@ public class Board implements Serializable
     }
 
     protected Team getTurnTeam() {
+	// gets the team (color) of the current round
 	Team color = Team.WHITE;
 	if (turnCounter % 2 != 0) {
 	    color = Team.BLACK;
@@ -58,6 +59,7 @@ public class Board implements Serializable
     }
 
     public void setStartPositions() {
+	// sets the standard starting positions for a chess board.
 	setTurnCounterToZero();
 	defendKing = false;
 	board = new Piece[WIDTH][HEIGHT];
@@ -104,11 +106,8 @@ public class Board implements Serializable
 	Piece tempPiece = board[oldColumn][oldRow];
 	board[newColumn][newRow] = tempPiece;
 	board[oldColumn][oldRow] = null;
-	if (tempPiece.piece == PieceType.PAWN) {
-	    if (newRow == 7 || newRow == 0) {
-		pawnUpgrade(newColumn, newRow, tempPiece.team);
-	    }
-	}
+	pawnUpgrade(newColumn, newRow, tempPiece);
+
 	nextTurn();
 	notifyListeners();
 	if (getKing(getTurnTeam()).isCheckMate()) {
@@ -148,8 +147,11 @@ public class Board implements Serializable
     public void setLoadedBoard(Board loadedBoard) {
 	turnCounter = loadedBoard.turnCounter;
 
-	// replace all pieces in the current
-	// board with those in the loaded board
+	/*
+	replace all pieces in the current board with
+	the same version as those in the loaded board
+	  */
+
 	for (int i = 0; i < WIDTH; i++) {
 	    for (int j = 0; j < HEIGHT; j++) {
 		Piece tempPiece = loadedBoard.board[i][j];
@@ -175,8 +177,16 @@ public class Board implements Serializable
 	}
     }
 
-    private void pawnUpgrade(int column, int row, Team team) {
-	board[column][row] = new Queen(column, row, team, this);
+    private void pawnUpgrade(int newColumn, int newRow, Piece tempPiece) {
+	/*
+	checks if the pawn can be ugraded to a queen.
+	Does that when it reaches the lateral edge of the board
+	 */
+	if (tempPiece.piece == PieceType.PAWN) {
+	    if (newRow == 7 || newRow == 0) {
+		board[newColumn][newRow] = new Queen(newColumn, newRow, tempPiece.team, this);
+	    }
+	}
     }
 
     protected void checksForCheck() {
