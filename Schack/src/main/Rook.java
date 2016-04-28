@@ -2,8 +2,11 @@ package main;
 
 import java.io.IOException;
 
-public class Rook extends Piece {
 
+/**
+* Contains the allowed type of movements for the Rook piece.
+ */
+public class Rook extends Piece {
 
     public Rook(int column, int row, Team team, Board board, String imageLocation) throws IOException {
 	super(column, row, team, board, PieceType.ROOK, imageLocation);

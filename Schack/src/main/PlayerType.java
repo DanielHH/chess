@@ -1,9 +1,16 @@
 package main;
 
 /**
- * Created by Daniel on 2016-04-19.
+ * Each type represent a type of player
  */
 public enum PlayerType
 {
-    PLAYER, AI,
+    /**
+     * Human player
+     */
+    PLAYER,
+    /**
+     * AI player. Name too short, but descriptive enough.
+     */
+    AI
 }

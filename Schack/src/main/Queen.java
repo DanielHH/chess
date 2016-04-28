@@ -2,6 +2,9 @@ package main;
 
 import java.io.IOException;
 
+/**
+* Contains the allowed type of movements for the Queen piece.
+ */
 public class Queen extends Piece {
     public Queen(int column, int row, Team team, Board board, String imageLocation) throws IOException {
 	super(column, row, team, board, PieceType.QUEEN, imageLocation);

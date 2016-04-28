@@ -1,6 +1,24 @@
 package main;
 
+/**
+ * Each mode represents a type of gamemode
+ */
 public enum Mode
 {
-    PVP, PVAI, AIVAI, PAUSE
+    /**
+     * PlayerVsPlayer
+     */
+    PVP,
+    /**
+     * PlayerVsAI
+     */
+    PVAI,
+    /**
+     * AIVsAI
+     */
+    AIVAI,
+    /**
+     * Pause game
+     */
+    PAUSE
 }

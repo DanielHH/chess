@@ -14,8 +14,15 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
+/**
+ * JFrame object that contains:
+ * a menubar, a ChessComponent and a TimerTask.
+ *
+ */
 public class ChessFrame extends JFrame {
+   /**
+    * Instantiates a ChessComponent.
+    */
    	public ChessComponent chessComponent;
    	private JFrame frame;
    	private Board board;
@@ -23,7 +30,7 @@ public class ChessFrame extends JFrame {
     	private TimerTask runsGameAI;
     	//private TimerTask runsChecksForCheck;
 
-   public ChessFrame(Board board) throws InterruptedException {
+   public ChessFrame(Board board) {
       super("Schack");
       this.setLayout(new BorderLayout());
       createMenus();
@@ -109,17 +116,17 @@ public class ChessFrame extends JFrame {
    }
 
 
-   private class ResetListener implements ActionListener {
+   private final class ResetListener implements ActionListener {
       JRadioButtonMenuItem pvp;
-      public ResetListener(JRadioButtonMenuItem pvp) {
+      private ResetListener(JRadioButtonMenuItem pvp) {
          this.pvp = pvp;
       }
 
       public void actionPerformed(final ActionEvent e) {
          try { // reset the board to starting state and the player mode to PVP
 	     pauseTimer();
-	     chessComponent.setGameMode(Mode.PVP);;
-	     chessComponent.setPlayers(PlayerType.PLAYER, PlayerType.PLAYER);
+	     chessComponent.setGameMode(Mode.PVP);
+            chessComponent.setPlayers(PlayerType.PLAYER, PlayerType.PLAYER);
 	     board.setStartPositions();
 	     pvp.setSelected(true);
 	     repaint();
@@ -130,9 +137,6 @@ public class ChessFrame extends JFrame {
 	 catch (IOException e1) {
 	    e1.printStackTrace();
 	 }
-	 catch (InterruptedException e1) {
-		e1.printStackTrace();
-    	}
 
       }
    }

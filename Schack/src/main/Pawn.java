@@ -2,6 +2,10 @@ package main;
 
 import java.io.IOException;
 
+
+/**
+* Contains the allowed type of movements for the Pawn piece.
+ */
 public class Pawn extends Piece
 {
 

@@ -9,13 +9,28 @@ package main;
 
 import java.io.IOException;
 
+/**
+ * Calculates and keeps track on what is on the board.
+ */
 public class Board
 {
+    /**
+     * Width of board.
+     */
     public static final int WIDTH = 8;
+    /**
+     * Height of board.
+     */
     public static final int HEIGHT = 8;
     private int turnCounter = 0;
     protected Piece[][] board;
+    /**
+     * Contains boardlisteners
+     */
     public BoardListener[] boardListenerList = new BoardListener[1];
+    /**
+     * Describes whether king is under check (true) or not (false).
+     */
     public boolean defendKing = false;
 
     public Team getTurnTeam() {
@@ -30,11 +45,11 @@ public class Board
 	this.turnCounter += 1;
     }
 
-    public Board() throws IOException, InterruptedException {
+    public Board() throws IOException {
 	setStartPositions();
     }
 
-    public void setStartPositions() throws IOException, InterruptedException {
+    public void setStartPositions() throws IOException {
     	turnCounter = 0;
 	defendKing = false;
     	board = new Piece[WIDTH][HEIGHT];
@@ -105,7 +120,7 @@ public class Board
 	this.boardListenerList[0] = bl;
     }
 
-    private void notifyListeners() throws InterruptedException {
+    private void notifyListeners() {
 	for (BoardListener bl: boardListenerList) {
 	    bl.boardChanged();
 	}

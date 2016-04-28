@@ -7,11 +7,25 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
+/**
+ * Paints the board, the pieces and the markings (if a piece or square gets clicked)
+ * Contains the AI.
+ * Contains which gamemode the game currently is in.
+ */
 public class ChessComponent extends JComponent implements BoardListener {
     private Board board;
+    /**
+     * Size of the squares on the screen
+     */
     public static final int SQUARE_SIZE = 100;
     private Piece clickedPiece;
+    /**
+     * Playertype of white player.
+     */
     public PlayerType player1 = PlayerType.PLAYER;
+    /**
+     * Playertype of black player.
+     */
     public PlayerType player2 = PlayerType.PLAYER;
     private Mode gameMode = Mode.PVP;
 
@@ -131,7 +145,7 @@ public class ChessComponent extends JComponent implements BoardListener {
     }
 
     @Override
-    public void boardChanged() throws InterruptedException {
+    public void boardChanged() {
         repaint();
     }
 

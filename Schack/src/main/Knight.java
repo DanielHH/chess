@@ -2,6 +2,9 @@ package main;
 
 import java.io.IOException;
 
+/**
+* Contains the allowed type of movements for the Knight piece.
+ */
 public class Knight extends Piece {
     public Knight(int column, int row, Team team, Board board, String imageLocation) throws IOException {
 	super(column, row, team, board, PieceType.KNIGHT, imageLocation);

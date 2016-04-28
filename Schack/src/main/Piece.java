@@ -4,10 +4,16 @@ import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
 import java.util.AbstractMap;
+import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
+/**
+ * An abstract class containing mutual characteristics
+ * and behaviours of the different pieces.
+ */
 public abstract class Piece
 {
     protected int column;
@@ -211,12 +217,12 @@ public abstract class Piece
         return movement;
     }
 
-    public List<Map.Entry<Integer,Integer>> legalMoves() {
-        List<Map.Entry<Integer,Integer>> legalMovesList = new ArrayList<>();
+    public List<Entry<Integer,Integer>> legalMoves() {
+        List<Entry<Integer,Integer>> legalMovesList = new ArrayList<>();
         for (int i = 0; i < Board.WIDTH; i++) {
             for (int j = 0; j < Board.HEIGHT; j++) {
                 if (canMove(i, j)) { // piece can move there
-                    Map.Entry<Integer, Integer> pair = new AbstractMap.SimpleEntry<>(i, j);
+                    Entry<Integer, Integer> pair = new SimpleEntry<>(i, j);
                     legalMovesList.add(pair);
                 }
             }
