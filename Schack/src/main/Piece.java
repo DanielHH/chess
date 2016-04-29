@@ -19,20 +19,19 @@ import java.util.Map.Entry;
  * and behaviours of the different pieces in classes: Bishop, King, Knight, Pawn, Queen, Rook.
  */
 
-public abstract class Piece implements Serializable
-{
-    protected int column;
-    protected int row;
+public abstract class Piece implements Serializable {
+    private int column;
+    private int row;
     protected boolean hasMoved;
-    protected Team team;
+    protected final Team team;
     protected Board board;
-    protected PieceType piece;
-    protected String blImageLocation;
-    protected String whImageLocation;
+    protected final PieceType piece;
+    protected final String blImageLocation;
+    protected final String whImageLocation;
 
     protected transient BufferedImage image = null;
 
-    protected Piece(final int column, final int row, Team team, Board board, PieceType piece, String blImageLocation,
+    protected Piece(int column, int row, Team team, Board board, PieceType piece, String blImageLocation,
                     String whImageLocation)
     {
         this.row = row;
@@ -52,14 +51,14 @@ public abstract class Piece implements Serializable
 
     protected void setImage() {
 	String imageLocation;
-	if (this.team == Team.WHITE) {
+	if (team == Team.WHITE) {
 	    imageLocation = whImageLocation;
 	}
 	else {
 	    imageLocation = blImageLocation;
 	}
         try {
-            this.image = ImageIO.read(getClass().getResource(imageLocation));
+            image = ImageIO.read(getClass().getResource(imageLocation));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -89,7 +88,7 @@ public abstract class Piece implements Serializable
 	    for (int j = 0; j < Board.HEIGHT; j++) {
 		Piece tempPiece = board.getPiece(i, j);
 		if (tempPiece != null) {
-		    if (tempPiece.team != this.team) {
+		    if (tempPiece.team != team) {
 			if (tempPiece.piece == PieceType.PAWN) {
 			    if (((Pawn) tempPiece).canHit(newColumn, newRow)) {
 				threatened = true;

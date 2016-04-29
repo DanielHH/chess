@@ -35,9 +35,9 @@ public class ChessFrame extends JFrame {
     	private Timer timer = null;
     	private TimerTask runsGameAI = null;
     /**
-     * static because number is to stay the same always.
+     * static because number is a constant.
      */
-    	private final static int TIME_BETWEEN_AI_CHECKS = 500; // time in ms.
+    	private final static int TIME_BETWEEN_AI_CHECKS = 1000; // time in ms.
 
    protected ChessFrame(Board board) {
       super("Schack");

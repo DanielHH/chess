@@ -9,8 +9,10 @@ import enums.Team;
  * Except being an extention of piece is also placed on the current instance of Board
  */
 public class Knight extends Piece {
+
     /**
-     * Fields are static because the relative paths to the images are unchangeable.
+     * Fields are static because the relative paths to the images need to be accessed before
+     * object construction in the super constructor and might also find later use in a proposed editor mode.
      */
     private final static String BLACK_IMAGE_LOCATION = "fantasy/png-shad/bn.png";
     private final static String WHITE_IMAGE_LOCATION = "fantasy/png-shad/wn.png";

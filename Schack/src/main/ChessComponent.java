@@ -22,7 +22,7 @@ public class ChessComponent extends JComponent implements BoardListener {
     /**
      * Size of the squares on the screen
      *
-     * Static because size of the squares is supposed to always stay the same.
+     * Static because size of the squares is a constant.
      */
     private static final int SQUARE_SIZE = 100;
     private Piece clickedPiece = null;

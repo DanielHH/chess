@@ -18,12 +18,14 @@ public class Board implements Serializable
 
     /**
      * Width of board.
+     * Static because we want to keep a standard chess board size availible
      */
-    protected static final int WIDTH = 8;
+    public static final int WIDTH = 8;
     /**
      * Height of board.
+     * Static because we want to keep a standard chess board size availible
      */
-    protected static final int HEIGHT = 8;
+    public static final int HEIGHT = 8;
 
     private int turnCounter = 0;
     protected Piece[][] board = null;
@@ -117,7 +119,7 @@ public class Board implements Serializable
     }
 
     protected void addBoardListener(BoardListener bl) {
-	this.boardListenerList[0] = bl;
+	boardListenerList[0] = bl;
     }
 
     private void notifyListeners() {

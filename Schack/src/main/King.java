@@ -15,10 +15,11 @@ import java.util.Map.Entry;
  *
  * Except being an extention of piece is also placed on the current instance of Board
  */
-public class King extends Piece
-{
+public class King extends Piece {
+
     /**
-     * Fields are static because the relative paths to the images are unchangeable.
+     * Fields are static because the relative paths to the images need to be accessed before
+     * object construction in the super constructor and might also find later use in a proposed editor mode.
      */
     private final static String BLACK_IMAGE_LOCATION = "fantasy/png-shad/bk.png";
     private final static String WHITE_IMAGE_LOCATION = "fantasy/png-shad/wk.png";
@@ -53,15 +54,15 @@ public class King extends Piece
 		}
 	    }
 	}
-	if (!isThreatened(column, row)) {
-	    Entry<Integer, Integer> pair = new SimpleEntry<>(column, row);
+	if (!isThreatened(this.getColumn(), this.getRow())) {
+	    Entry<Integer, Integer> pair = new SimpleEntry<>(this.getColumn(), this.getRow());
 	    unthreatenedPlacesList.add(pair);
 	}
 	return unthreatenedPlacesList;
     }
 
     protected boolean isCheck() {
-	return isThreatened(column, row);
+	return isThreatened(this.getColumn(), this.getRow());
     }
 
     /**

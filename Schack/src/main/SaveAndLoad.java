@@ -19,8 +19,7 @@ import java.io.ObjectOutputStream;
  * And lastly the methods are referenced from a static context
  * thus the requirement of having it in a global (existing) state.
  */
-public final class SaveAndLoad
-{
+public final class SaveAndLoad {
     private SaveAndLoad() {}
 
     /**
