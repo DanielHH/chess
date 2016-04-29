@@ -1,5 +1,3 @@
-
-
 package main;
 
 import javax.swing.*;
@@ -33,23 +31,11 @@ public final class SaveAndLoad
 	JFileChooser fileChooser = new JFileChooser();
 	if (fileChooser.showSaveDialog(modalToComponent) == JFileChooser.APPROVE_OPTION) {
 	    String saveName = fileChooser.getSelectedFile().getPath();
-	    ObjectOutput out = null;
-	    try {
-		FileOutputStream fos = new FileOutputStream(saveName);
-		out = new ObjectOutputStream(fos);
+	    try (ObjectOutput out = new ObjectOutputStream(new FileOutputStream(saveName))){
 		out.writeObject(board);
 	    }
 	    catch (IOException e) {
 		e.printStackTrace();
-	    }
-	    finally {
-		try {
-		    if (out != null) {
-			out.close();
-		    }
-		} catch (IOException e) {
-		    e.printStackTrace();
-		}
 	    }
 	}
     }
@@ -65,16 +51,9 @@ public final class SaveAndLoad
 	if (fileChooser.showOpenDialog(modalToComponent) == JFileChooser.APPROVE_OPTION) {
 	    // load from file
 	    File file = fileChooser.getSelectedFile();
-	    try {
-		FileInputStream fis = new FileInputStream(file.getPath());
-		ObjectInputStream in = new ObjectInputStream(fis);
-		try {
+	    try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file.getPath()))){
 		    board = (Board) in.readObject();
-		} catch (ClassNotFoundException e) {
-		    e.printStackTrace();
-		}
-		in.close();
-	    } catch (IOException e) {
+	    } catch (ClassNotFoundException | IOException e) {
 		e.printStackTrace();
 	    }
 	}

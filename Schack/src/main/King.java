@@ -70,12 +70,18 @@ public class King extends Piece
      */
     protected boolean isCheckMate() {
 	boolean checkMate = false;
-	if (unthreatenedPlaces() == null) {
+	List<Entry<Integer, Integer>> safePlaces = unthreatenedPlaces();
+	if (safePlaces == null) {
 	    checkMate = true;
 	    for (int i = 0; i < Board.WIDTH; i++) {
 		for (int j = 0; j < Board.HEIGHT; j++) {
 			checkMate = pieceWithSafeLegalMove(i, j);
 		}
+	    }
+	}
+	else {
+	    for (Entry<Integer, Integer> entry: safePlaces) {
+		System.out.println("Column: " + entry.getKey() + " Row: " + entry.getValue());
 	    }
 	}
 	return checkMate;
