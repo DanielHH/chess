@@ -9,6 +9,9 @@ import enums.Team;
  */
 public class Bishop extends Piece {
 
+    /**
+     * Fields are static because the relative paths to the images are unchangeable.
+     */
     private final static String BLACK_IMAGE_LOCATION = "fantasy/png-shad/bb.png";
     private final static String WHITE_IMAGE_LOCATION = "fantasy/png-shad/wb.png";
 

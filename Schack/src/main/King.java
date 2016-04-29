@@ -15,6 +15,9 @@ import java.util.Map.Entry;
  */
 public class King extends Piece
 {
+    /**
+     * Fields are static because the relative paths to the images are unchangeable.
+     */
     private final static String BLACK_IMAGE_LOCATION = "fantasy/png-shad/bk.png";
     private final static String WHITE_IMAGE_LOCATION = "fantasy/png-shad/wk.png";
 

@@ -55,7 +55,7 @@ public class ChessFrame extends JFrame {
 	createNewTimerTasks();
 	//Schedule a task to run repeatedly, starting now,
  	// 1000ms fromexecution n ends to execution n+1 begins
-        timer.schedule(runsGameAI, new Date(), 1);
+        timer.schedule(runsGameAI, new Date(), 1000);
     }
 
     private void createNewTimerTasks() {

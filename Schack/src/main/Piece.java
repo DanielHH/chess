@@ -106,6 +106,13 @@ public abstract class Piece implements Serializable
 	return threatened;
     }
 
+    /**
+     * Takes in a legal move and checks if position, which is clicked, ends up in check for own team's king, in which case
+     * move does not go through, else the move takes place.
+     * @param newColumn column coordinate of clicked position
+     * @param newRow row coordinate of clicked position
+     * @return boolean safe
+     */
     protected boolean safeMove(int newColumn, int newRow) {
         boolean safe = false;
         Piece tempPiece = board.board[newColumn][newRow];
@@ -118,7 +125,7 @@ public abstract class Piece implements Serializable
                 safe = true;
             }
             else {
-                if (piece == PieceType.KING && !this.isThreatened(newColumn, newRow)) { // the king tries to dogde
+                if (piece == PieceType.KING && !this.isThreatened(newColumn, newRow)) { // the king tries to dodge
                     board.board[newColumn][newRow] = board.board[column][row];
                     board.board[column][row] = null;
                     if(this.isThreatened(newColumn, newRow)) { // king tried to run in the opposite direction
@@ -161,11 +168,15 @@ public abstract class Piece implements Serializable
         return safe;
     }
 
+    /**
+     * Moves a piece to a new place and sets the old place to
+     * null. Then runs check for checks and undos the move change.
+     *
+     * @param newColumn coordinate for the column the piece wants to move to
+     * @param newRow coordinate for the row the piece wants to move to
+     * @param tempPiece holds the piece on the position we want to check
+     */
     private void testCheckMove(int newColumn, int newRow, Piece tempPiece) {
-        /*
-        moves a piece to a new place and sets the old place to
-        null. Then then runs check for checks and undos the move change.
-        */
         board.board[newColumn][newRow] = board.board[column][row];
         board.board[column][row] = null;
         board.checksForCheck();
@@ -174,11 +185,14 @@ public abstract class Piece implements Serializable
         board.board[newColumn][newRow] = tempPiece;
     }
 
+    /**
+     * Begins the movement of a piece on the board to
+     * a new place and kills the enemy in that place.
+     *
+     * @param newColumn column coordinate for the new place
+     * @param newRow row coordinate for the new place
+     */
     protected void move(int newColumn, int newRow) {
-        /*
-        Begins the movement of a piece on the board to
-        a new place and kills the enemy in that place.
-         */
             if (board.getPiece(newColumn, newRow) != null) {
 
                 if (board.getPiece(newColumn, newRow).team != team) {
@@ -193,14 +207,19 @@ public abstract class Piece implements Serializable
             }
         }
 
+    /**
+     * Checks if there is a piece in the way in a specified direction and
+     * number of steps away from current position.
+     *
+     * There are small but significant difference in code. Falseflag as duplicated.
+     * Also not overly complex as it can not be made smaller
+     * if it is supposed to handle all directions.
+     *
+     * @param direction the direction the piece wants to go
+     * @param steps number of steps to go
+     * @return if the piece can move or not
+     */
     protected boolean pieceInTheWay(Direction direction, int steps) {
-        /*
-            Checks if there is a piece in the way in a specified
-            direction and number of steps away from current position.
-
-            small but significant difference in code. Falseflag as duplicated
-            Also not overly complex as it cant be made smaller if should be able ot handle all the directions.
-         */
         boolean canNotMove = false;
         if (direction == Direction.UP || direction == Direction.DOWN) {
             for (int i = 1; i <  Math.abs(steps); i++) {
@@ -252,8 +271,15 @@ public abstract class Piece implements Serializable
         return canNotMove;
     }
 
+    /**
+     * Is used to evaluate the pieceInTheWay method.
+     * @param direction the direction the piece wants to go
+     * @param steps number of steps to go
+     * @param newColumn column coordinate for the new place
+     * @param newRow row coordinate for the new place
+     * @return a boolean for whether the move can be done or not
+     */
     protected boolean evaluatePieceInTheWay(Direction direction, int steps, int newColumn, int newRow) {
-        // evaluates the pieceInTheWay method and returns a boolean for if the move can be done.
         boolean canMove = false;
         if (!this.pieceInTheWay(direction, steps)) { // no piece in the way
             Piece tempPiece = board.getPiece(newColumn, newRow);
@@ -270,8 +296,13 @@ public abstract class Piece implements Serializable
 
     protected abstract boolean canMove(int newColumn, int newRow);
 
+    /**
+     * calculates and returns a direction for a horizontal and lateral displacement
+     * @param horizontal number which indicates direction
+     * @param lateral number which indicates direction
+     * @return a direction
+     */
     protected Direction moveDirection(int horizontal, int lateral) {
-        // calculates and returns a direction for a horizontal and lateral displacement
         Direction direction = null;
         if (horizontal > 0 && lateral < 0) {
             direction = Direction.UPRIGHT;
@@ -300,8 +331,11 @@ public abstract class Piece implements Serializable
         return direction;
     }
 
+    /**
+     * Returns a list of positions of legal moves for the piece.
+     * @return list
+     */
     protected List<Entry<Integer,Integer>> legalMoves() {
-        // returns a list of positions of legal moves for the piece
         List<Entry<Integer,Integer>> legalMovesList = new ArrayList<>();
         for (int i = 0; i < Board.WIDTH; i++) {
             for (int j = 0; j < Board.HEIGHT; j++) {
@@ -314,9 +348,14 @@ public abstract class Piece implements Serializable
         return legalMovesList;
     }
 
+    /**
+     * Returns the number of steps that a piece should check in
+     * pieceInTheWay from its position in a certain direction
+     * @param horizontal number of steps in horizontal direction
+     * @param lateral number of steps in lateral direction
+     * @return number of steps
+     */
     protected int calculateSteps(int horizontal, int lateral) {
-        /* returns the number of steps that a piece should check in
-         pieceInTheWay from its position in a certain direction */
         int steps = horizontal;
        	if (lateral != 0) {
        	    steps = lateral;
