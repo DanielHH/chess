@@ -7,7 +7,7 @@ import enums.Team;
 /**
  * Contains the allowed type of movements for the Rook piece.
  *
- * Except being an exception of piece is also placed on the current instance of Board
+ * Except being an extention of piece is also placed on the current instance of Board
  */
 public class Rook extends Piece
 {

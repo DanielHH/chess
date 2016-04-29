@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 
 /**
  * If mode AIVAI is chosen by player, via menu-methods in class ChessFrame,
- * this class sets gamemode, via setters in class ChessComponent, and Players to appropriate Mode-types.
+ * this class sets, via setters in class ChessComponent, gamemode and Players to appropriate Mode-types.
  */
 public class AIVAIListener implements ActionListener
 {

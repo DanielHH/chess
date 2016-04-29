@@ -13,7 +13,7 @@ import java.util.Map.Entry;
 /**
  * Contains the allowed type of movements for the King piece and checks if the King is under threat or in check.
  *
- * Except being an exception of piece is also placed on the current instance of Board.
+ * Except being an extention of piece is also placed on the current instance of Board
  */
 public class King extends Piece
 {

@@ -8,7 +8,7 @@ import enums.Team;
 /**
  * Contains the allowed type of movements for the Pawn piece.
  *
- * Except being an exception of piece is also placed on the current instance of Board
+ * Except being an extention of piece is also placed on the current instance of Board
  */
 public class Pawn extends Piece
 {
@@ -28,12 +28,10 @@ public class Pawn extends Piece
      * @param newRow coordinate for row
      * @return boolean declaring whether move can go through or not
      */
-    @Override protected boolean canMove(int newColumn, int newRow) { // Unfortunately this has to stay complex
+    @Override protected boolean canMove(int newColumn, int newRow) {
 	boolean canMove = false;
-
 	int horizontal = newColumn - this.getColumn();
 	int lateral = newRow - this.getRow();
-
 	if (this.getTeam() == Team.WHITE) {
 	    canMove = canMoveWhitePawn(horizontal, lateral, newColumn, newRow);
 	} else if (this.getTeam() == Team.BLACK) {

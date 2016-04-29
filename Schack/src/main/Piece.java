@@ -211,62 +211,38 @@ public abstract class Piece implements Serializable
      * Checks if there is a piece in the way in a specified direction and
      * number of steps away from current position.
      *
-     * There are small but significant difference in code. Falseflag as duplicated.
-     * Also not overly complex as it can not be made smaller
-     * if it is supposed to handle all directions.
-     *
      * @param direction the direction the piece wants to go
      * @param steps number of steps to go
      * @return if the piece can move or not
      */
     protected boolean pieceInTheWay(Direction direction, int steps) {
         boolean canNotMove = false;
-        if (direction == Direction.UP || direction == Direction.DOWN) {
-            for (int i = 1; i <  Math.abs(steps); i++) {
-                int x = i;
-                if (steps < 0) {
-                    x *= -1;
-                }
+        for (int i = 1; i <  Math.abs(steps); i++) {
+            int x = i;
+            if (steps < 0) {
+                x *= -1;
+            }
+            if (direction == Direction.UP || direction == Direction.DOWN) {
                 if (board.getPiece(column, row + x) != null) {
                     canNotMove = true;
                 }
-            }
-        }
-        else if (direction == Direction.RIGHT || direction == Direction.LEFT) {
-            for (int i = 1; i <  Math.abs(steps); i++) {
-                int x = i;
-                if (steps < 0) {
-                    x *= -1;
-                }
+            } else if (direction == Direction.RIGHT || direction == Direction.LEFT) {
                 if (board.getPiece(column + x, row) != null) {
                     canNotMove = true;
                 }
-            }
-        }
-        else if (direction == Direction.UPRIGHT || direction == Direction.DOWNLEFT) {
-            for (int i = 1; i <  Math.abs(steps); i++) {
-                int x = i;
-                if (steps < 0) {
-                    x *= -1;
-                }
+            } else if (direction == Direction.UPRIGHT || direction == Direction.DOWNLEFT) {
+
                 if (board.getPiece(column - x, row + x) != null) {
                     canNotMove = true;
                 }
-            }
-        }
-        else if (direction == Direction.UPLEFT || direction == Direction.DOWNRIGHT) {
-            for (int i = 1; i <  Math.abs(steps); i++) {
-                int x = i;
-                if (steps < 0) {
-                    x *= -1;
-                }
+            } else if (direction == Direction.UPLEFT || direction == Direction.DOWNRIGHT) {
+
                 if (board.getPiece(column + x, row + x) != null) {
                     canNotMove = true;
                 }
+            } else {
+                canNotMove = true;
             }
-        }
-        else {
-            canNotMove = true;
         }
         return canNotMove;
     }

@@ -11,12 +11,13 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 
 /**
- * Contains methods for saving and loading current instance of Board.
+ * Class is utility class that contains methods for saving and loading an instance of a Board object.
  *
  * Comments on Static methods save and load:
  * Methods are only affected by input data.
  * Methods are accessed without instantiating the class.
- * What methods do are to always stay the same.
+ * And lastly the methods are referenced from a static context
+ * thus the requirement of having it in a global (existing) state.
  */
 public final class SaveAndLoad
 {
