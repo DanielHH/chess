@@ -80,12 +80,12 @@ public class ChessFrame extends JFrame {
      */
     private void gameAI() {
 	if (board.getTurnTeam() == Team.WHITE) {
-	    if (chessComponent.player1 == PlayerType.AI) {
+	    if (ChessComponent.whitePlayer == PlayerType.AI) {
 		chessComponent.walkAI();
 	    }
 	}
 	else {
-	    if (chessComponent.player2 == PlayerType.AI) {
+	    if (ChessComponent.blackPlayer == PlayerType.AI) {
 		chessComponent.walkAI();
 	    }
         }

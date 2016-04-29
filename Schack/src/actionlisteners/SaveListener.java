@@ -7,7 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * If option Save is chosen by player this class saves the current game by calling methods in ChessFrame.
+ * Listener set in the Menus class.
+ * If option Save is chosen by player this class saves the current game by save method in SaveAndLoad.
  * A saved game can then be loaded by calling the LoadListener.
  */
 public class SaveListener implements ActionListener

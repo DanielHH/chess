@@ -1,21 +1,19 @@
 package actionlisteners;
 
-import main.ChessFrame;
+import main.ChessComponent;
 import enums.Mode;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * If option Pause is chosen by player this class pauses the game by calling methods in ChessFrame.
+ * Listener set in the Menus class.
+ * If mode Pause is chosen by player this class sets, via setters in
+ * class ChessComponent, gamemode to appropriate type.
  */
 public class PauseListener implements ActionListener
 {
-    private ChessFrame chessFrame;
-    public PauseListener (ChessFrame frame){
-        chessFrame = frame;
-    }
 	public void actionPerformed(final ActionEvent e) {
-	    chessFrame.chessComponent.setGameMode(Mode.PAUSE);
+	    ChessComponent.setGameMode(Mode.PAUSE);
 	}
     }

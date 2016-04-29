@@ -2,7 +2,7 @@ package enums;
 
 /**
  * Each movement represents a direction in which a piece can be moved.
- * These enums are primarily called in Piece class
+ * These enums are primarily called in Piece class and all the classes representing the different pieces
  */
 public enum Direction
 {

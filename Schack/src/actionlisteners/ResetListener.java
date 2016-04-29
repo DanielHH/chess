@@ -1,5 +1,6 @@
 package actionlisteners;
 
+import main.ChessComponent;
 import main.ChessFrame;
 import enums.Mode;
 import enums.PlayerType;
@@ -9,7 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * If option Reset is chosen by player this class resets the game by calling methods in ChessFrame.
+ * Listener set in the Menus class.
+ * If option Reset is chosen by player this class resets the game by calling methods via ChessFrame.
  */
 public final class ResetListener implements ActionListener
 {
@@ -24,8 +26,8 @@ public final class ResetListener implements ActionListener
       public void actionPerformed(final ActionEvent e) {
          // reset the board to starting state and the player mode to PVP
 	     chessFrame.pauseTimer();
-	  chessFrame.chessComponent.setGameMode(Mode.PVP);
-	  chessFrame.chessComponent.setPlayers(PlayerType.PLAYER, PlayerType.PLAYER);
+	  ChessComponent.setGameMode(Mode.PVP);
+	  ChessComponent.setPlayers(PlayerType.PLAYER, PlayerType.PLAYER);
 	  chessFrame.board.setStartPositions();
 	     internalPvp.setSelected(true);
 	  chessFrame.chessComponent.setClickedPieceNull();

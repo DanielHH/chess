@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * Listener set in the Menus class.
  * If option Quit is chosen by player this class opens a
  * dialogwindow where the player then can choose to exit the game or continue playing.
  */

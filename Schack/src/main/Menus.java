@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
 /**
  * Contains the menu and all of the menuoptions.
  */
-public class Menus extends JFrame {
+public class Menus {
     private final JMenuBar menuBar = new JMenuBar();
 
     private final JMenu options = new JMenu("Options");
@@ -70,20 +70,20 @@ public class Menus extends JFrame {
 	save.setMnemonic(KeyEvent.VK_S);
 	save.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.ALT_MASK));
 
-	pvp.addActionListener(new PVPListener(chessFrame));
+	pvp.addActionListener(new PVPListener());
 	pvp.setSelected(true);
 	pvp.setMnemonic(KeyEvent.VK_P);
 	pvp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_MASK));
 
-	pvai.addActionListener(new PVAIListener(chessFrame));
+	pvai.addActionListener(new PVAIListener());
 	pvai.setMnemonic(KeyEvent.VK_V);
 	pvai.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.CTRL_MASK));
 
-	aivai.addActionListener(new AIVAIListener(chessFrame));
+	aivai.addActionListener(new AIVAIListener());
 	aivai.setMnemonic(KeyEvent.VK_A);
 	aivai.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_MASK));
 
-	pause.addActionListener(new PauseListener(chessFrame));
+	pause.addActionListener(new PauseListener());
 	pause.setMnemonic(KeyEvent.VK_P);
 	pause.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.ALT_MASK));
     }

@@ -1,6 +1,6 @@
 package actionlisteners;
 
-import main.ChessFrame;
+import main.ChessComponent;
 import enums.Mode;
 import enums.PlayerType;
 
@@ -8,17 +8,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * If mode PVP is chosen by player, via menu-methods in class ChessFrame,
- * this class sets, via setters in class ChessComponent, gamemode and Players to appropriate Mode-types.
+ * Listener set in the Menus class.
+ * If mode PVP is chosen by player this class sets, via setters in
+ * class ChessComponent, gamemode and Players to appropriate types.
  */
 public class PVPListener implements ActionListener
 {
-    private ChessFrame chessFrame;
-    public PVPListener (ChessFrame frame){
-        chessFrame = frame;
-    }
       public void actionPerformed(final ActionEvent e) {
-         chessFrame.chessComponent.setGameMode(Mode.PVP);
-	  chessFrame.chessComponent.setPlayers(PlayerType.PLAYER, PlayerType.PLAYER);
+         ChessComponent.setGameMode(Mode.PVP);
+	  ChessComponent.setPlayers(PlayerType.PLAYER, PlayerType.PLAYER);
       }
    }

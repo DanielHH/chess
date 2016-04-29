@@ -28,13 +28,19 @@ public class ChessComponent extends JComponent implements BoardListener {
     private Piece clickedPiece = null;
     /**
      * Playertype of white player.
+     * The game should only have one whitePlayer of PlayerType associated with it hence the static reference
      */
-    protected PlayerType player1 = PlayerType.PLAYER;
+    protected static PlayerType whitePlayer = PlayerType.PLAYER;
     /**
      * Playertype of black player.
+     * The game should only have one blackPlayer of PlayerType associated with it hence the static reference
      */
-    protected PlayerType player2 = PlayerType.PLAYER;
-    private Mode gameMode = Mode.PVP;
+    protected static PlayerType blackPlayer = PlayerType.PLAYER;
+
+    /**
+     * The game should only have one Mode, gameMode, associated with it hence the static reference
+     */
+    private static Mode gameMode = Mode.PVP;
 
     protected ChessComponent(Board board) {
         this.board = board;
@@ -42,8 +48,8 @@ public class ChessComponent extends JComponent implements BoardListener {
         addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 // only allow clicks if current player is human
-                if (board.getTurnTeam() == Team.WHITE && player1 == PlayerType.PLAYER ||
-                    board.getTurnTeam() == Team.BLACK && player2 == PlayerType.PLAYER) {
+                if (board.getTurnTeam() == Team.WHITE && whitePlayer == PlayerType.PLAYER ||
+                    board.getTurnTeam() == Team.BLACK && blackPlayer == PlayerType.PLAYER) {
                     int x = e.getX();
                     int y = e.getY();
                     int column = x / SQUARE_SIZE;
@@ -58,8 +64,8 @@ public class ChessComponent extends JComponent implements BoardListener {
         clickedPiece = null;
     }
 
-    public void setGameMode(final Mode gameMode) {
-        this.gameMode = gameMode;
+    public static void setGameMode(final Mode newGameMode) {
+        gameMode = newGameMode;
     }
 
     private void tryMove(int column, int row) {
@@ -157,8 +163,8 @@ public class ChessComponent extends JComponent implements BoardListener {
         }
     }
 
-    public void setPlayers(PlayerType player1, PlayerType player2) {
-        this.player1 = player1;
-        this.player2 = player2;
+    public static void setPlayers(PlayerType newWhitePlayer, PlayerType newBlackPlayer) {
+        whitePlayer = newWhitePlayer;
+        blackPlayer = newBlackPlayer;
     }
 }
