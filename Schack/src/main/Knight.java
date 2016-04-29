@@ -1,21 +1,34 @@
 package main;
 
-import java.io.IOException;
+import enums.PieceType;
+import enums.Team;
 
 /**
  * Contains the allowed type of movements for the Knight piece.
+ *
+ * Except being an exception of piece is also placed on the current instance of Board
  */
 public class Knight extends Piece {
-    final static String blImageLocation = "fantasy/png-shad/bn.png";
-    final static String whImageLocation = "fantasy/png-shad/wn.png";
+    /**
+     * Fields are static because the relative paths to the images are unchangeable.
+     */
+    private final static String BLACK_IMAGE_LOCATION = "fantasy/png-shad/bn.png";
+    private final static String WHITE_IMAGE_LOCATION = "fantasy/png-shad/wn.png";
 
-    public Knight(int column, int row, Team team, Board board) {
-	super(column, row, team, board, PieceType.KNIGHT, blImageLocation, whImageLocation);
+    protected Knight(int column, int row, Team team, Board board) {
+	super(column, row, team, board, PieceType.KNIGHT, BLACK_IMAGE_LOCATION, WHITE_IMAGE_LOCATION);
     }
 
+    /**
+     * returns a boolean for whether the move is possible for this piece or not
+     * @param newColumn coordinate of column
+     * @param newRow coordinate of row
+     * @return boolean declaring whether a move can go through or not
+     */
     @Override
-    public boolean canMove(int newColumn, int newRow) {
+    protected boolean canMove(int newColumn, int newRow) {
 	boolean moved = false;
+
 	int horizontal = newColumn - this.getColumn();
 	int lateral = newRow - this.getRow();
 

@@ -1,41 +1,38 @@
 package main;
 
-import java.io.IOException;
+import enums.Direction;
+import enums.PieceType;
+import enums.Team;
 
 /**
 * Contains the allowed type of movements for the Bishop piece.
+ *
+ * Except being an exception of piece is also placed on the current instance of Board
  */
 public class Bishop extends Piece {
 
+    /**
+     * Fields are static because the relative paths to the images are unchangeable.
+     */
+    private final static String BLACK_IMAGE_LOCATION = "fantasy/png-shad/bb.png";
+    private final static String WHITE_IMAGE_LOCATION = "fantasy/png-shad/wb.png";
 
-    final static String blImageLocation = "fantasy/png-shad/bb.png";
-    final static String whImageLocation = "fantasy/png-shad/wb.png";
-
-    public Bishop(int column, int row, Team team, Board board) {
-	super(column, row, team, board, PieceType.BISHOP, blImageLocation, whImageLocation);
+    protected Bishop(int column, int row, Team team, Board board) {
+	super(column, row, team, board, PieceType.BISHOP, BLACK_IMAGE_LOCATION, WHITE_IMAGE_LOCATION);
     }
 
-    public boolean canMove(int newColumn, int newRow) {
+    protected boolean canMove(int newColumn, int newRow) {
+	// returns a boolean for whether the move is possible for this piece
 	boolean moved = false;
+
 	int horizontal = newColumn - this.getColumn();
 	int lateral =  newRow - this.getRow();
-	Movement movement = this.moveDirection(horizontal, lateral);
-	int steps = horizontal;
-	if (lateral != 0) {
-		steps = lateral;
-	}
+
+	Direction direction = this.moveDirection(horizontal, lateral);
+	int steps = calculateSteps(horizontal, lateral);
+
 	if (Math.abs(horizontal) == Math.abs(lateral) && horizontal != 0) {
-	    if (!this.pieceInTheWay(movement, steps)) {
-		Piece tempPiece = board.getPiece(newColumn, newRow);
-		if (tempPiece != null) {
-		    if (tempPiece.team != team) {
-			moved = true;
-		    }
-		}
-		else {
-		    moved = true;
-		}
-	    }
+	    moved = evaluatePieceInTheWay(direction, steps, newColumn, newRow);
 	}
 	return moved;
     }

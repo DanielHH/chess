@@ -1,23 +1,20 @@
 package main;
 
-import java.awt.*;
-import java.io.IOException;
-
 /**
  * The main class for the chess program,
  * creates a Board and a ChessFrame.
- * The gameBoard updates each time the timer "ticks".
  */
+
 public final class BoardTest
 {
-    public static void main(String[] args) throws IOException, InterruptedException {
+    private BoardTest() {}
+
+    /**
+     * Static method because it is used as an application entry point
+     * and is only stored once because it should not be changed.
+     */
+    public static void main(String[] args) {
         Board testBoard = new Board();
-        ChessFrame chessFrame = new ChessFrame(testBoard);
-        /*
-        System.out.println(testBoard.getPiece(3,3));
-        System.out.println(testBoard.getPiece(3,0));
-        testBoard.killPiece(3,0);
-        System.out.println(testBoard.getPiece(3,0));
-        */
+        new ChessFrame(testBoard); // Result not relevant. Line is just used to start game.
     }
 }
