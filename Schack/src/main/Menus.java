@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 
 /**
  * Contains the menu and all of the menuoptions.
+ * Sets actionListeners and then sets an instance of JMenuBar on an instance of class ChessFrame.
  */
 public class Menus {
     private final JMenuBar menuBar = new JMenuBar();

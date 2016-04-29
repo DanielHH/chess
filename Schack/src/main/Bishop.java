@@ -7,7 +7,7 @@ import enums.Team;
 /**
 * Contains the allowed type of movements for the Bishop piece.
  *
- * Except being an extention of piece is also placed on the current instance of Board
+ * Except being an extention of piece is also placed on the current instance of Board.
  */
 public class Bishop extends Piece {
 

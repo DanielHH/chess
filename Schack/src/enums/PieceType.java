@@ -3,7 +3,7 @@ package enums;
 /**
  * Each type represent a type of piece
  *
- * PieceType is set in Board class and every class representing a piece
+ * PieceType is set in Board class and in the corresponding class representing a certain piece
  */
 public enum PieceType
 {

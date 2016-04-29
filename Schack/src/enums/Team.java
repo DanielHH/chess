@@ -1,7 +1,8 @@
 package enums;
 
 /**
- * Representations of the two different teams in chess
+ * Representations of the two different teams in chess. Is used to set a Team to instances of Piece.
+ *
  */
 public enum Team
 {

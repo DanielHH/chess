@@ -13,8 +13,9 @@ import java.util.Objects;
 import java.util.Random;
 
 /**
- * Paints the board, the pieces and the markings (if a piece or square gets clicked)
+ * Paints the board, the pieces and the markings (if a piece or square gets clicked).
  * Contains the AI.
+ * Contains a mouseListener which listens to clicks on board.
  * Contains which gamemode the game currently is in and is called by class ChessFrame.
  */
 public class ChessComponent extends JComponent implements BoardListener {

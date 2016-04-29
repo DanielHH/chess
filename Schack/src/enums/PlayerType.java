@@ -3,7 +3,8 @@ package enums;
 /**
  * Each type represent a type of player
  *
- * PlayerType is set in ChessComponent class
+ * From start PlayerType is the default PlayerType kept in ChessComponent class. Change in PlayerType can then be triggered by
+ * AIVAIListener, PVAIListener, PVPListener and ResetListener.
  */
 public enum PlayerType {
     /**

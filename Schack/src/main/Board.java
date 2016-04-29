@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * Calculates which turn it is and keeps track on what pieces are on the board.
  *
- * Is created in class BoardTest.
+ * Is instanced in class BoardTest.
  */
 public class Board implements Serializable
 {
