@@ -5,7 +5,7 @@ package main;
  * creates a Board and a ChessFrame.
  */
 
-public final class BoardTest
+final class BoardTest
 {
     private BoardTest() {}
 

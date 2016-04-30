@@ -1,27 +1,29 @@
-package main;
+package pieces;
 
 import enums.Direction;
 import enums.PieceType;
 import enums.Team;
+import main.Board;
 
 /**
  * Contains the allowed type of movements for the Rook piece.
  *
- * Except being an extention of piece is also placed on the current instance of Board.
+ * Except being an extension of piece is also placed on the current instance of Board.
  */
 public class Rook extends Piece {
     /**
      * Fields are static because the relative paths to the images need to be accessed before
      * object construction in the super constructor and might also find later use in a proposed editor mode.
      */
-    private final static String BLACK_IMAGE_LOCATION = "fantasy/png-shad/br.png";
-    private final static String WHITE_IMAGE_LOCATION = "fantasy/png-shad/wr.png";
+    private final static String BLACK_IMAGE_LOCATION = "png-shad/br.png";
+    private final static String WHITE_IMAGE_LOCATION = "png-shad/wr.png";
 
-    protected Rook(int column, int row, Team team, Board board) {
+    public Rook(int column, int row, Team team, Board board) {
 	super(column, row, team, board, PieceType.ROOK, BLACK_IMAGE_LOCATION, WHITE_IMAGE_LOCATION);
     }
 
-    @Override protected boolean canMove(int newColumn, int newRow) {
+    @Override
+	public boolean canMove(int newColumn, int newRow) {
 	// returns a boolean for if the move is possible for this piece
 	boolean moved = false;
 

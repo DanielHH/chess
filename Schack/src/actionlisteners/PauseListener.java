@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 /**
  * Listener set in the Menus class.
  * If mode Pause is chosen by player this class sets, via setters in
- * class ChessComponent, gamemode to appropriate type.
+ * class ChessComponent, game mode to appropriate type.
  */
 public class PauseListener implements ActionListener
 {

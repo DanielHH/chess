@@ -15,8 +15,8 @@ import java.awt.event.ActionListener;
  */
 public final class ResetListener implements ActionListener
 {
-    private ChessFrame chessFrame;
-    private JRadioButtonMenuItem internalPvp;
+    private final ChessFrame chessFrame;
+    private final JRadioButtonMenuItem internalPvp;
 
       public ResetListener(JRadioButtonMenuItem pvp, ChessFrame frame) {
          internalPvp = pvp;

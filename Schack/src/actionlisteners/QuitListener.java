@@ -9,11 +9,11 @@ import java.awt.event.ActionListener;
 /**
  * Listener set in the Menus class.
  * If option Quit is chosen by player this class opens a
- * dialogwindow where the player then can choose to exit the game or continue playing.
+ * dialog window where the player then can choose to exit the game or continue playing.
  */
 public class QuitListener implements ActionListener
 {
-    private ChessFrame chessFrame;
+    private final ChessFrame chessFrame;
     public QuitListener (ChessFrame frame){
         chessFrame = frame;
     }

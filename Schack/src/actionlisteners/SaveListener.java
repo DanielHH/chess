@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
  */
 public class SaveListener implements ActionListener
 {
-    private Board board;
+    private final Board board;
 
     public SaveListener(Board board) {
 	this.board = board;

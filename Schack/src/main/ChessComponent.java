@@ -3,6 +3,7 @@ package main;
 import enums.Mode;
 import enums.PlayerType;
 import enums.Team;
+import pieces.Piece;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -16,10 +17,10 @@ import java.util.Random;
  * Paints the board, the pieces and the markings (if a piece or square gets clicked).
  * Contains the AI.
  * Contains a mouseListener which listens to clicks on board.
- * Contains which gamemode the game currently is in and is called by class ChessFrame.
+ * Contains which game mode the game currently is in and is called by class ChessFrame.
  */
 public class ChessComponent extends JComponent implements BoardListener {
-    private Board board;
+    private final Board board;
     /**
      * Size of the squares on the screen
      *
@@ -28,22 +29,22 @@ public class ChessComponent extends JComponent implements BoardListener {
     private static final int SQUARE_SIZE = 100;
     private Piece clickedPiece = null;
     /**
-     * Playertype of white player.
+     * PlayerType of white player.
      * The game should only have one whitePlayer of PlayerType associated with it hence the static reference
      */
-    protected static PlayerType whitePlayer = PlayerType.PLAYER;
+    static PlayerType whitePlayer = PlayerType.PLAYER;
     /**
-     * Playertype of black player.
+     * PlayerType of black player.
      * The game should only have one blackPlayer of PlayerType associated with it hence the static reference
      */
-    protected static PlayerType blackPlayer = PlayerType.PLAYER;
+    static PlayerType blackPlayer = PlayerType.PLAYER;
 
     /**
      * The game should only have one Mode, gameMode, associated with it hence the static reference
      */
     private static Mode gameMode = Mode.PVP;
 
-    protected ChessComponent(Board board) {
+    ChessComponent(Board board) {
         this.board = board;
 
         addMouseListener(new MouseAdapter() {
@@ -73,13 +74,13 @@ public class ChessComponent extends JComponent implements BoardListener {
         if (gameMode != Mode.PAUSE) {
             Piece newPiece = board.getPiece(column, row);
             if (clickedPiece == null) { // First click
-                if (newPiece != null && newPiece.team == board.getTurnTeam()) { // is a piece and the same team as the current turn's team
+                if (newPiece != null && newPiece.getTeam() == board.getTurnTeam()) { // is a piece and the same team as the current turn's team
                     clickedPiece = newPiece;
                     board.markPiece();
                 }
             } else { // a clicked piece exists
                 if (newPiece != null && !Objects.equals(newPiece, clickedPiece)) {  // newPiece is a new piece
-                    if (clickedPiece.team == newPiece.team) { // same team; switch marked piece
+                    if (clickedPiece.getTeam() == newPiece.getTeam()) { // same team; switch marked piece
                         clickedPiece = newPiece;
                         board.markPiece();
                     } else { // piece belong to the other team
@@ -124,10 +125,9 @@ public class ChessComponent extends JComponent implements BoardListener {
                 g2d.fillRect(cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE);
 
                 Piece currentPiece = board.getPiece(x, y);
-                // kolla efter pjäs och rita upp
-                if (currentPiece != null) {
-                    g.drawImage(currentPiece.getImage(), cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE, null);
 
+                if (currentPiece != null) { // draw the piece
+                    g.drawImage(currentPiece.getImage(), cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE, null);
                 }
                 if (Objects.equals(clickedPiece, currentPiece) && clickedPiece != null) {
                         g2d.setColor(Color.RED);
@@ -153,8 +153,8 @@ public class ChessComponent extends JComponent implements BoardListener {
             repaint();
     }
 
-    protected void walkAI() {
-        // tries to walk to a random place with a randomly choosen piece
+    void walkAI() {
+        // tries to walk to a random place with a randomly chosen piece
         int turn = board.getTurnCounter();
         Random rand = new Random();
         while (turn == board.getTurnCounter()) {

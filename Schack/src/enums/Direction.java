@@ -7,7 +7,7 @@ package enums;
 public enum Direction
 {
     /**
-     * Names are self-explaning and long enough to describe which type of movement they represent.
+     * Names are self-explaining and long enough to describe which type of movement they represent.
      */
     UP, DOWN, RIGHT, LEFT, UPRIGHT, UPLEFT, DOWNRIGHT, DOWNLEFT
 }

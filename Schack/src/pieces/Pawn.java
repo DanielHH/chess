@@ -1,14 +1,15 @@
-package main;
+package pieces;
 
 
 import enums.Direction;
 import enums.PieceType;
 import enums.Team;
+import main.Board;
 
 /**
  * Contains the allowed type of movements for the Pawn piece.
  *
- * Except being an extention of piece is also placed on the current instance of Board.
+ * Except being an extension of piece is also placed on the current instance of Board.
  */
 public class Pawn extends Piece {
 
@@ -16,10 +17,10 @@ public class Pawn extends Piece {
      * Fields are static because the relative paths to the images need to be accessed before
      * object construction in the super constructor and might also find later use in a proposed editor mode.
      */
-    private final static String BLACK_IMAGE_LOCATION = "fantasy/png-shad/bp.png";
-    private final static String WHITE_IMAGE_LOCATION = "fantasy/png-shad/wp.png";
+    private final static String BLACK_IMAGE_LOCATION = "png-shad/bp.png";
+    private final static String WHITE_IMAGE_LOCATION = "png-shad/wp.png";
 
-    protected Pawn(int column, int row, Team team, Board board) {
+    public Pawn(int column, int row, Team team, Board board) {
 	super(column, row, team, board, PieceType.PAWN, BLACK_IMAGE_LOCATION, WHITE_IMAGE_LOCATION);
     }
 
@@ -29,7 +30,8 @@ public class Pawn extends Piece {
      * @param newRow coordinate for row
      * @return boolean declaring whether move can go through or not
      */
-    @Override protected boolean canMove(int newColumn, int newRow) {
+    @Override
+	public boolean canMove(int newColumn, int newRow) {
 	boolean canMove = false;
 	int horizontal = newColumn - this.getColumn();
 	int lateral = newRow - this.getRow();
@@ -49,7 +51,7 @@ public class Pawn extends Piece {
 	    }
 	} else if (lateral == 1 && (horizontal == 1 || horizontal == -1)) {
 	    if (board.getPiece(newColumn, newRow) != null) {
-		if (board.getPiece(newColumn, newRow).team == Team.WHITE) {
+		if (board.getPiece(newColumn, newRow).getTeam() == Team.WHITE) {
 		    canMove = true;
 		}
 	    }
@@ -70,7 +72,7 @@ public class Pawn extends Piece {
 	    }
 	} else if (lateral == -1 && (horizontal == 1 || horizontal == -1)) {
 	    if (board.getPiece(newColumn, newRow) != null) {
-		if (board.getPiece(newColumn, newRow).team == Team.BLACK) {
+		if (board.getPiece(newColumn, newRow).getTeam() == Team.BLACK) {
 		    canMove = true;
 		}
 	    }
@@ -83,7 +85,7 @@ public class Pawn extends Piece {
 	return canMove;
     }
 
-    protected boolean canHit(int newColumn, int newRow) {
+    public boolean canHit(int newColumn, int newRow) {
 	// checks if pawn can hit a position
 	boolean canHitIt = false;
 	int horizontal = newColumn - this.getColumn();

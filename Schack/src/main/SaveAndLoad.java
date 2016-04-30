@@ -2,7 +2,6 @@ package main;
 
 import javax.swing.*;
 import java.io.File;
-import java.awt.Component;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -27,9 +26,8 @@ public final class SaveAndLoad {
      * @param board current board
      */
     public static void save(Board board) {
-	Component modalToComponent = null;
 	JFileChooser fileChooser = new JFileChooser();
-	if (fileChooser.showSaveDialog(modalToComponent) == JFileChooser.APPROVE_OPTION) {
+	if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
 	    String saveName = fileChooser.getSelectedFile().getPath();
 	    try (ObjectOutput out = new ObjectOutputStream(new FileOutputStream(saveName))){
 		out.writeObject(board);
@@ -46,9 +44,8 @@ public final class SaveAndLoad {
      */
     public static Board load() {
 	Board board = null;
-	Component modalToComponent = null;
 	JFileChooser fileChooser = new JFileChooser();
-	if (fileChooser.showOpenDialog(modalToComponent) == JFileChooser.APPROVE_OPTION) {
+	if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 	    // load from file
 	    File file = fileChooser.getSelectedFile();
 	    try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file.getPath()))){

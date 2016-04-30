@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 /**
  * Listener set in the Menus class.
  * If mode PVAI is chosen by player this class sets, via setters in
- * class ChessComponent, gamemode and Players to appropriate types.
+ * class ChessComponent, game mode and Players to appropriate types.
  */
 public class PVAIListener implements ActionListener
 {

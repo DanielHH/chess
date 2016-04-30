@@ -7,7 +7,7 @@ package main;
  * that a change has occurred and method boardChanged,
  * which is implemented in ChessComponent, and thus conduct a graphical repaint.
  */
-public interface BoardListener
+interface BoardListener
 {
-    public void boardChanged();
+    void boardChanged();
 }

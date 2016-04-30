@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
  */
 public class LoadListener implements ActionListener
 {
-    private ChessFrame chessFrame;
+    private final ChessFrame chessFrame;
     public LoadListener (ChessFrame frame){
         chessFrame = frame;
     }

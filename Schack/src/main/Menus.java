@@ -7,16 +7,16 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
 /**
- * Contains the menu and all of the menuoptions.
+ * Contains the menu and all of the menu options.
  * Sets actionListeners and then sets an instance of JMenuBar on an instance of class ChessFrame.
  */
-public class Menus {
+class Menus {
     private final JMenuBar menuBar = new JMenuBar();
 
     private final JMenu options = new JMenu("Options");
-    private final JMenuItem load = new JMenuItem("Load game");
-    private final JMenuItem save = new JMenuItem("Save");
-    private final JMenuItem reset = new JMenuItem("Reset");
+    private final JMenuItem load = new JMenuItem("Load board");
+    private final JMenuItem save = new JMenuItem("Save board");
+    private final JMenuItem reset = new JMenuItem("Reset board");
     private final JMenuItem quit = new JMenuItem("Quit");
 
     private final JMenu mode = new JMenu("Mode");
@@ -26,13 +26,13 @@ public class Menus {
     private final JRadioButtonMenuItem pause = new JRadioButtonMenuItem("Pause");
     private final ButtonGroup whichMode = new ButtonGroup();
 
-    private ChessFrame chessFrame;
+    private final ChessFrame chessFrame;
 
-    protected Menus (ChessFrame frame) {
+    Menus(ChessFrame frame) {
 	chessFrame = frame;
     }
 
-    protected void createMenus() { // begins the creation of the menu
+    void createMenus() { // begins the creation of the menu
 	whichMode.add(pvp);
 	whichMode.add(pvai);
 	whichMode.add(aivai);

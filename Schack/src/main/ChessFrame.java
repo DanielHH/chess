@@ -11,10 +11,10 @@ import java.util.TimerTask;
 
 /**
  * JFrame object that contains:
- * a menubar, a ChessComponent and a TimerTask.
+ * a menu bar, a ChessComponent and a TimerTask.
  *
  * Is used as a link between class Menus and ChessComponent
- * to connect a graphical menuoption to the functions it executes.
+ * to connect a graphical menu option to the functions it executes.
  * Is called by methods in package actionlisteners.
  *
  * Is created by class TestBoard at start of a new game.
@@ -23,15 +23,15 @@ public class ChessFrame extends JFrame {
     /**
      * Instantiates a ChessComponent.
      */
-   	public ChessComponent chessComponent;
+   	public final ChessComponent chessComponent;
     /**
      * Instantiates a frame that contains the dialog frame.
      */
-   	public JFrame frame = null;
+   	public final JFrame frame = null;
     /**
-     * Instantiates a Board to be the the gameboard.
+     * Instantiates a Board to be the the game board.
      */
-   	public Board board;
+   	public final Board board;
     	private Timer timer = null;
     	private TimerTask runsGameAI = null;
     /**
@@ -39,8 +39,8 @@ public class ChessFrame extends JFrame {
      */
     	private final static int TIME_BETWEEN_AI_CHECKS = 1000; // time in ms.
 
-   protected ChessFrame(Board board) {
-      super("Schack");
+   ChessFrame(Board board) {
+      super("Chess");
        this.board = board;
        chessComponent= new ChessComponent(board);
        board.addBoardListener(chessComponent);
@@ -63,7 +63,7 @@ public class ChessFrame extends JFrame {
         timer = new Timer();
 	createNewTimerTasks();
 	//Schedule a task to run repeatedly, starting now,
- 	// 1000ms fromexecution n ends to execution n+1 begins
+ 	// 1000ms from execution n ends to execution n+1 begins
         timer.schedule(runsGameAI, new Date(), TIME_BETWEEN_AI_CHECKS);
     }
 

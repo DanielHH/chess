@@ -1,9 +1,10 @@
-package main;
+package pieces;
 
 
 import enums.Direction;
 import enums.PieceType;
 import enums.Team;
+import main.Board;
 
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import java.util.Map.Entry;
  * Contains the allowed type of movements for the King piece and contains methods to check
  * if the King is under threat or in check.
  *
- * Except being an extention of piece is also placed on the current instance of Board.
+ * Except being an extension of piece is also placed on the current instance of Board.
  */
 public class King extends Piece {
 
@@ -22,14 +23,15 @@ public class King extends Piece {
      * Fields are static because the relative paths to the images need to be accessed before
      * object construction in the super constructor and might also find later use in a proposed editor mode.
      */
-    private final static String BLACK_IMAGE_LOCATION = "fantasy/png-shad/bk.png";
-    private final static String WHITE_IMAGE_LOCATION = "fantasy/png-shad/wk.png";
+    private final static String BLACK_IMAGE_LOCATION = "png-shad/bk.png";
+    private final static String WHITE_IMAGE_LOCATION = "png-shad/wk.png";
 
-    protected King(int column, int row, Team team, Board board) {
+    public King(int column, int row, Team team, Board board) {
 	super(column, row, team, board, PieceType.KING, BLACK_IMAGE_LOCATION, WHITE_IMAGE_LOCATION);
     }
 
-    @Override protected boolean canMove(int newColumn, int newRow) {
+    @Override
+	public boolean canMove(int newColumn, int newRow) {
 	// returns a boolean for if the move is possible for this piece
 	boolean moved = false;
 
@@ -62,7 +64,7 @@ public class King extends Piece {
 	return unthreatenedPlacesList;
     }
 
-    protected boolean isCheck() {
+    public boolean isCheck() {
 	return isThreatened(this.getColumn(), this.getRow());
     }
 
@@ -70,7 +72,7 @@ public class King extends Piece {
      * check if the king can save itself or if a teammate can save the king
      * @return boolean for whether it is check mate or not
      */
-    protected boolean isCheckMate() {
+	public boolean isCheckMate() {
 	boolean checkMate = false;
 	List<Entry<Integer, Integer>> safePlaces = unthreatenedPlaces();
 	if (safePlaces.isEmpty()) {
@@ -91,7 +93,7 @@ public class King extends Piece {
 	 * check if it is a draw. Currently not covering all draw cases (might be hard).
 	 * @return boolean for whether it is a draw or not
 	 */
-	protected boolean isDraw() {
+	public boolean isDraw() {
 		boolean draw = false;
 		List<Entry<Integer, Integer>> safePlaces = unthreatenedPlaces();
 		if (safePlaces.size() == 1 && safePlaces.get(0).getKey() == this.getColumn() && safePlaces.get(0).getValue() == this.getRow()) {
@@ -112,7 +114,9 @@ public class King extends Piece {
 				for (int j = 0; j < Board.HEIGHT; j++) {
 					Piece tempPiece = board.getPiece(i, j);
 					if (tempPiece != null) { // there is a piece
-						if (tempPiece.piece == PieceType.PAWN || tempPiece.piece == PieceType.QUEEN || tempPiece.piece == PieceType.ROOK) {
+						if (tempPiece.getPieceType() == PieceType.PAWN ||
+								tempPiece.getPieceType() == PieceType.QUEEN ||
+								tempPiece.getPieceType() == PieceType.ROOK) {
 							draw = false;
 						}
 					}
@@ -127,9 +131,9 @@ public class King extends Piece {
 	boolean anySafeLegalMove = false;
 	Piece tempPiece = board.getPiece(column, row);
 	if (tempPiece != null) { // a piece
-	    if (tempPiece.team == team) { // same team
-		List<Entry<Integer, Integer>> legalmoves = tempPiece.legalMoves();
-		for (Entry<Integer, Integer> move : legalmoves) {
+	    if (tempPiece.getTeam() == team) { // same team
+		List<Entry<Integer, Integer>> legalMoves = tempPiece.legalMoves();
+		for (Entry<Integer, Integer> move : legalMoves) {
 		    if (tempPiece.safeMove(move.getKey(), move.getValue(), true)) { // there is a safe move
 				anySafeLegalMove = true;
 		    }

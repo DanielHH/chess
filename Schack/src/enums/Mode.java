@@ -1,7 +1,7 @@
 package enums;
 
 /**
- * Each mode represents a type of gamemode
+ * Each mode represents a type of game mode
  *
  * Mode is set in respective listeners and value kept in ChessComponent.
  */
