@@ -65,11 +65,11 @@ public abstract class Piece implements Serializable {
         }
     }
 
-    int getColumn() {
+    public int getColumn() {
         return column;
     }
 
-    int getRow() {
+    public int getRow() {
         return row;
     }
 
@@ -333,6 +333,22 @@ public abstract class Piece implements Serializable {
             }
         }
         return legalMovesList;
+    }
+
+    public List<Entry<Integer, Integer>> listWithSafeLegalMoves(int column, int row) {
+        // returns a list of safe and legal moves for a piece on int column, int row.
+        List<Entry<Integer, Integer>> safeLegalMovesList = new ArrayList<>();
+        Piece tempPiece = board.getPiece(column, row);
+        if (tempPiece != null) { // a piece
+            List<Entry<Integer, Integer>> legalMoves = tempPiece.legalMoves();
+            for (Entry<Integer, Integer> move : legalMoves) {
+                if (tempPiece.safeMove(move.getKey(), move.getValue(), true)) { // there is a safe move
+                    Entry<Integer, Integer> pair = new SimpleEntry<>(move.getKey(), move.getValue());
+                    safeLegalMovesList.add(pair);
+                }
+            }
+        }
+        return safeLegalMovesList;
     }
 
     /**

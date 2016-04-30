@@ -75,16 +75,8 @@ public class King extends Piece {
 	public boolean isCheckMate() {
 	boolean checkMate = false;
 	List<Entry<Integer, Integer>> safePlaces = unthreatenedPlaces();
-	if (safePlaces.isEmpty()) {
-	    checkMate = true;
-		// need to check if the king can be saved
-	    for (int i = 0; i < Board.WIDTH; i++) {
-			for (int j = 0; j < Board.HEIGHT; j++) {
-				if(pieceWithSafeLegalMove(i, j)) { // a piece can save the king
-					checkMate = false;
-				}
-			}
-	    }
+	if (safePlaces.isEmpty()) { // need to check if the king can be saved
+	    checkMate = !isThereAnyPossibleMove();
 	}
 	return checkMate;
     }
@@ -98,14 +90,7 @@ public class King extends Piece {
 		List<Entry<Integer, Integer>> safePlaces = unthreatenedPlaces();
 		if (safePlaces.size() == 1 && safePlaces.get(0).getKey() == this.getColumn() && safePlaces.get(0).getValue() == this.getRow()) {
 			// check for stalemate
-			draw = true;
-			for (int i = 0; i < Board.WIDTH; i++) {
-				for (int j = 0; j < Board.HEIGHT; j++) {
-					if(pieceWithSafeLegalMove(i, j)) { // a piece can save the king
-						draw = false;
-					}
-				}
-			}
+			draw = !isThereAnyPossibleMove();
 		}
 		else if (board.numberOfPiecesOnBoard() <= 3) { // check for material draw
 			draw = true;
@@ -126,20 +111,22 @@ public class King extends Piece {
 		return draw;
 	}
 
-    private boolean pieceWithSafeLegalMove(int column, int row) {
-	// check's if there is a legal move that is also safe for piece on column, row.
-	boolean anySafeLegalMove = false;
-	Piece tempPiece = board.getPiece(column, row);
-	if (tempPiece != null) { // a piece
-	    if (tempPiece.getTeam() == team) { // same team
-		List<Entry<Integer, Integer>> legalMoves = tempPiece.legalMoves();
-		for (Entry<Integer, Integer> move : legalMoves) {
-		    if (tempPiece.safeMove(move.getKey(), move.getValue(), true)) { // there is a safe move
-				anySafeLegalMove = true;
-		    }
+	private boolean isThereAnyPossibleMove() {
+		// check's if there is any safe and legal moves for this team.
+		boolean anyPossibleMove = false;
+		for (int i = 0; i < Board.WIDTH; i++) {
+			for (int j = 0; j < Board.HEIGHT; j++) {
+				Piece tempPiece = board.getPiece(i, j);
+				if (tempPiece != null) {
+					if (tempPiece.getTeam() == team) {
+						if (!listWithSafeLegalMoves(i, j).isEmpty()) { // a piece can move
+							anyPossibleMove = true;
+						}
+					}
+				}
+			}
 		}
-	    }
+		return anyPossibleMove;
 	}
-	return anySafeLegalMove;
-    }
 }
+
