@@ -1,6 +1,5 @@
 package main;
 
-import com.sun.tools.javac.util.Assert;
 import enums.Mode;
 import enums.PlayerType;
 import enums.Team;
@@ -129,38 +128,26 @@ public class ChessComponent extends JComponent implements BoardListener {
                 int cornerY = y * SQUARE_SIZE;
                 g2d.fillRect(cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE);
 
-
                 if (possibleMovesList != null) { // there are possible moves to mark
-                    Map.Entry<Integer, Integer> tempMove = new AbstractMap.SimpleEntry<Integer, Integer>(x, y);
+                    Map.Entry<Integer, Integer> tempMove = new AbstractMap.SimpleEntry<>(x, y);
                     if (possibleMovesList.contains(tempMove)) { // mark the possible move
                         float alpha = 0.75f; // alpha value for transparency
                         color = new Color(1, 0, 0, alpha); // transparent red
                         g2d.setColor(color);
                         g2d.fillRect(cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE);
                         g2d.setColor(Color.BLACK);
-                        g2d.setStroke(new BasicStroke(2));
-
-                        g2d.drawLine(cornerX, cornerY, cornerX + SQUARE_SIZE, cornerY);
-                        g2d.drawLine(cornerX, cornerY, cornerX, cornerY + SQUARE_SIZE);
-
-                        g2d.drawLine(cornerX, cornerY + SQUARE_SIZE - 1, cornerX + SQUARE_SIZE - 1, cornerY + SQUARE_SIZE - 1);
-                        g2d.drawLine(cornerX + SQUARE_SIZE - 1, cornerY, cornerX + SQUARE_SIZE - 1, cornerY + SQUARE_SIZE - 1);
+                        g2d.drawRect(cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE);
                     }
                 }
-
 
                 Piece currentPiece = board.getPiece(x, y);
                 if (currentPiece != null) { // draw the piece
                     g.drawImage(currentPiece.getImage(), cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE, null);
                 }
                 if (Objects.equals(clickedPiece, currentPiece) && clickedPiece != null) { // mark the clickedPiece
-                        g2d.setColor(Color.RED);
-                        g2d.setStroke(new BasicStroke(2));
-                        g2d.drawLine(cornerX, cornerY, cornerX + SQUARE_SIZE, cornerY);
-                        g2d.drawLine(cornerX, cornerY, cornerX, cornerY + SQUARE_SIZE);
-
-                        g2d.drawLine(cornerX, cornerY + SQUARE_SIZE - 1, cornerX + SQUARE_SIZE - 1, cornerY + SQUARE_SIZE - 1);
-                        g2d.drawLine(cornerX + SQUARE_SIZE - 1, cornerY, cornerX + SQUARE_SIZE - 1, cornerY + SQUARE_SIZE - 1);
+                    g2d.setColor(Color.RED);
+                    g2d.setStroke(new BasicStroke(2));
+                    g2d.drawRect(cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE);
                 }
             }
         }

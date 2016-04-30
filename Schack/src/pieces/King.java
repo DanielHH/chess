@@ -10,6 +10,7 @@ import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 /**
  * Contains the allowed type of movements for the King piece and contains methods to check
@@ -51,11 +52,9 @@ public class King extends Piece {
 	List<Entry<Integer, Integer>> legalMovesList = this.legalMoves();
 	List<Entry<Integer, Integer>> unthreatenedPlacesList = new ArrayList<>();
 	if (!legalMovesList.isEmpty()) { // there are legal moves
-	    for (Entry<Integer, Integer> pair : legalMovesList) {
-		if (safeMove(pair.getKey(), pair.getValue(), true)) { // not under threat in new position
-			 unthreatenedPlacesList.add(pair);
-		}
-	    }
+		// not under threat in new position
+		unthreatenedPlacesList.addAll(
+				legalMovesList.stream().filter(pair -> safeMove(pair.getKey(), pair.getValue(), true)).collect(Collectors.toList()));
 	}
 	if (!isThreatened(this.getColumn(), this.getRow())) { // not directly under threat
 	    Entry<Integer, Integer> pair = new SimpleEntry<>(this.getColumn(), this.getRow());
@@ -67,7 +66,6 @@ public class King extends Piece {
     public boolean isCheck() {
 	return isThreatened(this.getColumn(), this.getRow());
     }
-
     /**
      * check if the king can save itself or if a teammate can save the king
      * @return boolean for whether it is check mate or not

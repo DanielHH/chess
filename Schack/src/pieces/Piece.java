@@ -203,8 +203,7 @@ public abstract class Piece implements Serializable {
      */
     public void move(int newColumn, int newRow) {
             if (board.getPiece(newColumn, newRow) != null) {
-
-                if (board.getPiece(newColumn, newRow).team != team) {
+                if (board.getPiece(newColumn, newRow).team != team) { // kill opposite teams piece
                     board.killPiece(newColumn, newRow);
                 }
             }
@@ -212,7 +211,7 @@ public abstract class Piece implements Serializable {
             if (!this.hasMoved()) {
                 this.moved();
             }
-        }
+    }
 
     /**
      * Checks if there is a piece in the way in a specified direction and
@@ -341,12 +340,11 @@ public abstract class Piece implements Serializable {
         Piece tempPiece = board.getPiece(column, row);
         if (tempPiece != null) { // a piece
             List<Entry<Integer, Integer>> legalMoves = tempPiece.legalMoves();
-            for (Entry<Integer, Integer> move : legalMoves) {
-                if (tempPiece.safeMove(move.getKey(), move.getValue(), true)) { // there is a safe move
-                    Entry<Integer, Integer> pair = new SimpleEntry<>(move.getKey(), move.getValue());
-                    safeLegalMovesList.add(pair);
-                }
-            }
+            // there is a safe move
+            legalMoves.stream().filter(move -> tempPiece.safeMove(move.getKey(), move.getValue(), true)).forEach(move -> { // there is a safe move
+                Entry<Integer, Integer> pair = new SimpleEntry<>(move.getKey(), move.getValue());
+                safeLegalMovesList.add(pair);
+            });
         }
         return safeLegalMovesList;
     }

@@ -16,7 +16,7 @@ class Menus {
     private final JMenu options = new JMenu("Options");
     private final JMenuItem load = new JMenuItem("Load board");
     private final JMenuItem save = new JMenuItem("Save board");
-    private final JMenuItem reset = new JMenuItem("Reset board");
+    private final JMenuItem reset = new JMenuItem("Reset");
     private final JMenuItem quit = new JMenuItem("Quit");
 
     private final JMenu mode = new JMenu("Mode");

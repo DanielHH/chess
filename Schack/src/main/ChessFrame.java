@@ -37,7 +37,7 @@ public class ChessFrame extends JFrame {
     /**
      * static because number is a constant.
      */
-    	private final static int TIME_BETWEEN_AI_CHECKS = 1000; // time in ms.
+    	private final static int TIME_BETWEEN_AI_CHECKS = 10; // time in ms.
 
    ChessFrame(Board board) {
       super("Chess");

@@ -103,6 +103,9 @@ public class Board implements Serializable {
 
 	public void actuallyMovesPiece(int oldColumn, int oldRow, int newColumn, int newRow) {
 		Piece tempPiece = board[oldColumn][oldRow];
+		assert tempPiece != null;
+		System.out.println("Began movement from: " + oldColumn + ", " + oldRow + " to: "  + newColumn + ", " + newRow);
+		System.out.println("Moved " + tempPiece.getTeam() + " " +  tempPiece.getPieceType());
 		board[newColumn][newRow] = tempPiece;
 		board[oldColumn][oldRow] = null;
 		pawnUpgrade(newColumn, newRow, tempPiece);
