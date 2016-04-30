@@ -112,15 +112,15 @@ public abstract class Piece implements Serializable {
      * @param newRow row coordinate of clicked position
      * @return boolean safe
      */
-    protected boolean safeMove(int newColumn, int newRow) {
+    protected boolean safeMove(int newColumn, int newRow, boolean silenced) {
+        String safetyText = null;
         boolean safe = false;
         Piece tempPiece = board.board[newColumn][newRow];
         board.checksForCheck();
         if (board.defendKing) { // currently in check
-            System.out.println("Defend the King!!");
             testCheckMove(newColumn, newRow, tempPiece);
             if (!board.defendKing && piece != PieceType.KING) { // move saved the king
-                System.out.println("king is safe!!");
+                safetyText = "king is safe!!";
                 safe = true;
             }
             else {
@@ -128,18 +128,17 @@ public abstract class Piece implements Serializable {
                     board.board[newColumn][newRow] = board.board[column][row];
                     board.board[column][row] = null;
                     if(this.isThreatened(newColumn, newRow)) { // king tried to run in the opposite direction
-                        System.out.println("Can't run that way!");
+                        safetyText = "Can't run that way!";
                     }
                     else { // dodge is successful
                         safe = true;
-                        System.out.println("King dodge!");
+                        safetyText = "King dodge!";
                     }
                     board.board[column][row] = board.board[newColumn][newRow];
-                    board.board[newColumn][newRow] = null;
                     board.board[newColumn][newRow] = tempPiece;
                 }
                 else {
-                    System.out.println("King isn't safe yet!");
+                    safetyText = "King isn't safe yet!";
                 }
             }
         }
@@ -147,12 +146,12 @@ public abstract class Piece implements Serializable {
             testCheckMove(newColumn, newRow, tempPiece);
             if (!board.defendKing) { //
                 if (piece == PieceType.KING && this.isThreatened(newColumn, newRow)) { // the king moves into check
-                    System.out.println("Suicidal !?");
+                    safetyText = "Suicidal !?";
                 }
-                else {
+                else { // might be a trap
                     board.board[newColumn][newRow] = null;
                     if (piece == PieceType.KING && this.isThreatened(newColumn, newRow)){
-                        System.out.println("It's not worth it, King!!");
+                        safetyText = "It's not worth it, King!!";
                     }
                         else { // safe move
                         safe = true;
@@ -161,8 +160,11 @@ public abstract class Piece implements Serializable {
                 }
             }
             else { // move puts the king in check
-                System.out.println("Trying to kill your king?!");
+                safetyText = "Trying to kill your king?!";
             }
+        }
+        if (safetyText != null && !silenced) {
+            System.out.println(safetyText);
         }
         return safe;
     }
@@ -180,8 +182,15 @@ public abstract class Piece implements Serializable {
         board.board[column][row] = null;
         board.checksForCheck();
         board.board[column][row] = board.board[newColumn][newRow];
-        board.board[newColumn][newRow] = null;
         board.board[newColumn][newRow] = tempPiece;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
     }
 
     /**
@@ -199,8 +208,6 @@ public abstract class Piece implements Serializable {
                 }
             }
             board.actuallyMovesPiece(column, row, newColumn, newRow);
-            column = newColumn;
-            row = newRow;
             if (!this.hasMoved()) {
                 this.moved();
             }
@@ -230,17 +237,13 @@ public abstract class Piece implements Serializable {
                     canNotMove = true;
                 }
             } else if (direction == Direction.UPRIGHT || direction == Direction.DOWNLEFT) {
-
                 if (board.getPiece(column - x, row + x) != null) {
                     canNotMove = true;
                 }
             } else if (direction == Direction.UPLEFT || direction == Direction.DOWNRIGHT) {
-
                 if (board.getPiece(column + x, row + x) != null) {
                     canNotMove = true;
                 }
-            } else {
-                canNotMove = true;
             }
         }
         return canNotMove;

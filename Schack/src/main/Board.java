@@ -1,5 +1,6 @@
 package main;
 
+import enums.Mode;
 import enums.PieceType;
 import enums.Team;
 
@@ -105,17 +106,22 @@ public class Board implements Serializable
     }
 
     protected void actuallyMovesPiece(int oldColumn, int oldRow, int newColumn, int newRow) {
-	Piece tempPiece = board[oldColumn][oldRow];
-	board[newColumn][newRow] = tempPiece;
-	board[oldColumn][oldRow] = null;
-	pawnUpgrade(newColumn, newRow, tempPiece);
-
-	nextTurn();
-	notifyListeners();
-	if (getKing(getTurnTeam()).isCheckMate()) {
-	    // gameover
-	    System.out.println("checkmate");
-	}
+		Piece tempPiece = board[oldColumn][oldRow];
+		board[newColumn][newRow] = tempPiece;
+		board[oldColumn][oldRow] = null;
+		pawnUpgrade(newColumn, newRow, tempPiece);
+		tempPiece.setColumn(newColumn);
+		tempPiece.setRow(newRow);
+		nextTurn();
+		if (getKing(getTurnTeam()).isCheckMate()) { // game over
+			System.out.println(getTurnTeam()+" is checkmated");
+			ChessComponent.setGameMode(Mode.PAUSE);
+		}
+		else if (getKing(getTurnTeam()).isDraw()) { // game over
+			System.out.println("Draw");
+			ChessComponent.setGameMode(Mode.PAUSE);
+		}
+		notifyListeners();
     }
 
     protected void addBoardListener(BoardListener bl) {
@@ -200,5 +206,17 @@ public class Board implements Serializable
 	    defendKing = true;
 	}
     }
+
+	protected int numberOfPiecesOnBoard() {
+		int counter = 0;
+		for (int i = 0; i < WIDTH; i++) {
+			for (int j = 0; j < HEIGHT; j++) {
+				if (board[i][j] != null) { // there is a piece
+					counter++;
+				}
+			}
+		}
+		return counter;
+	}
 
 }

@@ -48,14 +48,14 @@ public class King extends Piece {
     private List<Entry<Integer, Integer>> unthreatenedPlaces() {
 	List<Entry<Integer, Integer>> legalMovesList = this.legalMoves();
 	List<Entry<Integer, Integer>> unthreatenedPlacesList = new ArrayList<>();
-	if (!legalMovesList.isEmpty()) {
+	if (!legalMovesList.isEmpty()) { // there are legal moves
 	    for (Entry<Integer, Integer> pair : legalMovesList) {
-		if (!isThreatened(pair.getKey(), pair.getValue())) {
-		    unthreatenedPlacesList.add(pair);
+		if (safeMove(pair.getKey(), pair.getValue(), true)) { // not under threat in new position
+			 unthreatenedPlacesList.add(pair);
 		}
 	    }
 	}
-	if (!isThreatened(this.getColumn(), this.getRow())) {
+	if (!isThreatened(this.getColumn(), this.getRow())) { // not directly under threat
 	    Entry<Integer, Integer> pair = new SimpleEntry<>(this.getColumn(), this.getRow());
 	    unthreatenedPlacesList.add(pair);
 	}
@@ -73,32 +73,65 @@ public class King extends Piece {
     protected boolean isCheckMate() {
 	boolean checkMate = false;
 	List<Entry<Integer, Integer>> safePlaces = unthreatenedPlaces();
-	if (safePlaces == null) {
+	if (safePlaces.isEmpty()) {
 	    checkMate = true;
+		// need to check if the king can be saved
 	    for (int i = 0; i < Board.WIDTH; i++) {
-		for (int j = 0; j < Board.HEIGHT; j++) {
-			checkMate = pieceWithSafeLegalMove(i, j);
-		}
-	    }
-	}
-	else {
-	    for (Entry<Integer, Integer> entry: safePlaces) {
-		System.out.println("Column: " + entry.getKey() + " Row: " + entry.getValue());
+			for (int j = 0; j < Board.HEIGHT; j++) {
+				if(pieceWithSafeLegalMove(i, j)) { // a piece can save the king
+					checkMate = false;
+				}
+			}
 	    }
 	}
 	return checkMate;
     }
 
+	/**
+	 * check if it is a draw. Currently not covering all draw cases (might be hard).
+	 * @return boolean for whether it is a draw or not
+	 */
+	protected boolean isDraw() {
+		boolean draw = false;
+		List<Entry<Integer, Integer>> safePlaces = unthreatenedPlaces();
+		if (safePlaces.size() == 1 && safePlaces.get(0).getKey() == this.getColumn() && safePlaces.get(0).getValue() == this.getRow()) {
+			// check for stalemate
+			draw = true;
+			for (int i = 0; i < Board.WIDTH; i++) {
+				for (int j = 0; j < Board.HEIGHT; j++) {
+					if(pieceWithSafeLegalMove(i, j)) { // a piece can save the king
+						draw = false;
+					}
+				}
+			}
+		}
+		else if (board.numberOfPiecesOnBoard() <= 3) { // check for material draw
+			draw = true;
+			// check if there is a pawn, queen or rook left. If so not a draw.
+			for (int i = 0; i < Board.WIDTH; i++) {
+				for (int j = 0; j < Board.HEIGHT; j++) {
+					Piece tempPiece = board.getPiece(i, j);
+					if (tempPiece != null) { // there is a piece
+						if (tempPiece.piece == PieceType.PAWN || tempPiece.piece == PieceType.QUEEN || tempPiece.piece == PieceType.ROOK) {
+							draw = false;
+						}
+					}
+				}
+			}
+		}
+		return draw;
+	}
+
     private boolean pieceWithSafeLegalMove(int column, int row) {
 	// check's if there is a legal move that is also safe for piece on column, row.
 	boolean anySafeLegalMove = false;
 	Piece tempPiece = board.getPiece(column, row);
-	if (tempPiece != null) {
+	if (tempPiece != null) { // a piece
 	    if (tempPiece.team == team) { // same team
 		List<Entry<Integer, Integer>> legalmoves = tempPiece.legalMoves();
 		for (Entry<Integer, Integer> move : legalmoves) {
-		    if (tempPiece.safeMove(move.getKey(), move.getValue())) {
-			anySafeLegalMove = false;
+		    if (tempPiece.safeMove(move.getKey(), move.getValue(), true)) { // there is a safe move
+				anySafeLegalMove = true;
 		    }
 		}
 	    }

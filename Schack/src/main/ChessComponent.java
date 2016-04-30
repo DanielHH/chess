@@ -101,7 +101,7 @@ public class ChessComponent extends JComponent implements BoardListener {
     private void tryMoveAndRemoveMark(int column, int row) {
         boolean move = clickedPiece.canMove(column, row);
         if (move) { // can move
-            boolean safe = clickedPiece.safeMove(column, row);
+            boolean safe = clickedPiece.safeMove(column, row, false);
             if (safe) { // remove mark & move
                 clickedPiece.move(column, row);
                 clickedPiece = null;
