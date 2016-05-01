@@ -169,8 +169,12 @@ public class ChessComponent extends JComponent implements BoardListener {
             repaint();
     }
 
+    /**
+     * Picks a random piece of the current teams pieces and tries do a move.
+     * If there is a killing move it picks that one otherwise just chooses a random one.
+     * Continues to try to do a move until the game reaches the next turn and thus have made a move.
+     */
     void walkAI() {
-        // tries to walk to a random place with a randomly chosen piece
         int turn = board.getTurnCounter();
         Random rand = new Random();
 
@@ -182,14 +186,24 @@ public class ChessComponent extends JComponent implements BoardListener {
             if (tempPiece != null) { // there is a piece
                 List<Map.Entry<Integer, Integer>> moves = tempPiece.listWithSafeLegalMoves(tempPiece.getColumn(), tempPiece.getRow());
                 if (!moves.isEmpty()) { // there is a doable move
-                    int m = rand.nextInt(moves.size());
                     tryMove(tempPiece.getColumn(), tempPiece.getRow()); // mark the piece
+
+                    Map.Entry<Integer, Integer> move = null;
+                    for (Map.Entry<Integer, Integer> tempMove: moves) {
+                        if (board.getPiece(tempMove.getKey(), tempMove.getValue()) != null) { // there is a kill move
+                            move = tempMove;
+                        }
+                    }
+                    if (move == null) { // no kill move, choose a random move.
+                        int m = rand.nextInt(moves.size());
+                        move = moves.get(m);
+                    }
                     try {
                         Thread.sleep(TIME_BETWEEN_AI_CLICKS);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    Map.Entry<Integer, Integer> move = moves.get(m);
+
                     tryMove(move.getKey(), move.getValue()); // do the move
                 }
             }

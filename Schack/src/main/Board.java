@@ -168,7 +168,14 @@ public class Board implements Serializable {
 					} else if (tempPiece.getPieceType() == PieceType.BISHOP) {
 						board[i][j] = new Bishop(i, j, tempPiece.getTeam(), this);
 					} else if (tempPiece.getPieceType() == PieceType.KING) {
-						board[i][j] = new King(i, j, tempPiece.getTeam(), this);
+						King king = new King(i, j, tempPiece.getTeam(), this);
+						board[i][j] = king;
+						if (tempPiece.getTeam() == Team.WHITE) {
+							whiteKing = king;
+						}
+						else {
+							blackKing = king;
+						}
 					} else if (tempPiece.getPieceType() == PieceType.QUEEN) {
 						board[i][j] = new Queen(i, j, tempPiece.getTeam(), this);
 					} else if (tempPiece.getPieceType() == PieceType.ROOK) {
@@ -237,7 +244,6 @@ public class Board implements Serializable {
 				Piece tempPiece = getPiece(i, j);
 				if (tempPiece != null) {
 					if (tempPiece.getTeam() == team) {
-
 						teamPieces[count] = tempPiece;
 						count += 1;
 					}
