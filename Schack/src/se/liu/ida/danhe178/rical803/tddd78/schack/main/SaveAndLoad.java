@@ -39,6 +39,7 @@ public final class SaveAndLoad {
 	    }
 	    catch (IOException e) {
 		LOG.log(Level.SEVERE, e.toString(), e );
+		e.printStackTrace();
 	    }
 	}
     }

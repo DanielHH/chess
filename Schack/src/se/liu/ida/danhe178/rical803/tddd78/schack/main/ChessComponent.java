@@ -72,8 +72,8 @@ public class ChessComponent extends JComponent implements BoardListener {
         return blackPlayer;
     }
 
-    private Timer timer = null;
-    private TimerTask runsGameAI = null;
+    private transient Timer timer = null;
+    private transient TimerTask runsGameAI = null;
     /**
      * static because number is a constant.
      */
