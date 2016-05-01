@@ -7,67 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="635f80e2-9e2c-422d-966b-d132780876f9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/Schack_jar/Schack.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Schack/META-INF/MANIFEST.MF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/actionlisteners/AIVAIListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/actionlisteners/LoadListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/actionlisteners/PVAIListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/actionlisteners/PVPListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/actionlisteners/PauseListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/actionlisteners/QuitListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/actionlisteners/ResetListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/actionlisteners/SaveListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/enums/Direction.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/enums/Mode.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/enums/PieceType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/enums/PlayerType.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/enums/Team.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/main/Board.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/main/BoardListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/main/BoardTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/main/ChessComponent$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/main/ChessComponent$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/main/ChessComponent.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/main/ChessFrame$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/main/ChessFrame.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/main/Menus.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/main/SaveAndLoad.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/Bishop.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/King.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/Knight.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/Pawn.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/Piece.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/Queen.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/Rook.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/png-shad/bb.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/png-shad/bk.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/png-shad/bn.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/png-shad/bp.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/png-shad/bq.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/png-shad/br.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/png-shad/wb.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/png-shad/wk.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/png-shad/wn.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/png-shad/wp.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/png-shad/wq.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/png-shad/wr.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/LoadListener.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/LoadListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/QuitListener.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/QuitListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/ResetListener.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/ResetListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/Board.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/Board.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessFrame.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessFrame.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/Menus.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/Menus.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/SaveAndLoad.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/SaveAndLoad.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Schack.ipr" afterPath="$PROJECT_DIR$/Schack.ipr" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/diagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Schack_jar/Schack.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/META-INF/MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Schack.iws" afterPath="$PROJECT_DIR$/Schack.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/LoadListener.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/LoadListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/QuitListener.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/QuitListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/ResetListener.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/ResetListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Board.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Board.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessFrame.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessFrame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Menus.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Menus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/SaveAndLoad.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/SaveAndLoad.java" />
     </list>
     <ignored path="Schack.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -100,7 +44,7 @@
       <file leaf-file-name="SaveAndLoad.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/SaveAndLoad.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.21337947">
+            <state vertical-scroll-proportion="0.20487265">
               <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
               <folding />
             </state>
@@ -353,24 +297,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Schack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Schack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Schack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="schack" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -978,7 +904,7 @@
       <workItem from="1461933797467" duration="395000" />
       <workItem from="1461938947151" duration="16138000" />
       <workItem from="1462092546080" duration="12654000" />
-      <workItem from="1462122209848" duration="4236000" />
+      <workItem from="1462122209848" duration="4588000" />
     </task>
     <task id="LOCAL-00001" summary="Added AI.">
       <created>1461057928119</created>
@@ -1022,15 +948,21 @@
       <option name="project" value="LOCAL" />
       <updated>1461716624359</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="logging">
+      <created>1462126523069</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1462126523069</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="291829000" />
+    <option name="totallyTimeSpent" value="292181000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1917" y="0" width="1926" height="1202" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1038,12 +970,12 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2735043" sideWeight="0.31576145" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20884956" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20884956" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17699115" sideWeight="0.68423855" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17699115" sideWeight="0.68423855" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20572917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20572917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17256637" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19292036" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1078,7 +1010,8 @@
     <MESSAGE value="Working pause-button" />
     <MESSAGE value="Removed startbutton and moved functions to modes" />
     <MESSAGE value="check working. Began implementing upgrade pawn to queen method." />
-    <option name="LAST_COMMIT_MESSAGE" value="check working. Began implementing upgrade pawn to queen method." />
+    <MESSAGE value="logging" />
+    <option name="LAST_COMMIT_MESSAGE" value="logging" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1757,7 +1690,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/SaveAndLoad.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21337947">
+        <state vertical-scroll-proportion="0.20487265">
           <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
           <folding />
         </state>
