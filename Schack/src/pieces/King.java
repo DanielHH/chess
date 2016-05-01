@@ -90,12 +90,12 @@ public class King extends Piece {
 			// check for stalemate
 			draw = !isThereAnyPossibleMove();
 		}
-		else if (board.numberOfPiecesOnBoard() <= 3) { // check for material draw
+		else if (getBoard().numberOfPiecesOnBoard() <= 3) { // check for material draw
 			draw = true;
 			// check if there is a pawn, queen or rook left. If so not a draw.
 			for (int i = 0; i < Board.WIDTH; i++) {
 				for (int j = 0; j < Board.HEIGHT; j++) {
-					Piece tempPiece = board.getPiece(i, j);
+					Piece tempPiece = getBoard().getPiece(i, j);
 					if (tempPiece != null) { // there is a piece
 						if (tempPiece.getPieceType() == PieceType.PAWN ||
 								tempPiece.getPieceType() == PieceType.QUEEN ||
@@ -114,9 +114,9 @@ public class King extends Piece {
 		boolean anyPossibleMove = false;
 		for (int i = 0; i < Board.WIDTH; i++) {
 			for (int j = 0; j < Board.HEIGHT; j++) {
-				Piece tempPiece = board.getPiece(i, j);
+				Piece tempPiece = getBoard().getPiece(i, j);
 				if (tempPiece != null) {
-					if (tempPiece.getTeam() == team) {
+					if (tempPiece.getTeam() == getTeam()) {
 						if (!listWithSafeLegalMoves(i, j).isEmpty()) { // a piece can move
 							anyPossibleMove = true;
 						}

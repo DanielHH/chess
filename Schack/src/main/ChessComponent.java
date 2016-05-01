@@ -11,7 +11,10 @@ import java.awt.event.MouseEvent;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
+import java.util.AbstractMap.SimpleEntry;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.Timer;
 
 /**
  * Paints the board, the pieces and the markings (if a piece or square gets clicked).
@@ -32,12 +35,12 @@ public class ChessComponent extends JComponent implements BoardListener {
      * PlayerType of white player.
      * The game should only have one whitePlayer of PlayerType associated with it hence the static reference
      */
-    static PlayerType whitePlayer = PlayerType.PLAYER;
+    private static PlayerType whitePlayer = PlayerType.PLAYER;
     /**
      * PlayerType of black player.
      * The game should only have one blackPlayer of PlayerType associated with it hence the static reference
      */
-    static PlayerType blackPlayer = PlayerType.PLAYER;
+    private static PlayerType blackPlayer = PlayerType.PLAYER;
 
     /**
      * The game should only have one Mode, gameMode, associated with it hence the static reference
@@ -45,9 +48,36 @@ public class ChessComponent extends JComponent implements BoardListener {
     private static Mode gameMode = Mode.PVP;
 
     /**
-     * static because number is a constant.
+     * Static because number is a constant.
      */
     private final static int TIME_BETWEEN_AI_CLICKS = 1000; // time in ms.
+
+    /**
+     * Static because number is a constant.
+     */
+    private static final float VALUE_FOR_TRANSPARENCY = 0.75f;
+
+    /**
+     * Static because there is only supposed to be one PlayerType whitePlayer
+     * because, among other things, the AI should be able to check if it is supposed to make the move for that player.
+     */
+    public static PlayerType getWhitePlayer() {
+        return whitePlayer;
+    }
+    /**
+     * Static because there is only supposed to be one PlayerType blackPlayer
+     * because, among other things, the AI should be able to check if it is supposed to make the move for that player.
+     */
+    public static PlayerType getBlackPlayer() {
+        return blackPlayer;
+    }
+
+    private Timer timer = null;
+    private TimerTask runsGameAI = null;
+    /**
+     * static because number is a constant.
+     */
+    private final static int TIME_BETWEEN_AI_CHECKS = 2000; // time in ms.
 
     ChessComponent(Board board) {
         this.board = board;
@@ -65,12 +95,16 @@ public class ChessComponent extends JComponent implements BoardListener {
                 }
             }
         });
+        resumeTimer();
     }
 
     public void setClickedPieceNull() {
         clickedPiece = null;
     }
 
+    /**
+     * Static because we are only supposed to have one gameMode and this is to be set globally.
+     */
     public static void setGameMode(final Mode newGameMode) {
         gameMode = newGameMode;
     }
@@ -81,13 +115,13 @@ public class ChessComponent extends JComponent implements BoardListener {
             if (clickedPiece == null) { // First click
                 if (newPiece != null && newPiece.getTeam() == board.getTurnTeam()) { // is a piece and the same team as the current turn's team
                     clickedPiece = newPiece;
-                    board.markPiece();
+                    boardChanged();
                 }
             } else { // a clicked piece exists
                 if (newPiece != null && !Objects.equals(newPiece, clickedPiece)) {  // newPiece is a new piece
                     if (clickedPiece.getTeam() == newPiece.getTeam()) { // same team; switch marked piece
                         clickedPiece = newPiece;
-                        board.markPiece();
+                        boardChanged();
                     } else { // piece belong to the other team
                         tryMoveAndRemoveMark(column, row);
                     }
@@ -118,7 +152,7 @@ public class ChessComponent extends JComponent implements BoardListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         final Graphics2D g2d = (Graphics2D) g;
-        List<Map.Entry<Integer, Integer>> possibleMovesList = null;
+        List<Entry<Integer, Integer>> possibleMovesList = null;
         if (clickedPiece != null) {
             possibleMovesList = clickedPiece.listWithSafeLegalMoves(clickedPiece.getColumn(), clickedPiece.getRow());
         }
@@ -134,11 +168,11 @@ public class ChessComponent extends JComponent implements BoardListener {
                 g2d.fillRect(cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE);
 
                 if (possibleMovesList != null) { // there are possible moves to mark
-                    Map.Entry<Integer, Integer> tempMove = new AbstractMap.SimpleEntry<>(x, y);
+                    Entry<Integer, Integer> tempMove = new SimpleEntry<>(x, y);
                     if (possibleMovesList.contains(tempMove)) { // mark the possible move
-                        float alpha = 0.75f; // alpha value for transparency
-                        color = new Color(1, 0, 0, alpha); // transparent red
-                        g2d.setColor(color);
+                        float alpha = VALUE_FOR_TRANSPARENCY; // alpha value for transparency
+                        Color color1 = new Color(1, 0, 0, alpha);
+                        g2d.setColor(color1);
                         g2d.fillRect(cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE);
                         g2d.setColor(Color.BLACK);
                         g2d.drawRect(cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE);
@@ -178,18 +212,20 @@ public class ChessComponent extends JComponent implements BoardListener {
         int turn = board.getTurnCounter();
         Random rand = new Random();
 
+
         while (turn == board.getTurnCounter()) {
             Piece[] piecesInTeam = board.getListAllPiecesInTeam(board.getTurnTeam());
             int n = rand.nextInt(piecesInTeam.length);
             Piece tempPiece = piecesInTeam[n];
 
             if (tempPiece != null) { // there is a piece
-                List<Map.Entry<Integer, Integer>> moves = tempPiece.listWithSafeLegalMoves(tempPiece.getColumn(), tempPiece.getRow());
+                List<Entry<Integer, Integer>> moves = tempPiece.listWithSafeLegalMoves(tempPiece.getColumn(),
+                                                                                       tempPiece.getRow());
                 if (!moves.isEmpty()) { // there is a doable move
                     tryMove(tempPiece.getColumn(), tempPiece.getRow()); // mark the piece
 
-                    Map.Entry<Integer, Integer> move = null;
-                    for (Map.Entry<Integer, Integer> tempMove: moves) {
+                    Entry<Integer, Integer> move = null;
+                    for (Entry<Integer, Integer> tempMove: moves) {
                         if (board.getPiece(tempMove.getKey(), tempMove.getValue()) != null) { // there is a kill move
                             move = tempMove;
                         }
@@ -199,7 +235,8 @@ public class ChessComponent extends JComponent implements BoardListener {
                         move = moves.get(m);
                     }
                     try {
-                        Thread.sleep(TIME_BETWEEN_AI_CLICKS);
+                        Thread.sleep(TIME_BETWEEN_AI_CLICKS); // Threading issue: We would need more time to
+                                                                // come up with alternative solution
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -210,8 +247,48 @@ public class ChessComponent extends JComponent implements BoardListener {
         }
     }
 
+    /**
+     * Static because we are only supposed to have two players and these are to be set globally.
+     */
     public static void setPlayers(PlayerType newWhitePlayer, PlayerType newBlackPlayer) {
         whitePlayer = newWhitePlayer;
         blackPlayer = newBlackPlayer;
+    }
+
+    public void pauseTimer() {
+        timer.cancel();
+    }
+
+    public void resumeTimer() {
+        timer = new Timer();
+	createNewTimerTasks();
+	//Schedule a task to run repeatedly, starting now,
+ 	// 1000ms from execution n ends to execution n+1 begins
+        timer.schedule(runsGameAI, new Date(), TIME_BETWEEN_AI_CHECKS);
+    }
+
+    private void createNewTimerTasks() {
+	runsGameAI = new TimerTask() {
+
+	    public void run() {
+		    gameAI();
+	    }
+	};
+    }
+
+    /**
+     * Runs the game AI, only tries to walk if it's the AI's turn
+     */
+    private void gameAI() {
+	if (board.getTurnTeam() == Team.WHITE) {
+	    if (ChessComponent.getWhitePlayer() == PlayerType.AI) {
+		walkAI();
+	    }
+	}
+	else {
+	    if (ChessComponent.getBlackPlayer() == PlayerType.AI) {
+		walkAI();
+	    }
+        }
     }
 }

@@ -46,18 +46,18 @@ public class Pawn extends Piece {
     private boolean canMoveBlackPawn(int horizontal, int lateral, int newColumn, int newRow) {
 	boolean canMove = false;
 	if (horizontal == 0 && lateral == 1) {
-	    if (board.getPiece(newColumn, newRow) == null) {
+	    if (getBoard().getPiece(newColumn, newRow) == null) {
 		canMove = true;
 	    }
 	} else if (lateral == 1 && (horizontal == 1 || horizontal == -1)) {
-	    if (board.getPiece(newColumn, newRow) != null) {
-		if (board.getPiece(newColumn, newRow).getTeam() == Team.WHITE) {
+	    if (getBoard().getPiece(newColumn, newRow) != null) {
+		if (getBoard().getPiece(newColumn, newRow).getTeam() == Team.WHITE) {
 		    canMove = true;
 		}
 	    }
 	} else if (horizontal == 0 && lateral == 2) {
 	    if (!this.pieceInTheWay(Direction.DOWN, lateral) && !this.hasMoved() &&
-		board.getPiece(newColumn, newRow) == null) {
+		getBoard().getPiece(newColumn, newRow) == null) {
 		canMove = true;
 	    }
 	}
@@ -67,18 +67,18 @@ public class Pawn extends Piece {
     private boolean canMoveWhitePawn(int horizontal, int lateral, int newColumn, int newRow) {
 	boolean canMove = false;
 	if (horizontal == 0 && lateral == -1) {
-	    if (board.getPiece(newColumn, newRow) == null) {
+	    if (getBoard().getPiece(newColumn, newRow) == null) {
 		canMove = true;
 	    }
 	} else if (lateral == -1 && (horizontal == 1 || horizontal == -1)) {
-	    if (board.getPiece(newColumn, newRow) != null) {
-		if (board.getPiece(newColumn, newRow).getTeam() == Team.BLACK) {
+	    if (getBoard().getPiece(newColumn, newRow) != null) {
+		if (getBoard().getPiece(newColumn, newRow).getTeam() == Team.BLACK) {
 		    canMove = true;
 		}
 	    }
 	} else if (horizontal == 0 && lateral == -2) {
 	    if (!this.pieceInTheWay(Direction.UP, lateral) && !this.hasMoved() &&
-		board.getPiece(newColumn, newRow) == null) {
+		getBoard().getPiece(newColumn, newRow) == null) {
 		canMove = true;
 	    }
 	}
@@ -90,11 +90,11 @@ public class Pawn extends Piece {
 	boolean canHitIt = false;
 	int horizontal = newColumn - this.getColumn();
 	int lateral = newRow - this.getRow();
-	if (team == Team.WHITE) {
+	if (getTeam() == Team.WHITE) {
 	    if (lateral == -1 && (horizontal == 1 || horizontal == -1)) {
 		canHitIt = true;
 	    }
-	} else if (team == Team.BLACK) {
+	} else if (getTeam() == Team.BLACK) {
 	    if (lateral == 1 && (horizontal == 1 || horizontal == -1)) {
 		canHitIt = true;
 	    }

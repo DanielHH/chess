@@ -38,6 +38,11 @@ public class Board implements Serializable {
 
 	private boolean defendKing = false;
 
+    /**
+     * Static because number is a constant.
+     */
+    	private static final int START_NUMBER_OF_PIECES_IN_TEAM = 16;
+
 	Board() {
 		setStartPositions();
 	}
@@ -126,15 +131,12 @@ public class Board implements Serializable {
 		boardListenerList[0] = bl;
 	}
 
-	private void notifyListeners() {
+    	void notifyListeners() {
 		for (BoardListener bl : boardListenerList) {
 			bl.boardChanged();
 		}
 	}
 
-	void markPiece() {
-		notifyListeners();
-	}
 
 	int getTurnCounter() {
 		return turnCounter;
@@ -237,7 +239,7 @@ public class Board implements Serializable {
 	}
 
 	public Piece[] getListAllPiecesInTeam(Team team) {
-		Piece[] teamPieces = new Piece[16];
+		Piece[] teamPieces = new Piece[START_NUMBER_OF_PIECES_IN_TEAM];
 		int count = 0;
 		for (int i = 0; i < WIDTH; i++) {
 			for (int j = 0; j < HEIGHT; j++) {

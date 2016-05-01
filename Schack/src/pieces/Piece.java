@@ -24,8 +24,8 @@ public abstract class Piece implements Serializable {
     private int column;
     private int row;
     private boolean hasMoved;
-    final Team team;
-    final Board board;
+    private final Team team;
+    private final Board board;
     private final PieceType pieceType;
     private final String blImageLocation;
     private final String whImageLocation;
@@ -50,6 +50,7 @@ public abstract class Piece implements Serializable {
         return image;
     }
 
+
     private void setImage() {
 	String imageLocation;
 	if (team == Team.WHITE) {
@@ -63,6 +64,10 @@ public abstract class Piece implements Serializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Board getBoard() {
+        return board;
     }
 
     public int getColumn() {
