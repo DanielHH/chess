@@ -74,7 +74,7 @@ class Menus {
 	load.setMnemonic(KeyEvent.VK_L);
 	load.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, InputEvent.CTRL_MASK));
 
-	save.addActionListener(new SaveListener(chessFrame.board));
+	save.addActionListener(new SaveListener(chessFrame.getBoard()));
 	save.setMnemonic(KeyEvent.VK_S);
 	save.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.ALT_MASK));
 

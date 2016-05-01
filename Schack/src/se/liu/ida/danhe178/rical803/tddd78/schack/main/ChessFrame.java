@@ -19,18 +19,20 @@ public class ChessFrame extends JFrame {
     /**
      * Instantiates a ChessComponent.
      */
-   	public final ChessComponent chessComponent;
+   	private final ChessComponent chessComponent;
     /**
      * Instantiates a frame that contains the dialog frame.
      */
-   	public final JFrame frame = null;
+   	private final JFrame frame = null;
     /**
      * Instantiates a Board to be the the game board.
      */
-   	public final Board board;
+   	private final Board board;
 
 
-   ChessFrame(Board board) {
+
+
+    ChessFrame(Board board) {
       super("Chess");
        this.board = board;
        chessComponent= new ChessComponent(board);
@@ -46,7 +48,17 @@ public class ChessFrame extends JFrame {
 
    }
 
+    public ChessComponent getChessComponent() {
+        return chessComponent;
+    }
 
+    public Board getBoard() {
+        return board;
+    }
+
+    public JFrame getFrame() {
+        return frame;
+    }
 }
 
 

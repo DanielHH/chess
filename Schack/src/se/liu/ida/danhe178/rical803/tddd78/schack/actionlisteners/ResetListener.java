@@ -25,15 +25,15 @@ public final class ResetListener implements ActionListener
 
       public void actionPerformed(final ActionEvent e) {
          // reset the board to starting state and the player mode to PVP
-	     chessFrame.chessComponent.pauseTimer();
+	     chessFrame.getChessComponent().pauseTimer();
 	  ChessComponent.setGameMode(Mode.PVP);
 	  ChessComponent.setPlayers(PlayerType.PLAYER, PlayerType.PLAYER);
-	  chessFrame.board.setStartPositions();
+	  chessFrame.getBoard().setStartPositions();
 	     internalPvp.setSelected(true);
-	  chessFrame.chessComponent.setClickedPieceNull();
+	  chessFrame.getChessComponent().setClickedPieceNull();
 	  chessFrame.repaint();
-	  chessFrame.board.setTurnCounterToZero();
-	  chessFrame.chessComponent.resumeTimer();
+	  chessFrame.getBoard().setTurnCounterToZero();
+	  chessFrame.getChessComponent().resumeTimer();
 
       }
    }

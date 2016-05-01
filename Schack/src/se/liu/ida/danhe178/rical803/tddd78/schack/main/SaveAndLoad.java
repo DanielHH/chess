@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Class is utility class that contains methods for saving and loading an instance of a Board object.
@@ -19,6 +21,9 @@ import java.io.ObjectOutputStream;
  * thus the requirement of having it in a global (existing) state.
  */
 public final class SaveAndLoad {
+
+    private static final Logger LOG = Logger.getLogger(SaveAndLoad.class.getName() );
+
     private SaveAndLoad() {}
 
     /**
@@ -33,7 +38,7 @@ public final class SaveAndLoad {
 		out.writeObject(board);
 	    }
 	    catch (IOException e) {
-		e.printStackTrace();
+		LOG.log(Level.SEVERE, e.toString(), e );
 	    }
 	}
     }
@@ -51,7 +56,7 @@ public final class SaveAndLoad {
 	    try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file.getPath()))){
 		    board = (Board) in.readObject();
 	    } catch (ClassNotFoundException | IOException e) {
-		e.printStackTrace();
+		LOG.log(Level.SEVERE, e.toString(), e );
 	    }
 	}
 	return board;

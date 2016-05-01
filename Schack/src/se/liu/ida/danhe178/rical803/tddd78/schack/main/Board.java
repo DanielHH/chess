@@ -110,7 +110,10 @@ public class Board implements Serializable {
 		Piece tempPiece = getPiece(oldColumn, oldRow);
 		System.out.println("Began movement from: " + oldColumn + ", " + oldRow + " to: "  + newColumn + ", " + newRow);
 		assert tempPiece != null;
-		System.out.println("Moved " + tempPiece.getTeam() + " " +  tempPiece.getPieceType());
+	    /*
+	     Can give NullPointerException
+	     */
+	    	System.out.println("Moved " + tempPiece.getTeam() + " " + tempPiece.getPieceType());
 		board[newColumn][newRow] = tempPiece;
 		board[oldColumn][oldRow] = null;
 		pawnUpgrade(newColumn, newRow, tempPiece);
@@ -238,6 +241,9 @@ public class Board implements Serializable {
 		board[column][row] = piece;
 	}
 
+    /*
+    can give ArrayIndexOutOfBoundsException
+     */
 	public Piece[] getListAllPiecesInTeam(Team team) {
 		Piece[] teamPieces = new Piece[START_NUMBER_OF_PIECES_IN_TEAM];
 		int count = 0;
@@ -246,7 +252,7 @@ public class Board implements Serializable {
 				Piece tempPiece = getPiece(i, j);
 				if (tempPiece != null) {
 					if (tempPiece.getTeam() == team) {
-						teamPieces[count] = tempPiece;
+					    teamPieces[count] = tempPiece;
 						count += 1;
 					}
 				}

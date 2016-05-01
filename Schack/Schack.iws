@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Schack:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="635f80e2-9e2c-422d-966b-d132780876f9" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/Schack_jar/Schack.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Schack/META-INF/MANIFEST.MF" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/actionlisteners/AIVAIListener.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/actionlisteners/LoadListener.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/actionlisteners/PVAIListener.class" afterPath="" />
@@ -44,46 +52,22 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/png-shad/wp.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/png-shad/wq.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/pieces/png-shad/wr.png" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/actionlisteners/AIVAIListener.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/AIVAIListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/actionlisteners/LoadListener.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/LoadListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/actionlisteners/PVAIListener.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/PVAIListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/actionlisteners/PVPListener.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/PVPListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/actionlisteners/PauseListener.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/PauseListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/actionlisteners/QuitListener.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/QuitListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/actionlisteners/ResetListener.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/ResetListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/actionlisteners/SaveListener.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/SaveListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/enums/Direction.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/enums/Direction.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/enums/Mode.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/enums/Mode.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/enums/PieceType.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/enums/PieceType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/enums/PlayerType.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/enums/PlayerType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/enums/Team.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/enums/Team.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/Board.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Board.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/BoardListener.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/BoardListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/BoardTest.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/BoardTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/ChessComponent.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessComponent.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/ChessFrame.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessFrame.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/Menus.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Menus.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/SaveAndLoad.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/SaveAndLoad.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pieces/Bishop.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Bishop.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pieces/King.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/King.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pieces/Knight.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Knight.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pieces/Pawn.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Pawn.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pieces/Piece.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Piece.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pieces/Queen.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Queen.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pieces/Rook.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Rook.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pieces/png-shad/bb.png" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/pieceimages/bb.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pieces/png-shad/bk.png" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/pieceimages/bk.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pieces/png-shad/bn.png" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/pieceimages/bn.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pieces/png-shad/bp.png" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/pieceimages/bp.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pieces/png-shad/bq.png" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/pieceimages/bq.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pieces/png-shad/br.png" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/pieceimages/br.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pieces/png-shad/wb.png" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/pieceimages/wb.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pieces/png-shad/wk.png" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/pieceimages/wk.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pieces/png-shad/wn.png" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/pieceimages/wn.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pieces/png-shad/wp.png" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/pieceimages/wp.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pieces/png-shad/wq.png" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/pieceimages/wq.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pieces/png-shad/wr.png" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/pieceimages/wr.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/LoadListener.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/LoadListener.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/QuitListener.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/QuitListener.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/ResetListener.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/ResetListener.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/Board.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/Board.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessFrame.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessFrame.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/Menus.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/Menus.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/SaveAndLoad.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/SaveAndLoad.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Schack.ipr" afterPath="$PROJECT_DIR$/Schack.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Schack.iws" afterPath="$PROJECT_DIR$/Schack.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/LoadListener.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/LoadListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/QuitListener.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/QuitListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/ResetListener.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/ResetListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Board.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Board.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessFrame.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessFrame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Menus.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Menus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/SaveAndLoad.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/SaveAndLoad.java" />
     </list>
     <ignored path="Schack.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -113,51 +97,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SaveAndLoad.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SaveAndLoad.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/SaveAndLoad.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="32" column="39" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.21337947">
+              <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QuitListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/QuitListener.java">
+      <file leaf-file-name="King.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/King.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
-              <folding>
-                <element signature="e#559#560#0" expanded="false" />
-                <element signature="e#593#594#0" expanded="false" />
-              </folding>
+              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoadListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/LoadListener.java">
+      <file leaf-file-name="Knight.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Knight.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
-              <folding>
-                <element signature="e#636#637#0" expanded="false" />
-                <element signature="e#670#671#0" expanded="false" />
-              </folding>
+              <caret line="40" column="60" selection-start-line="40" selection-start-column="60" selection-end-line="40" selection-end-column="60" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Menus.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Menus.java">
+      <file leaf-file-name="Pawn.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Pawn.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
-              <folding>
-                <element signature="e#1821#1822#0" expanded="false" />
-                <element signature="e#1848#1849#0" expanded="false" />
-              </folding>
+              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -166,19 +141,18 @@
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessComponent.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="252" column="17" selection-start-line="252" selection-start-column="11" selection-end-line="252" selection-end-column="17" />
-              <folding>
-                <element signature="e#3553#3554#0" expanded="false" />
-                <element signature="e#3588#3589#0" expanded="false" />
-                <element signature="e#3762#3763#0" expanded="false" />
-                <element signature="e#3800#3801#0" expanded="false" />
-                <element signature="e#7876#7877#0" expanded="false" />
-                <element signature="e#7905#7906#0" expanded="false" />
-                <element signature="e#10303#10304#0" expanded="false" />
-                <element signature="e#10333#10334#0" expanded="false" />
-                <element signature="e#10707#10708#0" expanded="false" />
-                <element signature="e#10730#10731#0" expanded="false" />
-              </folding>
+              <caret line="77" column="43" selection-start-line="77" selection-start-column="43" selection-end-line="77" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Piece.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Piece.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -193,11 +167,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChessFrame.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessFrame.java">
+      <file leaf-file-name="Queen.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Queen.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -207,27 +181,22 @@
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Board.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="41" column="43" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
-              <folding />
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding>
+                <element signature="e#3951#3952#0" expanded="true" />
+                <element signature="e#3983#3984#0" expanded="true" />
+                <element signature="e#4116#4117#0" expanded="true" />
+                <element signature="e#4141#4142#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BoardTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/BoardTest.java">
+      <file leaf-file-name="Rook.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Rook.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Bishop.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Bishop.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.26535627">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+              <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -261,13 +230,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/Color.java" />
-        <option value="$PROJECT_DIR$/src/main/PieceListener.java" />
-        <option value="$PROJECT_DIR$/src/main/Movements.java" />
-        <option value="$PROJECT_DIR$/src/main/Turn.java" />
-        <option value="$PROJECT_DIR$/src/main/Game.java" />
-        <option value="$PROJECT_DIR$/src/main/Mode.java" />
-        <option value="$PROJECT_DIR$/src/main/Movement.java" />
         <option value="$PROJECT_DIR$/src/main/PlayerType.java" />
         <option value="$PROJECT_DIR$/src/main/Team.java" />
         <option value="$PROJECT_DIR$/src/main/PieceType.java" />
@@ -311,7 +273,14 @@
         <option value="$PROJECT_DIR$/src/main/ChessFrame.java" />
         <option value="$PROJECT_DIR$/src/main/ChessComponent.java" />
         <option value="$PROJECT_DIR$/src/main/Board.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/LoadListener.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/QuitListener.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/ResetListener.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessFrame.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Menus.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessComponent.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Board.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/SaveAndLoad.java" />
       </list>
     </option>
   </component>
@@ -405,6 +374,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Schack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Schack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -421,9 +404,9 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -995,7 +978,7 @@
       <workItem from="1461933797467" duration="395000" />
       <workItem from="1461938947151" duration="16138000" />
       <workItem from="1462092546080" duration="12654000" />
-      <workItem from="1462122209848" duration="491000" />
+      <workItem from="1462122209848" duration="4236000" />
     </task>
     <task id="LOCAL-00001" summary="Added AI.">
       <created>1461057928119</created>
@@ -1043,11 +1026,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="288084000" />
+    <option name="totallyTimeSpent" value="291829000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1917" y="0" width="1926" height="1202" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1055,11 +1038,12 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2735043" sideWeight="0.31576145" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20884956" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2557522" sideWeight="0.68423855" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17699115" sideWeight="0.68423855" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20572917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20572917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17256637" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19292036" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1073,7 +1057,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="100" y="100" width="760" height="855" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20884956" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1108,38 +1091,18 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="252" column="17" selection-start-line="252" selection-start-column="11" selection-end-line="252" selection-end-column="17" />
-          <folding>
-            <element signature="e#3553#3554#0" expanded="false" />
-            <element signature="e#3588#3589#0" expanded="false" />
-            <element signature="e#3762#3763#0" expanded="false" />
-            <element signature="e#3800#3801#0" expanded="false" />
-            <element signature="e#7876#7877#0" expanded="false" />
-            <element signature="e#7905#7906#0" expanded="false" />
-            <element signature="e#10303#10304#0" expanded="false" />
-            <element signature="e#10333#10334#0" expanded="false" />
-            <element signature="e#10707#10708#0" expanded="false" />
-            <element signature="e#10730#10731#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/AIVAIListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-          <folding />
+          <folding>
+            <element signature="e#1288#1289#0" expanded="false" />
+            <element signature="e#1325#1326#0" expanded="false" />
+            <element signature="e#1356#1357#0" expanded="false" />
+            <element signature="e#1384#1385#0" expanded="false" />
+            <element signature="e#1416#1417#0" expanded="false" />
+            <element signature="e#1444#1445#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1147,7 +1110,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#3951#3952#0" expanded="true" />
+            <element signature="e#3983#3984#0" expanded="true" />
+            <element signature="e#4116#4117#0" expanded="true" />
+            <element signature="e#4141#4142#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1171,10 +1139,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="68" selection-start-line="10" selection-start-column="68" selection-end-line="10" selection-end-column="68" />
-          <folding>
-            <element signature="e#1821#1822#0" expanded="false" />
-            <element signature="e#1848#1849#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1197,7 +1162,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#3951#3952#0" expanded="true" />
+            <element signature="e#3983#3984#0" expanded="true" />
+            <element signature="e#4116#4117#0" expanded="true" />
+            <element signature="e#4141#4142#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1226,7 +1196,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="41" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
-          <folding />
+          <folding>
+            <element signature="e#3951#3952#0" expanded="true" />
+            <element signature="e#3983#3984#0" expanded="true" />
+            <element signature="e#4116#4117#0" expanded="true" />
+            <element signature="e#4141#4142#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1248,7 +1223,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#3951#3952#0" expanded="true" />
+            <element signature="e#3983#3984#0" expanded="true" />
+            <element signature="e#4116#4117#0" expanded="true" />
+            <element signature="e#4141#4142#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1416,16 +1396,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/SaveListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="63" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
-          <folding>
-            <element signature="e#717#718#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/enums/Mode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1462,38 +1432,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="77" selection-start-line="3" selection-start-column="77" selection-end-line="3" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/BoardListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.9230769">
-          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Pawn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/King.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Knight.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="60" selection-start-line="40" selection-start-column="60" selection-end-line="40" selection-end-column="60" />
           <folding />
         </state>
       </provider>
@@ -1565,17 +1503,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Piece.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
-          <folding>
-            <element signature="e#1956#1957#0" expanded="false" />
-            <element signature="e#1984#1985#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="uml://JAVA/main.Menus">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
@@ -1623,71 +1550,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/PVAIListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/PVPListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/PauseListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
-          <folding>
-            <element signature="e#551#552#0" expanded="false" />
-            <element signature="e#599#600#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/ResetListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/LoadListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
-          <folding>
-            <element signature="e#636#637#0" expanded="false" />
-            <element signature="e#670#671#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/AIVAIListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/QuitListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
-          <folding>
-            <element signature="e#559#560#0" expanded="false" />
-            <element signature="e#593#594#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="uml://JAVA/main.ChessFrame">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
@@ -1710,56 +1572,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessComponent.java">
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/LoadListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="252" column="17" selection-start-line="252" selection-start-column="11" selection-end-line="252" selection-end-column="17" />
-          <folding>
-            <element signature="e#3553#3554#0" expanded="false" />
-            <element signature="e#3588#3589#0" expanded="false" />
-            <element signature="e#3762#3763#0" expanded="false" />
-            <element signature="e#3800#3801#0" expanded="false" />
-            <element signature="e#7876#7877#0" expanded="false" />
-            <element signature="e#7905#7906#0" expanded="false" />
-            <element signature="e#10303#10304#0" expanded="false" />
-            <element signature="e#10333#10334#0" expanded="false" />
-            <element signature="e#10707#10708#0" expanded="false" />
-            <element signature="e#10730#10731#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Menus.java">
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/PauseListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
+          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
           <folding>
-            <element signature="e#1821#1822#0" expanded="false" />
-            <element signature="e#1848#1849#0" expanded="false" />
+            <element signature="e#551#552#0" expanded="false" />
+            <element signature="e#599#600#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/SaveAndLoad.java">
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/PVAIListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="39" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+          <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Board.java">
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/PVPListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="43" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/QuitListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/ResetListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/SaveListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="63" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/BoardListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
           <folding />
         </state>
       </provider>
@@ -1772,13 +1647,209 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="15" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="15" />
+          <folding>
+            <element signature="e#1288#1289#0" expanded="false" />
+            <element signature="e#1325#1326#0" expanded="false" />
+            <element signature="e#1356#1357#0" expanded="false" />
+            <element signature="e#1384#1385#0" expanded="false" />
+            <element signature="e#1416#1417#0" expanded="false" />
+            <element signature="e#1444#1445#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Menus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="76" column="69" selection-start-line="76" selection-start-column="69" selection-end-line="76" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Bishop.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26535627">
+        <state vertical-scroll-proportion="0.0">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Knight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="60" selection-start-line="40" selection-start-column="60" selection-end-line="40" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Pawn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Piece.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Queen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Rook.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/AIVAIListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/King.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="77" column="43" selection-start-line="77" selection-start-column="43" selection-end-line="77" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="e#3951#3952#0" expanded="true" />
+            <element signature="e#3983#3984#0" expanded="true" />
+            <element signature="e#4116#4117#0" expanded="true" />
+            <element signature="e#4141#4142#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/SaveAndLoad.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21337947">
+          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>Schack:jar</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Schack</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
