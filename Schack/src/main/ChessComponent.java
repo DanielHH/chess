@@ -44,6 +44,11 @@ public class ChessComponent extends JComponent implements BoardListener {
      */
     private static Mode gameMode = Mode.PVP;
 
+    /**
+     * static because number is a constant.
+     */
+    private final static int TIME_BETWEEN_AI_CLICKS = 1000; // time in ms.
+
     ChessComponent(Board board) {
         this.board = board;
 
@@ -146,7 +151,7 @@ public class ChessComponent extends JComponent implements BoardListener {
                 }
                 if (Objects.equals(clickedPiece, currentPiece) && clickedPiece != null) { // mark the clickedPiece
                     g2d.setColor(Color.RED);
-                    g2d.setStroke(new BasicStroke(2));
+                    g2d.setStroke(new BasicStroke(4));
                     g2d.drawRect(cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE);
                 }
             }
@@ -168,10 +173,26 @@ public class ChessComponent extends JComponent implements BoardListener {
         // tries to walk to a random place with a randomly chosen piece
         int turn = board.getTurnCounter();
         Random rand = new Random();
+
         while (turn == board.getTurnCounter()) {
-            int x = rand.nextInt(Board.WIDTH);
-            int y = rand.nextInt(Board.HEIGHT);
-	    tryMove(x, y);
+            Piece[] piecesInTeam = board.getListAllPiecesInTeam(board.getTurnTeam());
+            int n = rand.nextInt(piecesInTeam.length);
+            Piece tempPiece = piecesInTeam[n];
+
+            if (tempPiece != null) { // there is a piece
+                List<Map.Entry<Integer, Integer>> moves = tempPiece.listWithSafeLegalMoves(tempPiece.getColumn(), tempPiece.getRow());
+                if (!moves.isEmpty()) { // there is a doable move
+                    int m = rand.nextInt(moves.size());
+                    tryMove(tempPiece.getColumn(), tempPiece.getRow()); // mark the piece
+                    try {
+                        Thread.sleep(TIME_BETWEEN_AI_CLICKS);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    Map.Entry<Integer, Integer> move = moves.get(m);
+                    tryMove(move.getKey(), move.getValue()); // do the move
+                }
+            }
         }
     }
 

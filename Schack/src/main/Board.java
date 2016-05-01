@@ -102,9 +102,9 @@ public class Board implements Serializable {
 	}
 
 	public void actuallyMovesPiece(int oldColumn, int oldRow, int newColumn, int newRow) {
-		Piece tempPiece = board[oldColumn][oldRow];
-		assert tempPiece != null;
+		Piece tempPiece = getPiece(oldColumn, oldRow);
 		System.out.println("Began movement from: " + oldColumn + ", " + oldRow + " to: "  + newColumn + ", " + newRow);
+		assert tempPiece != null;
 		System.out.println("Moved " + tempPiece.getTeam() + " " +  tempPiece.getPieceType());
 		board[newColumn][newRow] = tempPiece;
 		board[oldColumn][oldRow] = null;
@@ -227,5 +227,23 @@ public class Board implements Serializable {
 
 	public void setSquareOnBoard(int column, int row, Piece piece) {
 		board[column][row] = piece;
+	}
+
+	public Piece[] getListAllPiecesInTeam(Team team) {
+		Piece[] teamPieces = new Piece[16];
+		int count = 0;
+		for (int i = 0; i < WIDTH; i++) {
+			for (int j = 0; j < HEIGHT; j++) {
+				Piece tempPiece = getPiece(i, j);
+				if (tempPiece != null) {
+					if (tempPiece.getTeam() == team) {
+
+						teamPieces[count] = tempPiece;
+						count += 1;
+					}
+				}
+			}
+		}
+		return teamPieces;
 	}
 }
