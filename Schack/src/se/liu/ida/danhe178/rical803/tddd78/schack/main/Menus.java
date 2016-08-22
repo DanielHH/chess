@@ -23,9 +23,14 @@ class Menus {
     private final JMenuItem quit = new JMenuItem("Quit");
 
     private final JMenu mode = new JMenu("Mode");
-    private final JRadioButtonMenuItem pvp = new JRadioButtonMenuItem("PvP");
-    private final JRadioButtonMenuItem pvai = new JRadioButtonMenuItem("PvAI");
-    private final JRadioButtonMenuItem aivai = new JRadioButtonMenuItem("AIvAI");
+
+    private static final String PVP = "PvP";
+    private static final String PVAI = "PvAI";
+    private static final String AIVAI = "AIvAI";
+
+    private final JRadioButtonMenuItem pvp = new JRadioButtonMenuItem(PVP);
+    private final JRadioButtonMenuItem pvai = new JRadioButtonMenuItem(PVAI);
+    private final JRadioButtonMenuItem aivai = new JRadioButtonMenuItem(AIVAI);
     private final JRadioButtonMenuItem pause = new JRadioButtonMenuItem("Pause");
     private final ButtonGroup whichMode = new ButtonGroup();
 
@@ -74,16 +79,16 @@ class Menus {
        save.setMnemonic(KeyEvent.VK_S);
        save.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.ALT_MASK));
 
-       pvp.addActionListener(new PVPListener(chessFrame.board));
+       pvp.addActionListener(new SetPlayersListener(chessFrame.board));
        pvp.setSelected(true);
        pvp.setMnemonic(KeyEvent.VK_P);
        pvp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_MASK));
 
-       pvai.addActionListener(new PVAIListener(chessFrame.board));
+       pvai.addActionListener(new SetPlayersListener(chessFrame.board));
        pvai.setMnemonic(KeyEvent.VK_V);
        pvai.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.CTRL_MASK));
 
-       aivai.addActionListener(new AIVAIListener(chessFrame.board));
+       aivai.addActionListener(new SetPlayersListener(chessFrame.board));
        aivai.setMnemonic(KeyEvent.VK_A);
        aivai.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_MASK));
 
@@ -92,27 +97,8 @@ class Menus {
        pause.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.ALT_MASK));
     }
 
-    /**
-     * Listener set in the Menus class.
-     * If mode AIVAI is chosen by player this class sets, via setters in
-     * class ChessComponent, game mode and Players to appropriate types.
-     */
-    public class AIVAIListener implements ActionListener
-    {
-       Board board;
-
-       public AIVAIListener(final Board board) {
-           this.board = board;
-       }
-
-             public void actionPerformed(final ActionEvent e) {
-            ChessComponent.setGameMode(Mode.AIVAI);
-            board.setPlayers(PlayerType.AI, PlayerType.AI);
-             }
-    }
 
     /**
-     * Listener set in the Menus class.
      * If option Load is chosen by player this class loads a saved board with methods via ChessFrame and SaveAndLoad.
      */
     public class LoadListener implements ActionListener
@@ -133,7 +119,6 @@ class Menus {
 
 
     /**
-     * Listener set in the Menus class.
      * If mode Pause is chosen by player this class sets, via setters in
      * class ChessComponent, game mode to appropriate type.
      */
@@ -145,45 +130,44 @@ class Menus {
         }
 
     /**
-     * Listener set in the Menus class.
-     * If mode PVAI is chosen by player this class sets, via setters in
-     * class ChessComponent, game mode and Players to appropriate types.
+     * Actionlistener that listen for player mode selections and sets the choosen mode: PvP, PvAI or AIvAI
      */
-    public class PVAIListener implements ActionListener
+
+    public class SetPlayersListener implements ActionListener
     {
-       Board board;
+        private Board board;
 
-       public PVAIListener(final Board board) {
-           this.board = board;
-       }
+        public SetPlayersListener(final Board board) {
+            this.board = board;
+        }
 
-       public void actionPerformed(final ActionEvent e) {
-            ChessComponent.setGameMode(Mode.PVAI);
-            board.setPlayers(PlayerType.PLAYER, PlayerType.AI);
-             }
-          }
+        public void actionPerformed(final ActionEvent e) {
+            Mode playerMode;
+            String command = ((AbstractButton) e.getSource()).getActionCommand();
+            switch (command) {
+                case PVP:
+                    playerMode = Mode.PVP;
+                    board.setPlayers(PlayerType.PLAYER, PlayerType.PLAYER);
+                    break;
+                case PVAI:
+                    playerMode = Mode.PVAI;
+                    board.setPlayers(PlayerType.PLAYER, PlayerType.AI);
+                    break;
+                case AIVAI:
+                    playerMode = Mode.AIVAI;
+                    board.setPlayers(PlayerType.AI, PlayerType.AI);
+                    break;
+                default:
+                    playerMode = Mode.PVP;
+                    board.setPlayers(PlayerType.PLAYER, PlayerType.PLAYER);
+                    break;
+            }
+            ChessComponent.setGameMode(playerMode);
+        }
+    }
+
 
     /**
-     * Listener set in the Menus class.
-     * If mode PVP is chosen by player this class sets, via setters in
-     * class ChessComponent, game mode and Players to appropriate types.
-     */
-    public class PVPListener implements ActionListener
-    {
-       Board board;
-
-       public PVPListener(final Board board) {
-           this.board = board;
-       }
-
-       public void actionPerformed(final ActionEvent e) {
-             ChessComponent.setGameMode(Mode.PVP);
-         board.setPlayers(PlayerType.PLAYER, PlayerType.PLAYER);
-          }
-       }
-
-    /**
-     * Listener set in the Menus class.
      * If option Quit is chosen by player this class opens a
      * dialog window where the player then can choose to exit the game or continue playing.
      */
@@ -204,7 +188,6 @@ class Menus {
        }
 
     /**
-     * Listener set in the Menus class.
      * If option Reset is chosen by player this class resets the game by calling methods via ChessFrame.
      */
     public final class ResetListener implements ActionListener
@@ -235,7 +218,6 @@ class Menus {
        }
 
     /**
-     * Listener set in the Menus class.
      * If option Save is chosen by player this class saves the current game by save method in SaveAndLoad.
      * A saved game can then be loaded by calling the LoadListener.
      */
