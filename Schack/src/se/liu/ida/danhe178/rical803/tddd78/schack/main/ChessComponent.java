@@ -31,16 +31,7 @@ public class ChessComponent extends JComponent implements BoardListener {
      */
     private static final int SQUARE_SIZE = 100;
     private Piece clickedPiece = null;
-    /**
-     * PlayerType of white player.
-     * The game should only have one whitePlayer of PlayerType associated with it hence the static reference
-     */
-    private static PlayerType whitePlayer = PlayerType.PLAYER;
-    /**
-     * PlayerType of black player.
-     * The game should only have one blackPlayer of PlayerType associated with it hence the static reference
-     */
-    private static PlayerType blackPlayer = PlayerType.PLAYER;
+
 
     /**
      * The game should only have one Mode, gameMode, associated with it hence the static reference
@@ -57,20 +48,7 @@ public class ChessComponent extends JComponent implements BoardListener {
      */
     private static final float VALUE_FOR_TRANSPARENCY = 0.75f;
 
-    /**
-     * Static because there is only supposed to be one PlayerType whitePlayer
-     * because, among other things, the AI should be able to check if it is supposed to make the move for that player.
-     */
-    public static PlayerType getWhitePlayer() {
-        return whitePlayer;
-    }
-    /**
-     * Static because there is only supposed to be one PlayerType blackPlayer
-     * because, among other things, the AI should be able to check if it is supposed to make the move for that player.
-     */
-    public static PlayerType getBlackPlayer() {
-        return blackPlayer;
-    }
+
 
     private transient Timer timer = null;
     private transient TimerTask runsGameAI = null;
@@ -85,8 +63,8 @@ public class ChessComponent extends JComponent implements BoardListener {
         addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 // only allow clicks if current player is human
-                if (board.getTurnTeam() == Team.WHITE && whitePlayer == PlayerType.PLAYER ||
-                    board.getTurnTeam() == Team.BLACK && blackPlayer == PlayerType.PLAYER) {
+                if (board.getTurnTeam() == Team.WHITE && board.getWhitePlayer() == PlayerType.PLAYER ||
+                    board.getTurnTeam() == Team.BLACK && board.getBlackPlayer() == PlayerType.PLAYER) {
                     int x = e.getX();
                     int y = e.getY();
                     int column = x / SQUARE_SIZE;
@@ -171,7 +149,7 @@ public class ChessComponent extends JComponent implements BoardListener {
                     Entry<Integer, Integer> tempMove = new SimpleEntry<>(x, y);
                     if (possibleMovesList.contains(tempMove)) { // mark the possible move
                         float alpha = VALUE_FOR_TRANSPARENCY; // alpha value for transparency
-                        Color color1 = new Color(1, 0, 0, alpha);
+                        Color color1 = new Color(0, 1, 0, alpha);
                         g2d.setColor(color1);
                         g2d.fillRect(cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE);
                         g2d.setColor(Color.BLACK);
@@ -247,13 +225,7 @@ public class ChessComponent extends JComponent implements BoardListener {
         }
     }
 
-    /**
-     * Static because we are only supposed to have two players and these are to be set globally.
-     */
-    public static void setPlayers(PlayerType newWhitePlayer, PlayerType newBlackPlayer) {
-        whitePlayer = newWhitePlayer;
-        blackPlayer = newBlackPlayer;
-    }
+
 
     public void pauseTimer() {
         timer.cancel();
@@ -281,12 +253,12 @@ public class ChessComponent extends JComponent implements BoardListener {
      */
     private void gameAI() {
 	if (board.getTurnTeam() == Team.WHITE) {
-	    if (ChessComponent.getWhitePlayer() == PlayerType.AI) {
+	    if (board.getWhitePlayer() == PlayerType.AI) {
 		walkAI();
 	    }
 	}
 	else {
-	    if (ChessComponent.getBlackPlayer() == PlayerType.AI) {
+	    if (board.getBlackPlayer() == PlayerType.AI) {
 		walkAI();
 	    }
         }

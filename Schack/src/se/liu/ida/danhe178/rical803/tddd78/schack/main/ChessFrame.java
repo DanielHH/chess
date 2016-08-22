@@ -19,15 +19,15 @@ public class ChessFrame extends JFrame {
     /**
      * Instantiates a ChessComponent.
      */
-   	private final ChessComponent chessComponent;
+   	protected final ChessComponent chessComponent;
     /**
      * Instantiates a frame that contains the dialog frame.
      */
-   	private final JFrame frame = null;
+   	protected final JFrame frame = null;
     /**
      * Instantiates a Board to be the the game board.
      */
-   	private final Board board;
+   	protected final Board board;
 
 
 
