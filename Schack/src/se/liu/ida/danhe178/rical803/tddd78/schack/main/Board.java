@@ -18,6 +18,8 @@ public class Board implements Serializable {
 	private King whiteKing = null;
 	private King blackKing = null;
 
+    private Mode gameMode = Mode.PVP;
+
     	/**
          * PlayerType of white player.
          * The game should only have one whitePlayer of PlayerType associated with it hence the static reference
@@ -135,10 +137,10 @@ public class Board implements Serializable {
 		nextTurn();
 		if (getKing(getTurnTeam()).isCheckMate()) { // game over
 			System.out.println(getTurnTeam() + " is checkmated");
-			ChessComponent.setGameMode(Mode.PAUSE);
+			setGameMode(Mode.PAUSE);
 		} else if (getKing(getTurnTeam()).isDraw()) { // game over
 			System.out.println("Draw");
-			ChessComponent.setGameMode(Mode.PAUSE);
+			setGameMode(Mode.PAUSE);
 		}
 		notifyListeners();
 	}
@@ -287,5 +289,13 @@ public class Board implements Serializable {
 
     public PlayerType getBlackPlayer() {
 	return blackPlayer;
+    }
+
+    public void setGameMode(final Mode newGameMode) {
+        gameMode = newGameMode;
+    }
+
+    public Mode getGameMode() {
+	return gameMode;
     }
 }

@@ -48,16 +48,8 @@ public class ChessFrame extends JFrame {
 
    }
 
-    public ChessComponent getChessComponent() {
-        return chessComponent;
-    }
-
     public Board getBoard() {
         return board;
-    }
-
-    public JFrame getFrame() {
-        return frame;
     }
 }
 

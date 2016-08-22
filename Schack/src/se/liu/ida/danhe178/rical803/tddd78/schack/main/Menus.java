@@ -125,7 +125,7 @@ class Menus {
     public class PauseListener implements ActionListener
     {
        public void actionPerformed(final ActionEvent e) {
-           ChessComponent.setGameMode(Mode.PAUSE);
+           chessFrame.board.setGameMode(Mode.PAUSE);
        }
         }
 
@@ -162,7 +162,7 @@ class Menus {
                     board.setPlayers(PlayerType.PLAYER, PlayerType.PLAYER);
                     break;
             }
-            ChessComponent.setGameMode(playerMode);
+            board.setGameMode(playerMode);
         }
     }
 
@@ -205,7 +205,7 @@ class Menus {
           public void actionPerformed(final ActionEvent e) {
              // reset the board to starting state and the player mode to PVP
             chessFrame.chessComponent.pauseTimer();
-         ChessComponent.setGameMode(Mode.PVP);
+         chessFrame.board.setGameMode(Mode.PVP);
          board.setPlayers(PlayerType.PLAYER, PlayerType.PLAYER);
          chessFrame.board.setStartPositions();
             internalPvp.setSelected(true);

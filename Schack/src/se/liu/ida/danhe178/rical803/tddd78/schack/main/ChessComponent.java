@@ -32,12 +32,6 @@ public class ChessComponent extends JComponent implements BoardListener {
     private static final int SQUARE_SIZE = 100;
     private Piece clickedPiece = null;
 
-
-    /**
-     * The game should only have one Mode, gameMode, associated with it hence the static reference
-     */
-    private static Mode gameMode = Mode.PVP;
-
     /**
      * Static because number is a constant.
      */
@@ -80,15 +74,8 @@ public class ChessComponent extends JComponent implements BoardListener {
         clickedPiece = null;
     }
 
-    /**
-     * Static because we are only supposed to have one gameMode and this is to be set globally.
-     */
-    public static void setGameMode(final Mode newGameMode) {
-        gameMode = newGameMode;
-    }
-
     private void tryMove(int column, int row) {
-        if (gameMode != Mode.PAUSE) {
+        if (board.getGameMode() != Mode.PAUSE) {
             Piece newPiece = board.getPiece(column, row);
             if (clickedPiece == null) { // First click
                 if (newPiece != null && newPiece.getTeam() == board.getTurnTeam()) { // is a piece and the same team as the current turn's team
