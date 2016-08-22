@@ -1,8 +1,5 @@
 package se.liu.ida.danhe178.rical803.tddd78.schack.main;
 
-import se.liu.ida.danhe178.rical803.tddd78.schack.enums.Mode;
-import se.liu.ida.danhe178.rical803.tddd78.schack.enums.PlayerType;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

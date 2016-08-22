@@ -1,9 +1,6 @@
 package se.liu.ida.danhe178.rical803.tddd78.schack.pieces;
 
 
-import se.liu.ida.danhe178.rical803.tddd78.schack.enums.Direction;
-import se.liu.ida.danhe178.rical803.tddd78.schack.enums.PieceType;
-import se.liu.ida.danhe178.rical803.tddd78.schack.enums.Team;
 import se.liu.ida.danhe178.rical803.tddd78.schack.main.Board;
 
 import java.util.AbstractMap.SimpleEntry;

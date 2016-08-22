@@ -7,11 +7,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="635f80e2-9e2c-422d-966b-d132780876f9" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/enums/Direction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/enums/Mode.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/enums/PieceType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/enums/PlayerType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/enums/Team.class" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/enums/Direction.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Direction.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/enums/Mode.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Mode.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/enums/PieceType.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/PieceType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/enums/PlayerType.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/PlayerType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/enums/Team.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Team.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/Board.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/Board.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessComponent$1.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessComponent$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessComponent$2.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessComponent$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessComponent.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessComponent.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessFrame.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessFrame.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/Menus.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/main/Menus.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Bishop.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Bishop.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/King.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/King.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Knight.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Knight.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Pawn.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Pawn.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Piece.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Piece.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Queen.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Queen.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Rook.class" afterPath="$PROJECT_DIR$/out/production/Schack/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Rook.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Schack.iws" afterPath="$PROJECT_DIR$/Schack.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Board.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Board.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessComponent.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessComponent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessFrame.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessFrame.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Menus.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Menus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Bishop.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Bishop.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/King.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/King.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Knight.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Knight.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Pawn.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Pawn.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Piece.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Piece.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Queen.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Queen.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Rook.java" afterPath="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Rook.java" />
     </list>
     <ignored path="Schack.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,14 +70,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Board.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6666667">
-              <caret line="289" column="7" selection-start-line="289" selection-start-column="7" selection-end-line="289" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="271" column="25" selection-start-line="271" selection-start-column="25" selection-end-line="271" selection-end-column="25" />
               <folding>
-                <element signature="e#8412#8413#0" expanded="true" />
-                <element signature="e#8436#8437#0" expanded="true" />
+                <element signature="e#7812#7813#0" expanded="true" />
+                <element signature="e#7836#7837#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -58,7 +87,57 @@
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessComponent.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="129" column="23" selection-start-line="129" selection-start-column="20" selection-end-line="129" selection-end-column="23" />
+              <caret line="160" column="46" selection-start-line="160" selection-start-column="46" selection-end-line="160" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Team.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Team.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.08">
+              <caret line="3" column="77" selection-start-line="3" selection-start-column="77" selection-end-line="3" selection-end-column="77" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SaveAndLoad.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/SaveAndLoad.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayerType.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/PlayerType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Mode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Mode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Direction.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Direction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -68,10 +147,10 @@
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Menus.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-0.7307692">
-              <caret line="202" column="11" selection-start-line="202" selection-start-column="11" selection-end-line="202" selection-end-column="11" />
+              <caret line="199" column="11" selection-start-line="199" selection-start-column="11" selection-end-line="199" selection-end-column="11" />
               <folding>
-                <element signature="e#5058#5059#0" expanded="true" />
-                <element signature="e#5100#5101#0" expanded="true" />
+                <element signature="e#4927#4928#0" expanded="true" />
+                <element signature="e#4969#4970#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -115,8 +194,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/Team.java" />
-        <option value="$PROJECT_DIR$/src/main/PieceType.java" />
         <option value="$PROJECT_DIR$/src/main/listenerPackage/LoadListener.java" />
         <option value="$PROJECT_DIR$/src/main/actionListeners/ResetListener.java" />
         <option value="$PROJECT_DIR$/src/main/actionListeners/QuitListener.java" />
@@ -162,10 +239,12 @@
         <option value="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/actionlisteners/ResetListener.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Piece.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/SaveAndLoad.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessComponent.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Menus.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessFrame.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Board.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Direction.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessComponent.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Team.java" />
       </list>
     </option>
   </component>
@@ -279,28 +358,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Schack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Schack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="schack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enums" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
@@ -331,7 +388,7 @@
     <configuration default="false" name="ChessFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="se.liu.ida.danhe178.rical803.tddd78.schack.enums.*" />
+          <option name="PATTERN" value="se.liu.ida.danhe178.rical803.tddd78.schack.pieces.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -351,7 +408,7 @@
     <configuration default="false" name="BoardTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="se.liu.ida.danhe178.rical803.tddd78.schack.enums.*" />
+          <option name="PATTERN" value="se.liu.ida.danhe178.rical803.tddd78.schack.pieces.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -371,7 +428,7 @@
     <configuration default="false" name="Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="se.liu.ida.danhe178.rical803.tddd78.schack.enums.*" />
+          <option name="PATTERN" value="se.liu.ida.danhe178.rical803.tddd78.schack.pieces.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -899,7 +956,7 @@
       <workItem from="1462133251394" duration="27000" />
       <workItem from="1462280711154" duration="782000" />
       <workItem from="1471857164549" duration="2155000" />
-      <workItem from="1471864245757" duration="1981000" />
+      <workItem from="1471864245757" duration="2971000" />
     </task>
     <task id="LOCAL-00001" summary="Added AI.">
       <created>1461057928119</created>
@@ -973,15 +1030,21 @@
       <option name="project" value="LOCAL" />
       <updated>1471865642573</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Moved player stuff to board.">
+      <created>1471866254861</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1471866254861</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="300668000" />
+    <option name="totallyTimeSpent" value="301658000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="0" width="1926" height="1057" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -993,9 +1056,10 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28730965" sideWeight="0.68423855" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1953125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1953125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17256637" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1928934" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1007,7 +1071,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="100" y="100" width="760" height="855" />
       <window_info id="Inspection" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20884956" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19292036" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1034,7 +1097,8 @@
     <MESSAGE value="fixed saving problem" />
     <MESSAGE value="Moved actionlisteners to Menus-class&#10;FIxed set- and get-players in Board-class&#10;Fixed some issues" />
     <MESSAGE value="Fixed actionlisteners in menu." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed actionlisteners in menu." />
+    <MESSAGE value="Moved player stuff to board." />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved player stuff to board." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1052,8 +1116,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="56" />
           <folding>
-            <element signature="e#8412#8413#0" expanded="true" />
-            <element signature="e#8436#8437#0" expanded="true" />
+            <element signature="e#7812#7813#0" expanded="true" />
+            <element signature="e#7836#7837#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1071,8 +1135,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#5058#5059#0" expanded="true" />
-            <element signature="e#5100#5101#0" expanded="true" />
+            <element signature="e#4927#4928#0" expanded="true" />
+            <element signature="e#4969#4970#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1090,8 +1154,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#8412#8413#0" expanded="true" />
-            <element signature="e#8436#8437#0" expanded="true" />
+            <element signature="e#7812#7813#0" expanded="true" />
+            <element signature="e#7836#7837#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1118,7 +1182,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/enums/PieceType.java">
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/PieceType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
@@ -1130,20 +1194,20 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#8412#8413#0" expanded="true" />
-            <element signature="e#8436#8437#0" expanded="true" />
+            <element signature="e#7812#7813#0" expanded="true" />
+            <element signature="e#7836#7837#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/enums/Team.java">
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Team.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/enums/PieceType.java">
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/PieceType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
@@ -1162,13 +1226,13 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="41" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
           <folding>
-            <element signature="e#8412#8413#0" expanded="true" />
-            <element signature="e#8436#8437#0" expanded="true" />
+            <element signature="e#7812#7813#0" expanded="true" />
+            <element signature="e#7836#7837#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/enums/PieceType.java">
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/PieceType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
@@ -1187,8 +1251,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#8412#8413#0" expanded="true" />
-            <element signature="e#8436#8437#0" expanded="true" />
+            <element signature="e#7812#7813#0" expanded="true" />
+            <element signature="e#7836#7837#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1200,7 +1264,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/enums/PieceType.java">
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/PieceType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
@@ -1354,43 +1418,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/enums/Mode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/enums/Direction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="104" selection-start-line="4" selection-start-column="104" selection-end-line="4" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/enums/PieceType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="89" selection-start-line="5" selection-start-column="89" selection-end-line="5" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/enums/PlayerType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.3846154">
-          <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/enums/Team.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="77" selection-start-line="3" selection-start-column="77" selection-end-line="3" selection-end-column="77" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1589,8 +1616,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
           <folding>
-            <element signature="e#2581#2582#0" expanded="false" />
-            <element signature="e#2642#2643#0" expanded="false" />
+            <element signature="e#2385#2386#0" expanded="false" />
+            <element signature="e#2446#2447#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1599,6 +1626,45 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="1183" column="0" selection-start-line="1183" selection-start-column="0" selection-end-line="1183" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#91879#0" expanded="false" />
+            <element signature="e#41248#41249#0" expanded="false" />
+            <element signature="e#41279#41280#0" expanded="false" />
+            <element signature="e#62453#62454#0" expanded="false" />
+            <element signature="e#62543#62544#0" expanded="false" />
+            <element signature="e#62593#62594#0" expanded="false" />
+            <element signature="e#62664#62665#0" expanded="false" />
+            <element signature="e#62714#62715#0" expanded="false" />
+            <element signature="e#62803#62804#0" expanded="false" />
+            <element signature="e#62854#62855#0" expanded="false" />
+            <element signature="e#62940#62941#0" expanded="false" />
+            <element signature="e#62989#62990#0" expanded="false" />
+            <element signature="e#63075#63076#0" expanded="false" />
+            <element signature="e#63126#63127#0" expanded="false" />
+            <element signature="e#63212#63213#0" expanded="false" />
+            <element signature="e#63262#63263#0" expanded="false" />
+            <element signature="e#63346#63347#0" expanded="false" />
+            <element signature="e#63398#63399#0" expanded="false" />
+            <element signature="e#63486#63487#0" expanded="false" />
+            <element signature="e#63538#63539#0" expanded="false" />
+            <element signature="e#63611#63612#0" expanded="false" />
+            <element signature="e#69483#69484#0" expanded="false" />
+            <element signature="e#69521#69522#0" expanded="false" />
+            <element signature="e#87358#87359#0" expanded="false" />
+            <element signature="e#87393#87394#0" expanded="false" />
+            <element signature="e#88794#88795#0" expanded="false" />
+            <element signature="e#88866#88867#0" expanded="false" />
+            <element signature="e#90352#90353#0" expanded="false" />
+            <element signature="e#90394#90395#0" expanded="false" />
+            <element signature="e#90929#90930#0" expanded="false" />
+            <element signature="e#90978#90979#0" expanded="false" />
+            <element signature="e#91085#91086#0" expanded="false" />
+            <element signature="e#91122#91123#0" expanded="false" />
+            <element signature="e#91227#91228#0" expanded="false" />
+            <element signature="e#91279#91280#0" expanded="false" />
+            <element signature="e#91396#91397#0" expanded="false" />
+            <element signature="e#91445#91446#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1607,56 +1673,91 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
-            <element signature="e#1555#1556#0" expanded="false" />
-            <element signature="e#1583#1584#0" expanded="false" />
+            <element signature="e#1359#1360#0" expanded="false" />
+            <element signature="e#1387#1388#0" expanded="false" />
+            <element signature="e#1760#1761#0" expanded="false" />
+            <element signature="e#1788#1789#0" expanded="false" />
+            <element signature="e#1818#1819#0" expanded="false" />
+            <element signature="e#1847#1848#0" expanded="false" />
+            <element signature="e#1874#1875#0" expanded="false" />
+            <element signature="e#1900#1901#0" expanded="false" />
+            <element signature="e#1929#1930#0" expanded="false" />
             <element signature="e#1956#1957#0" expanded="false" />
-            <element signature="e#1984#1985#0" expanded="false" />
-            <element signature="e#2014#2015#0" expanded="false" />
-            <element signature="e#2043#2044#0" expanded="false" />
-            <element signature="e#2070#2071#0" expanded="false" />
-            <element signature="e#2096#2097#0" expanded="false" />
-            <element signature="e#2125#2126#0" expanded="false" />
-            <element signature="e#2152#2153#0" expanded="false" />
-            <element signature="e#2178#2179#0" expanded="false" />
-            <element signature="e#2209#2210#0" expanded="false" />
-            <element signature="e#6434#6435#0" expanded="false" />
-            <element signature="e#6470#6471#0" expanded="false" />
-            <element signature="e#6505#6506#0" expanded="false" />
-            <element signature="e#6535#6536#0" expanded="false" />
-            <element signature="e#10806#10807#0" expanded="false" />
-            <element signature="e#10837#10838#0" expanded="false" />
-            <element signature="e#10886#10887#0" expanded="false" />
-            <element signature="e#10926#10927#0" expanded="false" />
-            <element signature="e#12853#12854#0" expanded="false" />
-            <element signature="e#12885#12886#0" expanded="false" />
+            <element signature="e#1982#1983#0" expanded="false" />
+            <element signature="e#2013#2014#0" expanded="false" />
+            <element signature="e#6238#6239#0" expanded="false" />
+            <element signature="e#6274#6275#0" expanded="false" />
+            <element signature="e#6309#6310#0" expanded="false" />
+            <element signature="e#6339#6340#0" expanded="false" />
+            <element signature="e#10610#10611#0" expanded="false" />
+            <element signature="e#10641#10642#0" expanded="false" />
+            <element signature="e#10690#10691#0" expanded="false" />
+            <element signature="e#10730#10731#0" expanded="false" />
+            <element signature="e#12657#12658#0" expanded="false" />
+            <element signature="e#12689#12690#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/SaveAndLoad.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="36" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="129" column="23" selection-start-line="129" selection-start-column="20" selection-end-line="129" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Menus.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.7307692">
-          <caret line="202" column="11" selection-start-line="202" selection-start-column="11" selection-end-line="202" selection-end-column="11" />
+          <caret line="199" column="11" selection-start-line="199" selection-start-column="11" selection-end-line="199" selection-end-column="11" />
           <folding>
-            <element signature="e#5058#5059#0" expanded="true" />
-            <element signature="e#5100#5101#0" expanded="true" />
+            <element signature="e#4927#4928#0" expanded="true" />
+            <element signature="e#4969#4970#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="271" column="25" selection-start-line="271" selection-start-column="25" selection-end-line="271" selection-end-column="25" />
+          <folding>
+            <element signature="e#7812#7813#0" expanded="true" />
+            <element signature="e#7836#7837#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/PieceType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13333334">
+          <caret line="5" column="89" selection-start-line="5" selection-start-column="89" selection-end-line="5" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Direction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Mode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/PlayerType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/SaveAndLoad.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1668,14 +1769,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/Board.java">
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/main/ChessComponent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6666667">
-          <caret line="289" column="7" selection-start-line="289" selection-start-column="7" selection-end-line="289" selection-end-column="7" />
-          <folding>
-            <element signature="e#8412#8413#0" expanded="true" />
-            <element signature="e#8436#8437#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="160" column="46" selection-start-line="160" selection-start-column="46" selection-end-line="160" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/danhe178/rical803/tddd78/schack/pieces/Team.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08">
+          <caret line="3" column="77" selection-start-line="3" selection-start-column="77" selection-end-line="3" selection-end-column="77" />
+          <folding />
         </state>
       </provider>
     </entry>

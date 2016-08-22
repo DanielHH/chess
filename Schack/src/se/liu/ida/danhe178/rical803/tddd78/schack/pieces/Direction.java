@@ -1,4 +1,4 @@
-package se.liu.ida.danhe178.rical803.tddd78.schack.enums;
+package se.liu.ida.danhe178.rical803.tddd78.schack.pieces;
 
 /**
  * Each movement represents a direction in which a piece can be moved.

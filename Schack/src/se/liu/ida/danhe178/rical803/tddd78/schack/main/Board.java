@@ -1,9 +1,7 @@
 package se.liu.ida.danhe178.rical803.tddd78.schack.main;
 
-import se.liu.ida.danhe178.rical803.tddd78.schack.enums.Mode;
-import se.liu.ida.danhe178.rical803.tddd78.schack.enums.PieceType;
-import se.liu.ida.danhe178.rical803.tddd78.schack.enums.PlayerType;
-import se.liu.ida.danhe178.rical803.tddd78.schack.enums.Team;
+import se.liu.ida.danhe178.rical803.tddd78.schack.pieces.PieceType;
+import se.liu.ida.danhe178.rical803.tddd78.schack.pieces.Team;
 import se.liu.ida.danhe178.rical803.tddd78.schack.pieces.*;
 
 import java.io.Serializable;
@@ -20,16 +18,7 @@ public class Board implements Serializable {
 
     private Mode gameMode = Mode.PVP;
 
-    	/**
-         * PlayerType of white player.
-         * The game should only have one whitePlayer of PlayerType associated with it hence the static reference
-         */
         private PlayerType whitePlayer = PlayerType.PLAYER;
-
-        /**
-         * PlayerType of black player.
-         * The game should only have one blackPlayer of PlayerType associated with it hence the static reference
-         */
         private PlayerType blackPlayer = PlayerType.PLAYER;
 
 	/**
@@ -275,9 +264,6 @@ public class Board implements Serializable {
 		return teamPieces;
 	}
 
-    	/**
-         * Static because we are only supposed to have two players and these are to be set globally.
-         */
         public void setPlayers(PlayerType newWhitePlayer, PlayerType newBlackPlayer) {
             whitePlayer = newWhitePlayer;
             blackPlayer = newBlackPlayer;

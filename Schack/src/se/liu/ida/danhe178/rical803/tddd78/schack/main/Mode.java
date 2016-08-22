@@ -1,4 +1,4 @@
-package se.liu.ida.danhe178.rical803.tddd78.schack.enums;
+package se.liu.ida.danhe178.rical803.tddd78.schack.main;
 
 /**
  * Each mode represents a type of game mode

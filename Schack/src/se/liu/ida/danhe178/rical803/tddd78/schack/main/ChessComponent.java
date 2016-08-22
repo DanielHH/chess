@@ -1,8 +1,6 @@
 package se.liu.ida.danhe178.rical803.tddd78.schack.main;
 
-import se.liu.ida.danhe178.rical803.tddd78.schack.enums.Mode;
-import se.liu.ida.danhe178.rical803.tddd78.schack.enums.PlayerType;
-import se.liu.ida.danhe178.rical803.tddd78.schack.enums.Team;
+import se.liu.ida.danhe178.rical803.tddd78.schack.pieces.Team;
 import se.liu.ida.danhe178.rical803.tddd78.schack.pieces.Piece;
 
 import java.awt.event.MouseAdapter;
@@ -200,8 +198,7 @@ public class ChessComponent extends JComponent implements BoardListener {
                         move = moves.get(m);
                     }
                     try {
-                        Thread.sleep(TIME_BETWEEN_AI_CLICKS); // Threading issue: We would need more time to
-                                                                // come up with alternative solution
+                        Thread.sleep(TIME_BETWEEN_AI_CLICKS);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
