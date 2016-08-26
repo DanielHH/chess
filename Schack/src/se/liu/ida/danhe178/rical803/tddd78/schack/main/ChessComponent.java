@@ -134,7 +134,7 @@ public class ChessComponent extends JComponent implements BoardListener {
                     Entry<Integer, Integer> tempMove = new SimpleEntry<>(x, y);
                     if (possibleMovesList.contains(tempMove)) { // mark the possible move
                         float alpha = VALUE_FOR_TRANSPARENCY; // alpha value for transparency
-                        Color color1 = new Color(0, 1, 0, alpha);
+                        Color color1 = new Color(1, 0, 0, alpha);
                         g2d.setColor(color1);
                         g2d.fillRect(cornerX, cornerY, SQUARE_SIZE, SQUARE_SIZE);
                         g2d.setColor(Color.BLACK);
