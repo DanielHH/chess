@@ -1,7 +1,5 @@
 package se.liu.ida.danhe178.rical803.tddd78.schack.main;
 
-import se.liu.ida.danhe178.rical803.tddd78.schack.pieces.PieceType;
-import se.liu.ida.danhe178.rical803.tddd78.schack.pieces.Team;
 import se.liu.ida.danhe178.rical803.tddd78.schack.pieces.*;
 
 import java.io.Serializable;
@@ -47,11 +45,11 @@ public class Board implements Serializable {
      */
     	private static final int START_NUMBER_OF_PIECES_IN_TEAM = 16;
 
-	Board() {
+	public Board() {
 		setStartPositions();
 	}
 
-	Team getTurnTeam() { // gets the team (color) of the current round
+	protected Team getTurnTeam() { // gets the team (color) of the current round
 		Team color = Team.WHITE;
 		if (turnCounter % 2 != 0) {
 			color = Team.BLACK;
@@ -126,25 +124,25 @@ public class Board implements Serializable {
 		nextTurn();
 		if (getKing(getTurnTeam()).isCheckMate()) { // game over
 			System.out.println(getTurnTeam() + " is checkmated");
-			setGameMode(Mode.PAUSE);
+		    gameMode = Mode.PAUSE;
 		} else if (getKing(getTurnTeam()).isDraw()) { // game over
 			System.out.println("Draw");
-			setGameMode(Mode.PAUSE);
+		    gameMode = Mode.PAUSE;
 		}
 		notifyListeners();
 	}
 
-	void addBoardListener(BoardListener bl) {
+	protected void addBoardListener(BoardListener bl) {
 		boardListenerList[0] = bl;
 	}
 
-    	void notifyListeners() {
+    	protected void notifyListeners() {
 		for (BoardListener bl : boardListenerList) {
 			bl.boardChanged();
 		}
 	}
 
-	int getTurnCounter() {
+	protected int getTurnCounter() {
 		return turnCounter;
 	}
 
@@ -171,27 +169,35 @@ public class Board implements Serializable {
 			for (int j = 0; j < HEIGHT; j++) {
 				Piece tempPiece = loadedBoard.board[i][j];
 				if (tempPiece != null) { // there is a piece
-					if (tempPiece.getPieceType() == PieceType.PAWN) {
-						board[i][j] = new Pawn(i, j, tempPiece.getTeam(), this);
-					} else if (tempPiece.getPieceType() == PieceType.BISHOP) {
-						board[i][j] = new Bishop(i, j, tempPiece.getTeam(), this);
-					} else if (tempPiece.getPieceType() == PieceType.KING) {
-						King king = new King(i, j, tempPiece.getTeam(), this);
-						board[i][j] = king;
-						if (tempPiece.getTeam() == Team.WHITE) {
-							whiteKing = king;
-						}
-						else {
-							blackKing = king;
-						}
-					} else if (tempPiece.getPieceType() == PieceType.QUEEN) {
-						board[i][j] = new Queen(i, j, tempPiece.getTeam(), this);
-					} else if (tempPiece.getPieceType() == PieceType.ROOK) {
-						board[i][j] = new Rook(i, j, tempPiece.getTeam(), this);
-					} else if (tempPiece.getPieceType() == PieceType.KNIGHT) {
-						board[i][j] = new Knight(i, j, tempPiece.getTeam(), this);
-					}
-					board[i][j].setHasMoved(tempPiece.getHasMoved());
+				    Team team = tempPiece.getTeam();
+				    switch(tempPiece.getPieceType()) {
+					case PAWN:
+					    board[i][j] = new Pawn(i, j, team, this);
+					    break;
+					case BISHOP:
+					    board[i][j] = new Bishop(i, j, team, this);
+					    break;
+					case KING:
+					    King king = new King(i, j, team, this);
+					    board[i][j] = king;
+					    if (team == Team.WHITE) {
+						whiteKing = king;
+					    }
+					    else {
+						blackKing = king;
+					    }
+					    break;
+					case QUEEN:
+					    board[i][j] = new Queen(i, j, team, this);
+					    break;
+					case ROOK:
+					    board[i][j] = new Rook(i, j, team, this);
+					    break;
+					case KNIGHT:
+					    board[i][j] = new Knight(i, j, team, this);
+					    break;
+				    }
+				    board[i][j].setHasMoved(tempPiece.getHasMoved());
 				} else { // no piece
 					board[i][j] = null;
 				}

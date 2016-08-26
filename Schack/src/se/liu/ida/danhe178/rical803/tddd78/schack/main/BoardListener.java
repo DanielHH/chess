@@ -9,5 +9,5 @@ package se.liu.ida.danhe178.rical803.tddd78.schack.main;
  */
 interface BoardListener
 {
-    void boardChanged();
+    public void boardChanged();
 }

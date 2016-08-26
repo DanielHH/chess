@@ -49,7 +49,7 @@ public class ChessComponent extends JComponent implements BoardListener {
      */
     private final static int TIME_BETWEEN_AI_CHECKS = 2000; // time in ms.
 
-    ChessComponent(Board board) {
+    public ChessComponent(Board board) {
         this.board = board;
 
         addMouseListener(new MouseAdapter() {

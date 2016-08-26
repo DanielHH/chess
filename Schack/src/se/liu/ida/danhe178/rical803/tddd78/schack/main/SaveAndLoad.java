@@ -22,7 +22,8 @@ import java.util.logging.Logger;
  */
 public final class SaveAndLoad {
 
-    private static final Logger LOG = Logger.getLogger(SaveAndLoad.class.getName() );
+    // private static because there need only to be one logger per class
+    private static final Logger LOG = Logger.getLogger(SaveAndLoad.class.getName());
 
     private SaveAndLoad() {}
 
@@ -38,7 +39,7 @@ public final class SaveAndLoad {
 		out.writeObject(board);
 	    }
 	    catch (IOException e) {
-		LOG.log(Level.SEVERE, e.toString(), e );
+		LOG.log(Level.SEVERE, "IOException while saving board.", e );
 		e.printStackTrace();
 	    }
 	}
@@ -57,7 +58,7 @@ public final class SaveAndLoad {
 	    try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file.getPath()))){
 		    board = (Board) in.readObject();
 	    } catch (ClassNotFoundException | IOException e) {
-		LOG.log(Level.SEVERE, e.toString(), e );
+		LOG.log(Level.SEVERE, e + " error while loading board.", e );
 	    }
 	}
 	return board;

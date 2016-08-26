@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
  * Contains the menu and all of the menu options.
  * Sets actionListeners and then sets an instance of JMenuBar on an instance of class ChessFrame.
  */
-class Menus {
+public class Menus {
     private final JMenuBar menuBar = new JMenuBar();
 
     private final JMenu options = new JMenu("Options");
@@ -21,6 +21,7 @@ class Menus {
 
     private final JMenu mode = new JMenu("Mode");
 
+    // static beacause the strings are constants
     private static final String PVP = "PvP";
     private static final String PVAI = "PvAI";
     private static final String AIVAI = "AIvAI";
@@ -34,7 +35,7 @@ class Menus {
     private final ChessFrame chessFrame;
 
 
-    Menus(ChessFrame frame) {chessFrame = frame;
+    public Menus(ChessFrame frame) {chessFrame = frame;
     }
 
     void createMenus() { // begins the creation of the menu
@@ -60,15 +61,15 @@ class Menus {
     }
 
     private void setListeners() { // sets all the listeners for the menu
-       reset.addActionListener(new ResetListener(pvp, chessFrame, chessFrame.board));
+       reset.addActionListener(new ResetListener(pvp, chessFrame.board));
        reset.setMnemonic(KeyEvent.VK_R);
        reset.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_MASK));
 
-       quit.addActionListener(new QuitListener(chessFrame));
+       quit.addActionListener(new QuitListener());
        quit.setMnemonic(KeyEvent.VK_Q);
        quit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
 
-       load.addActionListener(new LoadListener(chessFrame));
+       load.addActionListener(new LoadListener());
        load.setMnemonic(KeyEvent.VK_L);
        load.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, InputEvent.CTRL_MASK));
 
@@ -100,10 +101,6 @@ class Menus {
      */
     public class LoadListener implements ActionListener
     {
-        private final ChessFrame chessFrame;
-        public LoadListener (ChessFrame frame){
-            chessFrame = frame;
-        }
            public void actionPerformed(ActionEvent e) {
               Board loadedBoard = SaveAndLoad.load();
               if (loadedBoard != null) {
@@ -170,11 +167,6 @@ class Menus {
      */
     public class QuitListener implements ActionListener
     {
-        private final ChessFrame chessFrame;
-        public QuitListener (ChessFrame frame){
-            chessFrame = frame;
-        }
-
           public void actionPerformed(ActionEvent e) {
               int answer = JOptionPane.showConfirmDialog(chessFrame.frame, "Are you sure?", "Quit?",
                                                JOptionPane.YES_NO_OPTION);
@@ -189,14 +181,12 @@ class Menus {
      */
     public final class ResetListener implements ActionListener
     {
-        private final ChessFrame chessFrame;
         private final JRadioButtonMenuItem internalPvp;
-       Board board;
+       private Board board;
 
-          public ResetListener(JRadioButtonMenuItem pvp, ChessFrame frame, final Board board) {
+          public ResetListener(JRadioButtonMenuItem pvp, final Board board) {
              this.board = board;
              internalPvp = pvp;
-         chessFrame = frame;
           }
 
           public void actionPerformed(final ActionEvent e) {

@@ -3,6 +3,7 @@ package se.liu.ida.danhe178.rical803.tddd78.schack.pieces;
 import se.liu.ida.danhe178.rical803.tddd78.schack.main.Board;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
@@ -10,6 +11,8 @@ import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -26,10 +29,14 @@ public abstract class Piece implements Serializable {
     private final PieceType pieceType;
     private final String blImageLocation;
     private final String whImageLocation;
+    private boolean errorMessageShowed = false;
+
+    // private static because there need only to be one logger per class
+    private static final Logger LOG = Logger.getLogger(Piece.class.getName());
 
     private transient BufferedImage image = null;
 
-    Piece(int column, int row, Team team, Board board, PieceType pieceType, String blImageLocation,
+    protected Piece(int column, int row, Team team, Board board, PieceType pieceType, String blImageLocation,
           String whImageLocation)
     {
         this.row = row;
@@ -59,7 +66,13 @@ public abstract class Piece implements Serializable {
         try {
             image = ImageIO.read(getClass().getResource(imageLocation));
         } catch (IOException e) {
+            if (!errorMessageShowed) {
+                JOptionPane.showMessageDialog(null, "Missing images");
+                errorMessageShowed = true;
+            }
+            LOG.log(Level.SEVERE, e + "error while loading piece image.", e );
             e.printStackTrace();
+            image = new BufferedImage(1, 1, 1);
         }
     }
 
@@ -79,13 +92,13 @@ public abstract class Piece implements Serializable {
         return team;
     }
 
-    boolean hasMoved() {
+    protected boolean hasMoved() {
         return hasMoved;
     }
 
     private void moved() {hasMoved = true;}
 
-    boolean isThreatened(int newColumn, int newRow) {
+    protected boolean isThreatened(int newColumn, int newRow) {
 	boolean threatened = false;
 	for (int i = 0; i < Board.WIDTH; i++) {
 	    for (int j = 0; j < Board.HEIGHT; j++) {
@@ -223,7 +236,7 @@ public abstract class Piece implements Serializable {
      * @param steps number of steps to go
      * @return if the piece can move or not
      */
-    boolean pieceInTheWay(Direction direction, int steps) {
+    protected boolean pieceInTheWay(Direction direction, int steps) {
         boolean canNotMove = false;
         for (int i = 1; i <  Math.abs(steps); i++) {
             int x = i;
@@ -259,7 +272,7 @@ public abstract class Piece implements Serializable {
      * @param newRow row coordinate for the new place
      * @return a boolean for whether the move can be done or not
      */
-    boolean evaluatePieceInTheWay(Direction direction, int steps, int newColumn, int newRow) {
+    protected boolean evaluatePieceInTheWay(Direction direction, int steps, int newColumn, int newRow) {
         boolean canMove = false;
         if (!this.pieceInTheWay(direction, steps)) { // no piece in the way
             Piece tempPiece = board.getPiece(newColumn, newRow);
@@ -358,7 +371,7 @@ public abstract class Piece implements Serializable {
      * @param lateral number of steps in lateral direction
      * @return number of steps
      */
-    int calculateSteps(int horizontal, int lateral) {
+    protected int calculateSteps(int horizontal, int lateral) {
         int steps = horizontal;
        	if (lateral != 0) {
        	    steps = lateral;

@@ -7,11 +7,10 @@ import java.awt.*;
 
 /**
  * JFrame object that contains:
- * a menu bar, a ChessComponent and a TimerTask.
+ * a menu bar, a ChessComponent.
  *
  * Is used as a link between class Menus and ChessComponent
  * to connect a graphical menu option to the functions it executes.
- * Is called by methods in package actionlisteners.
  *
  * Is created by class TestBoard at start of a new game.
  */
@@ -32,7 +31,7 @@ public class ChessFrame extends JFrame {
 
 
 
-    ChessFrame(Board board) {
+    public ChessFrame(Board board) {
       super("Chess");
        this.board = board;
        chessComponent= new ChessComponent(board);
@@ -47,10 +46,6 @@ public class ChessFrame extends JFrame {
       this.setVisible(true);
 
    }
-
-    public Board getBoard() {
-        return board;
-    }
 }
 
 
